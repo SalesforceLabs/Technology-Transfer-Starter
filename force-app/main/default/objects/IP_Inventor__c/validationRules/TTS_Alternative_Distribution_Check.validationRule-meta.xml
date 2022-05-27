@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Alternative_Distribution_Check</fullName>
+    <active>false</active>
+    <description>Ensure that the Contact record which is linked as the original inventor is not the same as the Contact record which is linked as the Alternative Distribution.</description>
+    <errorConditionFormula>IP_AlternativeContact__c = IP_Original_Inventor_Name__c</errorConditionFormula>
+    <errorMessage>The Alternative Distribution contact cannot be the same as the Original Inventor. If the record should be set to the Original Inventor, clear the Alternative Distribution field and ensure that the Original Inventor field is set to the correct contact.</errorMessage>
+</ValidationRule>

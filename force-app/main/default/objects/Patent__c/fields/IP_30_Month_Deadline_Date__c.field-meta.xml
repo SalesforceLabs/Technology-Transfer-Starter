@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_30_Month_Deadline_Date__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <deprecated>false</deprecated>
+    <description>Calculated Date 30 Months from the Priority Date Field.</description>
+    <externalId>false</externalId>
+    <formula>ADDMONTHS(IP_Priority_Date__c,30)</formula>
+    <inlineHelpText>30 Month Deadline Date, calculated 30 months on from the Priority Date.</inlineHelpText>
+    <label>30 Month Deadline Date</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

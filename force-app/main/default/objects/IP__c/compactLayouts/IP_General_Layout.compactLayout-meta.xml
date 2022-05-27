@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_General_Layout</fullName>
+    <fields>IP_Compact_Title__c</fields>
+    <fields>IP_Disclosure_Date__c</fields>
+    <fields>IP_Category__c</fields>
+    <fields>OwnerId</fields>
+    <label>General IP Layout</label>
+</CompactLayout>

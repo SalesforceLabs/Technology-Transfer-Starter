@@ -1,0 +1,69 @@
+minimum_cumulusci_version: "3.30.0"
+project:
+    name: Technology-Transfer-Starter
+    package:
+        name: Technology-Transfer-Starter
+        api_version: "54.0"
+        namespace: ipmanagement
+    git:
+        default_branch: "main"
+        repo_url: https://github.com/SFDO-SE/Technology-Transfer-Starter
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/Technology-Transfer-Starter/tests
+            options:
+                outputdir: robot/Technology-Transfer-Starter/results
+
+    robot_testdoc:
+        options:
+            path: robot/Technology-Transfer-Starter/tests
+            output: robot/Technology-Transfer-Starter/doc/Technology-Transfer-Starter_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+    deploy:
+        options:
+            path: force-app
+
+    extract_dataset:
+        options:
+            inject_namespaces: true
+            drop_missing_schema: True
+
+    load_dataset:
+        options:
+            inject_namespaces: false
+            drop_missing_schema: True
+
+    delete_data:
+        options:
+            objects:
+                - Entitlement
+                - IP_Inventor__c
+                - Applicant__c
+                - IP_Related_Patent__c
+                - TrademarkIPAssociation__c
+                - Campaign
+                - Opportunity
+                - Patent__c
+                - IP__c
+                - Contact
+                - Trademark_Classes__c
+                - Contract
+                - Account
+
+flows:
+    config_dev:
+        steps:
+            3:
+                task: assign_permission_sets
+                options:
+                    api_names:
+                        - Technology_Transfer_Starter_Permission
+            4:
+                task: load_dataset

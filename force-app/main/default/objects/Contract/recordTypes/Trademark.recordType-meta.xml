@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trademark</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Trademark</compactLayoutAssignment>
+    <description>A trademark is a sign capable of distinguishing the goods or services of one enterprise from those of other enterprises. Trademarks are protected by intellectual property rights.</description>
+    <label>Trademark</label>
+</RecordType>

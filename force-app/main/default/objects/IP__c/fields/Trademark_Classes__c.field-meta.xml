@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trademark_Classes__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Nice Classification (NCL), established by the Nice Agreement (1957), is an international classification of goods and services applied for the registration of marks.</description>
+    <externalId>false</externalId>
+    <label>Trademark Classes</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>WIPO_NCL_Classes</valueSetName>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

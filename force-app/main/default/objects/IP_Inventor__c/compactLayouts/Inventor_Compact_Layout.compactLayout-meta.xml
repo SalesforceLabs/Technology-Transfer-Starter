@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inventor_Compact_Layout</fullName>
+    <fields>IP_Inventor__c</fields>
+    <fields>IP_Contribution_Role__c</fields>
+    <fields>Percentage_Share__c</fields>
+    <fields>IP_Contribution__c</fields>
+    <label>Inventor Compact Layout</label>
+</CompactLayout>

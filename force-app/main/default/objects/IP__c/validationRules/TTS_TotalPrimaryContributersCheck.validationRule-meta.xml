@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_TotalPrimaryContributersCheck</fullName>
+    <active>true</active>
+    <description>This checks to ensure that there is no more than 1 contributor marked as the primary.</description>
+    <errorConditionFormula>IP_Total_Primary_Contributions__c &gt; 1</errorConditionFormula>
+    <errorMessage>There must only be 1 primary contributor. This should be the lead or primary inventor of the IP.</errorMessage>
+</ValidationRule>

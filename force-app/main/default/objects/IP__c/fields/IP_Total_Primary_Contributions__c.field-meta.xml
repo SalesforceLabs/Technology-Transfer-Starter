@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_Total_Primary_Contributions__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This checks the number of child contributions records, marked as primary, is always 1 or 0. If this is greater than one a validation rule throws an error message.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total number of contributions marked as Primary. This should always be 1.</inlineHelpText>
+    <label>Total Primary Contributions</label>
+    <summaryFilterItems>
+        <field>IP_Inventor__c.IP_Is_Primary__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>IP_Inventor__c.IP_Contribution__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

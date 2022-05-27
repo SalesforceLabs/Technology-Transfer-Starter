@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Class 1 Chemicals for use in industry, science and photography, as well as in agriculture.</fullName>
+        <default>false</default>
+        <label>Class 1 Chemicals for use in industry, science and photography, as well as in agriculture.</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 2 Paints, varnishes, lacquers</fullName>
+        <default>false</default>
+        <label>Class 2 Paints, varnishes, lacquers</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 3</fullName>
+        <default>false</default>
+        <label>Class 3</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 4</fullName>
+        <default>false</default>
+        <label>Class 4</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 5</fullName>
+        <default>false</default>
+        <label>Class 5</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 6</fullName>
+        <default>false</default>
+        <label>Class 6</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 7</fullName>
+        <default>false</default>
+        <label>Class 7</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 8</fullName>
+        <default>false</default>
+        <label>Class 8</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 9</fullName>
+        <default>false</default>
+        <label>Class 9</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 10</fullName>
+        <default>false</default>
+        <label>Class 10</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 11</fullName>
+        <default>false</default>
+        <label>Class 11</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 12</fullName>
+        <default>false</default>
+        <label>Class 12</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 13</fullName>
+        <default>false</default>
+        <label>Class 13</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 14</fullName>
+        <default>false</default>
+        <label>Class 14</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 15</fullName>
+        <default>false</default>
+        <label>Class 15</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 16</fullName>
+        <default>false</default>
+        <label>Class 16</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 17</fullName>
+        <default>false</default>
+        <label>Class 17</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 18</fullName>
+        <default>false</default>
+        <label>Class 18</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 19</fullName>
+        <default>false</default>
+        <label>Class 19</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 20</fullName>
+        <default>false</default>
+        <label>Class 20</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 21</fullName>
+        <default>false</default>
+        <label>Class 21</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 22</fullName>
+        <default>false</default>
+        <label>Class 22</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 23</fullName>
+        <default>false</default>
+        <label>Class 23</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 24</fullName>
+        <default>false</default>
+        <label>Class 24</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 25</fullName>
+        <default>false</default>
+        <label>Class 25</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 26</fullName>
+        <default>false</default>
+        <label>Class 26</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 27</fullName>
+        <default>false</default>
+        <label>Class 27</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 28</fullName>
+        <default>false</default>
+        <label>Class 28</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 29</fullName>
+        <default>false</default>
+        <label>Class 29</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 30</fullName>
+        <default>false</default>
+        <label>Class 30</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 31</fullName>
+        <default>false</default>
+        <label>Class 31</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 32</fullName>
+        <default>false</default>
+        <label>Class 32</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 33</fullName>
+        <default>false</default>
+        <label>Class 33</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 34</fullName>
+        <default>false</default>
+        <label>Class 34</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 35</fullName>
+        <default>false</default>
+        <label>Class 35</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 36</fullName>
+        <default>false</default>
+        <label>Class 36</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 37</fullName>
+        <default>false</default>
+        <label>Class 37</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 38</fullName>
+        <default>false</default>
+        <label>Class 38</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 39</fullName>
+        <default>false</default>
+        <label>Class 39</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 40</fullName>
+        <default>false</default>
+        <label>Class 40</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 41</fullName>
+        <default>false</default>
+        <label>Class 41</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 42</fullName>
+        <default>false</default>
+        <label>Class 42</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 43</fullName>
+        <default>false</default>
+        <label>Class 43</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 44</fullName>
+        <default>false</default>
+        <label>Class 44</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 45</fullName>
+        <default>false</default>
+        <label>Class 45</label>
+    </customValue>
+    <description>The Nice Classification (NCL), established by the Nice Agreement (1957), is an international classification of goods and services applied for the registration of marks.  The 2019 version of the eleventh edition of the NCL came into force on January 1, 2019.</description>
+    <masterLabel>WIPO NCL Classes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

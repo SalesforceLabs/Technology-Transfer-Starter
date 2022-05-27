@@ -1,0 +1,248 @@
+Insert Account:
+  sf_object: Account
+  fields:
+    - Name
+  lookups:
+    ParentId:
+      table: Account
+      after: Insert Account
+Insert IP_Success_Plans__c:
+  sf_object: IP_Success_Plans__c
+  fields:
+    - Title__c
+Insert Trademark_Classes__c:
+  sf_object: Trademark_Classes__c
+  fields:
+    - Class_Heading__c
+    - Class_Number__c
+    - Name
+Insert Contact:
+  sf_object: Contact
+  fields:
+    - DoNotCall
+    - FirstName
+    - HasOptedOutOfEmail
+    - HasOptedOutOfFax
+    - LastName
+  lookups:
+    AccountId:
+      table: Account
+    ReportsToId:
+      table: Contact
+      after: Insert Contact
+Insert Contract:
+  sf_object: Contract
+  fields:
+    - Country__c
+    - RecordTypeId
+    - Status
+    - Trademark_Classes__c
+    - Trademark_Number__c
+  lookups:
+    AccountId:
+      table: Account
+    CustomerSignedId:
+      table: Contact
+    Tech_Transfer_Manager__c:
+      table: Contact
+Insert IP__c:
+  sf_object: IP__c
+  fields:
+    - IP_Category__c
+    - IP_Commercial_Market__c
+    - IP_Disclosure_Date__c
+    - IP_Experimental_Verification_Detail__c
+    - IP_Experimental_Verification__c
+    - IP_External_Reference__c
+    - IP_Future_Publications__c
+    - IP_Known_Limitations__c
+    - IP_Known_Risks__c
+    - IP_Known_Variations__c
+    - IP_Materials__c
+    - IP_Novelty__c
+    - IP_Prior_Art__c
+    - IP_Prior_Art_detail__c
+    - IP_Public_Disclosure_Details__c
+    - IP_Public_Disclosure__c
+    - IP_Sponsored_Program_Detail__c
+    - IP_Sponsored_Program__c
+    - IP_Status__c
+    - IP_Technical_Description__c
+    - IP_Title__c
+    - IP_Utility__c
+    - Non_Confidential_Description__c
+    - RecordTypeId
+    - TRL__c
+    - Trademark_Classes__c
+  lookups:
+    IP_ParentIP__c:
+      table: IP__c
+      after: Insert IP__c
+    IP_Principal_Inventor_PI__c:
+      table: Contact
+Insert Milestone__c:
+  sf_object: Milestone__c
+  fields:
+    - Date__c
+    - IP_Milestone_Description__c
+    - Number_of_Days__c
+    - Subject__c
+    - When__c
+  lookups:
+    Success_Plans__c:
+      table: IP_Success_Plans__c
+    Who__c:
+      table: Contact
+Insert Campaign:
+  sf_object: Campaign
+  fields:
+    - IsActive
+    - Name
+  lookups:
+    IP__c:
+      table: IP__c
+    ParentId:
+      table: Campaign
+      after: Insert Campaign
+Insert IP_Inventor__c:
+  sf_object: IP_Inventor__c
+  fields:
+    - IP_Contribution_Description__c
+    - IP_Contribution_Role__c
+    - IP_Is_Primary__c
+    - Percentage_Share__c
+  lookups:
+    IP_AlternativeContact__c:
+      table: Contact
+    IP_Contribution__c:
+      table: IP__c
+    IP_Original_Inventor_Name__c:
+      table: Contact
+Insert Patent__c:
+  sf_object: Patent__c
+  fields:
+    - IP_Country__c
+    - IP_Deadline_Date__c
+    - IP_Deadline_Description__c
+    - IP_Disclosure_Date__c
+    - IP_Effective_Date__c
+    - IP_Examination_Deadline_Date__c
+    - IP_Examination_Requested__c
+    - IP_Examination_Status__c
+    - IP_Expiry_Date__c
+    - IP_File_Date__c
+    - IP_Grant_Number__c
+    - IP_Market_Findings__c
+    - IP_Patent_Advisories__c
+    - IP_Patent_Application_Number__c
+    - IP_Patent_Application_Type__c
+    - IP_Patent_Considerations__c
+    - IP_Patent_IsGranted__c
+    - IP_Patent_Stage__c
+    - IP_Priority_Date__c
+    - IP_Provisional_Future__c
+    - IP_Publication_Date__c
+    - IP_Purchase_Order_Reference__c
+    - IP_Renewal_Date__c
+  lookups:
+    IP_Lead_Applicant__c:
+      table: Account
+    IP_Patent_Agent__c:
+      table: Account
+    IP_Patent_Attorney__c:
+      table: Contact
+    IP__c:
+      table: IP__c
+Insert TrademarkIPAssociation__c:
+  sf_object: TrademarkIPAssociation__c
+  lookups:
+    Trademark_Class__c:
+      table: Contract
+    Trademark_Classes__c:
+      table: Trademark_Classes__c
+Insert Applicant__c:
+  sf_object: Applicant__c
+  fields:
+    - IP_External_Reference__c
+    - Lead_Applicant__c
+  lookups:
+    Account__c:
+      table: Account
+    Patent__c:
+      table: Patent__c
+Insert IP_Related_Patent__c:
+  sf_object: IP_Related_Patent__c
+  fields:
+    - IP_Relationship_Details__c
+  lookups:
+    IP_Patent__c:
+      table: Patent__c
+    IP_Related_Patent__c:
+      table: Patent__c
+Insert Opportunity:
+  sf_object: Opportunity
+  fields:
+    - CloseDate
+    - IsPrivate
+    - Name
+    - StageName
+  lookups:
+    AccountId:
+      table: Account
+    CampaignId:
+      table: Campaign
+    ContactId:
+      table: Contact
+    ContractId:
+      table: Contract
+    IP_RelatedIP__c:
+      table: IP__c
+Insert IP_Transaction__c:
+  sf_object: IP_Transaction__c
+  fields:
+    - Agreed_Amount__c
+    - Direction__c
+    - IP_Actual_Amount__c
+    - IP_Expected_Payment_Date__c
+    - IP_External_Payment_Reference__c
+    - IP_Internal_Payment_Reference__c
+    - IP_Purchase_Order__c
+    - IP_Transaction_Date_Time__c
+    - Type__c
+  lookups:
+    IP_Contract__c:
+      table: Contract
+    IP_Opportunity__c:
+      table: Opportunity
+    IP_Related_IP__c:
+      table: IP__c
+    IP_Related_Patent__c:
+      table: Patent__c
+Insert Contributor__c:
+  sf_object: Contributor__c
+  fields:
+    - Amount__c
+    - Comments__c
+    - IP_Cont_Payment_Reference__c
+    - IP_Date_Time__c
+  lookups:
+    Account__c:
+      table: Account
+    IP_Contact__c:
+      table: Contact
+    IP_Related_Transaction__c:
+      table: IP_Transaction__c
+Insert IP_Recipient__c:
+  sf_object: IP_Recipient__c
+  fields:
+    - Amount__c
+    - IP_Recipient_Comments__c
+    - IP_Recipient_Payment_Date_Time__c
+    - IP_Recipient_Payment_Reference__c
+  lookups:
+    IP_Recipient_Account__c:
+      table: Account
+    IP_Recipient_Contact__c:
+      table: Contact
+    IP_Transaction__c:
+      table: IP_Transaction__c

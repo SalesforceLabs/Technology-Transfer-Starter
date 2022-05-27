@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commercial</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Commercial</compactLayoutAssignment>
+    <description>A Commercial Contract is one that binds two parties to an agreement which determines the financial sale of IP and technologies.</description>
+    <label>Commercial</label>
+</RecordType>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>IP__c</entityName>
+    <fieldName>IP_Status__c</fieldName>
+    <masterLabel>IP Technology Path</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;The IP cannot be released to the market and/or we cannot move forward. There are no further steps at this stage.&lt;/p&gt;</info>
+        <picklistValueName>Closed - Lost</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;We have reached the final stage where the IP is out in the market and there are no further plans from our office.&lt;/p&gt;</info>
+        <picklistValueName>Closed - Won</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>IP_Commercial_Market__c</fieldNames>
+        <fieldNames>IP_Public_Disclosure__c</fieldNames>
+        <info>&lt;p&gt;Now it&amp;#39;s time to start commercialising this IP in the market. Ensure that as you receive new information, the record is kept up to date. Remember that chatter can be used to provide small updates with regards to the activity related to this IP.&lt;/p&gt;</info>
+        <picklistValueName>Commercialisation</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>IP_Principal_Inventor_PI__c</fieldNames>
+        <fieldNames>TRL__c</fieldNames>
+        <fieldNames>IP_Technical_Description__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Review the Disclosure and if there are queries or questions, please speak with the PI listed and update as required. If accepted, move to Triage stage and remember to update the TRL if required. If rejected, move to Closed - Lost stage.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Disclosure Review</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>IP_Principal_Inventor_PI__c</fieldNames>
+        <fieldNames>TRL__c</fieldNames>
+        <info>&lt;p&gt;This is the initial disclosure stage, which is the default stage for all submitted disclosures. Next steps are to review the Disclosure and if there are queries or questions, please speak with the PI listed and update as required. &lt;/p&gt;</info>
+        <picklistValueName>Initial Disclosure</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>TRL__c</fieldNames>
+        <info>&lt;p&gt;Within the Triage stage, this is where you need to review the market, known risks, prior art and utility. Ensuring that we have a good understanding of what is out there in the market and where challenges may come from should this IP be released to the market. Once triage has been completed, move to Commercialisation stage or move to Closed - Lost if we are unable to release to the market and/or move forward.&lt;/p&gt;</info>
+        <picklistValueName>Triage</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Technology</recordTypeName>
+</PathAssistant>

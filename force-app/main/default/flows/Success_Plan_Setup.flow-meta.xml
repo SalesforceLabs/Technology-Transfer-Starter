@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>49.0</apiVersion>
+    <assignments>
+        <description>This generates a new Task, calculated using the Public Disclosure Date</description>
+        <name>IP_Assign_GenerateTaskFromPublicDisc</name>
+        <label>Generate Task</label>
+        <locationX>576</locationX>
+        <locationY>590</locationY>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.WhatId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.ActivityDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PDDatePlusDays</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.Subject__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.IP_Milestone_Description__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Assign_TaskToCollection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This assigns the new milestone collection list to the current milestone collection which will be used for calculating the tasks.</description>
+        <name>IP_Assign_MilestoneCollectionToCurrentMilestones</name>
+        <label>Assign Milestone Collection</label>
+        <locationX>1362</locationX>
+        <locationY>274</locationY>
+        <assignmentItems>
+            <assignToReference>Milestones</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>NewMilestoneCollection</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Loop_Milestones</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This adds the newly created Milestone Variable to the Milestone Collection.</description>
+        <name>IP_Assign_MilestoneToCollection</name>
+        <label>Add Milestone to Collection</label>
+        <locationX>1967</locationX>
+        <locationY>272</locationY>
+        <assignmentItems>
+            <assignToReference>NewMilestoneCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>NewMilestone</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Decision_AdditionalMilestone</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This adds the milestone details from the Milestone Details screen to a Milestone variable which will be saved later.</description>
+        <name>IP_Assign_NewMilestoneDetails</name>
+        <label>Add Details to Milestone</label>
+        <locationX>1967</locationX>
+        <locationY>43</locationY>
+        <assignmentItems>
+            <assignToReference>NewMilestone.Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewMilestone.Number_of_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>NumberOfDays</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewMilestone.Success_Plans__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>NewSuccessPlanId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewMilestone.When__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Logic</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewMilestone.Subject__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IP_Field_TaskSubject</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewMilestone.IP_Milestone_Description__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IP_Field_TaskDescription</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Assign_MilestoneToCollection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This generates a task based on the Disclosure Date field.</description>
+        <name>IP_Assign_TaskDetailsFromDisclosureDate</name>
+        <label>Generate Task</label>
+        <locationX>318</locationX>
+        <locationY>538</locationY>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.WhatId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.ActivityDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>DDDatePlusDays</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.Subject__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.IP_Milestone_Description__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Assign_TaskToCollection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This generates a task using Created Date to calculate the due date. Note that there is no validation added to Created Date as its a required field.</description>
+        <name>IP_Assign_TaskFromCreatedDate</name>
+        <label>Generate Task</label>
+        <locationX>838</locationX>
+        <locationY>475</locationY>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.WhatId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.ActivityDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CDDatePlusDays</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.Subject__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskToCreate.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MilestoneLoop.IP_Milestone_Description__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Assign_TaskToCollection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This adds the new task which has been generated to the Task Collection.</description>
+        <name>IP_Assign_TaskToCollection</name>
+        <label>Add Task to Collection</label>
+        <locationX>576</locationX>
+        <locationY>898</locationY>
+        <assignmentItems>
+            <assignToReference>TaskToCreateCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>TaskToCreate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IP_Loop_Milestones</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>Add_New_Milestone</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>AfterChoice</name>
+        <choiceText>After</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>After</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>BeforeChoice</name>
+        <choiceText>Before</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Before</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Create_New</name>
+        <choiceText>Create New</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Create New</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Existing_Success_Plan</name>
+        <choiceText>Existing Success Plan</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Existing Success Plan</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Choice text to end the Success Plan</description>
+        <name>IP_Choice_EndSuccessPlanSetup</name>
+        <choiceText>End Success Plan Setup</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>EndSetup</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>This would skip the current step</description>
+        <name>IP_Choice_SkipStep</name>
+        <choiceText>Skip Current Step</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Skip</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>OnChoice</name>
+        <choiceText>On</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <decisions>
+        <description>Based on the selection from the screen, has the user indicated that there is another milestone to add to this Success Plan.</description>
+        <name>IP_Decision_AdditionalMilestone</name>
+        <label>Add Another Milestone?</label>
+        <locationX>1747</locationX>
+        <locationY>274</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_AdditionalMilestone</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Would_you_like_to_add_another</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Add_New_Milestone</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_MilestoneDetails</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+        <rules>
+            <name>IP_Outcome_NoAdditionalMilestones</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Would_you_like_to_add_another</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Create_Milestones</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This is a decision to see if the user selected to continue with the flow and apply the newly created Success Plan or just finish the flow.</description>
+        <name>IP_Decision_Continue_to_Apply_Plan</name>
+        <label>Continue to Apply Plan?</label>
+        <locationX>1450</locationX>
+        <locationY>579</locationY>
+        <defaultConnector>
+            <targetReference>IP_Screen_EndScreen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_YesContinueToApply</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IP_Field_ContinueToApplyPlan</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Assign_MilestoneCollectionToCurrentMilestones</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decides (For each round of the loop) which Date Field from the record is the flow going to use to calculate the task date from, to or on.</description>
+        <name>IP_Decision_DateDecision</name>
+        <label>Which Date Field?</label>
+        <locationX>563</locationX>
+        <locationY>187</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_DisclosureDate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MilestoneLoop.Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Disclosure Date</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Decision_DisclosureDateCheck</targetReference>
+            </connector>
+            <label>Disclosure Date</label>
+        </rules>
+        <rules>
+            <name>IP_Outcome_PublicDisclosureDate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MilestoneLoop.Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Disclosure Date</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PublicDisclosureDateCheck</targetReference>
+            </connector>
+            <label>Public Disclosure Date</label>
+        </rules>
+        <rules>
+            <name>IP_Outcome_CreatedDate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MilestoneLoop.Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Created Date</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Assign_TaskFromCreatedDate</targetReference>
+            </connector>
+            <label>Created Date</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks for a blank entry on the Disclosure Date Field</description>
+        <name>IP_Decision_DisclosureDateCheck</name>
+        <label>Decision Date Blank?</label>
+        <locationX>310</locationX>
+        <locationY>316</locationY>
+        <defaultConnector>
+            <targetReference>IP_Assign_TaskDetailsFromDisclosureDate</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_BlankDisclosureDate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DisclosureDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_BlankDisclosureDate</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision reviews the option selected from the Success Plan screen to decide if the flow needs to gather the steps (Called Milestones) needed for the Success Plan or just load an existing Plan and generate the tasks needed.</description>
+        <name>IP_Decision_NewOrExistingPlan</name>
+        <label>Use Existing Plan?</label>
+        <locationX>940</locationX>
+        <locationY>52</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_NewSuccessPlan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IP_Field_SuccessPlanOptionSelection</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Create_New</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_NewSuccessPlanName</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+        <rules>
+            <name>IP_Outcome_UseExistingPlan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IP_Field_SuccessPlanOptionSelection</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Existing_Success_Plan</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_ChooseSuccessPlan</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Based on the input from the Blank Date screen, what is the next step which needs to be taken?</description>
+        <name>IP_Decison_ErrorDecison</name>
+        <label>Error Decision?</label>
+        <locationX>183</locationX>
+        <locationY>1136</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_SkipStepDD</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>IP_Field_DisclosureDateErrorOption</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>IP_Choice_SkipStep</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IP_Field_PublicDiscDateDecision</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>IP_Choice_SkipStep</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Loop_Milestones</targetReference>
+            </connector>
+            <label>Skip Step</label>
+        </rules>
+        <rules>
+            <name>IP_Outcome_EndFlowDD</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>IP_Field_DisclosureDateErrorOption</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>IP_Choice_EndSuccessPlanSetup</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IP_Field_PublicDiscDateDecision</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>IP_Choice_EndSuccessPlanSetup</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_EndScreen</targetReference>
+            </connector>
+            <label>End Flow</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This checks if the Public Disclosure Date is blank or null.</description>
+        <name>PublicDisclosureDateCheck</name>
+        <label>Public Disclosure Blank?</label>
+        <locationX>564</locationX>
+        <locationY>375</locationY>
+        <defaultConnector>
+            <targetReference>IP_Assign_GenerateTaskFromPublicDisc</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>IP_Outcome_PublicDiscDateBlank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PublicDisclosureDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Screen_BlankPublicDiscDate</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This flow provides a flow which can be used on Salesforce Lightning pages to create or apply Success Plans.</description>
+    <dynamicChoiceSets>
+        <name>MilestoneDate</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Date__c</picklistField>
+        <picklistObject>Milestone__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>SuccessPlanChoices</name>
+        <dataType>String</dataType>
+        <displayField>Title__c</displayField>
+        <object>IP_Success_Plans__c</object>
+        <sortField>Title__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <valueField>Id</valueField>
+    </dynamicChoiceSets>
+    <formulas>
+        <name>CDDatePlusDays</name>
+        <dataType>Date</dataType>
+        <expression>IF(TEXT({!MilestoneLoop.When__c}) = &quot;After&quot;,
+{!CreatedDate} + {!MilestoneLoop.Number_of_Days__c},
+IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
+{!CreatedDate} - {!MilestoneLoop.Number_of_Days__c},
+{!CreatedDate})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DDDatePlusDays</name>
+        <dataType>Date</dataType>
+        <expression>IF(TEXT({!MilestoneLoop.When__c}) = &quot;After&quot;,
+{!DisclosureDate}+ {!MilestoneLoop.Number_of_Days__c},
+IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
+{!DisclosureDate} - {!MilestoneLoop.Number_of_Days__c},
+{!DisclosureDate})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>PDDatePlusDays</name>
+        <dataType>Date</dataType>
+        <expression>IF(TEXT({!MilestoneLoop.When__c}) = &quot;After&quot;,
+{!PublicDisclosureDate} + {!MilestoneLoop.Number_of_Days__c},
+IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
+{!PublicDisclosureDate} - {!MilestoneLoop.Number_of_Days__c},
+{!PublicDisclosureDate})
+)</expression>
+    </formulas>
+    <interviewLabel>Success Plan Setup {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IP Success Plan Setup</label>
+    <loops>
+        <description>This loop goes through each of the milestones on the Success Plan. At this point, it could be a new Success Plan or an existing Success Plan. Each Milestone will be used as a template to create a new task.</description>
+        <name>IP_Loop_Milestones</name>
+        <label>Loop Milestones</label>
+        <locationX>1276</locationX>
+        <locationY>455</locationY>
+        <assignNextValueToReference>MilestoneLoop</assignNextValueToReference>
+        <collectionReference>Milestones</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>IP_Decision_DateDecision</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>IP_Create_TaskCollection</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>This creates the milestone(s) in Salesforce, linked to the Success Plan.</description>
+        <name>IP_Create_Milestones</name>
+        <label>Save Milestones</label>
+        <locationX>1525</locationX>
+        <locationY>274</locationY>
+        <connector>
+            <targetReference>IP_Screen_Success_Plan_Saved</targetReference>
+        </connector>
+        <inputReference>NewMilestoneCollection</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>This creates the initial Success Plan record which we will start to gather milestone steps in the next part of the flow.</description>
+        <name>IP_Create_NewSuccessPlan</name>
+        <label>Create Draft Success Plan</label>
+        <locationX>1535</locationX>
+        <locationY>43</locationY>
+        <assignRecordIdToReference>NewSuccessPlanId</assignRecordIdToReference>
+        <connector>
+            <targetReference>IP_Screen_MilestoneDetails</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Title__c</field>
+            <value>
+                <elementReference>IP_Field_SuccessPlanName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IP_Success_Plans__c</object>
+    </recordCreates>
+    <recordCreates>
+        <description>This saves the generated collection of tasks onto the IP record.</description>
+        <name>IP_Create_TaskCollection</name>
+        <label>Create Tasks</label>
+        <locationX>1277</locationX>
+        <locationY>713</locationY>
+        <connector>
+            <targetReference>IP_Screen_SuccessPlanFinalScreen</targetReference>
+        </connector>
+        <inputReference>TaskToCreateCollection</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <description>This gets all the milestones for the chosen Success Plan.</description>
+        <name>IP_Lookup_GetMilestones</name>
+        <label>Get Milestones</label>
+        <locationX>1192</locationX>
+        <locationY>259</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IP_Loop_Milestones</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Success_Plans__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IP_Picklist_CurrentSuccessPlanList</elementReference>
+            </value>
+        </filters>
+        <object>Milestone__c</object>
+        <outputReference>Milestones</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Number_of_Days__c</queriedFields>
+        <queriedFields>When__c</queriedFields>
+        <queriedFields>Date__c</queriedFields>
+        <queriedFields>Subject__c</queriedFields>
+        <queriedFields>IP_Milestone_Description__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>This loads the current IP record where the flow has been placed.</description>
+        <name>IP_Lookup_IPRecord</name>
+        <label>Get IP Record Details</label>
+        <locationX>641</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IP_Screen_SuccessPlanOption</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>IP__c</object>
+        <outputAssignments>
+            <assignToReference>CreatedDate</assignToReference>
+            <field>CreatedDate</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>DisclosureDate</assignToReference>
+            <field>IP_Disclosure_Date__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>PublicDisclosureDate</assignToReference>
+            <field>IP_Public_Disclosure__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>IPTitle</assignToReference>
+            <field>IP_Title__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>recordId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>IPOwnerId</assignToReference>
+            <field>OwnerId</field>
+        </outputAssignments>
+    </recordLookups>
+    <screens>
+        <name>IP_Screen_BlankDisclosureDate</name>
+        <label>Blank Disclosure Date</label>
+        <locationX>180</locationX>
+        <locationY>470</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Decison_ErrorDecison</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Text_BlankDisclosureDateHelp</name>
+            <fieldText>&lt;p&gt;Error: The Disclosure Date is blank and it is required for this step, which has the subject  &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;({!MilestoneLoop.Subject__c}).&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Would you like to end the Success Plan setup or just skip this step?&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_DisclosureDateErrorOption</name>
+            <choiceReferences>IP_Choice_EndSuccessPlanSetup</choiceReferences>
+            <choiceReferences>IP_Choice_SkipStep</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>IP_Choice_SkipStep</defaultSelectedChoiceReference>
+            <fieldText>Choose option</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IP_Screen_BlankPublicDiscDate</name>
+        <label>Public Disclosure Date Error</label>
+        <locationX>438</locationX>
+        <locationY>466</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Decison_ErrorDecison</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Text_BlankPublicDisclosureHelp</name>
+            <fieldText>&lt;p&gt;Error: The Public Disclosure Date is blank and it is required for this step, which has the subject  ({!MilestoneLoop.Subject__c}).&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Would you like to end the Success Plan setup or just skip this step?&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_PublicDiscDateDecision</name>
+            <choiceReferences>IP_Choice_SkipStep</choiceReferences>
+            <choiceReferences>IP_Choice_EndSuccessPlanSetup</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>IP_Choice_SkipStep</defaultSelectedChoiceReference>
+            <fieldText>Choose an option</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>This allows the user to select which existing success plan which they want to load.</description>
+        <name>IP_Screen_ChooseSuccessPlan</name>
+        <label>Choose Existing Plan</label>
+        <locationX>1192</locationX>
+        <locationY>132</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Lookup_GetMilestones</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Text_SuccessPlanOptions</name>
+            <fieldText>Choose a Success Plan which has already been created, from the list below.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Picklist_CurrentSuccessPlanList</name>
+            <choiceReferences>SuccessPlanChoices</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Choose existing Success Plan</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IP_Screen_EndScreen</name>
+        <label>End Screen</label>
+        <locationX>1583</locationX>
+        <locationY>1025</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>IP_Text_EndScreenHelp</name>
+            <fieldText>&lt;p&gt;Click the Finish button to end the Success Plan set up. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Additional options to create a new Success Plan or Apply a current Success Plan after you click Finish.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>This screen allows the user to enter the details for the milestone.</description>
+        <name>IP_Screen_MilestoneDetails</name>
+        <label>Get Milestone Details</label>
+        <locationX>1754</locationX>
+        <locationY>43</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Assign_NewMilestoneDetails</targetReference>
+        </connector>
+        <fields>
+            <name>MilestoneSetupDesc</name>
+            <fieldText>&lt;p&gt;Now we need to create each of the milestones for this Success Plan called {!IP_Field_SuccessPlanName}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Task Description - Enter a short description of the task which needs to be completed in the Subject field (e.g. Complete IP Triage) and then a description of the task in the Description Field.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_TaskSubject</name>
+            <dataType>String</dataType>
+            <fieldText>Subject</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>IP_Field_TaskDescription</name>
+            <fieldText>Description</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>DaysDesc</name>
+            <fieldText>This will be the number of days before or after the date field we will select at the bottom which this task is due to be completed by.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>NumberOfDays</name>
+            <dataType>Number</dataType>
+            <fieldText># of Days</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>LogicDesc</name>
+            <fieldText>To calculate the date for this task, we need to know if it happens Before, On or After the date we will select at the bottom.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Logic</name>
+            <choiceReferences>BeforeChoice</choiceReferences>
+            <choiceReferences>AfterChoice</choiceReferences>
+            <choiceReferences>OnChoice</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>BeforeChoice</defaultSelectedChoiceReference>
+            <fieldText>Logic</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>DateDesc</name>
+            <fieldText>This is the date which is used to calculate the due date of the milestone task.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Date</name>
+            <choiceReferences>MilestoneDate</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Date</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>AnotherDesc</name>
+            <fieldText>If we are going to add an additional milestone to this success plan then check the box below, otherwise leave it unchecked.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Would_you_like_to_add_another</name>
+            <choiceReferences>Add_New_Milestone</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Would you like to add another?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>This screen gathers the initial data to setup the success plan, starting with a name for the plan.</description>
+        <name>IP_Screen_NewSuccessPlanName</name>
+        <label>New Success Plan Name</label>
+        <locationX>1363</locationX>
+        <locationY>43</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Create_NewSuccessPlan</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Text_NewSuccessPlanHelp</name>
+            <fieldText>&lt;p&gt;Provide a name for the new Success Plan, this should be something that describes the process which this Success Plan will create tasks for. (e.g. Initial Triage Tasks)&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_SuccessPlanName</name>
+            <dataType>String</dataType>
+            <fieldText>Success Plan Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IP_Screen_Success_Plan_Saved</name>
+        <label>Success Plan Saved</label>
+        <locationX>1525</locationX>
+        <locationY>440</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Decision_Continue_to_Apply_Plan</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Text_SuccessPlanSaved</name>
+            <fieldText>&lt;p&gt;The new Success Plan called {!IP_Field_SuccessPlanName} has been saved with related milestones.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Would you like to apply the new Success Plan now?&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_ContinueToApplyPlan</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <booleanValue>true</booleanValue>
+            </defaultValue>
+            <fieldText>Yes</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IP_Screen_SuccessPlanFinalScreen</name>
+        <label>Final Success Plan Screen</label>
+        <locationX>1277</locationX>
+        <locationY>886</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>IP_Text_EndMessage</name>
+            <fieldText>&lt;p&gt;The Success Plan is now ready to apply, click the Finish button to apply the Success Plan now.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Note: You may need to refresh the record view/page before you see the new tasks.&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>This allows the user to decide if they want to create a new Success Plan or use an existing Success Plan.</description>
+        <name>IP_Screen_SuccessPlanOption</name>
+        <label>Choose Success Plan</label>
+        <locationX>794</locationX>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Decision_NewOrExistingPlan</targetReference>
+        </connector>
+        <fields>
+            <name>IP_SuccessPlanOptionText</name>
+            <fieldText>&lt;p&gt;Here you can choose to create a new Success Plan and/or apply an existing Success Plan for this IP record. Success Plans auto-generate tasks based on predefined steps.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Field_SuccessPlanOptionSelection</name>
+            <choiceReferences>Create_New</choiceReferences>
+            <choiceReferences>Existing_Success_Plan</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Please choose an option:</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>IP_Lookup_IPRecord</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>CreatedDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>DisclosureDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>IPNameId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>IP__c</objectType>
+    </variables>
+    <variables>
+        <name>IPOwnerId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>IPTitle</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>MileStoneDateLogic</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>MilestoneLoop</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Milestone__c</objectType>
+    </variables>
+    <variables>
+        <name>Milestones</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Milestone__c</objectType>
+    </variables>
+    <variables>
+        <name>NewMilestone</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Milestone__c</objectType>
+    </variables>
+    <variables>
+        <name>NewMilestoneCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Milestone__c</objectType>
+    </variables>
+    <variables>
+        <name>NewMilestoneLoop</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Milestone__c</objectType>
+    </variables>
+    <variables>
+        <name>NewSuccessPlanId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>NewTaskID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>NumberOfTasks</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>PrimaryContributer</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>PublicDisclosureDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>TaskToCreate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+    <variables>
+        <name>TaskToCreateCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

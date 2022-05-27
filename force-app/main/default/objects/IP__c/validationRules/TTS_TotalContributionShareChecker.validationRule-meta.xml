@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_TotalContributionShareChecker</fullName>
+    <active>true</active>
+    <description>Checks to make sure that the total percentage of contribution related to an IP record is valid, which means within the range of 0 to 100 percent overall.</description>
+    <errorConditionFormula>OR( IP_Total_Percentage_Share__c &lt; 0, IP_Total_Percentage_Share__c &gt; 100)</errorConditionFormula>
+    <errorMessage>Please check the percentage share you have entered and on other contributions related to this IP. The total percentage share for all contributions should be within the range of 0 to 100%.</errorMessage>
+</ValidationRule>

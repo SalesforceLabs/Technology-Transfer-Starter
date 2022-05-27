@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#8FC871</headerColor>
+        <logo>logo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Disclosures, IP, Patents and Agreements</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Technology Transfer Starter</label>
+    <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
+    <tabs>standard-home</tabs>
+    <tabs>IP__c</tabs>
+    <tabs>Patent__c</tabs>
+    <tabs>standard-Contract</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>IP_Success_Plans__c</tabs>
+    <tabs>IP_Transaction__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>IP_Management_UtilityBar</utilityBar>
+</CustomApplication>
