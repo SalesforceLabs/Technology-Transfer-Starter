@@ -7,3 +7,9 @@ Technology Transfer Starter provides a set of Fields, Page Layouts, Objects, Rec
 # Install Latest Release (AppExchange)
 https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB
 
+#Development
+To work on this project in a scratch org:
+
+Set up CumulusCI
+Run cci flow run dev_org --org dev to deploy this project.
+Run cci org browser dev to open the org in your browser.
