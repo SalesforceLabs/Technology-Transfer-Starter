@@ -3,8 +3,8 @@
     <fullName>IP_Title__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Short title for IP</inlineHelpText>
-    <label>IP Title</label>
+    <inlineHelpText>Short title for Technology</inlineHelpText>
+    <label>Technology Title</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

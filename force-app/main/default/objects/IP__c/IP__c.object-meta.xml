@@ -158,15 +158,15 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
-    <label>IP</label>
+    <label>Technology</label>
     <nameField>
-        <displayFormat>IP{000000}</displayFormat>
-        <label>IP Reference</label>
+        <displayFormat>TECH{000000}</displayFormat>
+        <label>Technology Reference</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>IP</pluralLabel>
+    <pluralLabel>Technologies</pluralLabel>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
