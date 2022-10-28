@@ -2,11 +2,72 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>49.0</apiVersion>
     <assignments>
+        <name>Assign_Contact_Id</name>
+        <label>Assign Contact Id</label>
+        <locationX>1590</locationX>
+        <locationY>1070</locationY>
+        <assignmentItems>
+            <assignToReference>UserRecordId.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Contact.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LegacyFlow</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This is the path for a user creating a NEW disclosure. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that NEW/INSERT steps are taken.</description>
+        <name>Copy_1_of_Is_New_Disclosure</name>
+        <label>Copy 1 of Is New Disclosure</label>
+        <locationX>2250</locationX>
+        <locationY>1670</locationY>
+        <assignmentItems>
+            <assignToReference>IP_Is_Record_Update</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>IP_Disclosure_ID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
+        <name>Copy_1_of_Is_Update</name>
+        <label>Copy 1 of Is Update</label>
+        <locationX>2074</locationX>
+        <locationY>1310</locationY>
+        <assignmentItems>
+            <assignToReference>IP_Is_Record_Update</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lookup_Disclosure_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
         <name>IP_Is_Update</name>
         <label>Is Update</label>
         <locationX>666</locationX>
-        <locationY>1190</locationY>
+        <locationY>1430</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
             <operator>Assign</operator>
@@ -23,7 +84,7 @@
         <name>IP_Is_Update_False</name>
         <label>Is New Disclosure</label>
         <locationX>1018</locationX>
-        <locationY>1550</locationY>
+        <locationY>1790</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
             <operator>Assign</operator>
@@ -48,7 +109,7 @@
         <name>IP_Populate_Record_Variable</name>
         <label>Populate Record Variable</label>
         <locationX>314</locationX>
-        <locationY>3122</locationY>
+        <locationY>3362</locationY>
         <assignmentItems>
             <assignToReference>IP_Disclosure.IP_Title__c</assignToReference>
             <operator>Assign</operator>
@@ -163,20 +224,20 @@
     <decisions>
         <name>Contact_Found</name>
         <label>Contact Found</label>
-        <locationX>952</locationX>
+        <locationX>1436</locationX>
         <locationY>638</locationY>
         <defaultConnector>
-            <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            <targetReference>Assign_Contact_Id</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnectorLabel>Contact Found</defaultConnectorLabel>
         <rules>
             <name>Contact_not_found</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Contact.Id</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <stringValue></stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -186,15 +247,59 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Create_Draft</name>
+        <label>Create Draft?</label>
+        <locationX>1898</locationX>
+        <locationY>1790</locationY>
+        <defaultConnector>
+            <targetReference>Create_Draft_Disclosure</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes Create Draft</defaultConnectorLabel>
+        <rules>
+            <name>No_Draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DisclosureDetails.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <label>No Draft</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Disclosure_Record_Found</name>
+        <label>Disclosure Record Found?</label>
+        <locationX>2074</locationX>
+        <locationY>1550</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Is_New_Disclosure</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Disclosure_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Lookup_Disclosure_Record.Contact__r.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ContactId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Initial_Disclosure</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>This is a decision point to determine if user is creating a NEW disclosure or UPDATING an existing disclosure already created by checking if a Disclosure ID has been passed into the flow (Update) or not (Insert).</description>
         <name>IP_Check_for_Disclosure_ID</name>
         <label>Check for Disclosure ID</label>
         <locationX>1106</locationX>
-        <locationY>1070</locationY>
-        <defaultConnector>
-            <targetReference>New_Disclosure</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>New Disclosure</defaultConnectorLabel>
+        <locationY>1310</locationY>
+        <defaultConnectorLabel>New IP</defaultConnectorLabel>
         <rules>
             <name>IP_Disclosure_ID_Submitted</name>
             <conditionLogic>and</conditionLogic>
@@ -208,7 +313,7 @@
             <connector>
                 <targetReference>IP_Is_Update</targetReference>
             </connector>
-            <label>Update Disclosure</label>
+            <label>Update IP</label>
         </rules>
     </decisions>
     <decisions>
@@ -216,7 +321,7 @@
         <name>IP_Check_for_Disclosure_Record</name>
         <label>Disclosure Found?</label>
         <locationX>666</locationX>
-        <locationY>1430</locationY>
+        <locationY>1670</locationY>
         <defaultConnector>
             <targetReference>IP_Is_Update_False</targetReference>
         </defaultConnector>
@@ -242,7 +347,7 @@
         <name>IP_Create_Draft</name>
         <label>Create Draft?</label>
         <locationX>314</locationX>
-        <locationY>1670</locationY>
+        <locationY>1910</locationY>
         <defaultConnector>
             <targetReference>IP_Sponsorship</targetReference>
         </defaultConnector>
@@ -264,12 +369,37 @@
         </rules>
     </decisions>
     <decisions>
+        <name>LegacyFlow</name>
+        <label>IsLegacyFlow</label>
+        <locationX>1590</locationX>
+        <locationY>1190</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Is_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>LegacyFalse</defaultConnectorLabel>
+        <rules>
+            <name>LegacyTrue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsLegacyFlow</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            </connector>
+            <label>LegacyTrue</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>User_Id_Found</name>
         <label>User Id Found</label>
-        <locationX>1106</locationX>
+        <locationX>1590</locationX>
         <locationY>278</locationY>
         <defaultConnector>
-            <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            <targetReference>Assign_Contact_Id</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -289,6 +419,11 @@
         </rules>
     </decisions>
     <description>New version with descriptions added to the flow components</description>
+    <formulas>
+        <name>ContacttoDisclosure</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Contact.Id}</expression>
+    </formulas>
     <formulas>
         <description>Sets the Disclosure Date to todays date when the end user confirms that they are happy to submit the Disclosure.</description>
         <name>IP_Confirm_DisclosureDate</name>
@@ -337,19 +472,26 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordCreates>
         <name>Create_Contact</name>
         <label>Create Contact</label>
-        <locationX>820</locationX>
+        <locationX>1304</locationX>
         <locationY>758</locationY>
         <connector>
-            <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            <targetReference>Assign_Contact_Id</targetReference>
         </connector>
         <inputReference>Get_Contact</inputReference>
     </recordCreates>
     <recordCreates>
-        <description>Creates a new draft Disclosure to save information to.</description>
-        <name>IP_Create_Draft_Disclosure</name>
+        <name>Create_Draft_Disclosure</name>
         <label>Create Draft Disclosure</label>
+        <locationX>1986</locationX>
+        <locationY>1910</locationY>
+        <inputReference>DisclosureDetails</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a new draft Technology to save information to.</description>
+        <name>IP_Create_Draft_Disclosure</name>
+        <label>Create Draft Technology</label>
         <locationX>50</locationX>
-        <locationY>1790</locationY>
+        <locationY>2030</locationY>
         <assignRecordIdToReference>IP_Disclosure_ID</assignRecordIdToReference>
         <connector>
             <targetReference>IP_Sponsorship</targetReference>
@@ -387,7 +529,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>952</locationX>
+        <locationX>1436</locationX>
         <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -408,21 +550,16 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <elementReference>Contact_Name.firstName</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>LastName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Contact_Name.lastName</elementReference>
-            </value>
-        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Contact</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>Get_User_Info</name>
         <label>Get User Info</label>
-        <locationX>1106</locationX>
+        <locationX>1590</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -449,7 +586,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Lookup_Disclosure</name>
         <label>Lookup Disclosure</label>
         <locationX>666</locationX>
-        <locationY>1310</locationY>
+        <locationY>1550</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IP_Check_for_Disclosure_Record</targetReference>
@@ -504,12 +641,35 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <queriedFields>IP_Experimental_Verification_Detail__c</queriedFields>
         <queriedFields>IP_Principal_Inventor_PI__c</queriedFields>
     </recordLookups>
+    <recordLookups>
+        <name>Lookup_Disclosure_Record</name>
+        <label>Lookup Disclosure Record</label>
+        <locationX>2074</locationX>
+        <locationY>1430</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Disclosure_Record_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Disclosure__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <description>Update existing disclosure.</description>
         <name>IP_Update_Disclosure</name>
         <label>Save Disclosure</label>
         <locationX>314</locationX>
-        <locationY>3242</locationY>
+        <locationY>3482</locationY>
         <connector>
             <targetReference>IP_Final_Create_Screen</targetReference>
         </connector>
@@ -521,7 +681,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <screens>
         <name>Contact_Look_Up</name>
         <label>Contact Look Up</label>
-        <locationX>952</locationX>
+        <locationX>1436</locationX>
         <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -560,363 +720,15 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <description>Screen to gather the IP Name, Description, Variations, and Limitations on the disclosure from the user.</description>
-        <name>IP_Details_Screen</name>
-        <label>IP Details</label>
-        <locationX>314</locationX>
-        <locationY>1550</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Create_Draft</targetReference>
-        </connector>
-        <fields>
-            <name>IP_Name_Short_Description</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <elementReference>IP_Disclosure.IP_Title__c</elementReference>
-            </defaultValue>
-            <fieldText>IP Name/Short Description</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>IP_Provide_a_brief_description_of_the_Intellectual_Property</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Technical_Description__c}</stringValue>
-            </defaultValue>
-            <fieldText>Provide a brief description of the Intellectual Property</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>IP_Are_there_any_possible_variations_of_this_IP</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Known_Variations__c}</stringValue>
-            </defaultValue>
-            <fieldText>Are there any possible variations of this IP</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>IP_What_are_the_disadvantages_or_limitations_of_this_Intellectual_Property_Can</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Known_Limitations__c}</stringValue>
-            </defaultValue>
-            <fieldText>What are the disadvantages or limitations of this Intellectual Property? Can these be solved? How?</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Fault screen</description>
-        <name>IP_Error_Screen</name>
-        <label>Error Screen</label>
-        <locationX>754</locationX>
-        <locationY>3362</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>IP_Error_Message</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(186, 0, 0);&quot;&gt;There was an error saving the record&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>IP_ErrorScreen_DisplayText_Bottom</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;If you recognise the error message above, then you may try saving the record again by pressing the PREVIOUS button below. Otherwise, please contact your Salesforce administrator with the error message mentioned above.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine if user has tested the disclosure experimentally, and if so to provide further details.</description>
-        <name>IP_Experimental_Verification</name>
-        <label>Experimental Verification</label>
-        <locationX>314</locationX>
-        <locationY>2522</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Prior_Art</targetReference>
-        </connector>
-        <fields>
-            <name>IP_Have_you_tested_the_IP_Experimentally</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Experimental_Verification_Detail__c}</stringValue>
-            </defaultValue>
-            <fieldText>Have you tested the IP Experimentally?  If so, please provide details below.</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen where files are uploaded.</description>
-        <name>IP_FileUploadScreen</name>
-        <label>Files, Documents and Supporting Evidence</label>
-        <locationX>314</locationX>
-        <locationY>2882</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Final_Submission_Check</targetReference>
-        </connector>
-        <fields>
-            <name>IP_FileUploadText</name>
-            <fieldText>&lt;p&gt;Please upload all Files, Documents and Supporting Evidence below.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>IP_Document_Upload</name>
-            <extensionName>forceContent:fileUpload</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Please upload all related documents and evidence which relate to this disclosure</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>recordId</name>
-                <value>
-                    <elementReference>IP_Disclosure_ID</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>multiple</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>disabled</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>contentDocIds</name>
-                <value>
-                    <elementReference>File_Content_ID</elementReference>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Final disclosure creation screen.</description>
-        <name>IP_Final_Create_Screen</name>
-        <label>Final Create Screen</label>
-        <locationX>314</locationX>
-        <locationY>3362</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>IP_CreateNewDisclosure</name>
-            <fieldText>&lt;p&gt;Your record has been successfully {!IsUpdateorInsert}!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;ID:  {!IP_Disclosure.Id}&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>IP_Final_Submission_Check</name>
-        <label>Final Submission Check</label>
-        <locationX>314</locationX>
-        <locationY>3002</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Populate_Record_Variable</targetReference>
-        </connector>
-        <fields>
-            <name>IP_FinalSubmission_CheckText</name>
-            <fieldText>&lt;p&gt;Check the box below to confirm that you want to submit this disclosure, acknowledging the following statement:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To the best of my knowledge, I confirm that the subject matter disclosed herein is accurate and original to me.&amp;nbsp;I understand that I am subject to the University’s policies, including the University’s Intellectual Property policy.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>IP_Offical_Submission_Confirmation</name>
-            <dataType>Boolean</dataType>
-            <fieldText>I confirm that I want to officially submit this Disclosure</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>IP_Submission_Confirmation_TextBottom</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;Note: If you are not ready to submit this disclosure yet, leave the checkbox above unchecked and click Next.&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine if any material was obtained from a source other than the laboratory or a commercial vendor for the disclosure.</description>
-        <name>IP_Materials</name>
-        <label>Materials</label>
-        <locationX>314</locationX>
-        <locationY>2162</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Utility</targetReference>
-        </connector>
-        <fields>
-            <name>IP_Please_describe_any_material_used_in_the_development_of_your_IP</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Materials__c}</stringValue>
-            </defaultValue>
-            <fieldText>Please describe any material used in the development of your Intellectual Property if that material was obtained from some source other than your laboratory or a commercial vendor.</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine how the disclosure differs from existing technologies and current practices, and what problems it solves.</description>
-        <name>IP_Novelty</name>
-        <label>Novelty</label>
-        <locationX>314</locationX>
-        <locationY>2402</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Experimental_Verification</targetReference>
-        </connector>
-        <fields>
-            <name>IP_How_does_this_Intellectual_Property_differ_from_existing_technologies</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Novelty__c}</stringValue>
-            </defaultValue>
-            <fieldText>How does this Intellectual Property differ from existing technologies and current practices? What are its advantages and what problems does it solve?</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine if user is aware of any prior inventions or publications by others, and if so to provide further details.</description>
-        <name>IP_Prior_Art</name>
-        <label>Prior Art</label>
-        <locationX>314</locationX>
-        <locationY>2642</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Risks</targetReference>
-        </connector>
-        <fields>
-            <name>IP_Are_you_aware_of_any_inventions_or_publications_by_others_that_are_related</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Prior_Art__c}</stringValue>
-            </defaultValue>
-            <fieldText>Are you aware of any inventions or publications by others that are related to this Intellectual Property?  If so, please provide details below.</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine if user has identified any risks to the commercialisation of the  disclosure and to provide the greatest impediment to the adoption.</description>
-        <name>IP_Risks</name>
-        <label>Risks</label>
-        <locationX>314</locationX>
-        <locationY>2762</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_FileUploadScreen</targetReference>
-        </connector>
-        <fields>
-            <name>IP_Identify_and_explain_the_risks_technological_or_otherwise</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Known_Risks__c}</stringValue>
-            </defaultValue>
-            <fieldText>Identify and explain the risks (technological or otherwise) that could jeopardise the commercialisation of this Intellectual Property.  Describe the greatest impediment to the adoption of your Intellectual Property.</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to gather if the disclosure is within scope of another sponsored program from the user.</description>
-        <name>IP_Sponsorship</name>
-        <label>Sponsorship</label>
-        <locationX>314</locationX>
-        <locationY>2042</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Materials</targetReference>
-        </connector>
-        <fields>
-            <name>Was_the_Intellectual_Property_conceived_within_the_scope_of_a_sponsored_program</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Sponsored_Program_Detail__c}</stringValue>
-            </defaultValue>
-            <fieldText>Was the Intellectual Property conceived within the scope of a sponsored program?  If so, please provide details below.</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <description>Screen to determine possible uses or applications, now and in the future, of the disclosure.</description>
-        <name>IP_Utility</name>
-        <label>Utility</label>
-        <locationX>314</locationX>
-        <locationY>2282</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>IP_Novelty</targetReference>
-        </connector>
-        <fields>
-            <name>IP_What_are_possible_uses_or_applications_of_this_Intellectual_Property</name>
-            <defaultValue>
-                <stringValue>{!IP_Disclosure.IP_Utility__c}</stringValue>
-            </defaultValue>
-            <fieldText>What are possible uses or applications of this Intellectual Property? In addition to direct applications, are there any other uses that might be realised in the future?</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>New_Disclosure</name>
-        <label>New Disclosure</label>
-        <locationX>1546</locationX>
-        <locationY>1190</locationY>
+        <name>Initial_Disclosure</name>
+        <label>Initial Disclosure</label>
+        <locationX>1898</locationX>
+        <locationY>1670</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>IP_Is_Update_False</targetReference>
+            <targetReference>Create_Draft</targetReference>
         </connector>
         <fields>
             <name>New_Disclosure_Screen</name>
@@ -1053,14 +865,379 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <description>Screen to gather the IP Name, Description, Variations, and Limitations on the disclosure from the user.</description>
+        <name>IP_Details_Screen</name>
+        <label>IP Details</label>
+        <locationX>314</locationX>
+        <locationY>1790</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Create_Draft</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Name_Short_Description</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>IP_Disclosure.IP_Title__c</elementReference>
+            </defaultValue>
+            <fieldText>IP Name/Short Description</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>IP_Provide_a_brief_description_of_the_Intellectual_Property</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Technical_Description__c}</stringValue>
+            </defaultValue>
+            <fieldText>Provide a brief description of the Intellectual Property</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>IP_Are_there_any_possible_variations_of_this_IP</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Known_Variations__c}</stringValue>
+            </defaultValue>
+            <fieldText>Are there any possible variations of this IP</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>IP_What_are_the_disadvantages_or_limitations_of_this_Intellectual_Property_Can</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Known_Limitations__c}</stringValue>
+            </defaultValue>
+            <fieldText>What are the disadvantages or limitations of this Intellectual Property? Can these be solved? How?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Fault screen</description>
+        <name>IP_Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>754</locationX>
+        <locationY>3602</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>IP_Error_Message</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(186, 0, 0);&quot;&gt;There was an error saving the record&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_ErrorScreen_DisplayText_Bottom</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;If you recognise the error message above, then you may try saving the record again by pressing the PREVIOUS button below. Otherwise, please contact your Salesforce administrator with the error message mentioned above.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine if user has tested the disclosure experimentally, and if so to provide further details.</description>
+        <name>IP_Experimental_Verification</name>
+        <label>Experimental Verification</label>
+        <locationX>314</locationX>
+        <locationY>2762</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Prior_Art</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Have_you_tested_the_IP_Experimentally</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Experimental_Verification_Detail__c}</stringValue>
+            </defaultValue>
+            <fieldText>Have you tested the IP Experimentally?  If so, please provide details below.</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen where files are uploaded.</description>
+        <name>IP_FileUploadScreen</name>
+        <label>Files, Documents and Supporting Evidence</label>
+        <locationX>314</locationX>
+        <locationY>3122</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Final_Submission_Check</targetReference>
+        </connector>
+        <fields>
+            <name>IP_FileUploadText</name>
+            <fieldText>&lt;p&gt;Please upload all Files, Documents and Supporting Evidence below.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Document_Upload</name>
+            <extensionName>forceContent:fileUpload</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Please upload all related documents and evidence which relate to this disclosure</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>IP_Disclosure_ID</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>multiple</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>disabled</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>contentDocIds</name>
+                <value>
+                    <elementReference>File_Content_ID</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Final disclosure creation screen.</description>
+        <name>IP_Final_Create_Screen</name>
+        <label>Final Create Screen</label>
+        <locationX>314</locationX>
+        <locationY>3602</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>IP_CreateNewDisclosure</name>
+            <fieldText>&lt;p&gt;Your record has been successfully {!IsUpdateorInsert}!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;ID:  {!IP_Disclosure.Id}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IP_Final_Submission_Check</name>
+        <label>Final Submission Check</label>
+        <locationX>314</locationX>
+        <locationY>3242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Populate_Record_Variable</targetReference>
+        </connector>
+        <fields>
+            <name>IP_FinalSubmission_CheckText</name>
+            <fieldText>&lt;p&gt;Check the box below to confirm that you want to submit this disclosure, acknowledging the following statement:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To the best of my knowledge, I confirm that the subject matter disclosed herein is accurate and original to me.&amp;nbsp;I understand that I am subject to the University’s policies, including the University’s Intellectual Property policy.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IP_Offical_Submission_Confirmation</name>
+            <dataType>Boolean</dataType>
+            <fieldText>I confirm that I want to officially submit this Disclosure</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>IP_Submission_Confirmation_TextBottom</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;Note: If you are not ready to submit this disclosure yet, leave the checkbox above unchecked and click Next.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine if any material was obtained from a source other than the laboratory or a commercial vendor for the disclosure.</description>
+        <name>IP_Materials</name>
+        <label>Materials</label>
+        <locationX>314</locationX>
+        <locationY>2402</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Utility</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Please_describe_any_material_used_in_the_development_of_your_IP</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Materials__c}</stringValue>
+            </defaultValue>
+            <fieldText>Please describe any material used in the development of your Intellectual Property if that material was obtained from some source other than your laboratory or a commercial vendor.</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine how the disclosure differs from existing technologies and current practices, and what problems it solves.</description>
+        <name>IP_Novelty</name>
+        <label>Novelty</label>
+        <locationX>314</locationX>
+        <locationY>2642</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Experimental_Verification</targetReference>
+        </connector>
+        <fields>
+            <name>IP_How_does_this_Intellectual_Property_differ_from_existing_technologies</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Novelty__c}</stringValue>
+            </defaultValue>
+            <fieldText>How does this Intellectual Property differ from existing technologies and current practices? What are its advantages and what problems does it solve?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine if user is aware of any prior inventions or publications by others, and if so to provide further details.</description>
+        <name>IP_Prior_Art</name>
+        <label>Prior Art</label>
+        <locationX>314</locationX>
+        <locationY>2882</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Risks</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Are_you_aware_of_any_inventions_or_publications_by_others_that_are_related</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Prior_Art__c}</stringValue>
+            </defaultValue>
+            <fieldText>Are you aware of any inventions or publications by others that are related to this Intellectual Property?  If so, please provide details below.</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine if user has identified any risks to the commercialisation of the  disclosure and to provide the greatest impediment to the adoption.</description>
+        <name>IP_Risks</name>
+        <label>Risks</label>
+        <locationX>314</locationX>
+        <locationY>3002</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_FileUploadScreen</targetReference>
+        </connector>
+        <fields>
+            <name>IP_Identify_and_explain_the_risks_technological_or_otherwise</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Known_Risks__c}</stringValue>
+            </defaultValue>
+            <fieldText>Identify and explain the risks (technological or otherwise) that could jeopardise the commercialisation of this Intellectual Property.  Describe the greatest impediment to the adoption of your Intellectual Property.</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to gather if the disclosure is within scope of another sponsored program from the user.</description>
+        <name>IP_Sponsorship</name>
+        <label>Sponsorship</label>
+        <locationX>314</locationX>
+        <locationY>2282</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Materials</targetReference>
+        </connector>
+        <fields>
+            <name>Was_the_Intellectual_Property_conceived_within_the_scope_of_a_sponsored_program</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Sponsored_Program_Detail__c}</stringValue>
+            </defaultValue>
+            <fieldText>Was the Intellectual Property conceived within the scope of a sponsored program?  If so, please provide details below.</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to determine possible uses or applications, now and in the future, of the disclosure.</description>
+        <name>IP_Utility</name>
+        <label>Utility</label>
+        <locationX>314</locationX>
+        <locationY>2522</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>IP_Novelty</targetReference>
+        </connector>
+        <fields>
+            <name>IP_What_are_possible_uses_or_applications_of_this_Intellectual_Property</name>
+            <defaultValue>
+                <stringValue>{!IP_Disclosure.IP_Utility__c}</stringValue>
+            </defaultValue>
+            <fieldText>What are possible uses or applications of this Intellectual Property? In addition to direct applications, are there any other uses that might be realised in the future?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
-        <locationX>980</locationX>
+        <locationX>1464</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_User_Info</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>ContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>DisclosureDetails</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Disclosure__c</objectType>
+    </variables>
     <variables>
         <name>File_Content_ID</name>
         <dataType>String</dataType>
@@ -1118,6 +1295,16 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>IsLegacyFlow</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
     </variables>
     <variables>
         <name>UserRecordId</name>
