@@ -2,11 +2,72 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>49.0</apiVersion>
     <assignments>
+        <name>Assign_Contact_Id</name>
+        <label>Assign Contact Id</label>
+        <locationX>1590</locationX>
+        <locationY>1070</locationY>
+        <assignmentItems>
+            <assignToReference>UserRecordId.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Contact.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LegacyFlow</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>This is the path for a user creating a NEW disclosure. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that NEW/INSERT steps are taken.</description>
+        <name>Copy_1_of_Is_New_Disclosure</name>
+        <label>Copy 1 of Is New Disclosure</label>
+        <locationX>2250</locationX>
+        <locationY>1670</locationY>
+        <assignmentItems>
+            <assignToReference>IP_Is_Record_Update</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>IP_Disclosure_ID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
+        <name>Copy_1_of_Is_Update</name>
+        <label>Copy 1 of Is Update</label>
+        <locationX>2074</locationX>
+        <locationY>1310</locationY>
+        <assignmentItems>
+            <assignToReference>IP_Is_Record_Update</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lookup_Disclosure_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
         <name>IP_Is_Update</name>
         <label>Is Update</label>
-        <locationX>447</locationX>
-        <locationY>51</locationY>
+        <locationX>666</locationX>
+        <locationY>1430</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
             <operator>Assign</operator>
@@ -22,8 +83,8 @@
         <description>This is the path for a user creating a NEW disclosure. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that NEW/INSERT steps are taken.</description>
         <name>IP_Is_Update_False</name>
         <label>Is New Disclosure</label>
-        <locationX>183</locationX>
-        <locationY>253</locationY>
+        <locationX>1018</locationX>
+        <locationY>1790</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
             <operator>Assign</operator>
@@ -39,6 +100,7 @@
             </value>
         </assignmentItems>
         <connector>
+            <isGoTo>true</isGoTo>
             <targetReference>IP_Details_Screen</targetReference>
         </connector>
     </assignments>
@@ -46,8 +108,8 @@
         <description>Assignment to populate the record variable.</description>
         <name>IP_Populate_Record_Variable</name>
         <label>Populate Record Variable</label>
-        <locationX>1016</locationX>
-        <locationY>578</locationY>
+        <locationX>314</locationX>
+        <locationY>3362</locationY>
         <assignmentItems>
             <assignToReference>IP_Disclosure.IP_Title__c</assignToReference>
             <operator>Assign</operator>
@@ -143,16 +205,101 @@
             <targetReference>IP_Update_Disclosure</targetReference>
         </connector>
     </assignments>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Contact_Found</name>
+        <label>Contact Found</label>
+        <locationX>1436</locationX>
+        <locationY>638</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Contact_Id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Contact Found</defaultConnectorLabel>
+        <rules>
+            <name>Contact_not_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Contact</targetReference>
+            </connector>
+            <label>Contact not found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Create_Draft</name>
+        <label>Create Draft?</label>
+        <locationX>1898</locationX>
+        <locationY>1790</locationY>
+        <defaultConnector>
+            <targetReference>Create_Draft_Disclosure</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes Create Draft</defaultConnectorLabel>
+        <rules>
+            <name>No_Draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DisclosureDetails.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <label>No Draft</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Disclosure_Record_Found</name>
+        <label>Disclosure Record Found?</label>
+        <locationX>2074</locationX>
+        <locationY>1550</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Is_New_Disclosure</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Disclosure_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Lookup_Disclosure_Record.Contact__r.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ContactId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Initial_Disclosure</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <decisions>
         <description>This is a decision point to determine if user is creating a NEW disclosure or UPDATING an existing disclosure already created by checking if a Disclosure ID has been passed into the flow (Update) or not (Insert).</description>
         <name>IP_Check_for_Disclosure_ID</name>
         <label>Check for Disclosure ID</label>
-        <locationX>179</locationX>
-        <locationY>52</locationY>
-        <defaultConnector>
-            <targetReference>IP_Is_Update_False</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>New Disclosure</defaultConnectorLabel>
+        <locationX>1106</locationX>
+        <locationY>1310</locationY>
+        <defaultConnectorLabel>New IP</defaultConnectorLabel>
         <rules>
             <name>IP_Disclosure_ID_Submitted</name>
             <conditionLogic>and</conditionLogic>
@@ -166,15 +313,15 @@
             <connector>
                 <targetReference>IP_Is_Update</targetReference>
             </connector>
-            <label>Update Disclosure</label>
+            <label>Update IP</label>
         </rules>
     </decisions>
     <decisions>
         <description>Checks that a Disclosure was returned and that we can continue with the flow, otherwise it defaults to a NEW record flow.</description>
         <name>IP_Check_for_Disclosure_Record</name>
         <label>Disclosure Found?</label>
-        <locationX>443</locationX>
-        <locationY>261</locationY>
+        <locationX>666</locationX>
+        <locationY>1670</locationY>
         <defaultConnector>
             <targetReference>IP_Is_Update_False</targetReference>
         </defaultConnector>
@@ -199,8 +346,8 @@
         <description>Should the flow create a draft Disclosure record to start populating</description>
         <name>IP_Create_Draft</name>
         <label>Create Draft?</label>
-        <locationX>445</locationX>
-        <locationY>534</locationY>
+        <locationX>314</locationX>
+        <locationY>1910</locationY>
         <defaultConnector>
             <targetReference>IP_Sponsorship</targetReference>
         </defaultConnector>
@@ -221,7 +368,62 @@
             <label>Yes</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>LegacyFlow</name>
+        <label>IsLegacyFlow</label>
+        <locationX>1590</locationX>
+        <locationY>1190</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Is_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>LegacyFalse</defaultConnectorLabel>
+        <rules>
+            <name>LegacyTrue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsLegacyFlow</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            </connector>
+            <label>LegacyTrue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>User_Id_Found</name>
+        <label>User Id Found</label>
+        <locationX>1590</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Contact_Id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Guest_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>UserRecordId.UserType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Guest</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Look_Up</targetReference>
+            </connector>
+            <label>Guest User</label>
+        </rules>
+    </decisions>
     <description>New version with descriptions added to the flow components</description>
+    <formulas>
+        <name>ContacttoDisclosure</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Contact.Id}</expression>
+    </formulas>
     <formulas>
         <description>Sets the Disclosure Date to todays date when the end user confirms that they are happy to submit the Disclosure.</description>
         <name>IP_Confirm_DisclosureDate</name>
@@ -255,6 +457,12 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -262,16 +470,34 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <description>Creates a new draft Disclosure to save information to.</description>
-        <name>IP_Create_Draft_Disclosure</name>
+        <name>Create_Contact</name>
+        <label>Create Contact</label>
+        <locationX>1304</locationX>
+        <locationY>758</locationY>
+        <connector>
+            <targetReference>Assign_Contact_Id</targetReference>
+        </connector>
+        <inputReference>Get_Contact</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Draft_Disclosure</name>
         <label>Create Draft Disclosure</label>
-        <locationX>184</locationX>
-        <locationY>626</locationY>
+        <locationX>1986</locationX>
+        <locationY>1910</locationY>
+        <inputReference>DisclosureDetails</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a new draft Technology to save information to.</description>
+        <name>IP_Create_Draft_Disclosure</name>
+        <label>Create Draft Technology</label>
+        <locationX>50</locationX>
+        <locationY>2030</locationY>
         <assignRecordIdToReference>IP_Disclosure_ID</assignRecordIdToReference>
         <connector>
             <targetReference>IP_Sponsorship</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>IP_Error_Screen</targetReference>
         </faultConnector>
         <inputAssignments>
@@ -301,16 +527,72 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <object>IP__c</object>
     </recordCreates>
     <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>1436</locationX>
+        <locationY>518</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Contact_Email.value</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FirstName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Contact_Name.firstName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_Info</name>
+        <label>Get User Info</label>
+        <locationX>1590</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>User_Id_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputReference>UserRecordId</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>ContactId</queriedFields>
+        <queriedFields>Email</queriedFields>
+    </recordLookups>
+    <recordLookups>
         <description>The lookup gets required data from the IP object based on the Disclosure ID which was passed into the flow at the beginning. If there is a fault, it will exit to the generic Error Screen.</description>
         <name>IP_Lookup_Disclosure</name>
         <label>Lookup Disclosure</label>
-        <locationX>659</locationX>
-        <locationY>51</locationY>
+        <locationX>666</locationX>
+        <locationY>1550</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IP_Check_for_Disclosure_Record</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>IP_Error_Screen</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -359,12 +641,35 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <queriedFields>IP_Experimental_Verification_Detail__c</queriedFields>
         <queriedFields>IP_Principal_Inventor_PI__c</queriedFields>
     </recordLookups>
+    <recordLookups>
+        <name>Lookup_Disclosure_Record</name>
+        <label>Lookup Disclosure Record</label>
+        <locationX>2074</locationX>
+        <locationY>1430</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Disclosure_Record_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Disclosure__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <description>Update existing disclosure.</description>
         <name>IP_Update_Disclosure</name>
         <label>Save Disclosure</label>
-        <locationX>1237</locationX>
-        <locationY>578</locationY>
+        <locationX>314</locationX>
+        <locationY>3482</locationY>
         <connector>
             <targetReference>IP_Final_Create_Screen</targetReference>
         </connector>
@@ -374,11 +679,198 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <inputReference>IP_Disclosure</inputReference>
     </recordUpdates>
     <screens>
+        <name>Contact_Look_Up</name>
+        <label>Contact Look Up</label>
+        <locationX>1436</locationX>
+        <locationY>398</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Contact</targetReference>
+        </connector>
+        <fields>
+            <name>Welcome</name>
+            <fieldText>&lt;p&gt;Welcome to the Disclosure experience.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Let&apos;s start by looking up your contact info.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Contact_Name</name>
+            <extensionName>flowruntime:name</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>disabled</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Contact_Email</name>
+            <extensionName>flowruntime:email</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Initial_Disclosure</name>
+        <label>Initial Disclosure</label>
+        <locationX>1898</locationX>
+        <locationY>1670</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Draft</targetReference>
+        </connector>
+        <fields>
+            <name>New_Disclosure_Screen</name>
+            <fieldText>&lt;p&gt;Let&apos;s start by reviewing your invention to better understand it&apos;s potential marketable value.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Could you please tell me a few things...&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Invention_Description</name>
+            <fieldText>Invention Description</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Invention_Description_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Invention_Title</name>
+                    <fieldText>Invention Title</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <helpText>&lt;p&gt;Provide a short descriptive title of the invention.&lt;/p&gt;</helpText>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Description</name>
+                    <fieldText>Description</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <helpText>&lt;p&gt;Write a detailed description of the invention.  &lt;/p&gt;</helpText>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Prior_Disclosure</name>
+                    <choiceReferences>Yes</choiceReferences>
+                    <choiceReferences>No</choiceReferences>
+                    <dataType>Boolean</dataType>
+                    <fieldText>Prior Disclosure</fieldText>
+                    <fieldType>RadioButtons</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Innovation</name>
+                    <fieldText>Innovation</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Future</name>
+                    <fieldText>Future</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Partners</name>
+                    <fieldText>Partners</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Researchers</name>
+                    <fieldText>Researchers</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Funding_and_Contractual_Obligations</name>
+            <fieldText>Funding and Contractual Obligations</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Funding_and_Contractual_Obligations_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Sponsored_Research</name>
+                    <choiceReferences>Yes</choiceReferences>
+                    <choiceReferences>No</choiceReferences>
+                    <dataType>Boolean</dataType>
+                    <fieldText>Sponsored Research</fieldText>
+                    <fieldType>RadioButtons</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Agreement_Type</name>
+                    <fieldText>Agreement Type</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Contributors</name>
+            <fieldText>Contributors</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Contributors_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Contributor_Names</name>
+                    <extensionName>flowruntime:name</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>disabled</name>
+                        <value>
+                            <booleanValue>false</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <description>Screen to gather the IP Name, Description, Variations, and Limitations on the disclosure from the user.</description>
         <name>IP_Details_Screen</name>
         <label>IP Details</label>
-        <locationX>183</locationX>
-        <locationY>429</locationY>
+        <locationX>314</locationX>
+        <locationY>1790</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -429,8 +921,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Fault screen</description>
         <name>IP_Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>1232</locationX>
-        <locationY>54</locationY>
+        <locationX>754</locationX>
+        <locationY>3602</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -451,8 +943,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine if user has tested the disclosure experimentally, and if so to provide further details.</description>
         <name>IP_Experimental_Verification</name>
         <label>Experimental Verification</label>
-        <locationX>772</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>2762</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -475,8 +967,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen where files are uploaded.</description>
         <name>IP_FileUploadScreen</name>
         <label>Files, Documents and Supporting Evidence</label>
-        <locationX>1236</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>3122</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -522,6 +1014,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                     <elementReference>File_Content_ID</elementReference>
                 </value>
             </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
         </fields>
         <showFooter>true</showFooter>
@@ -531,8 +1024,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Final disclosure creation screen.</description>
         <name>IP_Final_Create_Screen</name>
         <label>Final Create Screen</label>
-        <locationX>1489</locationX>
-        <locationY>578</locationY>
+        <locationX>314</locationX>
+        <locationY>3602</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -547,8 +1040,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <screens>
         <name>IP_Final_Submission_Check</name>
         <label>Final Submission Check</label>
-        <locationX>1236</locationX>
-        <locationY>787</locationY>
+        <locationX>314</locationX>
+        <locationY>3242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -579,8 +1072,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine if any material was obtained from a source other than the laboratory or a commercial vendor for the disclosure.</description>
         <name>IP_Materials</name>
         <label>Materials</label>
-        <locationX>352</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>2402</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -603,8 +1096,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine how the disclosure differs from existing technologies and current practices, and what problems it solves.</description>
         <name>IP_Novelty</name>
         <label>Novelty</label>
-        <locationX>623</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>2642</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -627,8 +1120,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine if user is aware of any prior inventions or publications by others, and if so to provide further details.</description>
         <name>IP_Prior_Art</name>
         <label>Prior Art</label>
-        <locationX>913</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>2882</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -651,8 +1144,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine if user has identified any risks to the commercialisation of the  disclosure and to provide the greatest impediment to the adoption.</description>
         <name>IP_Risks</name>
         <label>Risks</label>
-        <locationX>1069</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>3002</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -675,8 +1168,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to gather if the disclosure is within scope of another sponsored program from the user.</description>
         <name>IP_Sponsorship</name>
         <label>Sponsorship</label>
-        <locationX>352</locationX>
-        <locationY>790</locationY>
+        <locationX>314</locationX>
+        <locationY>2282</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -699,8 +1192,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>Screen to determine possible uses or applications, now and in the future, of the disclosure.</description>
         <name>IP_Utility</name>
         <label>Utility</label>
-        <locationX>472</locationX>
-        <locationY>962</locationY>
+        <locationX>314</locationX>
+        <locationY>2522</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -720,13 +1213,31 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
+        <locationX>1464</locationX>
+        <locationY>0</locationY>
         <connector>
-            <targetReference>IP_Check_for_Disclosure_ID</targetReference>
+            <targetReference>Get_User_Info</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>ContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>DisclosureDetails</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Disclosure__c</objectType>
+    </variables>
     <variables>
         <name>File_Content_ID</name>
         <dataType>String</dataType>
@@ -784,5 +1295,23 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>IsLegacyFlow</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>UserRecordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
     </variables>
 </Flow>
