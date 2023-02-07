@@ -295,5 +295,5 @@
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>Name_of_IP</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
 </Flow>

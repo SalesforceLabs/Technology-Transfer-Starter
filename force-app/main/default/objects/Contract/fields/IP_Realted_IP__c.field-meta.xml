@@ -2,11 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Realted_IP__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
-    <deprecated>false</deprecated>
     <externalId>false</externalId>
     <inlineHelpText>IP related to this agreement</inlineHelpText>
     <label>Related IP</label>
-    <referenceTo>IP__c</referenceTo>
+    <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>
     <relationshipName>Agreements</relationshipName>
     <required>false</required>

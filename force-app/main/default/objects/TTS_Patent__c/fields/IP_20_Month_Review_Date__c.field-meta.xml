@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_20_Month_Review_Date__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Calculated Date 20 Months from Priority Date Field.</description>
+    <externalId>false</externalId>
+    <formula>ADDMONTHS(IP_Priority_Date__c,20)</formula>
+    <inlineHelpText>The 20 Month Review Date calculated 20 Months from the Priority Date.</inlineHelpText>
+    <label>20 Month Review Date</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

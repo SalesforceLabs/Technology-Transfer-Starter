@@ -630,7 +630,7 @@
     </flexiPageRegions>
     <masterLabel>Transaction Record Page</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
-    <sobjectType>IP_Transaction__c</sobjectType>
+    <sobjectType>TTS_Transaction__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>

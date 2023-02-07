@@ -8,23 +8,28 @@
     </brand>
     <description>Disclosures, IP, Patents and Agreements</description>
     <formFactors>Large</formFactors>
-    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Technology Transfer Starter</label>
     <navType>Standard</navType>
     <setupExperience>all</setupExperience>
     <tabs>standard-home</tabs>
-    <tabs>IP__c</tabs>
-    <tabs>Patent__c</tabs>
+    <tabs>TTS_Disclosure__c</tabs>
+    <tabs>TTS_Technology__c</tabs>
+    <tabs>TTS_Patent__c</tabs>
     <tabs>standard-Contract</tabs>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>TTS_Transaction__c</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>IP_Success_Plans__c</tabs>
-    <tabs>IP_Transaction__c</tabs>
+    <tabs>TTS_Success_Plans__c</tabs>
+    <tabs>TTS_Space__c</tabs>
+    <tabs>TTS_Space_Tenant__c</tabs>
+    <tabs>TTS_Space_Asset__c</tabs>
+    <tabs>TTS_Space_Fee__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>IP_Management_UtilityBar</utilityBar>
 </CustomApplication>

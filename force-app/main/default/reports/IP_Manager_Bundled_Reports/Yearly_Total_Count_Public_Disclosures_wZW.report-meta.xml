@@ -11,7 +11,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>IP__c.IP_Public_Disclosure__c</groupingColumn>
+        <groupingColumn>TTS_Technology__c.IP_Public_Disclosure__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -30,7 +30,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Year</dateGranularity>
-        <field>IP__c.IP_Public_Disclosure__c</field>
+        <field>TTS_Technology__c.IP_Public_Disclosure__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Yearly Total Count Public Disclosures</name>
@@ -38,13 +38,13 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$IP__c</reportType>
+    <reportType>CustomEntity$TTS_Technology__c</reportType>
     <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>IP__c.IP_Disclosure_Date__c</dateColumn>
+        <dateColumn>TTS_Technology__c.IP_Disclosure_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

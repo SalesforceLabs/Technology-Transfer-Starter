@@ -24,6 +24,7 @@
             <operator>equals</operator>
             <value>Contract.Commercial</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <name>Licensing Revenue Report</name>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_Examination_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Examination Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Currently Under Examination</fullName>
+                <default>true</default>
+                <label>Not Currently Under Examination</label>
+            </value>
+            <value>
+                <fullName>Awaiting Exam Report</fullName>
+                <default>false</default>
+                <label>Awaiting Exam Report</label>
+            </value>
+            <value>
+                <fullName>Exam Report Issued to Inventors</fullName>
+                <default>false</default>
+                <label>Exam Report Issued to Inventors</label>
+            </value>
+            <value>
+                <fullName>Attorney Drafting Response</fullName>
+                <default>false</default>
+                <label>Attorney Drafting Response</label>
+            </value>
+            <value>
+                <fullName>Inventors Assessing Response</fullName>
+                <default>false</default>
+                <label>Inventors Assessing Response</label>
+            </value>
+            <value>
+                <fullName>Attorneys Instructed with Response</fullName>
+                <default>false</default>
+                <label>Attorneys Instructed with Response</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

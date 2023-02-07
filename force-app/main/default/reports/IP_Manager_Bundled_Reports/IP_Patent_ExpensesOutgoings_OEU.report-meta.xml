@@ -7,12 +7,12 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>IP_Transaction__c.IP_Actual_Amount__c</column>
+            <column>TTS_Transaction__c.IP_Actual_Amount__c</column>
         </chartSummaries>
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>IP_Transaction__c.Type__c</groupingColumn>
+        <groupingColumn>TTS_Transaction__c.Type__c</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
@@ -29,7 +29,7 @@
     </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>IP_Transaction__c.IP_Actual_Amount__c</field>
+        <field>TTS_Transaction__c.IP_Actual_Amount__c</field>
     </columns>
     <columns>
         <field>CUST_NAME</field>
@@ -39,17 +39,18 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>IP_Transaction__c.Direction__c</column>
+            <column>TTS_Transaction__c.Direction__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Outgoing</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>IP_Transaction__c.Type__c</field>
+        <field>TTS_Transaction__c.Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>IP - Patent Expenses/Outgoings</name>
@@ -57,13 +58,13 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$IP_Transaction__c@IP_Transaction__c.IP_Related_Patent__c</reportType>
+    <reportType>CustomEntity$TTS_Transaction__c@TTS_Transaction__c.IP_Related_Patent__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>IP_Transaction__c.IP_Expected_Payment_Date__c</dateColumn>
+        <dateColumn>TTS_Transaction__c.IP_Expected_Payment_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

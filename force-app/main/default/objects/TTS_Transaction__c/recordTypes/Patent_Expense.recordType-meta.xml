@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patent_Expense</fullName>
+    <active>true</active>
+    <description>Expense or Fee Related to Patent</description>
+    <label>Patent Expense</label>
+    <picklistValues>
+        <picklist>Direction__c</picklist>
+        <values>
+            <fullName>Incoming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outgoing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP Expense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licence Income</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Attorney</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Filing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Other Expense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Translation Fee</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

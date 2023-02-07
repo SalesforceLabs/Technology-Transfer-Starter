@@ -16,7 +16,6 @@ robot/Technology-Transfer-Starter/results/
 # Editors
 *.sublime-project
 *.sublime-workspace
-.vscode
 .idea
 .project
 .settings

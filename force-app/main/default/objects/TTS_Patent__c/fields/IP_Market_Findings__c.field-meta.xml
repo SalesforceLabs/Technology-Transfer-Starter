@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_Market_Findings__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <externalId>false</externalId>
+    <inlineHelpText>Provide information related to any Market Findings which have been found during this application.</inlineHelpText>
+    <label>Market Findings</label>
+    <length>32768</length>
+    <securityClassification>Confidential</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

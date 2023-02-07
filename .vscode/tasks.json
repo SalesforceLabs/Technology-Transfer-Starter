@@ -1,0 +1,529 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    // Visual Studio Code Tasks demo
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Q BRIX [ORG]: Create New Developer Org (Alias 'dev')",
+        "type": "shell",
+        "command": "cci org remove dev && cci flow run dev_org --org dev && echo 'New Developer Scratch Org has been created with alias dev.'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: Create New Developer Preview Org (Alias 'dev_preview')",
+        "type": "shell",
+        "command": "cci org remove dev_preview && cci flow run dev_org --org dev_preview && echo 'New Developer Scratch Org has been created with alias dev_preview.'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: Create New QA/Testing Org (Alias 'qa')",
+        "type": "shell",
+        "command": "cci org remove qa && cci flow run qa_org --org qa && echo 'New Developer Scratch Org has been created with alias qa.'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: Create New QA/Testing Preview Org (Alias 'qa_preview')",
+        "type": "shell",
+        "command": "cci org remove qa_preview && cci flow run qa_org --org qa_preview && echo 'New Developer Scratch Org has been created with alias qa_preview.'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: Clean Up Scratch Orgs and Expired Orgs",
+        "type": "shell",
+        "command": "cci org remove dev && cci org remove qa && cci org remove dev_preview && cci org prune && echo 'Org Cleanup Complete!'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: List connected orgs for this project",
+        "type": "shell",
+        "command": "cci org list",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [CONNECT]: Connect to a Production Org/TSO and Deploy Q Brix",
+        "type": "shell",
+        "command": "cci org connect ${input:OrgAlias} && cci flow run deploy_qbrix_tso --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [CONNECT]: Connect to a Sandbox and Deploy Q Brix",
+        "type": "shell",
+        "command": "cci org connect ${input:OrgAlias} --sandbox && cci flow run deploy_qbrix --org ${input:OrgAlias} && cci task run snapshot_changes --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [CONNECT]: Connect to a Sandbox",
+        "type": "shell",
+        "command": "cci org connect ${input:OrgAlias} --sandbox",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [CONNECT]: Connect to a Production Org/TSO",
+        "type": "shell",
+        "command": "cci org connect ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [CONNECT]: Disconnect from org and delete scratch org (if scratch org)",
+        "type": "shell",
+        "command": "cci org remove ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [PUBLISH]: Publish to Metadeploy",
+        "type": "shell",
+        "command": "cci task run metadeploy_publish --publish True --commit ${input:Commit}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [SAVE]: Save Changes to GitHub",
+        "type": "shell",
+        "command": "git add . && git commit -m '${input:CommitMessage}' && git push && git pull && echo 'Save complete!'",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [BUILD]: Snapshot Current Changes (Run before making changes to org)",
+        "type": "shell",
+        "command": "cci task run snapshot_changes --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [INFO]: Show information about a specified task.",
+        "type": "shell",
+        "command": "cci task info ${input:TaskName}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [INFO]: Show information about a specified flow.",
+        "type": "shell",
+        "command": "cci task info ${input:FlowName}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [INFO]: Show information about a connected org.",
+        "type": "shell",
+        "command": "cci org info ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [SAVE]: Review a List of Changes in org",
+        "type": "shell",
+        "command": "cci task run list_changes --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [SAVE]: Retrieve Changes from org",
+        "type": "shell",
+        "command": "cci task run retrieve_changes --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [DEPLOY]: Deploy Q Brix to specified org",
+        "type": "shell",
+        "command": "cci flow run deploy_qbrix --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [DATA]: Deploy Q Brix data to specified org (check generate_qbrix_data flow)",
+        "type": "shell",
+        "command": "cci flow run generate_qbrix_data --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [DATA]: Generate Dataset Mapping File from specified org",
+        "type": "shell",
+        "command": "cci task run generate_dataset_mapping --org ${input:OrgAlias} --path ${input:DataFolderString}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [DATA]: Extract Dataset from specified org",
+        "type": "shell",
+        "command": "cci task run extract_dataset --org ${input:OrgAlias} --path ${input:DataFolderString} --sql_path ${input:SqlDataFolderString}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [DEPLOY]: Deploy specific folder to specified org",
+        "type": "shell",
+        "command": "cci task run deploy --path ${input:FolderString} --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [RETRIEVE]: Retrieve specific Metadata from Specified Org",
+        "type": "shell",
+        "command": "cci task run dx --command 'force:source:retrieve -m \"${input:MetadataString}\"' --org ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [RETRIEVE]: Retrieve unmanaged package metadata from specified org and merge into force-app",
+        "type": "shell",
+        "command": "cci task run retrieve_src --org ${input:OrgAlias} --package ${input:PackageName} && cci task run dx_convert_to",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [SAVE]: Retrieve ALL Project metadata from org",
+        "type": "shell",
+        "command": "cp -r ./force-app ./backup && cci task run dx --command 'force:source:retrieve -p force-app' --org ${input:OrgAlias} && echo 'Check Custom Objects and Profiles if any as additional metadata may have been captured. Then remove backup folder.'",
+        "windows": {
+          "command": "xcopy .\\force-app .\\backup /e && cci task run dx --command 'force:source:retrieve -p force-app' --org ${input:OrgAlias} && echo 'Check Custom Objects and Profiles if any as additional metadata may have been captured. Then remove backup folder.'"
+        },
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [ORG]: Open Org in Browser",
+        "type": "shell",
+        "command": "cci org browser ${input:OrgAlias}",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [INFO]: List Installed Packages in Org",
+        "type": "shell",
+        "command": "cci task run dx --org ${input:OrgAlias} --command force:package:installed:list",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Q BRIX [PUBLISH]: Show Latest Commit Hash (For Metadeploy)",
+        "type": "shell",
+        "command": "git rev-parse HEAD",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "revealProblems": "onProblem",
+          "focus": true,
+          "echo": false,
+          "showReuseMessage": false,
+          "panel": "shared"
+        }
+      },
+    ],
+    "inputs": [
+      {
+        "id": "OrgAlias",
+        "description": "Please enter the org alias for the TSO",
+        "default": "dev",
+        "type": "promptString"
+      },
+      {
+        "id": "VersionNumber",
+        "description": "Enter the version number you wish to publish",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "CommitMessage",
+        "description": "Provide a short summary of your changes (less than 100 characters):",
+        "default": "Update",
+        "type": "promptString"
+      },
+      {
+        "id": "Commit",
+        "description": "Enter commit you want to publish:",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "FolderString",
+        "description": "Enter the relative path to the folder:",
+        "default": "force-app",
+        "type": "promptString"
+      },
+      {
+        "id": "MetadataString",
+        "description": "Enter the sfdx formatted Metadata Type and api name of metadata object (e.g. CustomField:MyTestField__c):",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "DataFolderString",
+        "description": "Enter the relative path to the data folder:",
+        "default": "datasets",
+        "type": "promptString"
+      },
+      {
+        "id": "SqlDataFolderString",
+        "description": "Enter the relative path to the sql data folder:",
+        "default": "datasets",
+        "type": "promptString"
+      },
+      {
+        "id": "PackageName",
+        "description": "Enter the api name of the unmanaged package:",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "TaskName",
+        "description": "Enter the name of the task:",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "FlowName",
+        "description": "Enter the name of the flow:",
+        "default": "",
+        "type": "promptString"
+      }
+    ]
+    }

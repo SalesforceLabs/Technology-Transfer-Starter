@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_Patent_Application_Number__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the Patent Application Number, sometimes referred to as the Patent Serial Number.</inlineHelpText>
+    <label>Application Number</label>
+    <length>50</length>
+    <required>false</required>
+    <securityClassification>Public</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

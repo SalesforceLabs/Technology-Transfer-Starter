@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X_Validation_TotalLeadApplicants__c</fullName>
+    <description>Field used for validation purposes only</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Field used for validation purposes only</inlineHelpText>
+    <label>X Total Lead Applicants</label>
+    <summaryFilterItems>
+        <field>TTS_Applicant__c.Lead_Applicant__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>TTS_Applicant__c.Patent__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

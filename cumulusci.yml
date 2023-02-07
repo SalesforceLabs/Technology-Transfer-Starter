@@ -1,9 +1,8 @@
-minimum_cumulusci_version: "3.30.0"
 project:
     name: Technology-Transfer-Starter
     package:
         name: Technology-Transfer-Starter
-        api_version: "54.0"
+        api_version: "57.0"
         namespace: ipmanagement
     git:
         default_branch: "main"
@@ -67,7 +66,18 @@ flows:
                         - Technology_Transfer_Starter_Permission
             4:
                 task: load_dataset
-orgs: 
+
+    config_qa:
+        steps:
+            3:
+                task: assign_permission_sets
+                options:
+                    api_names:
+                        - Technology_Transfer_Starter_Permission
+            4:
+                task: load_dataset
+
+orgs:
     scratch:
         dev:
             config_file: orgs/dev.json

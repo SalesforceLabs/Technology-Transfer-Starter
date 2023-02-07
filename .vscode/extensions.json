@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "cumulusci.cci",
+    "redhat.vscode-yaml",
+    "redhat.vscode-xml",
+    "salesforce.salesforcedx-vscode-expanded",
+    "esbenp.prettier-vscode"
+  ]
+}

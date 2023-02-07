@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Current status of the Asset</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Available</fullName>
+                <default>false</default>
+                <label>Available</label>
+            </value>
+            <value>
+                <fullName>Damaged</fullName>
+                <default>false</default>
+                <label>Damaged</label>
+            </value>
+            <value>
+                <fullName>Disposed</fullName>
+                <default>false</default>
+                <label>Disposed</label>
+            </value>
+            <value>
+                <fullName>In Use</fullName>
+                <default>false</default>
+                <label>In Use</label>
+            </value>
+            <value>
+                <fullName>Not Available</fullName>
+                <default>false</default>
+                <label>Not Available</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

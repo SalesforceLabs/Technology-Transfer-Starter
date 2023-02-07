@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>57.0</apiVersion>
     <assignments>
         <description>This generates a new Task, calculated using the Public Disclosure Date</description>
         <name>IP_Assign_GenerateTaskFromPublicDisc</name>
@@ -568,13 +568,13 @@
         <displayField xsi:nil="true"/>
         <object xsi:nil="true"/>
         <picklistField>Date__c</picklistField>
-        <picklistObject>Milestone__c</picklistObject>
+        <picklistObject>TTS_Milestone__c</picklistObject>
     </dynamicChoiceSets>
     <dynamicChoiceSets>
         <name>SuccessPlanChoices</name>
         <dataType>String</dataType>
         <displayField>Title__c</displayField>
-        <object>IP_Success_Plans__c</object>
+        <object>TTS_Success_Plans__c</object>
         <sortField>Title__c</sortField>
         <sortOrder>Asc</sortOrder>
         <valueField>Id</valueField>
@@ -633,6 +633,12 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
         <description>This creates the milestone(s) in Salesforce, linked to the Success Plan.</description>
@@ -661,7 +667,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
                 <elementReference>IP_Field_SuccessPlanName</elementReference>
             </value>
         </inputAssignments>
-        <object>IP_Success_Plans__c</object>
+        <object>TTS_Success_Plans__c</object>
     </recordCreates>
     <recordCreates>
         <description>This saves the generated collection of tasks onto the IP record.</description>
@@ -692,7 +698,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
                 <elementReference>IP_Picklist_CurrentSuccessPlanList</elementReference>
             </value>
         </filters>
-        <object>Milestone__c</object>
+        <object>TTS_Milestone__c</object>
         <outputReference>Milestones</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>Number_of_Days__c</queriedFields>
@@ -719,7 +725,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
                 <elementReference>recordId</elementReference>
             </value>
         </filters>
-        <object>IP__c</object>
+        <object>TTS_Technology__c</object>
         <outputAssignments>
             <assignToReference>CreatedDate</assignToReference>
             <field>CreatedDate</field>
@@ -1043,7 +1049,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
             <targetReference>IP_Lookup_IPRecord</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>CreatedDate</name>
         <dataType>Date</dataType>
@@ -1064,7 +1070,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>IP__c</objectType>
+        <objectType>TTS_Technology__c</objectType>
     </variables>
     <variables>
         <name>IPOwnerId</name>
@@ -1093,7 +1099,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Milestone__c</objectType>
+        <objectType>TTS_Milestone__c</objectType>
     </variables>
     <variables>
         <name>Milestones</name>
@@ -1101,7 +1107,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>true</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Milestone__c</objectType>
+        <objectType>TTS_Milestone__c</objectType>
     </variables>
     <variables>
         <name>NewMilestone</name>
@@ -1109,7 +1115,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Milestone__c</objectType>
+        <objectType>TTS_Milestone__c</objectType>
     </variables>
     <variables>
         <name>NewMilestoneCollection</name>
@@ -1117,7 +1123,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>true</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Milestone__c</objectType>
+        <objectType>TTS_Milestone__c</objectType>
     </variables>
     <variables>
         <name>NewMilestoneLoop</name>
@@ -1125,7 +1131,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Milestone__c</objectType>
+        <objectType>TTS_Milestone__c</objectType>
     </variables>
     <variables>
         <name>NewSuccessPlanId</name>

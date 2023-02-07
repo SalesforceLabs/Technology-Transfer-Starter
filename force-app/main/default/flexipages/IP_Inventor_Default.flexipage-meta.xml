@@ -39,7 +39,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>IP Inventor Default</masterLabel>
-    <sobjectType>IP_Inventor__c</sobjectType>
+    <sobjectType>TTS_Inventor__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>

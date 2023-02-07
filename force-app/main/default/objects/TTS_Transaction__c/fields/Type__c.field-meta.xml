@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the type of transaction</inlineHelpText>
+    <label>Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Direction__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Audit</fullName>
+                <default>false</default>
+                <label>Audit</label>
+            </value>
+            <value>
+                <fullName>Grant</fullName>
+                <default>false</default>
+                <label>Grant</label>
+            </value>
+            <value>
+                <fullName>IP Expense</fullName>
+                <default>false</default>
+                <label>IP Expense</label>
+            </value>
+            <value>
+                <fullName>Licence Income</fullName>
+                <default>false</default>
+                <label>Licence Income</label>
+            </value>
+            <value>
+                <fullName>Management Fee</fullName>
+                <default>false</default>
+                <label>Management Fee</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Patent - Attorney</fullName>
+                <default>false</default>
+                <label>Patent - Attorney</label>
+            </value>
+            <value>
+                <fullName>Patent - Filing</fullName>
+                <default>false</default>
+                <label>Patent - Filing</label>
+            </value>
+            <value>
+                <fullName>Patent - Other Expense</fullName>
+                <default>false</default>
+                <label>Patent - Other Expense</label>
+            </value>
+            <value>
+                <fullName>Patent - Search</fullName>
+                <default>false</default>
+                <label>Patent - Search</label>
+            </value>
+            <value>
+                <fullName>Subsidy</fullName>
+                <default>false</default>
+                <label>Subsidy</label>
+            </value>
+            <value>
+                <fullName>Translation Fee</fullName>
+                <default>false</default>
+                <label>Translation Fee</label>
+            </value>
+            <value>
+                <fullName>Rent</fullName>
+                <default>false</default>
+                <label>Rent</label>
+            </value>
+            <value>
+                <fullName>Subscription Payment</fullName>
+                <default>false</default>
+                <label>Subscription Payment</label>
+            </value>
+            <value>
+                <fullName>Other Fee</fullName>
+                <default>false</default>
+                <label>Other Fee</label>
+            </value>
+            <value>
+                <fullName>Maintenance Fee</fullName>
+                <default>false</default>
+                <label>Maintenance Fee</label>
+            </value>
+            <value>
+                <fullName>Cleaning</fullName>
+                <default>false</default>
+                <label>Cleaning</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Network Access Fee</fullName>
+                <default>false</default>
+                <label>Network Access Fee</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Incoming</controllingFieldValue>
+            <valueName>Grant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incoming</controllingFieldValue>
+            <valueName>Licence Income</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incoming</controllingFieldValue>
+            <valueName>Subsidy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Audit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>IP Expense</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Management Fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Patent - Attorney</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Patent - Filing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Patent - Other Expense</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Patent - Search</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
+            <valueName>Translation Fee</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

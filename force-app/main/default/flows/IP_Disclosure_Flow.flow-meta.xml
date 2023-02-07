@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>57.0</apiVersion>
     <assignments>
         <name>Assign_Contact_Id</name>
         <label>Assign Contact Id</label>
-        <locationX>1590</locationX>
+        <locationX>1337</locationX>
         <locationY>1070</locationY>
         <assignmentItems>
             <assignToReference>UserRecordId.ContactId</assignToReference>
@@ -28,7 +28,7 @@
         <description>This is the path for a user creating a NEW disclosure. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that NEW/INSERT steps are taken.</description>
         <name>Copy_1_of_Is_New_Disclosure</name>
         <label>Copy 1 of Is New Disclosure</label>
-        <locationX>2250</locationX>
+        <locationX>2074</locationX>
         <locationY>1670</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
@@ -49,7 +49,7 @@
         <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
         <name>Copy_1_of_Is_Update</name>
         <label>Copy 1 of Is Update</label>
-        <locationX>2074</locationX>
+        <locationX>1876</locationX>
         <locationY>1310</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
@@ -66,7 +66,7 @@
         <description>This is the path for a user to Update an existing disclosure already submitted. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that UPDATE steps are taken.</description>
         <name>IP_Is_Update</name>
         <label>Is Update</label>
-        <locationX>666</locationX>
+        <locationX>314</locationX>
         <locationY>1430</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
@@ -83,7 +83,7 @@
         <description>This is the path for a user creating a NEW disclosure. The assignment updates the Is_Record_Update variable, used throughout the flow to ensure that NEW/INSERT steps are taken.</description>
         <name>IP_Is_Update_False</name>
         <label>Is New Disclosure</label>
-        <locationX>1018</locationX>
+        <locationX>402</locationX>
         <locationY>1790</locationY>
         <assignmentItems>
             <assignToReference>IP_Is_Record_Update</assignToReference>
@@ -100,7 +100,6 @@
             </value>
         </assignmentItems>
         <connector>
-            <isGoTo>true</isGoTo>
             <targetReference>IP_Details_Screen</targetReference>
         </connector>
     </assignments>
@@ -109,7 +108,7 @@
         <name>IP_Populate_Record_Variable</name>
         <label>Populate Record Variable</label>
         <locationX>314</locationX>
-        <locationY>3362</locationY>
+        <locationY>3578</locationY>
         <assignmentItems>
             <assignToReference>IP_Disclosure.IP_Title__c</assignToReference>
             <operator>Assign</operator>
@@ -224,7 +223,7 @@
     <decisions>
         <name>Contact_Found</name>
         <label>Contact Found</label>
-        <locationX>1436</locationX>
+        <locationX>1183</locationX>
         <locationY>638</locationY>
         <defaultConnector>
             <targetReference>Assign_Contact_Id</targetReference>
@@ -249,7 +248,7 @@
     <decisions>
         <name>Create_Draft</name>
         <label>Create Draft?</label>
-        <locationX>1898</locationX>
+        <locationX>1678</locationX>
         <locationY>1790</locationY>
         <defaultConnector>
             <targetReference>Create_Draft_Disclosure</targetReference>
@@ -271,7 +270,7 @@
     <decisions>
         <name>Disclosure_Record_Found</name>
         <label>Disclosure Record Found?</label>
-        <locationX>2074</locationX>
+        <locationX>1876</locationX>
         <locationY>1550</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_Is_New_Disclosure</targetReference>
@@ -297,7 +296,7 @@
         <description>This is a decision point to determine if user is creating a NEW disclosure or UPDATING an existing disclosure already created by checking if a Disclosure ID has been passed into the flow (Update) or not (Insert).</description>
         <name>IP_Check_for_Disclosure_ID</name>
         <label>Check for Disclosure ID</label>
-        <locationX>1106</locationX>
+        <locationX>798</locationX>
         <locationY>1310</locationY>
         <defaultConnectorLabel>New IP</defaultConnectorLabel>
         <rules>
@@ -320,7 +319,7 @@
         <description>Checks that a Disclosure was returned and that we can continue with the flow, otherwise it defaults to a NEW record flow.</description>
         <name>IP_Check_for_Disclosure_Record</name>
         <label>Disclosure Found?</label>
-        <locationX>666</locationX>
+        <locationX>314</locationX>
         <locationY>1670</locationY>
         <defaultConnector>
             <targetReference>IP_Is_Update_False</targetReference>
@@ -347,7 +346,7 @@
         <name>IP_Create_Draft</name>
         <label>Create Draft?</label>
         <locationX>314</locationX>
-        <locationY>1910</locationY>
+        <locationY>2126</locationY>
         <defaultConnector>
             <targetReference>IP_Sponsorship</targetReference>
         </defaultConnector>
@@ -371,7 +370,7 @@
     <decisions>
         <name>LegacyFlow</name>
         <label>IsLegacyFlow</label>
-        <locationX>1590</locationX>
+        <locationX>1337</locationX>
         <locationY>1190</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_Is_Update</targetReference>
@@ -396,7 +395,7 @@
     <decisions>
         <name>User_Id_Found</name>
         <label>User Id Found</label>
-        <locationX>1590</locationX>
+        <locationX>1337</locationX>
         <locationY>278</locationY>
         <defaultConnector>
             <targetReference>Assign_Contact_Id</targetReference>
@@ -449,7 +448,8 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <expression>IF({!IP_Is_Record_Update}, &quot;updated&quot;, &quot;created&quot;)</expression>
     </formulas>
     <interviewLabel>IP Disclosure Flow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>IP Disclosure Flow</label>
+    <isTemplate>true</isTemplate>
+    <label>TTS - Disclosure Flow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -472,7 +472,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordCreates>
         <name>Create_Contact</name>
         <label>Create Contact</label>
-        <locationX>1304</locationX>
+        <locationX>1051</locationX>
         <locationY>758</locationY>
         <connector>
             <targetReference>Assign_Contact_Id</targetReference>
@@ -482,7 +482,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordCreates>
         <name>Create_Draft_Disclosure</name>
         <label>Create Draft Disclosure</label>
-        <locationX>1986</locationX>
+        <locationX>1810</locationX>
         <locationY>1910</locationY>
         <inputReference>DisclosureDetails</inputReference>
     </recordCreates>
@@ -491,7 +491,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Create_Draft_Disclosure</name>
         <label>Create Draft Technology</label>
         <locationX>50</locationX>
-        <locationY>2030</locationY>
+        <locationY>2246</locationY>
         <assignRecordIdToReference>IP_Disclosure_ID</assignRecordIdToReference>
         <connector>
             <targetReference>IP_Sponsorship</targetReference>
@@ -524,12 +524,12 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <elementReference>IP_Name_Short_Description</elementReference>
             </value>
         </inputAssignments>
-        <object>IP__c</object>
+        <object>TTS_Technology__c</object>
     </recordCreates>
     <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>1436</locationX>
+        <locationX>1183</locationX>
         <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -559,7 +559,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordLookups>
         <name>Get_User_Info</name>
         <label>Get User Info</label>
-        <locationX>1590</locationX>
+        <locationX>1337</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -585,7 +585,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <description>The lookup gets required data from the IP object based on the Disclosure ID which was passed into the flow at the beginning. If there is a fault, it will exit to the generic Error Screen.</description>
         <name>IP_Lookup_Disclosure</name>
         <label>Lookup Disclosure</label>
-        <locationX>666</locationX>
+        <locationX>314</locationX>
         <locationY>1550</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -603,7 +603,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <elementReference>IP_Disclosure_ID</elementReference>
             </value>
         </filters>
-        <object>IP__c</object>
+        <object>TTS_Technology__c</object>
         <outputReference>IP_Disclosure</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>IP_Category__c</queriedFields>
@@ -644,7 +644,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <recordLookups>
         <name>Lookup_Disclosure_Record</name>
         <label>Lookup Disclosure Record</label>
-        <locationX>2074</locationX>
+        <locationX>1876</locationX>
         <locationY>1430</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -659,7 +659,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Disclosure__c</object>
+        <object>TTS_Disclosure__c</object>
         <sortField>LastModifiedDate</sortField>
         <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -669,7 +669,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Update_Disclosure</name>
         <label>Save Disclosure</label>
         <locationX>314</locationX>
-        <locationY>3482</locationY>
+        <locationY>3698</locationY>
         <connector>
             <targetReference>IP_Final_Create_Screen</targetReference>
         </connector>
@@ -681,7 +681,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <screens>
         <name>Contact_Look_Up</name>
         <label>Contact Look Up</label>
-        <locationX>1436</locationX>
+        <locationX>1183</locationX>
         <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -722,7 +722,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
     <screens>
         <name>Initial_Disclosure</name>
         <label>Initial Disclosure</label>
-        <locationX>1898</locationX>
+        <locationX>1678</locationX>
         <locationY>1670</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -736,11 +736,10 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Invention_Description</name>
-            <fieldText>Invention Description</fieldText>
+            <name>Initial_Disclosure_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Invention_Description_Column1</name>
+                <name>Initial_Disclosure_Section1_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Invention_Title</name>
@@ -798,13 +797,13 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <fields>
-            <name>Funding_and_Contractual_Obligations</name>
-            <fieldText>Funding and Contractual Obligations</fieldText>
+            <name>Initial_Disclosure_Section2</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Funding_and_Contractual_Obligations_Column1</name>
+                <name>Initial_Disclosure_Section2_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Sponsored_Research</name>
@@ -830,13 +829,13 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <fields>
-            <name>Contributors</name>
-            <fieldText>Contributors</fieldText>
+            <name>Initial_Disclosure_Section3</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Contributors_Column1</name>
+                <name>Initial_Disclosure_Section3_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Contributor_Names</name>
@@ -861,6 +860,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -870,7 +870,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Details_Screen</name>
         <label>IP Details</label>
         <locationX>314</locationX>
-        <locationY>1790</locationY>
+        <locationY>2006</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -922,7 +922,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Error_Screen</name>
         <label>Error Screen</label>
         <locationX>754</locationX>
-        <locationY>3602</locationY>
+        <locationY>3818</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -944,7 +944,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Experimental_Verification</name>
         <label>Experimental Verification</label>
         <locationX>314</locationX>
-        <locationY>2762</locationY>
+        <locationY>2978</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -968,7 +968,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_FileUploadScreen</name>
         <label>Files, Documents and Supporting Evidence</label>
         <locationX>314</locationX>
-        <locationY>3122</locationY>
+        <locationY>3338</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1025,7 +1025,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Final_Create_Screen</name>
         <label>Final Create Screen</label>
         <locationX>314</locationX>
-        <locationY>3602</locationY>
+        <locationY>3818</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1041,7 +1041,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Final_Submission_Check</name>
         <label>Final Submission Check</label>
         <locationX>314</locationX>
-        <locationY>3242</locationY>
+        <locationY>3458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1073,7 +1073,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Materials</name>
         <label>Materials</label>
         <locationX>314</locationX>
-        <locationY>2402</locationY>
+        <locationY>2618</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1097,7 +1097,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Novelty</name>
         <label>Novelty</label>
         <locationX>314</locationX>
-        <locationY>2642</locationY>
+        <locationY>2858</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1121,7 +1121,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Prior_Art</name>
         <label>Prior Art</label>
         <locationX>314</locationX>
-        <locationY>2882</locationY>
+        <locationY>3098</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1145,7 +1145,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Risks</name>
         <label>Risks</label>
         <locationX>314</locationX>
-        <locationY>3002</locationY>
+        <locationY>3218</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1169,7 +1169,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Sponsorship</name>
         <label>Sponsorship</label>
         <locationX>314</locationX>
-        <locationY>2282</locationY>
+        <locationY>2498</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1193,7 +1193,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <name>IP_Utility</name>
         <label>Utility</label>
         <locationX>314</locationX>
-        <locationY>2522</locationY>
+        <locationY>2738</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1213,7 +1213,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>1464</locationX>
+        <locationX>1211</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_User_Info</targetReference>
@@ -1236,7 +1236,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Disclosure__c</objectType>
+        <objectType>TTS_Disclosure__c</objectType>
     </variables>
     <variables>
         <name>File_Content_ID</name>
@@ -1268,7 +1268,7 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>IP__c</objectType>
+        <objectType>TTS_Technology__c</objectType>
     </variables>
     <variables>
         <description>External ID for this disclosure.</description>

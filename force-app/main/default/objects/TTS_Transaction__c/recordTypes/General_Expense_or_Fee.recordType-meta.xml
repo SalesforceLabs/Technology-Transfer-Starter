@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_Expense_or_Fee</fullName>
+    <active>true</active>
+    <description>General Expense or Fee</description>
+    <label>General Expense or Fee</label>
+    <picklistValues>
+        <picklist>Direction__c</picklist>
+        <values>
+            <fullName>Incoming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outgoing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP Expense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licence Income</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Network Access Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Attorney</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Filing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Other Expense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subscription Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Translation Fee</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

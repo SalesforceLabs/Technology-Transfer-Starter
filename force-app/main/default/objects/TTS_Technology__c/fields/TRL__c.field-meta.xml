@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TRL__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Technology Readiness Level (TRL)</inlineHelpText>
+    <label>TRL</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TRL 1</fullName>
+                <default>false</default>
+                <label>TRL 1</label>
+            </value>
+            <value>
+                <fullName>TRL 2</fullName>
+                <default>false</default>
+                <label>TRL 2</label>
+            </value>
+            <value>
+                <fullName>TRL 3</fullName>
+                <default>false</default>
+                <label>TRL 3</label>
+            </value>
+            <value>
+                <fullName>TRL 4</fullName>
+                <default>false</default>
+                <label>TRL 4</label>
+            </value>
+            <value>
+                <fullName>TRL 5</fullName>
+                <default>false</default>
+                <label>TRL 5</label>
+            </value>
+            <value>
+                <fullName>TRL 6</fullName>
+                <default>false</default>
+                <label>TRL 6</label>
+            </value>
+            <value>
+                <fullName>TRL 7</fullName>
+                <default>false</default>
+                <label>TRL 7</label>
+            </value>
+            <value>
+                <fullName>TRL 8</fullName>
+                <default>false</default>
+                <label>TRL 8</label>
+            </value>
+            <value>
+                <fullName>TRL 9</fullName>
+                <default>false</default>
+                <label>TRL 9</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

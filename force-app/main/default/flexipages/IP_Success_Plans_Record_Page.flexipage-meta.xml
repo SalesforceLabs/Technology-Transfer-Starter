@@ -255,7 +255,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>IP Success Plans Record Page</masterLabel>
-    <sobjectType>IP_Success_Plans__c</sobjectType>
+    <sobjectType>TTS_Success_Plans__c</sobjectType>
     <template>
         <name>flexipage:recordHomeSingleColTemplateDesktop</name>
     </template>

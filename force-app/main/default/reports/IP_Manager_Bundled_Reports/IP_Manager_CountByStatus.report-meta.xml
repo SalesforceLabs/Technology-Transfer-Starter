@@ -11,7 +11,7 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>IP__c.IP_Status__c</groupingColumn>
+        <groupingColumn>TTS_Technology__c.IP_Status__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
@@ -29,19 +29,19 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>IP__c.IP_Compact_Title__c</field>
+        <field>TTS_Technology__c.IP_Compact_Title__c</field>
     </columns>
     <columns>
-        <field>IP__c.IP_Principal_Inventor_PI__c</field>
+        <field>TTS_Technology__c.IP_Principal_Inventor_PI__c</field>
     </columns>
     <columns>
-        <field>IP__c.IP_Category__c</field>
+        <field>TTS_Technology__c.IP_Category__c</field>
     </columns>
     <columns>
-        <field>IP__c.IP_Disclosure_Date__c</field>
+        <field>TTS_Technology__c.IP_Disclosure_Date__c</field>
     </columns>
     <columns>
-        <field>IP__c.IP_Public_Disclosure__c</field>
+        <field>TTS_Technology__c.IP_Public_Disclosure__c</field>
     </columns>
     <columns>
         <field>CUST_CREATED_NAME</field>
@@ -49,17 +49,18 @@
     <description>Shows IP Records grouped by Current Status (Excluding Draft Disclosures)</description>
     <filter>
         <criteriaItems>
-            <column>IP__c.IP_Status__c</column>
+            <column>TTS_Technology__c.IP_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Draft</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>IP__c.IP_Status__c</field>
+        <field>TTS_Technology__c.IP_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>IP - IP by Status</name>
@@ -67,7 +68,7 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$IP__c</reportType>
+    <reportType>CustomEntity$TTS_Technology__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
@@ -75,7 +76,7 @@
     <sortColumn>CUST_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>IP__c.IP_Disclosure_Date__c</dateColumn>
+        <dateColumn>TTS_Technology__c.IP_Disclosure_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
