@@ -8,68 +8,75 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Space_Reference__c</field>
+                <behavior>Readonly</behavior>
+                <field>Tenant_Name__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Space Details</label>
+        <label>Tenant Detail</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Parent_Space__c</field>
+                <field>Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Space_Description__c</field>
+                <behavior>Required</behavior>
+                <field>Start_Date__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Address__c</field>
-            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Type__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contact__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>End_Date__c</field>
+            </layoutItems>
         </layoutColumns>
-        <style>OneColumn</style>
+        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Status and Capacity</label>
+        <label>Statistics</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Next_Available_Date__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Total_Capacity__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Total_Occupants__c</field>
+                <field>Total_Contacts__c</field>
             </layoutItems>
         </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Active_Contacts__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Space Detail</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Space__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -92,6 +99,10 @@
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Current_Tenant__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -105,6 +116,18 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Tenant_Name__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>Space__c</fields>
+        <fields>Type__c</fields>
+        <relatedLists>
+            <fields>TASK.SUBJECT</fields>
+            <fields>TASK.DUE_DATE</fields>
+            <fields>TASK.STATUS</fields>
+            <relatedList>RelatedActivityList</relatedList>
+        </relatedLists>
+    </miniLayout>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
@@ -125,45 +148,22 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>Account__c</fields>
-        <fields>Contact__c</fields>
-        <fields>Start_Date__c</fields>
-        <fields>End_Date__c</fields>
-        <fields>Current_Tenant__c</fields>
-        <relatedList>TTS_Space_Tenant__c.Space__c</relatedList>
-        <sortField>Current_Tenant__c</sortField>
-        <sortOrder>Asc</sortOrder>
+        <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Space_Reference__c</fields>
-        <fields>Type__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>TTS_Space__c.Parent_Space__c</relatedList>
+        <relatedList>TTS_Space_Tenant_Contact__c.Space_Tenant__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Name__c</fields>
-        <fields>Status__c</fields>
-        <fields>Internal_Asset_Reference__c</fields>
-        <relatedList>TTS_Space_Asset__c.Space__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Agreed_Discount__c</fields>
-        <fields>Amount__c</fields>
-        <fields>Due_Date_Time__c</fields>
-        <fields>Paid_Date_Time__c</fields>
-        <relatedList>TTS_Space_Fee__c.Space__c</relatedList>
-    </relatedLists>
+    <relatedObjects>Space__c</relatedObjects>
+    <relatedObjects>Account__c</relatedObjects>
+    <relatedObjects>Contact__c</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
-    <showHighlightsPanel>false</showHighlightsPanel>
+    <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7f000000Tezk</masterLabel>
+        <masterLabel>00h7f000000Tezj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_a_tenant_is_provided</fullName>
+    <active>true</active>
+    <description>Checks to ensure that either an Account or Contact has been assigned to the record.</description>
+    <errorConditionFormula>AND(
+    ISBLANK(Account__c),
+    ISBLANK(Contact__c)
+)</errorConditionFormula>
+    <errorMessage>Please link either a Contact (for an individual tenant) or an Account (for a company tenant)</errorMessage>
+</ValidationRule>

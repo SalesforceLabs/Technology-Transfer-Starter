@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_Only_One_Selected_Mentor</fullName>
+    <active>true</active>
+    <errorConditionFormula>Total_Selected_Interests__c &gt; 1</errorConditionFormula>
+    <errorMessage>You can only have one selected Mentor Interest. Please remove any other selected mentors if it was incorrectly set before.</errorMessage>
+</ValidationRule>

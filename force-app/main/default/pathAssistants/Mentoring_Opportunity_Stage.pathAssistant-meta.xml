@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>TTS_Mentoring_Opportunity__c</entityName>
+    <fieldName>Stage__c</fieldName>
+    <masterLabel>Mentoring Opportunity Stage</masterLabel>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

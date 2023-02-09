@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Business</fullName>
+        <default>false</default>
+        <label>Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Company Registration</fullName>
+        <default>false</default>
+        <label>Company Registration</label>
+    </customValue>
+    <customValue>
+        <fullName>Finance/Accounting</fullName>
+        <default>false</default>
+        <label>Finance/Accounting</label>
+    </customValue>
+    <customValue>
+        <fullName>Funding</fullName>
+        <default>false</default>
+        <label>Funding</label>
+    </customValue>
+    <customValue>
+        <fullName>General Mentoring</fullName>
+        <default>false</default>
+        <label>General Mentoring</label>
+    </customValue>
+    <customValue>
+        <fullName>HR</fullName>
+        <default>false</default>
+        <label>HR</label>
+    </customValue>
+    <customValue>
+        <fullName>Legal</fullName>
+        <default>false</default>
+        <label>Legal</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketing</fullName>
+        <default>false</default>
+        <label>Marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Not-For-Profit Status</fullName>
+        <default>false</default>
+        <label>Not-For-Profit Status</label>
+    </customValue>
+    <customValue>
+        <fullName>Presentations</fullName>
+        <default>false</default>
+        <label>Presentations</label>
+    </customValue>
+    <customValue>
+        <fullName>VISAs</fullName>
+        <default>false</default>
+        <label>VISAs</label>
+    </customValue>
+    <description>Skills list which can be used throughout the org, although is intended to be used with Mentoring to track mentors skills and match to the skills of the interested mentee.</description>
+    <masterLabel>TTS_Skills</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

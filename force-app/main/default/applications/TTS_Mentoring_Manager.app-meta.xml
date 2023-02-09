@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
-        <headerColor>#8FC871</headerColor>
-        <logo>logo</logo>
-        <logoVersion>1</logoVersion>
-        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>Disclosures, IP, Patents and Agreements</description>
+    <description>Managed Mentoring Opportunities and interests</description>
+    <formFactors>Small</formFactors>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>Technology Transfer Starter</label>
+    <label>Mentoring Manager</label>
     <navType>Standard</navType>
-    <setupExperience>all</setupExperience>
     <tabs>standard-home</tabs>
-    <tabs>TTS_Disclosure__c</tabs>
-    <tabs>TTS_Technology__c</tabs>
-    <tabs>TTS_Patent__c</tabs>
-    <tabs>standard-Contract</tabs>
-    <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
-    <tabs>TTS_Transaction__c</tabs>
+    <tabs>TTS_Mentoring_Opportunity__c</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>TTS_Success_Plans__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>IP_Management_UtilityBar</utilityBar>
+    <utilityBar>Mentoring_Manager_UtilityBar</utilityBar>
 </CustomApplication>

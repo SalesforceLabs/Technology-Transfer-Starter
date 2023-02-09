@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dates_Check</fullName>
+    <active>true</active>
+    <description>End Date cannot be before Start Date</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Mentoring_End_Date__c)),
+    Mentoring_End_Date__c &lt;= Mentoring_Start_Date__c
+)</errorConditionFormula>
+    <errorMessage>End Date Cannot be before the Start Date</errorMessage>
+</ValidationRule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Active_Contacts__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Active Contacts</label>
+    <summaryFilterItems>
+        <field>TTS_Space_Tenant_Contact__c.Is_Current_Contact__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>TTS_Space_Tenant_Contact__c.Space_Tenant__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

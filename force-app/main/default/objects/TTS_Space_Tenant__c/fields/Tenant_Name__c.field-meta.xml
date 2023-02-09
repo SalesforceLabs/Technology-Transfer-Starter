@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tenant_Name__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Displays the name of the tenant using the type field of if the type field is not populated used the populated value, be that Account or Contact.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(TEXT(Type__c)),
+
+    IF(AND(ISBLANK(Account__c),NOT(ISBLANK(Contact__c))),
+    Contact__r.FirstName &amp; &apos; &apos; &amp;  Contact__r.LastName
+    ,
+       IF(AND(ISBLANK(Contact__c),NOT(ISBLANK(Account__c))),
+       Account__r.Name,
+       &apos;&apos;
+       )
+    )
+
+,
+    IF(AND(TEXT(Type__c) = &apos;Individual&apos;, NOT(ISBLANK(Contact__c))),
+        Contact__r.FirstName &amp; &apos; &apos; &amp;  Contact__r.LastName
+        ,
+        
+            IF(AND(TEXT(Type__c) = &apos;Company&apos;, NOT(ISBLANK(Account__c))),
+                Account__r.Name, 
+                &apos;&apos;
+            )
+        
+    )
+)</formula>
+    <inlineHelpText>Name of the tenant</inlineHelpText>
+    <label>Tenant Name</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
