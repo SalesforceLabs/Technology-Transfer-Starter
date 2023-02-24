@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Earliest_Priority_Date__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The date of the earliest patent application in the family, which establishes the priority date for the invention.</inlineHelpText>
+    <label>Earliest Priority Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

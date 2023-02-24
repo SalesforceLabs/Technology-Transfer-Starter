@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Work_Format__c</fullName>
+    <externalId>false</externalId>
+    <label>Work Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Architectural</fullName>
+                <default>false</default>
+                <label>Architectural</label>
+            </value>
+            <value>
+                <fullName>Audiovisual</fullName>
+                <default>false</default>
+                <label>Audiovisual</label>
+            </value>
+            <value>
+                <fullName>Choreographic</fullName>
+                <default>false</default>
+                <label>Choreographic</label>
+            </value>
+            <value>
+                <fullName>Literary</fullName>
+                <default>false</default>
+                <label>Literary</label>
+            </value>
+            <value>
+                <fullName>Musical</fullName>
+                <default>false</default>
+                <label>Musical</label>
+            </value>
+            <value>
+                <fullName>Performing Arts</fullName>
+                <default>false</default>
+                <label>Performing Arts</label>
+            </value>
+            <value>
+                <fullName>Sculptural</fullName>
+                <default>false</default>
+                <label>Sculptural</label>
+            </value>
+            <value>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <label>Software</label>
+            </value>
+            <value>
+                <fullName>Sound</fullName>
+                <default>false</default>
+                <label>Sound</label>
+            </value>
+            <value>
+                <fullName>Visual</fullName>
+                <default>false</default>
+                <label>Visual</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

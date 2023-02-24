@@ -15,6 +15,10 @@
                 <behavior>Required</behavior>
                 <field>Direction__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Protection__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -87,10 +91,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IP_Related_IP__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IP_Related_Patent__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

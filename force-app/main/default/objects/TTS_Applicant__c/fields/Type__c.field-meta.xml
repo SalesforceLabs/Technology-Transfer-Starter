@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The specific applicant type</inlineHelpText>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Corporate Assignee</fullName>
+                <default>false</default>
+                <label>Corporate Assignee</label>
+            </value>
+            <value>
+                <fullName>Educational Institution</fullName>
+                <default>false</default>
+                <label>Educational Institution</label>
+            </value>
+            <value>
+                <fullName>Foreign Applicant</fullName>
+                <default>false</default>
+                <label>Foreign Applicant</label>
+            </value>
+            <value>
+                <fullName>Government Agency</fullName>
+                <default>false</default>
+                <label>Government Agency</label>
+            </value>
+            <value>
+                <fullName>Individual Inventor</fullName>
+                <default>false</default>
+                <label>Individual Inventor</label>
+            </value>
+            <value>
+                <fullName>Joint Inventor</fullName>
+                <default>false</default>
+                <label>Joint Inventor</label>
+            </value>
+            <value>
+                <fullName>Non-profit Organisation</fullName>
+                <default>false</default>
+                <label>Non-profit Organisation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

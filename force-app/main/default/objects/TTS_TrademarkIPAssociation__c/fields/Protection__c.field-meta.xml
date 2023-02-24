@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Protection__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Protection</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>TTS_Protection__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Trademark</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>TTS_Protection__c</referenceTo>
+    <relationshipLabel>Trademark Class Associations</relationshipLabel>
+    <relationshipName>Trademark_Class_Associations</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

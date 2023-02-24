@@ -1,163 +1,379 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>TTS</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>TTS_Mentoring_Manager</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>TTS_Space_Manager</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Mentoring_Interest__c.Contact__c</field>
+        <field>TTS_Applicant__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Mentoring_Interest__c.Ranking__c</field>
+        <field>TTS_Applicant__c.IP_External_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Mentoring_Interest__c.Selected_Mentor__c</field>
+        <field>TTS_Applicant__c.Individual_Contact__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Applicable_Industries__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Expiry_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Mentee__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Mentor__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Mentoring_End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Mentoring_Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Overview__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Mentoring_Opportunity__c.Requested_Skills__c</field>
+        <field>TTS_Applicant__c.Lead_Applicant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>TTS_Mentoring_Opportunity__c.Total_Selected_Interests__c</field>
+        <field>TTS_Applicant__c.Protection_Title__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Fee__c.Type__c</field>
+        <field>TTS_Applicant__c.Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant_Contact__c.End_Date__c</field>
+        <field>TTS_Protection_Claim__c.Claim__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant_Contact__c.Is_Current_Contact__c</field>
+        <field>TTS_Protection_Claim__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant_Contact__c.Is_Primary_Contact__c</field>
+        <field>TTS_Protection_Family__c.Additional_notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant_Contact__c.Start_Date__c</field>
+        <field>TTS_Protection_Family__c.Earliest_Priority_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant__c.Account__c</field>
+        <field>TTS_Protection_Family__c.Technology__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant__c.Contact__c</field>
+        <field>TTS_Protection_Litigation__c.Appeal_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant__c.Current_Tenant__c</field>
+        <field>TTS_Protection_Litigation__c.Applicant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant__c.End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>TTS_Space_Tenant__c.Tenant_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>TTS_Space_Tenant__c.Total_Active_Contacts__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>TTS_Space_Tenant__c.Total_Contacts__c</field>
+        <field>TTS_Protection_Litigation__c.Case_Number_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Space_Tenant__c.Type__c</field>
+        <field>TTS_Protection_Litigation__c.Case_Outcome__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Court__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Damages_Awarded__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Damages_Sought__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Defendant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Filing_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Settlement_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Settlement_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Attorney__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Date_of_Creation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Examination_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Expiration_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Filing_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Issuance_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Jurisdiction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Patent_Application_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Patent_Application_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Patent_Classification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Patent_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Patent_number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Priority_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Protection_Family__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Protection_Owner_Individual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Protection_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Publication_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Technology__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Trademark_registration_number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.United_States_Patent_Classification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Work_Format_Detail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Work_Format__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_TrademarkIPAssociation__c.Protection__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Agreed_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Campaign__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Actual_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Contract__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Expected_Payment_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_External_Payment_Reference__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Internal_Payment_Reference__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Opportunity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Purchase_Order__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Related_IP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.IP_Transaction_Date_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Protection__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Space_Subscription_Fee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>TTS_Mentoring_Interest__c-Mentoring Interest Layout</layout>
+        <layout>TTS_Applicant__c-Applicant Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>TTS_Mentoring_Opportunity__c-Mentoring Opportunity Layout</layout>
+        <layout>TTS_Protection_Claim__c-Protection Claim Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>TTS_Space_Fee__c-Space Fee Layout</layout>
+        <layout>TTS_Protection_Family__c-Protection Family Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>TTS_Space_Tenant_Contact__c-Tenant Contact Layout</layout>
+        <layout>TTS_Protection_Litigation__c-Protection Litigation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>TTS_Space_Tenant__c-Space Tenant Layout</layout>
+        <layout>TTS_Protection__c-Copyright Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>TTS_Space__c-Space Layout</layout>
+        <layout>TTS_Protection__c-Copyright Layout</layout>
+        <recordType>TTS_Protection__c.Copyright</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Protection__c-Copyright Layout</layout>
+        <recordType>TTS_Protection__c.Patent</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Protection__c-Copyright Layout</layout>
+        <recordType>TTS_Protection__c.Trademark</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Protection__c-Trade Secret</layout>
+        <recordType>TTS_Protection__c.Trade_Secret</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_TrademarkIPAssociation__c-Trademark Class Association Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Transaction__c-Transaction Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Transaction__c-Transaction Layout</layout>
+        <recordType>TTS_Transaction__c.General_Expense_or_Fee</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Transaction__c-Transaction Layout</layout>
+        <recordType>TTS_Transaction__c.Patent_Expense</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TTS_Transaction__c-Transaction Layout</layout>
+        <recordType>TTS_Transaction__c.Space_Fee</recordType>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -165,7 +381,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>TTS_Mentoring_Interest__c</object>
+        <object>TTS_Applicant__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -174,7 +390,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>TTS_Mentoring_Opportunity__c</object>
+        <object>TTS_Protection_Claim__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -183,7 +399,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>TTS_Space_Tenant_Contact__c</object>
+        <object>TTS_Protection_Family__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -192,23 +408,93 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>TTS_Space_Tenant__c</object>
+        <object>TTS_Protection_Litigation__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>TTS_Protection__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>TTS_TrademarkIPAssociation__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>TTS_Transaction__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Protection__c.Copyright</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Protection__c.Patent</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Protection__c.Trade_Secret</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Protection__c.Trademark</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Transaction__c.General_Expense_or_Fee</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Transaction__c.Patent_Expense</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>TTS_Transaction__c.Space_Fee</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
-        <tab>TTS_Mentoring_Interest__c</tab>
+        <tab>TTS_Applicant__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>TTS_Mentoring_Opportunity__c</tab>
+        <tab>TTS_Protection_Claim__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>TTS_Space_Tenant_Contact__c</tab>
+        <tab>TTS_Protection_Family__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>TTS_Space_Tenant__c</tab>
+        <tab>TTS_Protection_Litigation__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>TTS_Protection__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>TTS_Transaction__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>

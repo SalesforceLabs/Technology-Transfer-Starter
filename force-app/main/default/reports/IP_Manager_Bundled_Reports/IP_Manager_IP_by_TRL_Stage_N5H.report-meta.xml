@@ -8,15 +8,15 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Funnel</chartType>
+        <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
         <groupingColumn>TTS_Technology__c.TRL__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>false</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>true</showTotal>
         <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
@@ -26,47 +26,22 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CUST_NAME</field>
-    </columns>
-    <columns>
         <field>TTS_Technology__c.IP_Compact_Title__c</field>
     </columns>
     <columns>
-        <field>TTS_Technology__c.IP_Principal_Inventor_PI__c</field>
-    </columns>
-    <columns>
-        <field>TTS_Technology__c.IP_Category__c</field>
-    </columns>
-    <columns>
-        <field>TTS_Technology__c.IP_Disclosure_Date__c</field>
-    </columns>
-    <columns>
-        <field>TTS_Technology__c.IP_Public_Disclosure__c</field>
-    </columns>
-    <columns>
-        <field>TTS_Technology__c.IP_Status__c</field>
+        <field>CUST_NAME</field>
     </columns>
     <columns>
         <field>CUST_CREATED_NAME</field>
     </columns>
     <description>Shows IP Records grouped by Current TRL Stage (Excluding Draft Disclosures)</description>
-    <filter>
-        <criteriaItems>
-            <column>TTS_Technology__c.IP_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Draft,Disclosure Review,Closed - Lost</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>TTS_Technology__c.TRL__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IP - IP by TRL Stage</name>
+    <name>Technologies by TRL</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -79,7 +54,7 @@
     <sortColumn>CUST_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>TTS_Technology__c.IP_Disclosure_Date__c</dateColumn>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

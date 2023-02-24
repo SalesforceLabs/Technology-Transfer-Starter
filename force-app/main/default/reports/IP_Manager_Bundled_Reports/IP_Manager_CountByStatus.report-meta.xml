@@ -55,7 +55,6 @@
             <operator>notEqual</operator>
             <value>Draft</value>
         </criteriaItems>
-        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
@@ -63,7 +62,7 @@
         <field>TTS_Technology__c.IP_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IP - IP by Status</name>
+    <name>Technology by Status</name>
     <params>
         <name>co</name>
         <value>1</value>

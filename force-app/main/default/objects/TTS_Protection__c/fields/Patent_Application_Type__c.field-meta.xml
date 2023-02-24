@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patent_Application_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Type of Patent Application for this Protection Record</inlineHelpText>
+    <label>Patent Application Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Continuation</fullName>
+                <default>false</default>
+                <label>Continuation</label>
+            </value>
+            <value>
+                <fullName>Divisional</fullName>
+                <default>false</default>
+                <label>Divisional</label>
+            </value>
+            <value>
+                <fullName>National</fullName>
+                <default>false</default>
+                <label>National</label>
+            </value>
+            <value>
+                <fullName>PCT</fullName>
+                <default>false</default>
+                <label>PCT</label>
+            </value>
+            <value>
+                <fullName>Provisional</fullName>
+                <default>false</default>
+                <label>Provisional</label>
+            </value>
+            <value>
+                <fullName>Reissue</fullName>
+                <default>false</default>
+                <label>Reissue</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

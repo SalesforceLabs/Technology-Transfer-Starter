@@ -2,9 +2,16 @@
   "packageDirectories": [
     {
       "path": "force-app",
+      "package": "Technology Transfer Starter",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": "",
       "default": true
     }
   ],
-  "namespace": null,
-  "sourceApiVersion": "57.0"
+  "namespace": "techstarter",
+  "sourceApiVersion": "57.0",
+  "packageAliases": {
+    "Technology Transfer Starter": "0HoDm000000CaRvKAK"
+  }
 }

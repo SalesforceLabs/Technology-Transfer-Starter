@@ -164,21 +164,17 @@
     <pluralLabel>Applicants</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Patent__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_External_Reference__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Lead_Applicant__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>IP_External_Reference__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Patent__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CREATED_DATE</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>IP_External_Reference__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Account__c</searchFilterFields>
-        <searchFilterFields>Patent__c</searchFilterFields>
         <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Patent__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Lead_Applicant__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>IP_External_Reference__c</searchResultsAdditionalFields>

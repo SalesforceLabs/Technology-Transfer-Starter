@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>TTS_Protection__c</entityName>
+    <fieldName>Stage__c</fieldName>
+    <masterLabel>Patent Stage Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Protection_Status__c</fieldNames>
+        <fieldNames>Type__c</fieldNames>
+        <picklistValueName>Assessment</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Examination_Date__c</fieldNames>
+        <picklistValueName>Examination</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Filing_Date__c</fieldNames>
+        <fieldNames>Patent_Application_Type__c</fieldNames>
+        <fieldNames>Patent_Classification__c</fieldNames>
+        <fieldNames>Patent_Application_Number__c</fieldNames>
+        <fieldNames>Attorney__c</fieldNames>
+        <picklistValueName>Filing</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Patent_number__c</fieldNames>
+        <fieldNames>Patent_Term__c</fieldNames>
+        <fieldNames>Issuance_Date__c</fieldNames>
+        <picklistValueName>Issuance</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Expiration_Date__c</fieldNames>
+        <picklistValueName>Maintenance</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Patent</recordTypeName>
+</PathAssistant>

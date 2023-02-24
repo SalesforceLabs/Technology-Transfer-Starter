@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Work_Format_Detail__c</fullName>
+    <externalId>false</externalId>
+    <label>Work Format Detail</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Work_Format__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Application</fullName>
+                <default>false</default>
+                <label>Application</label>
+            </value>
+            <value>
+                <fullName>Architectural Plan</fullName>
+                <default>false</default>
+                <label>Architectural Plan</label>
+            </value>
+            <value>
+                <fullName>Audio Recording</fullName>
+                <default>false</default>
+                <label>Audio Recording</label>
+            </value>
+            <value>
+                <fullName>Building</fullName>
+                <default>false</default>
+                <label>Building</label>
+            </value>
+            <value>
+                <fullName>Choreography</fullName>
+                <default>false</default>
+                <label>Choreography</label>
+            </value>
+            <value>
+                <fullName>Computer Program</fullName>
+                <default>false</default>
+                <label>Computer Program</label>
+            </value>
+            <value>
+                <fullName>Dance Composition</fullName>
+                <default>false</default>
+                <label>Dance Composition</label>
+            </value>
+            <value>
+                <fullName>Dance Performance</fullName>
+                <default>false</default>
+                <label>Dance Performance</label>
+            </value>
+            <value>
+                <fullName>Design</fullName>
+                <default>false</default>
+                <label>Design</label>
+            </value>
+            <value>
+                <fullName>Drawing</fullName>
+                <default>false</default>
+                <label>Drawing</label>
+            </value>
+            <value>
+                <fullName>Essay</fullName>
+                <default>false</default>
+                <label>Essay</label>
+            </value>
+            <value>
+                <fullName>Interview</fullName>
+                <default>false</default>
+                <label>Interview</label>
+            </value>
+            <value>
+                <fullName>Live Performance</fullName>
+                <default>false</default>
+                <label>Live Performance</label>
+            </value>
+            <value>
+                <fullName>Lyrics</fullName>
+                <default>false</default>
+                <label>Lyrics</label>
+            </value>
+            <value>
+                <fullName>Movie</fullName>
+                <default>false</default>
+                <label>Movie</label>
+            </value>
+            <value>
+                <fullName>Music Recording</fullName>
+                <default>false</default>
+                <label>Music Recording</label>
+            </value>
+            <value>
+                <fullName>Novel</fullName>
+                <default>false</default>
+                <label>Novel</label>
+            </value>
+            <value>
+                <fullName>Painting</fullName>
+                <default>false</default>
+                <label>Painting</label>
+            </value>
+            <value>
+                <fullName>Play</fullName>
+                <default>false</default>
+                <label>Play</label>
+            </value>
+            <value>
+                <fullName>Poem</fullName>
+                <default>false</default>
+                <label>Poem</label>
+            </value>
+            <value>
+                <fullName>Recording</fullName>
+                <default>false</default>
+                <label>Recording</label>
+            </value>
+            <value>
+                <fullName>Sculpture</fullName>
+                <default>false</default>
+                <label>Sculpture</label>
+            </value>
+            <value>
+                <fullName>Sheet Music</fullName>
+                <default>false</default>
+                <label>Sheet Music</label>
+            </value>
+            <value>
+                <fullName>Speech</fullName>
+                <default>false</default>
+                <label>Speech</label>
+            </value>
+            <value>
+                <fullName>Statue</fullName>
+                <default>false</default>
+                <label>Statue</label>
+            </value>
+            <value>
+                <fullName>Television Show</fullName>
+                <default>false</default>
+                <label>Television Show</label>
+            </value>
+            <value>
+                <fullName>Video Game</fullName>
+                <default>false</default>
+                <label>Video Game</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Architectural</controllingFieldValue>
+            <valueName>Architectural Plan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Architectural</controllingFieldValue>
+            <valueName>Building</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Architectural</controllingFieldValue>
+            <valueName>Design</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Audiovisual</controllingFieldValue>
+            <valueName>Movie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Audiovisual</controllingFieldValue>
+            <valueName>Television Show</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Audiovisual</controllingFieldValue>
+            <valueName>Video Game</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choreographic</controllingFieldValue>
+            <valueName>Choreography</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choreographic</controllingFieldValue>
+            <valueName>Dance Composition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Literary</controllingFieldValue>
+            <valueName>Essay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Literary</controllingFieldValue>
+            <valueName>Novel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Literary</controllingFieldValue>
+            <valueName>Poem</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Musical</controllingFieldValue>
+            <valueName>Lyrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Musical</controllingFieldValue>
+            <valueName>Recording</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Musical</controllingFieldValue>
+            <valueName>Sheet Music</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Performing Arts</controllingFieldValue>
+            <valueName>Dance Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Performing Arts</controllingFieldValue>
+            <valueName>Live Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Performing Arts</controllingFieldValue>
+            <valueName>Play</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sculptural</controllingFieldValue>
+            <valueName>Sculpture</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sculptural</controllingFieldValue>
+            <valueName>Statue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Software</controllingFieldValue>
+            <valueName>Application</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Software</controllingFieldValue>
+            <valueName>Computer Program</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound</controllingFieldValue>
+            <valueName>Audio Recording</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound</controllingFieldValue>
+            <valueName>Music Recording</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Visual</controllingFieldValue>
+            <valueName>Drawing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Visual</controllingFieldValue>
+            <valueName>Painting</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

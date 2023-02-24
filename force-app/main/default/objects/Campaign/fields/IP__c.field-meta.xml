@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The associated IP record for which this campaign will be marketing for.</description>
+    <description>The associated Technology record for which this campaign will be marketing for.</description>
     <externalId>false</externalId>
     <label>IP</label>
     <referenceTo>TTS_Technology__c</referenceTo>

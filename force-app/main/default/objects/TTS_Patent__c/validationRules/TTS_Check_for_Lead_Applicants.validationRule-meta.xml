@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>TTS_Check_for_Lead_Applicants</fullName>
-    <active>true</active>
-    <description>Checks to ensure that there is no more than one lead applicant on a Patent.</description>
-    <errorConditionFormula>X_Validation_TotalLeadApplicants__c &gt; 1</errorConditionFormula>
-    <errorMessage>There can only be ONE lead applicant on a Patent Application. Please review other applicants in the list and update them as required.</errorMessage>
-</ValidationRule>

@@ -49,7 +49,7 @@
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Direction__c</fieldItem>
-                <identifier>Recordipmanagement__Direction__cField</identifier>
+                <identifier>Recordtechstarter__Direction__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-d969d312-2620-452e-8994-2df0af59fec9</name>
@@ -73,7 +73,7 @@
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Type__c</fieldItem>
-                <identifier>Recordipmanagement__Type__cField</identifier>
+                <identifier>Recordtechstarter__Type__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-c56a33ac-506e-473d-8858-1ceb928fe41f</name>
@@ -111,7 +111,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_External_Payment_Reference__c</fieldItem>
-                <identifier>Recordipmanagement__IP_External_Payment_Reference__cField</identifier>
+                <identifier>Recordtechstarter__IP_External_Payment_Reference__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -121,7 +121,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Internal_Payment_Reference__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Internal_Payment_Reference__cField</identifier>
+                <identifier>Recordtechstarter__IP_Internal_Payment_Reference__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-7af5a66b-c9f0-4c5b-8ba2-d5716d486ca2</name>
@@ -135,7 +135,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Purchase_Order__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Purchase_Order__cField</identifier>
+                <identifier>Recordtechstarter__IP_Purchase_Order__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-a413dfb9-27da-4e8e-86ec-61d61df450e2</name>
@@ -173,7 +173,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Transaction_Date_Time__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Transaction_Date_Time__cField</identifier>
+                <identifier>Recordtechstarter__IP_Transaction_Date_Time__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -183,7 +183,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Agreed_Amount__c</fieldItem>
-                <identifier>Recordipmanagement__Agreed_Amount__cField</identifier>
+                <identifier>Recordtechstarter__Agreed_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-5734b471-3da3-4549-b2d8-af84e4915ba6</name>
@@ -197,7 +197,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Expected_Payment_Date__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Expected_Payment_Date__cField</identifier>
+                <identifier>Recordtechstarter__IP_Expected_Payment_Date__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -207,7 +207,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Actual_Amount__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Actual_Amount__cField</identifier>
+                <identifier>Recordtechstarter__IP_Actual_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e36ca2c0-e36c-4bb3-be07-c0cf3aed7e47</name>
@@ -426,17 +426,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Related_IP__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Related_IP__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.IP_Related_Patent__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Related_Patent__cField</identifier>
+                <identifier>Recordtechstarter__IP_Related_IP__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-a4d6fe46-2fd3-41ff-99cc-051ff6ef4582</name>
@@ -450,7 +440,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Contract__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Contract__cField</identifier>
+                <identifier>Recordtechstarter__IP_Contract__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -460,7 +450,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Opportunity__c</fieldItem>
-                <identifier>Recordipmanagement__IP_Opportunity__cField</identifier>
+                <identifier>Recordtechstarter__IP_Opportunity__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-1d6ddad4-c717-49f9-8c37-9bebdd70d3f5</name>
@@ -582,6 +572,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>

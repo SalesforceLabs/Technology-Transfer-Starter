@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Protection_Owner_Individual__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Protection Owner (Individual)</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Owned Protections</relationshipLabel>
+    <relationshipName>Protections_Owner</relationshipName>
+    <required>false</required>
+    <securityClassification>Confidential</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

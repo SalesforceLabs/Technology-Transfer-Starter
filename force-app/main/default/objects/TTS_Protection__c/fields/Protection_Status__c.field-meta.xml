@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Protection_Status__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The current status of the protection</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pending</fullName>
+                <default>true</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>Issued</fullName>
+                <default>false</default>
+                <label>Issued</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Expired</fullName>
+                <default>false</default>
+                <label>Expired</label>
+            </value>
+            <value>
+                <fullName>Pending Opposition</fullName>
+                <default>false</default>
+                <label>Pending Opposition</label>
+            </value>
+            <value>
+                <fullName>Application pending</fullName>
+                <default>false</default>
+                <label>Application pending</label>
+            </value>
+            <value>
+                <fullName>Registration granted</fullName>
+                <default>false</default>
+                <label>Registration granted</label>
+            </value>
+            <value>
+                <fullName>Infringement alleged</fullName>
+                <default>false</default>
+                <label>Infringement alleged</label>
+            </value>
+            <value>
+                <fullName>Infringement confirmed</fullName>
+                <default>false</default>
+                <label>Infringement confirmed</label>
+            </value>
+            <value>
+                <fullName>License granted</fullName>
+                <default>false</default>
+                <label>License granted</label>
+            </value>
+            <value>
+                <fullName>License terminated</fullName>
+                <default>false</default>
+                <label>License terminated</label>
+            </value>
+            <value>
+                <fullName>Assignment recorded</fullName>
+                <default>false</default>
+                <label>Assignment recorded</label>
+            </value>
+            <value>
+                <fullName>Renewal required</fullName>
+                <default>false</default>
+                <label>Renewal required</label>
+            </value>
+            <value>
+                <fullName>Copyright expired</fullName>
+                <default>false</default>
+                <label>Copyright expired</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+                <label>Inactive</label>
+            </value>
+            <value>
+                <fullName>Suspected breach</fullName>
+                <default>false</default>
+                <label>Suspected breach</label>
+            </value>
+            <value>
+                <fullName>Confirmed breach</fullName>
+                <default>false</default>
+                <label>Confirmed breach</label>
+            </value>
+            <value>
+                <fullName>Litigation pending</fullName>
+                <default>false</default>
+                <label>Litigation pending</label>
+            </value>
+            <value>
+                <fullName>Litigation resolved</fullName>
+                <default>false</default>
+                <label>Litigation resolved</label>
+            </value>
+            <value>
+                <fullName>Abandoned</fullName>
+                <default>false</default>
+                <label>Abandoned</label>
+            </value>
+            <value>
+                <fullName>Application refused</fullName>
+                <default>false</default>
+                <label>Application refused</label>
+            </value>
+            <value>
+                <fullName>Registered</fullName>
+                <default>false</default>
+                <label>Registered</label>
+            </value>
+            <value>
+                <fullName>Renewal due</fullName>
+                <default>false</default>
+                <label>Renewal due</label>
+            </value>
+            <value>
+                <fullName>Renewal granted</fullName>
+                <default>false</default>
+                <label>Renewal granted</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

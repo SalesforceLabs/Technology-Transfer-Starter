@@ -3,7 +3,7 @@ project:
     package:
         name: Technology-Transfer-Starter
         api_version: "57.0"
-        namespace: ipmanagement
+        namespace: techstarter
     git:
         default_branch: "main"
         repo_url: https://github.com/SFDO-SE/Technology-Transfer-Starter
@@ -45,11 +45,9 @@ tasks:
                 - Entitlement
                 - IP_Inventor__c
                 - Applicant__c
-                - IP_Related_Patent__c
                 - TrademarkIPAssociation__c
                 - Campaign
                 - Opportunity
-                - Patent__c
                 - IP__c
                 - Contact
                 - Trademark_Classes__c
