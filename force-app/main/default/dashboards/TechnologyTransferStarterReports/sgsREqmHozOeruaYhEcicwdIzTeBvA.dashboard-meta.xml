@@ -33,7 +33,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>IP count by Status</header>
+                <header>Technology count by Status</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>IP_Manager_Bundled_Reports/IP_Manager_CountByStatus</report>
@@ -162,7 +162,7 @@
     <isGridLayout>true</isGridLayout>
     <runningUser>test-m8pr2js5w4bg@example.com</runningUser>
     <textColor>#000000</textColor>
-    <title>IP Disclosure Dashboard</title>
+    <title>Technology Disclosure Dashboard</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

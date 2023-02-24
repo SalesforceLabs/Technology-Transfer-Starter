@@ -118,41 +118,6 @@ Insert IP_Inventor__c:
       table: IP__c
     IP_Original_Inventor_Name__c:
       table: Contact
-Insert Patent__c:
-  sf_object: Patent__c
-  fields:
-    - IP_Country__c
-    - IP_Deadline_Date__c
-    - IP_Deadline_Description__c
-    - IP_Disclosure_Date__c
-    - IP_Effective_Date__c
-    - IP_Examination_Deadline_Date__c
-    - IP_Examination_Requested__c
-    - IP_Examination_Status__c
-    - IP_Expiry_Date__c
-    - IP_File_Date__c
-    - IP_Grant_Number__c
-    - IP_Market_Findings__c
-    - IP_Patent_Advisories__c
-    - IP_Patent_Application_Number__c
-    - IP_Patent_Application_Type__c
-    - IP_Patent_Considerations__c
-    - IP_Patent_IsGranted__c
-    - IP_Patent_Stage__c
-    - IP_Priority_Date__c
-    - IP_Provisional_Future__c
-    - IP_Publication_Date__c
-    - IP_Purchase_Order_Reference__c
-    - IP_Renewal_Date__c
-  lookups:
-    IP_Lead_Applicant__c:
-      table: Account
-    IP_Patent_Agent__c:
-      table: Account
-    IP_Patent_Attorney__c:
-      table: Contact
-    IP__c:
-      table: IP__c
 Insert TrademarkIPAssociation__c:
   sf_object: TrademarkIPAssociation__c
   lookups:
@@ -168,17 +133,6 @@ Insert Applicant__c:
   lookups:
     Account__c:
       table: Account
-    Patent__c:
-      table: Patent__c
-Insert IP_Related_Patent__c:
-  sf_object: IP_Related_Patent__c
-  fields:
-    - IP_Relationship_Details__c
-  lookups:
-    IP_Patent__c:
-      table: Patent__c
-    IP_Related_Patent__c:
-      table: Patent__c
 Insert Opportunity:
   sf_object: Opportunity
   fields:
@@ -216,8 +170,6 @@ Insert IP_Transaction__c:
       table: Opportunity
     IP_Related_IP__c:
       table: IP__c
-    IP_Related_Patent__c:
-      table: Patent__c
 Insert Contributor__c:
   sf_object: Contributor__c
   fields:

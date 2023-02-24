@@ -38,7 +38,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>IP Inventor Default</masterLabel>
+    <masterLabel>Inventor Default</masterLabel>
     <sobjectType>TTS_Inventor__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>

@@ -5,13 +5,14 @@
       "package": "Technology Transfer Starter",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
-      "versionDescription": "",
-      "default": true
+      "versionDescription": ""
     }
   ],
   "namespace": "techstarter",
+  "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "57.0",
   "packageAliases": {
-    "Technology Transfer Starter": "0HoDm000000CaRvKAK"
+    "Technology Transfer Starter": "0HoDm000000CaS5KAK",
+    "Technology Transfer Starter@0.1.0-1": "04tDm000000DGl2IAG"
   }
 }

@@ -7476,7 +7476,6 @@ CREATE TABLE "Applicant__c" (
 	"IP_External_Reference__c" VARCHAR(255), 
 	"Lead_Applicant__c" VARCHAR(255), 
 	"Account__c" VARCHAR(255), 
-	"Patent__c" VARCHAR(255), 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Campaign" (
@@ -16200,13 +16199,6 @@ CREATE TABLE "IP_Recipient__c" (
 	PRIMARY KEY (id)
 );
 INSERT INTO "IP_Recipient__c" VALUES(1,'5000.0','','2019-12-20T20:00:00.000+0000','','1991','','1');
-CREATE TABLE "IP_Related_Patent__c" (
-	id INTEGER NOT NULL, 
-	"IP_Relationship_Details__c" VARCHAR(255), 
-	"IP_Patent__c" VARCHAR(255), 
-	"IP_Related_Patent__c" VARCHAR(255), 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "IP_Success_Plans__c" (
 	id INTEGER NOT NULL, 
 	"Title__c" VARCHAR(255), 
@@ -16227,7 +16219,6 @@ CREATE TABLE "IP_Transaction__c" (
 	"IP_Contract__c" VARCHAR(255), 
 	"IP_Opportunity__c" VARCHAR(255), 
 	"IP_Related_IP__c" VARCHAR(255), 
-	"IP_Related_Patent__c" VARCHAR(255), 
 	PRIMARY KEY (id)
 );
 INSERT INTO "IP_Transaction__c" VALUES(1,'5000.0','Outgoing','5000.0','2019-11-05T20:00:00.000+0000','9080980','PAT23234','P908908','2019-11-03T20:00:00.000+0000','Patent - Attorney','','','1','1');
@@ -17338,38 +17329,6 @@ INSERT INTO "Opportunity" VALUES(756,'2021-03-30','False','Research Council A - 
 -- INSERT INTO "Opportunity" VALUES(1020,'2022-05-10','False','Vera Reinhold Donation 5/10/2022','Pledged','','','','','');
 -- INSERT INTO "Opportunity" VALUES(1021,'2022-06-15','False','Linda Jenkins Donation 6/15/2022','Pledged','12','59','','','');
 -- INSERT INTO "Opportunity" VALUES(1022,'2022-06-10','False','Vera Reinhold Donation 6/10/2022','Pledged','','','','','');
-CREATE TABLE "Patent__c" (
-	id INTEGER NOT NULL, 
-	"IP_Country__c" VARCHAR(255), 
-	"IP_Deadline_Date__c" VARCHAR(255), 
-	"IP_Deadline_Description__c" VARCHAR(255), 
-	"IP_Disclosure_Date__c" VARCHAR(255), 
-	"IP_Effective_Date__c" VARCHAR(255), 
-	"IP_Examination_Deadline_Date__c" VARCHAR(255), 
-	"IP_Examination_Requested__c" VARCHAR(255), 
-	"IP_Examination_Status__c" VARCHAR(255), 
-	"IP_Expiry_Date__c" VARCHAR(255), 
-	"IP_File_Date__c" VARCHAR(255), 
-	"IP_Grant_Number__c" VARCHAR(255), 
-	"IP_Market_Findings__c" VARCHAR(255), 
-	"IP_Patent_Advisories__c" VARCHAR(255), 
-	"IP_Patent_Application_Number__c" VARCHAR(255), 
-	"IP_Patent_Application_Type__c" VARCHAR(255), 
-	"IP_Patent_Considerations__c" VARCHAR(255), 
-	"IP_Patent_IsGranted__c" VARCHAR(255), 
-	"IP_Patent_Stage__c" VARCHAR(255), 
-	"IP_Priority_Date__c" VARCHAR(255), 
-	"IP_Provisional_Future__c" VARCHAR(255), 
-	"IP_Publication_Date__c" VARCHAR(255), 
-	"IP_Purchase_Order_Reference__c" VARCHAR(255), 
-	"IP_Renewal_Date__c" VARCHAR(255), 
-	"IP_Lead_Applicant__c" VARCHAR(255), 
-	"IP_Patent_Agent__c" VARCHAR(255), 
-	"IP_Patent_Attorney__c" VARCHAR(255), 
-	"IP__c" VARCHAR(255), 
-	PRIMARY KEY (id)
-);
-INSERT INTO "Patent__c" VALUES(1,'United Kingdom (GB)','2020-02-19','','2019-12-20T20:00:00.000+0000','','','False','Not Currently Under Examination','2025-12-20','2020-02-18','','','','','First Filing','','False','Completed','2019-12-18','PCT and Provisional','','P12345678','','','1991','','1');
 CREATE TABLE "TrademarkIPAssociation__c" (
 	id INTEGER NOT NULL, 
 	"Trademark_Class__c" VARCHAR(255), 

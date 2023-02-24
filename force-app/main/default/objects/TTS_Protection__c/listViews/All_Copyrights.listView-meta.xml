@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Copyrights</fullName>
+    <columns>NAME</columns>
+    <columns>Title__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Protection_Status__c</columns>
+    <columns>Work_Format__c</columns>
+    <columns>Work_Format_Detail__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>TTS_Protection__c.Copyright</value>
+    </filters>
+    <label>All Copyrights</label>
+</ListView>

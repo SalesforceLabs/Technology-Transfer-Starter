@@ -1,7 +1,7 @@
 project:
     name: Technology-Transfer-Starter
     package:
-        name: Technology-Transfer-Starter
+        name: Technology Transfer Starter
         api_version: "57.0"
         namespace: techstarter
     git:
