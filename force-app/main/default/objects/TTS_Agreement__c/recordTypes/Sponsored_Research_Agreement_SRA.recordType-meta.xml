@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sponsored_Research_Agreement_SRA</fullName>
+    <active>true</active>
+    <description>An agreement between a company and a university or research institution for the sponsorship of research and development activities</description>
+    <label>Sponsored Research Agreement (SRA)</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>Basic SRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clinical Trial SRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collaborative SRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government SRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master SRA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

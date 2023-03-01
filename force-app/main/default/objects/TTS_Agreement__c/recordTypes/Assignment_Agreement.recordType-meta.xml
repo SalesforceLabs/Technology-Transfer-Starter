@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assignment_Agreement</fullName>
+    <active>true</active>
+    <description>An agreement between two parties that transfers ownership of intellectual property</description>
+    <label>Assignment Agreement</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>Copyright Assignment Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invention Assignment Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent Assignment Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Secret Assignment Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trademark Assignment Agreement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

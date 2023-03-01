@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Joint_Venture_Agreement</fullName>
+    <active>true</active>
+    <description>An agreement between two or more organizations for the formation of a new entity that will carry out a specific business activity</description>
+    <label>Joint Venture Agreement</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>Contractual Joint Venture %28COJV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cooperative Joint Venture %28CJV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equity Joint Venture %28EJV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Joint Venture %28PJV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic Alliance %28SA%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

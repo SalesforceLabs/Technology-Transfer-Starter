@@ -5,7 +5,7 @@
     <description>Confirms that experimental verification has taken place to verify the IP</description>
     <externalId>false</externalId>
     <inlineHelpText>Has the IP been tested and verified through experimental verification? Check this check box if yes.</inlineHelpText>
-    <label>Experimental Verification</label>
+    <label>Experimental Verification Complete</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

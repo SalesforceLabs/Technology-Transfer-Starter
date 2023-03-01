@@ -131,7 +131,6 @@
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>IP_Default</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
@@ -166,16 +165,14 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Technologies</pluralLabel>
-    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
         <customTabListAdditionalFields>IP_Title__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_Disclosure_Date__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <lookupDialogsAdditionalFields>IP_Title__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>IP_Status__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>IP_Title__c</lookupPhoneDialogsAdditionalFields>

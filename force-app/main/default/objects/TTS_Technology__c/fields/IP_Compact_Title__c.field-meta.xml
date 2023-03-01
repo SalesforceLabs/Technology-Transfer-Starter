@@ -5,7 +5,8 @@
     <externalId>false</externalId>
     <formula>Name &amp; &quot; - &quot; &amp;  IP_Title__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>IP Compact Title</label>
+    <inlineHelpText>System Field which combines the Name and Title Fields on the Technology to assist with reporting</inlineHelpText>
+    <label>Compact Title</label>
     <required>false</required>
     <securityClassification>Internal</securityClassification>
     <trackHistory>false</trackHistory>

@@ -4,8 +4,8 @@
     <businessStatus>Active</businessStatus>
     <externalId>false</externalId>
     <inlineHelpText>What are possible uses or applications of this Intellectual Property? In addition to direct applications, are there any other uses that might be realised in the future?</inlineHelpText>
-    <label>IP Utility</label>
-    <length>32768</length>
+    <label>Utility Details</label>
+    <length>130000</length>
     <securityClassification>Confidential</securityClassification>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

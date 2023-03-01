@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agreement_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Agreement Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>End User License Agreement (EULA)</fullName>
+                <default>false</default>
+                <label>End User License Agreement (EULA)</label>
+            </value>
+            <value>
+                <fullName>Software License Agreement</fullName>
+                <default>false</default>
+                <label>Software License Agreement</label>
+            </value>
+            <value>
+                <fullName>Patent License Agreement</fullName>
+                <default>false</default>
+                <label>Patent License Agreement</label>
+            </value>
+            <value>
+                <fullName>Trademark License Agreement</fullName>
+                <default>false</default>
+                <label>Trademark License Agreement</label>
+            </value>
+            <value>
+                <fullName>Copyright License Agreement</fullName>
+                <default>false</default>
+                <label>Copyright License Agreement</label>
+            </value>
+            <value>
+                <fullName>Content License Agreement</fullName>
+                <default>false</default>
+                <label>Content License Agreement</label>
+            </value>
+            <value>
+                <fullName>Service Level Agreement (SLA)</fullName>
+                <default>false</default>
+                <label>Service Level Agreement (SLA)</label>
+            </value>
+            <value>
+                <fullName>Distribution Agreement</fullName>
+                <default>false</default>
+                <label>Distribution Agreement</label>
+            </value>
+            <value>
+                <fullName>Reseller Agreement</fullName>
+                <default>false</default>
+                <label>Reseller Agreement</label>
+            </value>
+            <value>
+                <fullName>Joint Development Agreement (JDA)</fullName>
+                <default>false</default>
+                <label>Joint Development Agreement (JDA)</label>
+            </value>
+            <value>
+                <fullName>Unilateral MTA</fullName>
+                <default>false</default>
+                <label>Unilateral MTA</label>
+            </value>
+            <value>
+                <fullName>Reciprocal MTA</fullName>
+                <default>false</default>
+                <label>Reciprocal MTA</label>
+            </value>
+            <value>
+                <fullName>Simple MTA</fullName>
+                <default>false</default>
+                <label>Simple MTA</label>
+            </value>
+            <value>
+                <fullName>UBMTA</fullName>
+                <default>false</default>
+                <label>UBMTA</label>
+            </value>
+            <value>
+                <fullName>International MTA</fullName>
+                <default>false</default>
+                <label>International MTA</label>
+            </value>
+            <value>
+                <fullName>Unilateral CA</fullName>
+                <default>false</default>
+                <label>Unilateral CA</label>
+            </value>
+            <value>
+                <fullName>Mutual CA</fullName>
+                <default>false</default>
+                <label>Mutual CA</label>
+            </value>
+            <value>
+                <fullName>Non-Disclosure Agreement (NDA)</fullName>
+                <default>false</default>
+                <label>Non-Disclosure Agreement (NDA)</label>
+            </value>
+            <value>
+                <fullName>Employee CA</fullName>
+                <default>false</default>
+                <label>Employee CA</label>
+            </value>
+            <value>
+                <fullName>Vendor CA</fullName>
+                <default>false</default>
+                <label>Vendor CA</label>
+            </value>
+            <value>
+                <fullName>Intellectual Property Assignment and Confidentiality Agreement (IPACA)</fullName>
+                <default>false</default>
+                <label>Intellectual Property Assignment and Confidentiality Agreement (IPACA)</label>
+            </value>
+            <value>
+                <fullName>Basic SRA</fullName>
+                <default>false</default>
+                <label>Basic SRA</label>
+            </value>
+            <value>
+                <fullName>Collaborative SRA</fullName>
+                <default>false</default>
+                <label>Collaborative SRA</label>
+            </value>
+            <value>
+                <fullName>Master SRA</fullName>
+                <default>false</default>
+                <label>Master SRA</label>
+            </value>
+            <value>
+                <fullName>Clinical Trial SRA</fullName>
+                <default>false</default>
+                <label>Clinical Trial SRA</label>
+            </value>
+            <value>
+                <fullName>Government SRA</fullName>
+                <default>false</default>
+                <label>Government SRA</label>
+            </value>
+            <value>
+                <fullName>Research Collaboration Agreement (RCA)</fullName>
+                <default>false</default>
+                <label>Research Collaboration Agreement (RCA)</label>
+            </value>
+            <value>
+                <fullName>Joint Venture Agreement (JVA)</fullName>
+                <default>false</default>
+                <label>Joint Venture Agreement (JVA)</label>
+            </value>
+            <value>
+                <fullName>Strategic Alliance Agreement (SAA)</fullName>
+                <default>false</default>
+                <label>Strategic Alliance Agreement (SAA)</label>
+            </value>
+            <value>
+                <fullName>Consortium Agreement (CA)</fullName>
+                <default>false</default>
+                <label>Consortium Agreement (CA)</label>
+            </value>
+            <value>
+                <fullName>Public-Private Partnership Agreement (PPP)</fullName>
+                <default>false</default>
+                <label>Public-Private Partnership Agreement (PPP)</label>
+            </value>
+            <value>
+                <fullName>Exclusive Option Agreement</fullName>
+                <default>false</default>
+                <label>Exclusive Option Agreement</label>
+            </value>
+            <value>
+                <fullName>Non-Exclusive Option Agreement</fullName>
+                <default>false</default>
+                <label>Non-Exclusive Option Agreement</label>
+            </value>
+            <value>
+                <fullName>Compound Option Agreement</fullName>
+                <default>false</default>
+                <label>Compound Option Agreement</label>
+            </value>
+            <value>
+                <fullName>Standard Option Agreement</fullName>
+                <default>false</default>
+                <label>Standard Option Agreement</label>
+            </value>
+            <value>
+                <fullName>Hybrid Option Agreement</fullName>
+                <default>false</default>
+                <label>Hybrid Option Agreement</label>
+            </value>
+            <value>
+                <fullName>Equity Joint Venture (EJV)</fullName>
+                <default>false</default>
+                <label>Equity Joint Venture (EJV)</label>
+            </value>
+            <value>
+                <fullName>Cooperative Joint Venture (CJV)</fullName>
+                <default>false</default>
+                <label>Cooperative Joint Venture (CJV)</label>
+            </value>
+            <value>
+                <fullName>Contractual Joint Venture (COJV)</fullName>
+                <default>false</default>
+                <label>Contractual Joint Venture (COJV)</label>
+            </value>
+            <value>
+                <fullName>Project Joint Venture (PJV)</fullName>
+                <default>false</default>
+                <label>Project Joint Venture (PJV)</label>
+            </value>
+            <value>
+                <fullName>Strategic Alliance (SA)</fullName>
+                <default>false</default>
+                <label>Strategic Alliance (SA)</label>
+            </value>
+            <value>
+                <fullName>Patent Assignment Agreement</fullName>
+                <default>false</default>
+                <label>Patent Assignment Agreement</label>
+            </value>
+            <value>
+                <fullName>Copyright Assignment Agreement</fullName>
+                <default>false</default>
+                <label>Copyright Assignment Agreement</label>
+            </value>
+            <value>
+                <fullName>Trademark Assignment Agreement</fullName>
+                <default>false</default>
+                <label>Trademark Assignment Agreement</label>
+            </value>
+            <value>
+                <fullName>Trade Secret Assignment Agreement</fullName>
+                <default>false</default>
+                <label>Trade Secret Assignment Agreement</label>
+            </value>
+            <value>
+                <fullName>Invention Assignment Agreement</fullName>
+                <default>false</default>
+                <label>Invention Assignment Agreement</label>
+            </value>
+            <value>
+                <fullName>General Consulting Agreement</fullName>
+                <default>false</default>
+                <label>General Consulting Agreement</label>
+            </value>
+            <value>
+                <fullName>Independent Contractor Agreement</fullName>
+                <default>false</default>
+                <label>Independent Contractor Agreement</label>
+            </value>
+            <value>
+                <fullName>Technical Consulting Agreement</fullName>
+                <default>false</default>
+                <label>Technical Consulting Agreement</label>
+            </value>
+            <value>
+                <fullName>Management Consulting Agreement</fullName>
+                <default>false</default>
+                <label>Management Consulting Agreement</label>
+            </value>
+            <value>
+                <fullName>Business Consulting Agreement</fullName>
+                <default>false</default>
+                <label>Business Consulting Agreement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

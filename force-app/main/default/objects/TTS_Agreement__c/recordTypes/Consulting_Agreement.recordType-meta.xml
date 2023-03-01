@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consulting_Agreement</fullName>
+    <active>true</active>
+    <description>An agreement between a company and an individual consultant for the provision of services related to the development, commercialization, or management of intellectual property</description>
+    <label>Consulting Agreement</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>Business Consulting Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Consulting Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Independent Contractor Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Consulting Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical Consulting Agreement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Usage_Restrictions__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Any restrictions on the use of the licensed product or service.</inlineHelpText>
+    <label>Usage Restrictions</label>
+    <length>130000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

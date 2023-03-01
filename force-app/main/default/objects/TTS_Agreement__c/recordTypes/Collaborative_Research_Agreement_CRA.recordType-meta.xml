@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Collaborative_Research_Agreement_CRA</fullName>
+    <active>true</active>
+    <description>An agreement between two or more organizations for the joint development of a technology or product.</description>
+    <label>Collaborative Research Agreement (CRA)</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>Consortium Agreement %28CA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joint Development Agreement %28JDA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joint Venture Agreement %28JVA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public-Private Partnership Agreement %28PPP%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research Collaboration Agreement %28RCA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic Alliance Agreement %28SAA%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -3,11 +3,11 @@
     <fullName>IP_ParentIP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <inlineHelpText>Parent IP</inlineHelpText>
-    <label>Parent IP</label>
+    <inlineHelpText>A related technology which this technology was derived from</inlineHelpText>
+    <label>Parent Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
-    <relationshipLabel>Related IP</relationshipLabel>
-    <relationshipName>Child_IP</relationshipName>
+    <relationshipLabel>Related Technologies</relationshipLabel>
+    <relationshipName>Child_Technology</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

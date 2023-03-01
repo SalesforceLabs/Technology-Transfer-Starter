@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <inlineHelpText>The related IP record for this transaction.</inlineHelpText>
-    <label>IP</label>
+    <label>Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>
     <relationshipName>Transactions</relationshipName>

@@ -629,7 +629,6 @@ IF(ISBLANK({!IP_Disclosure.IP_Principal_Inventor_PI__c}), {!$User.ContactId}, {!
         <queriedFields>IP_Prior_Art_detail__c</queriedFields>
         <queriedFields>IP_Public_Disclosure__c</queriedFields>
         <queriedFields>IP_Public_Disclosure_Details__c</queriedFields>
-        <queriedFields>RecordTypeId</queriedFields>
         <queriedFields>IP_Sponsored_Program__c</queriedFields>
         <queriedFields>IP_Status__c</queriedFields>
         <queriedFields>IP_Technical_Description__c</queriedFields>

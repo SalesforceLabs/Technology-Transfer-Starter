@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>TTS_Technology__c</entityName>
+    <fieldName>TRL__c</fieldName>
+    <masterLabel>Technology</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>IP_Title__c</fieldNames>
+        <info>&lt;p&gt;Basic principles observed and reported: This level represents the earliest stage of technology development, where the basic principles of the technology have been identified and reported in scientific literature.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 1</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Technology concept formulated: This level represents the development of a conceptual design or plan for the technology, based on scientific principles and preliminary data.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 2</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Analytical and experimental critical function and/or characteristic proof of concept: This level represents the testing and validation of critical functions or characteristics of the technology in a laboratory or simulated environment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 3</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Component and/or breadboard validation in laboratory environment: This level represents the testing and validation of a prototype or basic model of the technology in a laboratory or simulated environment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 4</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Component and/or breadboard validation in relevant environment: This level represents the testing and validation of a prototype or basic model of the technology in a relevant environment or setting, such as a field test or pilot study.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 5</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;System/subsystem model or prototype demonstration in a relevant environment: This level represents the testing and validation of a more advanced model or prototype of the technology in a relevant environment or setting, demonstrating its performance and capabilities.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 6</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;System prototype demonstration in an operational environment: This level represents the testing and validation of a full-scale prototype or model of the technology in an operational environment, demonstrating its performance and readiness for commercialization.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 7</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Actual system completed and qualified through test and demonstration: This level represents the completion of a fully functional and qualified system, ready for commercialization and deployment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 8</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Actual system proven through successful mission operations: This level represents the successful implementation and deployment of the technology in a real-world setting, demonstrating its effectiveness and reliability.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>TRL 9</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

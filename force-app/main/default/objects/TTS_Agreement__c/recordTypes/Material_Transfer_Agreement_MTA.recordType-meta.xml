@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Material_Transfer_Agreement_MTA</fullName>
+    <active>true</active>
+    <description>An agreement between two organizations that governs the transfer of research materials between them</description>
+    <label>Material Transfer Agreement (MTA)</label>
+    <picklistValues>
+        <picklist>Agreement_Type__c</picklist>
+        <values>
+            <fullName>International MTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reciprocal MTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Simple MTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UBMTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unilateral MTA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Amended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Executed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

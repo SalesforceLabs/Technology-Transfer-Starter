@@ -3,7 +3,7 @@
     <fullName>IP_RelatedIP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Related IP</label>
+    <label>Related Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Opportunities</relationshipLabel>
     <relationshipName>IP_Opportunities</relationshipName>

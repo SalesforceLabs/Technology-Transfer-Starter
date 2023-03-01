@@ -4,7 +4,7 @@
     <businessStatus>Active</businessStatus>
     <externalId>false</externalId>
     <inlineHelpText>How does this Intellectual Property differ from existing technologies and current practices? What are its advantages and what problems does it solve?</inlineHelpText>
-    <label>IP Novelty</label>
+    <label>Novelty/Newness</label>
     <length>32768</length>
     <securityClassification>Confidential</securityClassification>
     <trackFeedHistory>false</trackFeedHistory>
