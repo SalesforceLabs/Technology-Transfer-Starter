@@ -130,6 +130,17 @@
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
+        <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CreatedDate</fields>
+        <fields>StepStatus</fields>
+        <fields>OriginalActor</fields>
+        <fields>Actor</fields>
+        <fields>Comments</fields>
+        <relatedList>RelatedProcessHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
         <fields>ACTIVITY.TASK</fields>
@@ -158,7 +169,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h8B000000KOBW</masterLabel>
+        <masterLabel>00hDP000002RPlg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

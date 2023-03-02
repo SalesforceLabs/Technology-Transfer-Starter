@@ -395,11 +395,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Protection_Litigation__c.Applicant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>TTS_Protection_Litigation__c.Case_Number_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
