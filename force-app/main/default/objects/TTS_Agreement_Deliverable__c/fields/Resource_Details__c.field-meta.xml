@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Termination__c</fullName>
+    <fullName>Resource_Details__c</fullName>
     <externalId>false</externalId>
-    <inlineHelpText>The conditions under which the agreement can be terminated by any party.</inlineHelpText>
-    <label>Termination Details</label>
-    <length>130000</length>
+    <inlineHelpText>Details of any resources, such as tools, software, or data, that are required to complete the deliverable</inlineHelpText>
+    <label>Resource Details</label>
+    <length>32768</length>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

@@ -19,6 +19,10 @@
                 <behavior>Edit</behavior>
                 <field>Protection__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Agreement_Deliverable__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

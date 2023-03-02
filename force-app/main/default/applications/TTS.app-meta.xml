@@ -6,7 +6,7 @@
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
     </brand>
-    <description>Disclosures, IP, Patents and Agreements</description>
+    <description>Manage Disclosures, Technologies, Patents and Agreements</description>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
@@ -18,9 +18,9 @@
     <tabs>TTS_Disclosure__c</tabs>
     <tabs>TTS_Technology__c</tabs>
     <tabs>TTS_Protection__c</tabs>
-    <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>TTS_Agreement__c</tabs>
     <tabs>TTS_Transaction__c</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>

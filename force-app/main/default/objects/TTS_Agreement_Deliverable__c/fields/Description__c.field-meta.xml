@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Termination__c</fullName>
+    <fullName>Description__c</fullName>
     <externalId>false</externalId>
-    <inlineHelpText>The conditions under which the agreement can be terminated by any party.</inlineHelpText>
-    <label>Termination Details</label>
+    <inlineHelpText>A description of the deliverable, including the scope, objectives, methodology, and any specific requirements or constraints</inlineHelpText>
+    <label>Description</label>
     <length>130000</length>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

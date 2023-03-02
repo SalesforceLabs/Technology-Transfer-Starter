@@ -30,7 +30,11 @@
     <picklistValues>
         <picklist>Status__c</picklist>
         <values>
-            <fullName>Amended</fullName>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
             <default>false</default>
         </values>
         <values>
@@ -38,23 +42,19 @@
             <default>true</default>
         </values>
         <values>
-            <fullName>Executed</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Expired</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>In Dispute</fullName>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Terminated</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Under Review</fullName>
             <default>false</default>
         </values>
     </picklistValues>

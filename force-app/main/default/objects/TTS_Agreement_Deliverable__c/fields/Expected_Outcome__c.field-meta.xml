@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Termination__c</fullName>
+    <fullName>Expected_Outcome__c</fullName>
     <externalId>false</externalId>
-    <inlineHelpText>The conditions under which the agreement can be terminated by any party.</inlineHelpText>
-    <label>Termination Details</label>
-    <length>130000</length>
+    <inlineHelpText>The specific outcome or result that is expected from the deliverable.</inlineHelpText>
+    <label>Expected Outcome</label>
+    <length>32768</length>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

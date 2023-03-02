@@ -22,6 +22,36 @@
                 <default>false</default>
                 <label>Recipient</label>
             </value>
+            <value>
+                <fullName>Principal Investigator (PI)</fullName>
+                <default>false</default>
+                <label>Principal Investigator (PI)</label>
+            </value>
+            <value>
+                <fullName>Co-Principal Investigator</fullName>
+                <default>false</default>
+                <label>Co-Principal Investigator</label>
+            </value>
+            <value>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+                <label>Sponsor</label>
+            </value>
+            <value>
+                <fullName>Collaborator</fullName>
+                <default>false</default>
+                <label>Collaborator</label>
+            </value>
+            <value>
+                <fullName>Client</fullName>
+                <default>false</default>
+                <label>Client</label>
+            </value>
+            <value>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+                <label>Consultant</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
