@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disclosure_date__c</fullName>
+    <defaultValue>Today()</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should indicate the date on which the invention or discovery was disclosed to the technology transfer office or other relevant entity.</inlineHelpText>
+    <label>Disclosure date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partnership_Collaboration_Details__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should identify any existing or potential partnerships or collaborations with industry partners that could help to commercialize the invention or discovery.</inlineHelpText>
+    <label>Partnership/Collaboration Details</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

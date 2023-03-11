@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Protections__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should describe the current status of any intellectual property related to the invention or discovery, such as patents or copyrights.</inlineHelpText>
+    <label>Current Protections</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Copyrighted</fullName>
+                <default>false</default>
+                <label>Copyrighted</label>
+            </value>
+            <value>
+                <fullName>Exclusive license</fullName>
+                <default>false</default>
+                <label>Exclusive license</label>
+            </value>
+            <value>
+                <fullName>Joint ownership</fullName>
+                <default>false</default>
+                <label>Joint ownership</label>
+            </value>
+            <value>
+                <fullName>Non-exclusive license</fullName>
+                <default>false</default>
+                <label>Non-exclusive license</label>
+            </value>
+            <value>
+                <fullName>Patented</fullName>
+                <default>false</default>
+                <label>Patented</label>
+            </value>
+            <value>
+                <fullName>Patent pending</fullName>
+                <default>false</default>
+                <label>Patent pending</label>
+            </value>
+            <value>
+                <fullName>Pending evaluation</fullName>
+                <default>false</default>
+                <label>Pending evaluation</label>
+            </value>
+            <value>
+                <fullName>Public domain</fullName>
+                <default>false</default>
+                <label>Public domain</label>
+            </value>
+            <value>
+                <fullName>Trademarked</fullName>
+                <default>false</default>
+                <label>Trademarked</label>
+            </value>
+            <value>
+                <fullName>Trade secret</fullName>
+                <default>false</default>
+                <label>Trade secret</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commercial_Applications__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should identify potential commercial applications for the invention or discovery, such as products or services that could be developed based on the technology.</inlineHelpText>
+    <label>Commercial Applications</label>
+    <length>130000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

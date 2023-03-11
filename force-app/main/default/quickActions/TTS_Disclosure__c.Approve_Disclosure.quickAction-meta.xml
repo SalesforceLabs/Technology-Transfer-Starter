@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Approve the current Disclosure Record and generate a Technology Record.</description>
+    <flowDefinition>TTS_Generate_Tech_Record_from_Disclosure</flowDefinition>
+    <label>Approve Disclosure</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

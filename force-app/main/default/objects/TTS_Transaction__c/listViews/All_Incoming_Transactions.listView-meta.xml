@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Incoming_Transactions</fullName>
+    <columns>NAME</columns>
+    <columns>IP_Expected_Payment_Date__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>IP_Transaction_Date_Time__c</columns>
+    <columns>Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Direction__c</field>
+        <operation>equals</operation>
+        <value>Incoming</value>
+    </filters>
+    <label>All Incoming Transactions</label>
+</ListView>
