@@ -3,7 +3,7 @@
     <fullName>Patent_Expense</fullName>
     <active>true</active>
     <description>Expense or Fee Related to Patent</description>
-    <label>Patent Expense</label>
+    <label>Patent Transaction</label>
     <picklistValues>
         <picklist>Direction__c</picklist>
         <values>
@@ -12,7 +12,7 @@
         </values>
         <values>
             <fullName>Outgoing</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
     </picklistValues>
     <picklistValues>
@@ -45,15 +45,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Grant</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>IP Expense</fullName>
+            <fullName>Licence Income</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Licence Income</fullName>
+            <fullName>Litigation settlement</fullName>
             <default>false</default>
         </values>
         <values>
@@ -69,7 +73,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Patent - Examination</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Patent - Filing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patent - Maintenance</fullName>
             <default>false</default>
         </values>
         <values>
@@ -78,6 +90,14 @@
         </values>
         <values>
             <fullName>Patent - Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Royalties</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sale of the patent</fullName>
             <default>false</default>
         </values>
         <values>

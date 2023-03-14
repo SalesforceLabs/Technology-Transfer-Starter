@@ -276,6 +276,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>IP_Title__c</fields>
+        <fields>IP_Status__c</fields>
+        <fields>IP_Disclosure_Date__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>CREATEDBY_USER</fields>
+        <relatedList>TTS_Technology__c.IP_ParentIP__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>TTS_Protection_Family__c.Technology__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -288,7 +297,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h8B000000KOBe</masterLabel>
+        <masterLabel>00hDa000004nkNL</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

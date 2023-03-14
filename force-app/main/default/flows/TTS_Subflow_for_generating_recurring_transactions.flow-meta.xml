@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Generate_Transaction_Records</name>
-        <label>Generate Transaction Records</label>
+        <description>Checks that all transactions have been generated. Note that if the range gets changed, any dates outside of that range are deleted automatically.</description>
+        <name>Check_and_Update_Recurring_Transactions</name>
+        <label>Check and Update Recurring Transactions</label>
         <locationX>50</locationX>
         <locationY>518</locationY>
-        <actionName>tts_core</actionName>
+        <actionName>TTSCore</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -125,7 +126,7 @@
         <locationX>50</locationX>
         <locationY>398</locationY>
         <connector>
-            <targetReference>Generate_Transaction_Records</targetReference>
+            <targetReference>Check_and_Update_Recurring_Transactions</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -156,7 +157,7 @@
             <targetReference>Get_Current_Record</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>

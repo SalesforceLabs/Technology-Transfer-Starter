@@ -65,6 +65,41 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Deadline__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Expected_Outcome__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Resource_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement_Deliverable__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Agreement_Party__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -81,6 +116,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Agreement__c.Agreement_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Agreement__c.Budget__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -226,11 +266,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Disclosure__c.Funding_Source__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Disclosure__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -385,6 +420,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Protection_Family__c.Name_Reference__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Protection_Family__c.Technology__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -430,6 +470,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Protection_Litigation__c.Plaintiff__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Protection_Litigation__c.Settlement_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -451,6 +496,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Protection__c.Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Protection__c.Attorney_Reference_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -550,6 +600,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Protection__c.Registered__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Protection__c.Registration_date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -566,6 +621,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Protection__c.Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TTS_Protection__c.Total_Active_Litigations__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -651,51 +711,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Space_Asset__c.Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Agreed_Discount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Due_Date_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.External_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Paid_Date_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Quantity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>TTS_Space_Fee__c.Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -795,7 +810,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>TTS_Space__c.Total_Occupants__c</field>
+        <field>TTS_Space__c.Total_Tenants__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -970,7 +985,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Transaction__c.Agreement_Deliverable__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Agreement_Party__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Agreement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Transaction__c.Campaign__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.End_Date_Time__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1020,7 +1055,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>TTS_Transaction__c.Space_Subscription_Fee__c</field>
+        <field>TTS_Transaction__c.Protection__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Recurrence_Frequency__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Recurring__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Space__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Start_Date_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Transaction__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -1050,6 +1110,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Contract</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>TTS_Agreement_Deliverable__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -1176,15 +1245,6 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>TTS_Space_Asset__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>TTS_Space_Fee__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -1324,6 +1384,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
+        <tab>TTS_Agreement_Deliverable__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>TTS_Agreement_Party__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
@@ -1377,10 +1441,6 @@
     </tabSettings>
     <tabSettings>
         <tab>TTS_Space_Asset__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>TTS_Space_Fee__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

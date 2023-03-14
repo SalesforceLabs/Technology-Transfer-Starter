@@ -149,14 +149,6 @@
         <fields>Internal_Asset_Reference__c</fields>
         <relatedList>TTS_Space_Asset__c.Space__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Agreed_Discount__c</fields>
-        <fields>Amount__c</fields>
-        <fields>Due_Date_Time__c</fields>
-        <fields>Paid_Date_Time__c</fields>
-        <relatedList>TTS_Space_Fee__c.Space__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

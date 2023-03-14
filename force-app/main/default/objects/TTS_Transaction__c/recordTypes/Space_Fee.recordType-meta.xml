@@ -3,7 +3,7 @@
     <fullName>Space_Fee</fullName>
     <active>true</active>
     <description>Fee/Cost Related to a Space or Space Subscription</description>
-    <label>Space Fee</label>
+    <label>Space Transaction</label>
     <picklistValues>
         <picklist>Direction__c</picklist>
         <values>
@@ -27,7 +27,7 @@
         </values>
         <values>
             <fullName>Monthly</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Quarterly</fullName>
@@ -41,11 +41,23 @@
     <picklistValues>
         <picklist>Type__c</picklist>
         <values>
+            <fullName>Application fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Cleaning</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>Event and workshop fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal and accounting fee</fullName>
             <default>false</default>
         </values>
         <values>

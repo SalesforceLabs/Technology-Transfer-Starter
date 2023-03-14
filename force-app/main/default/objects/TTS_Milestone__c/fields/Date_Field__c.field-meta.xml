@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Quantity__c</fullName>
-    <defaultValue>1</defaultValue>
+    <fullName>Date_Field__c</fullName>
     <externalId>false</externalId>
-    <label>Quantity</label>
-    <precision>12</precision>
+    <inlineHelpText>API Name for the Field which this milestone is applied to</inlineHelpText>
+    <label>Date Field</label>
+    <length>90</length>
     <required>false</required>
-    <scale>2</scale>
-    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
+    <type>Text</type>
     <unique>false</unique>
 </CustomField>
