@@ -126,6 +126,16 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>IP_Internal_Payment_Reference__c</fields>
+        <fields>Direction__c</fields>
+        <fields>Type__c</fields>
+        <fields>IP_Transaction_Date_Time__c</fields>
+        <fields>IP_Actual_Amount__c</fields>
+        <fields>IP_External_Payment_Reference__c</fields>
+        <relatedList>TTS_Transaction__c.Space__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>Account__c</fields>
         <fields>Contact__c</fields>
         <fields>Start_Date__c</fields>
@@ -155,7 +165,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7f000000Tezk</masterLabel>
+        <masterLabel>00h8B000000QNQc</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
