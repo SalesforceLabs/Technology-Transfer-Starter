@@ -6,7 +6,7 @@ project:
         namespace: techstarter
     git:
         default_branch: "main"
-        repo_url: https://github.com/SFDO-SE/Technology-Transfer-Starter
+        repo_url: https://github.com/SalesforceLabs/Technology-Transfer-Starter
     source_format: sfdx
 
 tasks:
