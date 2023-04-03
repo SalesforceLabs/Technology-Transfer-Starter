@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>TTS_Disclosure_CommercialAppHelp</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_CommercialAppHelp</shortDescription>
+        <value>Please provide information about how your invention can be used and what its applications would be.</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Disclosure_Confirmation_Screen</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_Confirmation_Screen</shortDescription>
+        <value>Click Finish to confirm you want to submit this disclosure to the team. You also confirm that all information is correct and accurate at the time of submission.</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Disclosure_CurrentProtectHelp</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_CurrentProtectHelp</shortDescription>
+        <value>Provide details of any current protections in place.</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Disclosure_DetailsHelp</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_DetailsHelp</shortDescription>
+        <value>Provide a short title for the invention and a description of what the invention is and how it works.</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Disclosure_DocsHelp</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_DocsHelp</shortDescription>
+        <value>Please upload any supporting documentation which relate to this disclosure submission</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Disclosure_PartnershipsHelp</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Disclosure_PartnershipsHelp</shortDescription>
+        <value>Provide details of any partnerships and collaborations</value>
+    </labels>
+    <labels>
+        <fullName>TTS_Funding_HelpText</fullName>
+        <categories>TTS</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TTS_Funding_HelpText</shortDescription>
+        <value>Provide details about any current funding sources in place and/or being discussed.</value>
+    </labels>
+</CustomLabels>
