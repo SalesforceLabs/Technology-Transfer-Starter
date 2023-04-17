@@ -1083,8 +1083,13 @@
         <field>TTS_Transaction__c.Transaction__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Technology        Transfer Starter Permission</label>
+    <label>Technology Transfer Starter Permission</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

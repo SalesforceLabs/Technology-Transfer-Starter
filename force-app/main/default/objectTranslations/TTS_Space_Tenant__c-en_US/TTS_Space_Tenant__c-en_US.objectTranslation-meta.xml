@@ -8,20 +8,5 @@
         <plural>true</plural>
         <value>Space Tenants</value>
     </caseValues>
-    <layouts>
-        <layout>Space Occupant Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Occupant Detail</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Space Detail</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>
