@@ -57,6 +57,7 @@ private class TTSCoreTest {
     static void testGenerateRecurringTransactionRecords() {
         // Prepare the input data for the method
         List<TTSCore.RelatedRecordsInput> inputs = new List<TTSCore.RelatedRecordsInput>();
+
         TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
         input.startDate = Datetime.now();
         input.endDate = Datetime.now().addYears(2);
@@ -64,13 +65,41 @@ private class TTSCoreTest {
         input.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
         inputs.add(input);
 
+        TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
+        inputDaily.startDate = Datetime.now();
+        inputDaily.endDate = Datetime.now().addYears(1);
+        inputDaily.frequency = 'Daily';
+        inputDaily.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputs.add(inputDaily);
+
+        TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
+        inputWeekly.startDate = Datetime.now();
+        inputWeekly.endDate = Datetime.now().addYears(2);
+        inputWeekly.frequency = 'Weekly';
+        inputWeekly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputs.add(inputWeekly);
+
+        TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
+        inputQuarterly.startDate = Datetime.now();
+        inputQuarterly.endDate = Datetime.now().addYears(2);
+        inputQuarterly.frequency = 'Quarterly';
+        inputQuarterly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputs.add(inputQuarterly);
+
+        TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
+        inputAnnually.startDate = Datetime.now();
+        inputAnnually.endDate = Datetime.now().addYears(2);
+        inputAnnually.frequency = 'Annually';
+        inputAnnually.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputs.add(inputAnnually);
+
         // Call the method with the input data
         Test.startTest();
         TTSCore.generateRecurringTransactionRecords(inputs);
         Test.stopTest();
 
         // Verify that child records were created
-        Integer expectedCount = 25; // 1 parent record + 24 child records (2 years of monthly payments)
+        Integer expectedCount = 493;
         Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
         System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
     }
