@@ -13,6 +13,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <description>Provides access to all Technology Transfer Starter Objects and fields</description>
+    <classAccesses>
+        <apexClass>TTSCore</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.IP__c</field>

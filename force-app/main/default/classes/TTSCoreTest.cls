@@ -5,7 +5,7 @@ private class TTSCoreTest {
     static void setup() {
         // Insert necessary records for the test
         TTS_Transaction__c parentRecord = new TTS_Transaction__c(
-            Direction__c = 'In',
+            Direction__c = 'Incoming',
             Type__c = 'Rent',
             Start_Date_Time__c = Datetime.now(),
             Recurring__c = true,
