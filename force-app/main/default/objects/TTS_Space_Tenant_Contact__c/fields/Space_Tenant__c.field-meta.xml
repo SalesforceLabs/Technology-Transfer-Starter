@@ -6,7 +6,7 @@
     <referenceTo>TTS_Space_Tenant__c</referenceTo>
     <relationshipLabel>Tenant Contacts</relationshipLabel>
     <relationshipName>Tenant_Contacts</relationshipName>
-    <relationshipOrder>1</relationshipOrder>
+    <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>true</reparentableMasterDetail>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

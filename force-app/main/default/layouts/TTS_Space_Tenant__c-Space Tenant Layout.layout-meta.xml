@@ -152,11 +152,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Account.ACC_NAME</fields>
-        <fields>Contact.CNTC_FIRST_NAME</fields>
-        <fields>Contact.NAME</fields>
+        <fields>Contact__c</fields>
         <fields>Is_Current_Contact__c</fields>
         <fields>Is_Primary_Contact__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>End_Date__c</fields>
         <relatedList>TTS_Space_Tenant_Contact__c.Space_Tenant__c</relatedList>
     </relatedLists>
     <relatedObjects>Space__c</relatedObjects>
@@ -168,7 +168,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hDP000002RPlx</masterLabel>
+        <masterLabel>00h53000001xt86</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
