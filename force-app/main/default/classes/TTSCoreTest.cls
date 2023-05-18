@@ -4,7 +4,9 @@ private class TTSCoreTest {
     @testSetup
     static void setup() {
         // Insert necessary records for the test
+        Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
         TTS_Transaction__c parentRecord = new TTS_Transaction__c(
+            RecordTypeId = spaceFeeRecordTypeId,
             Direction__c = 'Incoming',
             Type__c = 'Rent',
             Start_Date_Time__c = Datetime.now(),
@@ -27,6 +29,7 @@ private class TTSCoreTest {
         );
         insert parentRecord;
         TTS_Transaction__c childRecord = new TTS_Transaction__c(
+            RecordTypeId = spaceFeeRecordTypeId,
             Transaction__c = parentRecord.Id,
             IP_Transaction_Date_Time__c = Datetime.now().addDays(1),
             IP_Expected_Payment_Date__c = Datetime.now().addDays(1),
@@ -99,7 +102,7 @@ private class TTSCoreTest {
         Test.stopTest();
 
         // Verify that child records were created
-        Integer expectedCount = 493;
+        Integer expectedCount = 494;
         Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
         System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
     }
