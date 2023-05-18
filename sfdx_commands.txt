@@ -1,0 +1,8 @@
+
+// Create New Package Version
+
+sf package version create --package "Technology Transfer Starter" --target-dev-hub TTSDevHub --installation-key-bypass --code-coverage --wait 10
+
+// Release Package Version
+
+sf package version promote --target-dev-hub TTSDevHub --no-prompt --package 04t... 
