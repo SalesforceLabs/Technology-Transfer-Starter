@@ -4,7 +4,7 @@
     <deleteConstraint>Restrict</deleteConstraint>
     <externalId>false</externalId>
     <inlineHelpText>Related Technology for this Contract</inlineHelpText>
-    <label>Technology</label>
+    <label>Related Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>
     <relationshipName>Contracts</relationshipName>

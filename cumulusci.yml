@@ -61,9 +61,10 @@ flows:
                 task: assign_permission_sets
                 options:
                     api_names:
-                        - Technology_Transfer_Starter_Permission
-            4:
-                task: load_dataset
+                        - Technology_Transfer_Starter_Visa_Management
+                        - Technology_Transfer_Starter_TTO
+                        - Technology_Transfer_Starter_Space_Manager
+                        - Technology_Transfer_Starter_Mentoring_Manager
 
     config_qa:
         steps:
@@ -71,9 +72,10 @@ flows:
                 task: assign_permission_sets
                 options:
                     api_names:
-                        - Technology_Transfer_Starter_Permission
-            4:
-                task: load_dataset
+                        - Technology_Transfer_Starter_Visa_Management
+                        - Technology_Transfer_Starter_TTO
+                        - Technology_Transfer_Starter_Space_Manager
+                        - Technology_Transfer_Starter_Mentoring_Manager
 
 orgs:
     scratch:

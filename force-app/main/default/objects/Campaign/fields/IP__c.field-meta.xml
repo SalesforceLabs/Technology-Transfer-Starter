@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <description>The associated Technology record for which this campaign will be marketing for.</description>
     <externalId>false</externalId>
-    <label>IP</label>
+    <label>Related Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Campaigns</relationshipLabel>
     <relationshipName>Campaigns</relationshipName>
