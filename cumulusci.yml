@@ -62,7 +62,7 @@ flows:
                 options:
                     api_names:
                         - Technology_Transfer_Starter_Visa_Management
-                        - Technology_Transfer_Starter_TTO
+                        - Technology_Transfer_Starter_Permission
                         - Technology_Transfer_Starter_Space_Manager
                         - Technology_Transfer_Starter_Mentoring_Manager
 
@@ -73,7 +73,7 @@ flows:
                 options:
                     api_names:
                         - Technology_Transfer_Starter_Visa_Management
-                        - Technology_Transfer_Starter_TTO
+                        - Technology_Transfer_Starter_Permission
                         - Technology_Transfer_Starter_Space_Manager
                         - Technology_Transfer_Starter_Mentoring_Manager
 
