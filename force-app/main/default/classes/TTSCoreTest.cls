@@ -4,8 +4,8 @@ private class TTSCoreTest {
     @testSetup
     static void setup() {
         // Insert necessary records for the test
-        Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
-        TTS_Transaction__c parentRecord = new TTS_Transaction__c(
+        Id spaceFeeRecordTypeId = Schema.SObjectType.techstarter__TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+        techstarter__TTS_Transaction__c parentRecord = new techstarter__TTS_Transaction__c(
             RecordTypeId = spaceFeeRecordTypeId,
             Direction__c = 'Incoming',
             Type__c = 'Rent',
@@ -28,7 +28,7 @@ private class TTSCoreTest {
             Protection__c = null
         );
         insert parentRecord;
-        TTS_Transaction__c childRecord = new TTS_Transaction__c(
+        techstarter__TTS_Transaction__c childRecord = new techstarter__TTS_Transaction__c(
             RecordTypeId = spaceFeeRecordTypeId,
             Transaction__c = parentRecord.Id,
             IP_Transaction_Date_Time__c = Datetime.now().addDays(1),
@@ -65,35 +65,35 @@ private class TTSCoreTest {
         input.startDate = Datetime.now();
         input.endDate = Datetime.now().addYears(2);
         input.frequency = 'Monthly';
-        input.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        input.recordId = [SELECT Id FROM techstarter__TTS_Transaction__c LIMIT 1].Id;
         inputs.add(input);
 
         TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
         inputDaily.startDate = Datetime.now();
         inputDaily.endDate = Datetime.now().addYears(1);
         inputDaily.frequency = 'Daily';
-        inputDaily.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputDaily.recordId = [SELECT Id FROM techstarter__TTS_Transaction__c LIMIT 1].Id;
         inputs.add(inputDaily);
 
         TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
         inputWeekly.startDate = Datetime.now();
         inputWeekly.endDate = Datetime.now().addYears(2);
         inputWeekly.frequency = 'Weekly';
-        inputWeekly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputWeekly.recordId = [SELECT Id FROM techstarter__TTS_Transaction__c LIMIT 1].Id;
         inputs.add(inputWeekly);
 
         TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
         inputQuarterly.startDate = Datetime.now();
         inputQuarterly.endDate = Datetime.now().addYears(2);
         inputQuarterly.frequency = 'Quarterly';
-        inputQuarterly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputQuarterly.recordId = [SELECT Id FROM techstarter__TTS_Transaction__c LIMIT 1].Id;
         inputs.add(inputQuarterly);
 
         TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
         inputAnnually.startDate = Datetime.now();
         inputAnnually.endDate = Datetime.now().addYears(2);
         inputAnnually.frequency = 'Annually';
-        inputAnnually.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+        inputAnnually.recordId = [SELECT Id FROM techstarter__TTS_Transaction__c LIMIT 1].Id;
         inputs.add(inputAnnually);
 
         // Call the method with the input data
@@ -103,7 +103,7 @@ private class TTSCoreTest {
 
         // Verify that child records were created
         Integer expectedCount = 494;
-        Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
+        Integer actualCount = [SELECT COUNT() FROM techstarter__TTS_Transaction__c WHERE Transaction__c = :input.recordId];
         System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
     }
 
