@@ -58,53 +58,81 @@ private class TTSCoreTest {
 
     @isTest
     static void testGenerateRecurringTransactionRecords() {
-        // Prepare the input data for the method
-        List<TTSCore.RelatedRecordsInput> inputs = new List<TTSCore.RelatedRecordsInput>();
 
-        TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
-        input.startDate = Datetime.now();
-        input.endDate = Datetime.now().addYears(2);
-        input.frequency = 'Monthly';
-        input.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
-        inputs.add(input);
+        // Generate a unique username using current UTC date and time
+        String uniqueUsername = 'john.doe.' + Datetime.now().formatGMT('yyyyMMddHHmmss') + '@example.com';
 
-        TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
-        inputDaily.startDate = Datetime.now();
-        inputDaily.endDate = Datetime.now().addYears(1);
-        inputDaily.frequency = 'Daily';
-        inputDaily.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
-        inputs.add(inputDaily);
+        // Create a new User
+        User newUser = new User();
+        newUser.FirstName = 'John';
+        newUser.LastName = 'Doe';
+        newUser.Email = 'john.doe@example.com';
+        newUser.Username =  uniqueUsername;
+        newUser.Alias = 'jdoe';
+        newUser.CommunityNickname = 'johnd';
+        newUser.ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User'].Id;
+        newUser.TimeZoneSidKey = 'GMT';
+        newUser.LocaleSidKey = 'en_US';
+        newUser.EmailEncodingKey = 'UTF-8';
+        newUser.LanguageLocaleKey = 'en_US';
+        insert newUser;
 
-        TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
-        inputWeekly.startDate = Datetime.now();
-        inputWeekly.endDate = Datetime.now().addYears(2);
-        inputWeekly.frequency = 'Weekly';
-        inputWeekly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
-        inputs.add(inputWeekly);
+        // Assign permission set to the new User
+        PermissionSetAssignment psa = new PermissionSetAssignment();
+        psa.AssigneeId = newUser.Id;
+        psa.PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Technology_Transfer_Starter_Permission'].Id;
+        insert psa;
 
-        TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
-        inputQuarterly.startDate = Datetime.now();
-        inputQuarterly.endDate = Datetime.now().addYears(2);
-        inputQuarterly.frequency = 'Quarterly';
-        inputQuarterly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
-        inputs.add(inputQuarterly);
+        // Run test as the new User
+        System.runAs(newUser) {
+            List<TTSCore.RelatedRecordsInput> inputs = new List<TTSCore.RelatedRecordsInput>();
 
-        TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
-        inputAnnually.startDate = Datetime.now();
-        inputAnnually.endDate = Datetime.now().addYears(2);
-        inputAnnually.frequency = 'Annually';
-        inputAnnually.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
-        inputs.add(inputAnnually);
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = Datetime.now();
+            input.endDate = Datetime.now().addYears(2);
+            input.frequency = 'Monthly';
+            input.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputs.add(input);
 
-        // Call the method with the input data
-        Test.startTest();
-        TTSCore.generateRecurringTransactionRecords(inputs);
-        Test.stopTest();
+            TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
+            inputDaily.startDate = Datetime.now();
+            inputDaily.endDate = Datetime.now().addYears(1);
+            inputDaily.frequency = 'Daily';
+            inputDaily.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputs.add(inputDaily);
 
-        // Verify that child records were created
-        Integer expectedCount = 493;
-        Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
-        System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
+            TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
+            inputWeekly.startDate = Datetime.now();
+            inputWeekly.endDate = Datetime.now().addYears(2);
+            inputWeekly.frequency = 'Weekly';
+            inputWeekly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputs.add(inputWeekly);
+
+            TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
+            inputQuarterly.startDate = Datetime.now();
+            inputQuarterly.endDate = Datetime.now().addYears(2);
+            inputQuarterly.frequency = 'Quarterly';
+            inputQuarterly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputs.add(inputQuarterly);
+
+            TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
+            inputAnnually.startDate = Datetime.now();
+            inputAnnually.endDate = Datetime.now().addYears(2);
+            inputAnnually.frequency = 'Annually';
+            inputAnnually.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputs.add(inputAnnually);
+
+            // Call the method with the input data
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(inputs);
+            Test.stopTest();
+
+            // Verify that child records were created
+            Integer expectedCount = 493;
+            Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
+            System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
+        }
+        
     }
 
 }
