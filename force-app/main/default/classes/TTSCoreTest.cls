@@ -132,6 +132,14 @@ private class TTSCoreTest {
             Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
             System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
         }
+
+        // Cleanup test data
+        List<User> testUsers = [SELECT Id FROM User WHERE Username LIKE 'john.doe%@example.com'];
+        if (!testUsers.isEmpty()) {
+            User testUser = testUsers[0];
+            testUser.IsActive = false;
+            update testUser;
+        }
         
     }
 
