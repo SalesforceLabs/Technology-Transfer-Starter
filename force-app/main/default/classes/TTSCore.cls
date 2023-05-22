@@ -22,9 +22,9 @@ public with sharing class TTSCore {
     public static void generateRecurringTransactionRecords(List<RelatedRecordsInput> inputs) {
 
         // Check object and field accessibility
-        if (!Schema.sObjectType.techstarter__TTS_Transaction__c.isAccessible() || !Schema.sObjectType.techstarter__TTS_Transaction__c.isCreateable() || !Schema.sObjectType.techstarter__TTS_Transaction__c.isDeletable()) {
+        if (!Schema.sObjectType.TTS_Transaction__c.isAccessible() || !Schema.sObjectType.TTS_Transaction__c.isCreateable() || !Schema.sObjectType.TTS_Transaction__c.isDeletable()) {
             // Object is not accessible, return or handle accordingly
-            System.debug('techstarter__TTS_Transaction__c is not accessible for the user. Please review user permissions.');
+            System.debug('TTS_Transaction__c is not accessible for the user. Please review user permissions.');
             return;
         }
 
@@ -36,7 +36,7 @@ public with sharing class TTSCore {
             String frequency = rli.frequency;
             String recordId = rli.recordId;
 
-            techstarter__TTS_Transaction__c parentRecord = [SELECT Id, techstarter__Direction__c, techstarter__Type__c, techstarter__Start_Date_Time__c, techstarter__Recurring__c, techstarter__End_Date_Time__c, techstarter__Recurrence_Frequency__c, techstarter__Agreed_Amount__c, techstarter__Agreement__c, techstarter__Agreement_Deliverable__c, techstarter__Agreement_Party__c, techstarter__Campaign__c, techstarter__IP_Actual_Amount__c, techstarter__IP_Contract__c, techstarter__IP_External_Payment_Reference__c, techstarter__IP_Internal_Payment_Reference__c, techstarter__IP_Opportunity__c, techstarter__IP_Purchase_Order__c, techstarter__IP_Related_IP__c, techstarter__Protection__c  FROM techstarter__TTS_Transaction__c WHERE Id = :recordId WITH USER_MODE LIMIT 1];
+            TTS_Transaction__c parentRecord = [SELECT Id, Type__c, Direction__c, Start_Date_Time__c, Recurring__c, End_Date_Time__c, Recurrence_Frequency__c, Agreed_Amount__c, Agreement__c, Agreement_Deliverable__c, Agreement_Party__c, Campaign__c, IP_Actual_Amount__c, IP_Contract__c, IP_External_Payment_Reference__c, IP_Internal_Payment_Reference__c, IP_Opportunity__c, IP_Purchase_Order__c, IP_Related_IP__c, Protection__c  FROM TTS_Transaction__c WHERE Id = :recordId WITH USER_MODE LIMIT 1];
 
             // Set the end date to 5 years from the start date if it's null or empty
             if (endDate == null) {
@@ -44,17 +44,17 @@ public with sharing class TTSCore {
             }
 
             // Delete child records outside of the specified date range
-            List<techstarter__TTS_Transaction__c> childrenToDelete = new List<techstarter__TTS_Transaction__c>();
-            for (techstarter__TTS_Transaction__c child : [SELECT Id, techstarter__IP_Transaction_Date_Time__c FROM techstarter__TTS_Transaction__c WHERE techstarter__Transaction__c = :recordId AND (techstarter__IP_Transaction_Date_Time__c < :startDate OR techstarter__IP_Transaction_Date_Time__c > :endDate) WITH USER_MODE]) {
+            List<TTS_Transaction__c> childrenToDelete = new List<TTS_Transaction__c>();
+            for (TTS_Transaction__c child : [SELECT Id, IP_Transaction_Date_Time__c FROM TTS_Transaction__c WHERE Transaction__c = :recordId AND (IP_Transaction_Date_Time__c < :startDate OR IP_Transaction_Date_Time__c > :endDate) WITH USER_MODE]) {
                 childrenToDelete.add(child);
             }
             delete as user childrenToDelete;
 
             // Query for existing child records for the parent record
-            Map<Datetime, techstarter__TTS_Transaction__c> existingChildrenByDate = new Map<Datetime, techstarter__TTS_Transaction__c>();
-            List<techstarter__TTS_Transaction__c> existingChildren = [SELECT Id, techstarter__Transaction__c, techstarter__IP_Transaction_Date_Time__c FROM techstarter__TTS_Transaction__c WHERE techstarter__Transaction__c = :recordId AND techstarter__IP_Transaction_Date_Time__c >= :startDate AND techstarter__IP_Transaction_Date_Time__c <= :endDate WITH USER_MODE];
-            for (techstarter__TTS_Transaction__c child : existingChildren) {
-                existingChildrenByDate.put(child.techstarter__IP_Transaction_Date_Time__c, child);
+            Map<Datetime, TTS_Transaction__c> existingChildrenByDate = new Map<Datetime, TTS_Transaction__c>();
+            List<TTS_Transaction__c> existingChildren = [SELECT Id, Transaction__c, IP_Transaction_Date_Time__c FROM TTS_Transaction__c WHERE Transaction__c = :recordId AND IP_Transaction_Date_Time__c >= :startDate AND IP_Transaction_Date_Time__c <= :endDate WITH USER_MODE];
+            for (TTS_Transaction__c child : existingChildren) {
+                existingChildrenByDate.put(child.IP_Transaction_Date_Time__c, child);
             }
 
             // Calculate Recurring Payment Dates
@@ -88,13 +88,13 @@ public with sharing class TTSCore {
             }
 
             // Create related records for each date if they don't already exist
-            List<techstarter__TTS_Transaction__c> newChildren = new List<techstarter__TTS_Transaction__c>();
+            List<TTS_Transaction__c> newChildren = new List<TTS_Transaction__c>();
             for (Datetime recordDate : dates) {
                 if (!existingChildrenByDate.containsKey(recordDate)) {
-                    techstarter__TTS_Transaction__c newChild = parentRecord.clone();
-                    newChild.techstarter__Transaction__c = recordId;
-                    newChild.techstarter__IP_Transaction_Date_Time__c = recordDate;
-                    newChild.techstarter__IP_Expected_Payment_Date__c = recordDate;
+                    TTS_Transaction__c newChild = parentRecord.clone();
+                    newChild.Transaction__c = recordId;
+                    newChild.IP_Transaction_Date_Time__c = recordDate;
+                    newChild.IP_Expected_Payment_Date__c = recordDate;
                     newChildren.add(newChild);
                 }
             }            
