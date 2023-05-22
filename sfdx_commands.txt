@@ -5,4 +5,5 @@ sf package version create --package "Technology Transfer Starter" --target-dev-h
 
 // Release Package Version
 
-sf package version promote --target-dev-hub TTSDevHub --no-prompt --package 04t... 
+sf package version promote --target-dev-hub TTSDevHub --wait 20 --package 04t... 
+
