@@ -1,7 +1,7 @@
 
 // Create New Package Version
 
-sf package version create --package "Technology Transfer Starter" --target-dev-hub TTSDevHub --installation-key-bypass --code-coverage --wait 10
+ sf package version create --package 0HoDm000000CaTXKA0 --target-dev-hub TTSDevHub --installation-key-bypass --code-coverage --wait 10 --branch main
 
 // Release Package Version
 
