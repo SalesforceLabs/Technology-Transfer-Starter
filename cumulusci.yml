@@ -54,6 +54,11 @@ tasks:
                 - Contract
                 - Account
 
+    update_dependencies:
+        options:
+            dependencies:
+                - version_id: 04tDm000000Da7ZIAS
+
 flows:
     config_dev:
         steps:
