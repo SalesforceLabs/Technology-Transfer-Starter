@@ -4,9 +4,8 @@
       "path": "force-app",
       "package": "Technology Transfer Starter",
       "versionName": "v3",
-      "versionNumber": "3.3.0.NEXT",
+      "versionNumber": "3.3.1.NEXT",
       "versionDescription": "",
-      "ancestorVersion": "HIGHEST",
       "default": true
     }
   ],
