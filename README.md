@@ -18,7 +18,7 @@ https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUA
 
 To work on this project in a scratch org:
 
-You must have access to develop against the namespace for this project. If not, you can still develop changes and submit a PR using the process below.
+You must have access to develop against the namespace for this project.
 
 1. Create a new Scratch Org using the Salesforce command "SFDX: Create a default scratch org..." - Set the alias to 'tts_dev' and accept the rest of the prompts.
 2. Connect the org to CumulusCI using cci org import tts_dev tts_dev
