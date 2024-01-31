@@ -18,7 +18,7 @@ https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUA
 
 To work on this project in a scratch org:
 
-You must have access to develop against the namespace for this project.
+You must have access to develop against the namespace for this project. Ensure DevHub is set to the default for the project. In my case the DevHub is connected to the project with alias TTSDevHub so update this command with yours sf config set target-dev-hub=TTSDevHub
 
 1. Create a new Scratch Org using the Salesforce command "SFDX: Create a default scratch org..." - Set the alias to 'tts_dev' and accept the rest of the prompts.
 2. Connect the org to CumulusCI using cci org import tts_dev tts_dev
