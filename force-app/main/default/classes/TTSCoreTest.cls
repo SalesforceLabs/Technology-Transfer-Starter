@@ -1,7 +1,7 @@
-@isTest
+@IsTest
 private class TTSCoreTest {
     
-    @testSetup
+    @TestSetup
     static void setup() {
         // Insert necessary records for the test
         Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
@@ -56,11 +56,11 @@ private class TTSCoreTest {
         insert childRecord;
     }
 
-    @isTest
+    @IsTest
     static void testGenerateRecurringTransactionRecords() {
 
         // Generate a unique username using current UTC date and time
-        String uniqueUsername = 'john.doe.' + Datetime.now().formatGMT('yyyyMMddHHmmss') + '@example.com';
+        String uniqueUsername = 'john.doe.' + Datetime.now().formatGmt('yyyyMMddHHmmss') + '@example.com';
 
         // Create a new User
         User newUser = new User();

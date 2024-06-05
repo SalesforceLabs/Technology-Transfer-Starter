@@ -3,7 +3,15 @@
     <label></label>
     <name>Status__c</name>
     <picklistValues>
+        <masterLabel>Active</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Amended</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Completed</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -20,6 +28,14 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>In Dispute</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Hold</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>

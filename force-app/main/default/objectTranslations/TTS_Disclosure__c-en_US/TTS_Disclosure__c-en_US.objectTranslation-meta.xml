@@ -19,5 +19,9 @@
             <section>Details</section>
         </sections>
     </layouts>
+    <quickActions>
+        <label></label>
+        <name>Approve_Disclosure</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

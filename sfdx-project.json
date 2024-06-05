@@ -11,7 +11,7 @@
   ],
   "namespace": "techstarter",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "57.0",
+  "sourceApiVersion": "60.0",
   "packageAliases": {
     "Technology Transfer Starter": "0HoDm000000CaTXKA0",
     "Technology Transfer Starter@3.0.0-1": "04tDm000000DZopIAG",

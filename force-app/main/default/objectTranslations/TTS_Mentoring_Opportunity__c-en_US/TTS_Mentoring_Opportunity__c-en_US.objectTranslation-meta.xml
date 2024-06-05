@@ -9,6 +9,48 @@
         <value>Mentoring Opportunities</value>
     </caseValues>
     <layouts>
+        <layout>Mentee Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Tracking</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Mentor Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Overview</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Tracking</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>Mentoring Opportunity Layout</layout>
         <sections>
             <label></label>
