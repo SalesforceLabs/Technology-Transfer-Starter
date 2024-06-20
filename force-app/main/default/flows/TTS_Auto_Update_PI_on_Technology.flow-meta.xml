@@ -5,7 +5,7 @@
         <name>Mode</name>
         <label>Mode</label>
         <locationX>314</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Original_Inventor_Mode</name>
@@ -32,7 +32,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_PI_on_Technology_Alt</targetReference>
+                <targetReference>Update_PI_on_Technology</targetReference>
             </connector>
             <label>Original Inventor Mode</label>
         </rules>
@@ -61,11 +61,12 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_PI_on_Technology</targetReference>
+                <targetReference>Update_PI_on_Technology_Alt</targetReference>
             </connector>
             <label>Alternative Inventor Mode</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <interviewLabel>TTS - Auto Update PI on Technology {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TTS - Auto Update PI on Technology</label>
     <processMetadataValues>
@@ -90,8 +91,8 @@
     <recordUpdates>
         <name>Update_PI_on_Technology</name>
         <label>Update PI on Technology</label>
-        <locationX>314</locationX>
-        <locationY>455</locationY>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -110,9 +111,9 @@
     </recordUpdates>
     <recordUpdates>
         <name>Update_PI_on_Technology_Alt</name>
-        <label>Update PI on Technology</label>
-        <locationX>50</locationX>
-        <locationY>455</locationY>
+        <label>Update PI on Technology Alt</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>

@@ -579,6 +579,7 @@
         <sortOrder>Asc</sortOrder>
         <valueField>Id</valueField>
     </dynamicChoiceSets>
+    <environments>Default</environments>
     <formulas>
         <name>CDDatePlusDays</name>
         <dataType>Date</dataType>
@@ -610,6 +611,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
 )</expression>
     </formulas>
     <interviewLabel>Success Plan Setup {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
     <label>IP Success Plan Setup</label>
     <loops>
         <description>This loop goes through each of the milestones on the Success Plan. At this point, it could be a new Success Plan or an existing Success Plan. Each Milestone will be used as a template to create a new task.</description>
@@ -1049,7 +1051,7 @@ IF(TEXT({!MilestoneLoop.When__c}) = &quot;Before&quot;,
             <targetReference>IP_Lookup_IPRecord</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>CreatedDate</name>
         <dataType>Date</dataType>

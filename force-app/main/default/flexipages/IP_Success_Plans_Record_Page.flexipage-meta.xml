@@ -60,6 +60,10 @@
                     <value>Facet-8c004280-e587-4fb1-9042-591cec69afc1</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>label</name>
                     <value>Information</value>
                 </componentInstanceProperties>
@@ -138,6 +142,10 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-d0f529d8-c3fd-407c-a53c-b5c1f04486ac</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>

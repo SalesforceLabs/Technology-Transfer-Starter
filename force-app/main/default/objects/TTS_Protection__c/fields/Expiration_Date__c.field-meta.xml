@@ -2,7 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Expiration_Date__c</fullName>
     <externalId>false</externalId>
-    <formula>ADDMONTHS(Filing_Date__c, Patent_Term__c )</formula>
+    <formula>DATE( 
+YEAR(Filing_Date__c) + Patent_Term__c, 
+MONTH(Filing_Date__c), 
+DAY(Filing_Date__c)
+ )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>The date on which the patent term expires, typically 20 years from the filing date.</inlineHelpText>
     <label>Expiration Date</label>
