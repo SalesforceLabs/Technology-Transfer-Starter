@@ -160,7 +160,8 @@
     <dashboardType>MyTeamUser</dashboardType>
     <description>Yearly summary of disclosures by count</description>
     <isGridLayout>true</isGridLayout>
-    <runningUser>test-m8pr2js5w4bg@example.com</runningUser>
+    <owner>test-uwikfi0kf0zd@example.com</owner>
+    <runningUser>test-uwikfi0kf0zd@example.com</runningUser>
     <textColor>#000000</textColor>
     <title>Technology Disclosure Dashboard</title>
     <titleColor>#000000</titleColor>

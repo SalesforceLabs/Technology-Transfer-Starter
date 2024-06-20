@@ -14,12 +14,59 @@
             <label></label>
             <section>Custom Links</section>
         </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Ownership</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Work</section>
+        </sections>
     </layouts>
     <layouts>
         <layout>Patent Layout</layout>
         <sections>
             <label></label>
+            <section>Application</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Classification</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Examination</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Issuance</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Trade Secret</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Ownership</section>
         </sections>
     </layouts>
     <layouts>
@@ -27,6 +74,14 @@
         <sections>
             <label></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Name and Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Ownership</section>
         </sections>
     </layouts>
     <recordTypes>

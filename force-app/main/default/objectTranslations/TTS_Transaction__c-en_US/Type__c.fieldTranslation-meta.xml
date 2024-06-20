@@ -4,11 +4,23 @@
     <label></label>
     <name>Type__c</name>
     <picklistValues>
+        <masterLabel>Application fee</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Audit</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Cleaning</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Event and workshop fee</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Funding</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -20,7 +32,15 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Legal and accounting fee</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Licence Income</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Litigation settlement</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -48,7 +68,15 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Patent - Examination</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Patent - Filing</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Patent - Maintenance</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -61,6 +89,14 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>Rent</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Royalties</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sale of the patent</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>

@@ -1,6 +1,11 @@
 {
   "orgName": "Technology-Transfer-Starter - Dev Org",
+  "country": "GB",
+  "adminEmail": "stewart.anderson@salesforce.com",
   "edition": "Developer",
+  "language": "en_GB",
+  "hasSampleData": true,
+  "features": [],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

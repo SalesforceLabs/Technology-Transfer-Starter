@@ -8,5 +8,36 @@
         <plural>true</plural>
         <value>Space Tenants</value>
     </caseValues>
+    <layouts>
+        <layout>Space Tenant Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Space Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Statistics</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Tenant Detail</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Set_Company_Tenant</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Set_Individual_Tenant</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Ensure_a_tenant_is_provided</name>
+    </validationRules>
 </CustomObjectTranslation>

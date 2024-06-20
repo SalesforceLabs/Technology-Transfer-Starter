@@ -8,21 +8,21 @@ public with sharing class TTSCore {
 
 
     public class RelatedRecordsInput {
-        @InvocableVariable(label='Start Date')
+        @InvocableVariable(Label='Start Date')
         public Datetime startDate;
-        @InvocableVariable(label='End Date')
+        @InvocableVariable(Label='End Date')
         public Datetime endDate;
-        @InvocableVariable(label='Frequency')
+        @InvocableVariable(Label='Frequency')
         public String frequency;
-        @InvocableVariable(label='Record ID')
+        @InvocableVariable(Label='Record ID')
         public String recordId;
     }
 
-    @InvocableMethod(label='Generate Recurring Transaction Records')
+    @InvocableMethod(Label='Generate Recurring Transaction Records')
     public static void generateRecurringTransactionRecords(List<RelatedRecordsInput> inputs) {
 
         // Check object and field accessibility
-        if (!Schema.sObjectType.TTS_Transaction__c.isAccessible() || !Schema.sObjectType.TTS_Transaction__c.isCreateable() || !Schema.sObjectType.TTS_Transaction__c.isDeletable()) {
+        if (!Schema.SObjectType.TTS_Transaction__c.isAccessible() || !Schema.SObjectType.TTS_Transaction__c.isCreateable() || !Schema.SObjectType.TTS_Transaction__c.isDeletable()) {
             // Object is not accessible, return or handle accordingly
             System.debug('TTS_Transaction__c is not accessible for the user. Please review user permissions.');
             return;

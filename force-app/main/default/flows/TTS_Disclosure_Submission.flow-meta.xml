@@ -346,7 +346,7 @@
         </connector>
         <fields>
             <name>Disclosure_Confirmation_Screen</name>
-            <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_Confirmation_Screen}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_Confirmation_Screen}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -377,7 +377,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>General_HelpText</name>
-                    <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_DetailsHelp}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_DetailsHelp}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -420,7 +420,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Commercial_Apps_Help</name>
-                    <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_CommercialAppHelp}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_CommercialAppHelp}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -452,7 +452,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>CurrentProtections_Help</name>
-                    <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_CurrentProtectHelp}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_CurrentProtectHelp}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -512,7 +512,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>FundingSources_Help</name>
-                    <fieldText>&lt;p&gt;{!$Label.TTS_Funding_HelpText}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Funding_HelpText}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -555,7 +555,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Partnerships_Help</name>
-                    <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_PartnershipsHelp}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_PartnershipsHelp}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -611,7 +611,7 @@
         </connector>
         <fields>
             <name>DocsHelp</name>
-            <fieldText>&lt;p&gt;{!$Label.TTS_Disclosure_DocsHelp}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;{!$Label.techstarter__TTS_Disclosure_DocsHelp}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>

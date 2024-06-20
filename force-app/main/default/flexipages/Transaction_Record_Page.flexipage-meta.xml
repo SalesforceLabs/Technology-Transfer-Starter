@@ -10,7 +10,7 @@
                             <value>Edit</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>TTS_Transaction__c.Generate_Schedule</value>
+                            <value>techstarter__TTS_Transaction__c.Generate_Schedule</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
