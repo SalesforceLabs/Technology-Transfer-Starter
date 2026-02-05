@@ -10,17 +10,7 @@ project:
   source_format: sfdx
 
 tasks:
-  robot:
-    options:
-      suites: robot/Technology-Transfer-Starter/tests
-      options:
-        outputdir: robot/Technology-Transfer-Starter/results
-
-  robot_testdoc:
-    options:
-      path: robot/Technology-Transfer-Starter/tests
-      output: robot/Technology-Transfer-Starter/doc/Technology-Transfer-Starter_tests.html
-
+  # Default Configuration for BuiltIn Tasks
   run_tests:
     options:
       required_org_code_coverage_percent: 75
@@ -29,6 +19,7 @@ tasks:
     options:
       path: force-app
 
+  # Configuration for Snowfakery Dataset Deployment
   extract_dataset:
     options:
       inject_namespaces: true
@@ -54,6 +45,7 @@ tasks:
         - Contract
         - Account
 
+  # Package Install - Check the version_id is the latest from the sfdx-project.json file
   update_dependencies:
     options:
       dependencies:
@@ -63,24 +55,12 @@ flows:
   config_dev:
     steps:
       3:
-        task: assign_permission_sets
-        options:
-          api_names:
-            - Technology_Transfer_Starter_Visa_Management
-            - Technology_Transfer_Starter_Permission
-            - Technology_Transfer_Starter_Space_Manager
-            - Technology_Transfer_Starter_Mentoring_Manager
+        flow: assign_perms
 
   config_qa:
     steps:
       3:
-        task: assign_permission_sets
-        options:
-          api_names:
-            - Technology_Transfer_Starter_Visa_Management
-            - Technology_Transfer_Starter_Permission
-            - Technology_Transfer_Starter_Space_Manager
-            - Technology_Transfer_Starter_Mentoring_Manager
+        flow: assign_perms
 
   assign_perms:
     steps:
