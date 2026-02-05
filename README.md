@@ -1,35 +1,92 @@
-# Technology-Transfer-Starter
+# Technology Transfer Starter
 
 A foundation for Technology Transfer and IP Management on Salesforce
 
 Technology Transfer Starter provides a set of Fields, Page Layouts, Objects, Record Types and Automation to help you get started with using Salesforce for your Technology Transfer, IP Management and Commercialization activities.
 
-# Install Latest Release (AppExchange)
+## Installation
 
-https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB
+### Option 1: Install from AppExchange (Recommended)
 
-# Requirements
+The easiest way to install Technology Transfer Starter is through the Salesforce AppExchange:
 
-- Salesforce Cli
-- Salesforce DX Extensions for VSCode
-- CumulusCI
+[Install from AppExchange](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB)
 
-# Development
+1. Click the link above or visit the AppExchange listing
+2. Click "Get It Now"
+3. Choose whether to install in production or sandbox
+4. Log in to your Salesforce org
+5. Follow the installation wizard
+6. Select the appropriate installation option:
+   - **Install for Admins Only** - Recommended for initial setup
+   - **Install for All Users** - After configuring permissions
+   - **Install for Specific Profiles** - For controlled rollout
 
-To work on this project in a scratch org:
+### Option 2: Direct Installation Link
 
-You must have access to develop against the namespace for this project. Ensure DevHub is set to the default for the project. In my case the DevHub is connected to the project with alias TTSDevHub so update this command with yours sf config set target-dev-hub=TTSDevHub
+You can also install the latest package version directly using the package installation URL:
 
-1. Create a new Scratch Org using the Salesforce command "SFDX: Create a default scratch org..." - Set the alias to 'tts_dev' and accept the rest of the prompts.
-2. Connect the org to CumulusCI using cci org import tts_dev tts_dev
-3. You now have a connected org called tts_dev where you will work on the project.
-4. Deploy the solution to the dev org by running cci flow run dev_org --org tts_dev
+**Production:**
+```
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000Da7ZIAS
+```
 
-The process above provides you with an org, which has the current configuration in it. Once you have made the changes you want, move onto the next steps
+**Sandbox:**
+```
+https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000Da7ZIAS
+```
 
-5. Retrieve the changes using cci task run retrieve_changes --org tts_dev
-6. Check the changes within the source
-7. Create another org but call it tts_qa and then deploy the source to it to check that it works
-8. Make any changes.
+Replace `04t...` with the latest package version ID. Contact the maintainers for the current version ID.
 
-At this point your changes should be ok to commit to a Pull Request (PR). In GitHub desktop, create a PR for your branch, to main branch.
+## Post-Installation Setup
+
+After installation, assign the appropriate permission sets to users:
+
+- **Technology Transfer Starter Permission** - Base permissions for all users
+- **Technology Transfer Starter Visa Management** - For visa and immigration management
+- **Technology Transfer Starter Space Manager** - For space and resource management
+- **Technology Transfer Starter Mentoring Manager** - For mentoring program management
+
+### Assigning Permission Sets
+
+1. Navigate to **Setup** > **Users** > **Permission Sets**
+2. Select the appropriate permission set
+3. Click **Manage Assignments**
+4. Click **Add Assignments**
+5. Select users and click **Assign**
+
+## Features
+
+Technology Transfer Starter includes:
+
+- IP Management objects and fields
+- Technology Transfer workflows
+- Commercialization tracking
+- Inventor and applicant management
+- Trademark management
+- Custom page layouts and record types
+- Pre-configured automation
+
+## Contributing
+
+Interested in contributing to Technology Transfer Starter? Check out our [Contributing Guide](CONTRIBUTING.md) for information on:
+
+- Setting up your development environment
+- Creating scratch orgs
+- Making and testing changes
+- Submitting pull requests
+
+## Support
+
+For issues, questions, or feature requests:
+
+- Open an issue in the [GitHub repository](https://github.com/SalesforceLabs/Technology-Transfer-Starter)
+- Contact Stewart Anderson at [stewart.anderson@salesforce.com](mailto:stewart.anderson@salesforce.com)
+
+## License
+
+[View License Information]
+
+---
+
+Built with ❤️ by Salesforce Labs
