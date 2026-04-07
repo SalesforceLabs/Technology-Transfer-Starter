@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>57.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <description>Creates a Contract from an Opportunity, when the Opportunity is Closed</description>
     <interviewLabel>Auto Link Contract to Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
     <isTemplate>true</isTemplate>
