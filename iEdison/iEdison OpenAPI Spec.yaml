@@ -1,0 +1,1550 @@
+openapi: 3.0.3
+
+info:
+  title: iEdison API
+  version: "2024-11"
+  description: |
+    OpenAPI 3.0 specification for the iEdison REST API, authored from the NIST iEdison
+    API Documentation (https://pages.nist.gov/iEdison-API-Documentation/).
+
+    This spec covers:
+    - Invention API v2  (/v2/inventions/*)
+    - Patent API v3     (/v3/patents/*)
+    - Utilization API v3 (/v3/utilizations/*)
+
+    **Authentication — Mutual TLS (mTLS)**
+    iEdison uses PKI certificate-based mutual TLS authentication. There are no API keys or
+    OAuth tokens. Credentials are NIST-issued client certificates presented during the TLS
+    handshake. The certificate's serial number and issuer CN uniquely identify the
+    institution. See the securitySchemes section and the integration guide for MuleSoft
+    TLS Context setup instructions.
+
+    **Note:** NIST publishes a Swagger spec at /iedison/swagger.json on both environments,
+    but it is only accessible after mTLS credentials are provisioned. This spec is authored
+    from the public HTML documentation and is intended for use before credentials arrive.
+
+    **Date format:** All date fields use MM/DD/YYYY strings throughout the API.
+
+    **Multipart requests:** Create and Update endpoints use multipart/form-data. The primary
+    request object is a JSON string in the named form part (e.g. inventionRequest); an
+    optional binary file attachment occupies a second part.
+  contact:
+    name: NIST iEdison Support
+    url: https://iedison.nist.gov
+  license:
+    name: Public Domain (NIST)
+
+servers:
+  - url: https://api-iedisonuat.nist.gov/iedison/api
+    description: UAT / Test environment
+  - url: https://api-iedison.nist.gov/iedison/api
+    description: Production environment
+
+security:
+  - mutualTLS: []
+
+# ---------------------------------------------------------------------------
+# PATHS
+# ---------------------------------------------------------------------------
+
+paths:
+
+  # ---- Inventions ----------------------------------------------------------
+
+  /v2/inventions/create:
+    post:
+      summary: Create Invention (v2)
+      operationId: createInventionV2
+      description: |
+        Submits a new invention report to iEdison. The response includes the
+        auto-generated inventionReportNumber which must be stored for subsequent
+        patent and utilization submissions.
+
+        On first submission, inventionStatus.titleElectionStatus may only be
+        "Under Evaluation" or "Elect to Retain Title".
+      tags:
+        - Invention
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - inventionRequest
+                - inventionDisclosure
+              properties:
+                inventionRequest:
+                  type: string
+                  format: json
+                  description: JSON-serialised InventionCreateRequest object.
+                inventionDisclosure:
+                  type: string
+                  format: binary
+                  description: |
+                    Required disclosure document attachment. Max 50 MB.
+                    Allowed types: CSV, GIF, JPEG, JPG, PNG, PDF, DOCX, DOC,
+                    TIFF, TIF, TXT, XLS, XLSX, PPT, PPTX, ODT, RTF.
+            encoding:
+              inventionRequest:
+                contentType: application/json
+              inventionDisclosure:
+                contentType: application/octet-stream
+      responses:
+        "200":
+          description: Invention created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v2/inventions/update:
+    post:
+      summary: Update Invention (v2)
+      operationId: updateInventionV2
+      description: |
+        Updates an existing invention report. The inventionReportNumber returned
+        by the create endpoint must be included in the request body.
+      tags:
+        - Invention
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - inventionRequest
+              properties:
+                inventionRequest:
+                  type: string
+                  format: json
+                  description: JSON-serialised InventionUpdateRequest object.
+                inventionDisclosure:
+                  type: string
+                  format: binary
+                  description: Optional replacement disclosure document. Max 50 MB.
+            encoding:
+              inventionRequest:
+                contentType: application/json
+      responses:
+        "200":
+          description: Invention updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v2/inventions/search:
+    post:
+      summary: Search Inventions (v2)
+      operationId: searchInventionsV2
+      description: |
+        Searches invention records. All criteria are combined with AND logic.
+        Supports pagination via limit and offset. Default page size is 20; maximum is 100.
+      tags:
+        - Invention
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                inventionSearchCriteria:
+                  type: string
+                  format: json
+                  description: JSON-serialised InventionSearchRequest object.
+            encoding:
+              inventionSearchCriteria:
+                contentType: application/json
+      responses:
+        "200":
+          description: Search results returned.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventionSearchResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  # ---- Patents -------------------------------------------------------------
+
+  /v3/patents/create:
+    post:
+      summary: Create Patent (v3)
+      operationId: createPatentV3
+      description: |
+        Submits a new patent report linked to an existing invention. The
+        inventionReportNumber from the parent invention create response is required.
+
+        The correct application sub-object must be provided based on patentApplicationType:
+        - ORD, DIV, CON, CIP → nonProvisionalPatentApplication
+        - PROV               → provisionalPatentApplication
+        - PCT                → pctPatentApplication
+      tags:
+        - Patent
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - patentRequest
+              properties:
+                patentRequest:
+                  type: string
+                  format: json
+                  description: JSON-serialised PatentCreateRequest object.
+                confirmatoryLicense:
+                  type: string
+                  format: binary
+                  description: Optional Confirmatory License document. Max 50 MB.
+                governmentSupportClause:
+                  type: string
+                  format: binary
+                  description: Optional Government Support Clause document. Max 50 MB.
+            encoding:
+              patentRequest:
+                contentType: application/json
+      responses:
+        "200":
+          description: Patent created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v3/patents/update:
+    post:
+      summary: Update Patent (v3)
+      operationId: updatePatentV3
+      description: |
+        Updates an existing patent report. Foreign filings are replaced wholesale
+        on update — the request must include the complete list of foreign filings,
+        not just changed entries.
+      tags:
+        - Patent
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - patentRequest
+              properties:
+                patentRequest:
+                  type: string
+                  format: json
+                  description: JSON-serialised PatentUpdateRequest object.
+                confirmatoryLicense:
+                  type: string
+                  format: binary
+                governmentSupportClause:
+                  type: string
+                  format: binary
+            encoding:
+              patentRequest:
+                contentType: application/json
+      responses:
+        "200":
+          description: Patent updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v3/patents/search:
+    post:
+      summary: Search Patents (v3)
+      operationId: searchPatentsV3
+      description: |
+        Searches patent records. All criteria combined with AND logic.
+        Useful for idempotency check before submitting (search by
+        inventionReportNumber + patentDocketNumber to detect existing records).
+      tags:
+        - Patent
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                patentSearchCriteria:
+                  type: string
+                  format: json
+                  description: JSON-serialised PatentSearchRequest object.
+            encoding:
+              patentSearchCriteria:
+                contentType: application/json
+      responses:
+        "200":
+          description: Search results returned.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatentSearchResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  # ---- Utilizations --------------------------------------------------------
+
+  /v3/utilizations/create:
+    post:
+      summary: Create Utilization Report (v3)
+      operationId: createUtilizationV3
+      description: |
+        Submits an annual utilization report for a specific fiscal year.
+        One report per invention per reporting year.
+
+        Conditional requirements:
+        - firstCommercialSaleYear required if latestStageDev = "Commercialized"
+        - totalIncome required if latestStageDev = "Commercialized" or "Licensed"
+        - commercializationPlanId required if latestStageDev = "Not Licensed or Commercialized"
+        - notes required if commercializationPlanId = 3 or 6
+        - licensees array used for reportingYear >= 2024 (v3); use flat
+          exclusiveLicensesOptions/nonExclusiveLicensesOptions for reportingYear <= 2023
+        - isUSManufacturingRequired1/2 required for reportingYear >= 2023 when latestStageDev = Commercialized or Licensed
+        - isUSManufacturingRequired3 required for reportingYear >= 2023 when latestStageDev = Commercialized only
+      tags:
+        - Utilization
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - utilizationRequest
+              properties:
+                utilizationRequest:
+                  type: string
+                  format: json
+                  description: JSON-serialised UtilizationRequest object.
+            encoding:
+              utilizationRequest:
+                contentType: application/json
+      responses:
+        "200":
+          description: Utilization report created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UtilizationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v3/utilizations/update:
+    post:
+      summary: Update Utilization Report (v3)
+      operationId: updateUtilizationV3
+      description: Updates an existing utilization report for the given inventionReportNumber and reportingYear.
+      tags:
+        - Utilization
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - utilizationRequest
+              properties:
+                utilizationRequest:
+                  type: string
+                  format: json
+            encoding:
+              utilizationRequest:
+                contentType: application/json
+      responses:
+        "200":
+          description: Utilization report updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UtilizationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /v3/utilizations/search:
+    post:
+      summary: Search Utilization Reports (v3)
+      operationId: searchUtilizationsV3
+      description: |
+        Searches utilization records. Useful for idempotency check before
+        submitting (search by inventionReportNumber + fiscalYear).
+      tags:
+        - Utilization
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                utilizationSearchCriteria:
+                  type: string
+                  format: json
+            encoding:
+              utilizationSearchCriteria:
+                contentType: application/json
+      responses:
+        "200":
+          description: Search results returned.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UtilizationSearchResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+# ---------------------------------------------------------------------------
+# COMPONENTS
+# ---------------------------------------------------------------------------
+
+components:
+
+  # ---- Security ------------------------------------------------------------
+
+  securitySchemes:
+    mutualTLS:
+      type: http
+      scheme: bearer
+      description: |
+        iEdison uses Mutual TLS (mTLS) authentication. There are no API keys or tokens.
+        Authentication is performed via PKI client certificates issued by NIST during
+        the TLS handshake.
+
+        **Provisioning process:**
+        1. Submit a Certificate Signing Request (CSR) generated with OpenSSL RSA 2048-bit.
+        2. Complete and return the ISA (Interconnection Security Agreement) signed by
+           an authorised representative of the institution.
+        3. NIST issues the client certificate (typically 2–4 weeks).
+        4. Maintain separate certificates for UAT and Production environments.
+
+        **MuleSoft configuration:**
+        Configure a TLS Context in Anypoint Studio with the NIST-issued certificate
+        and private key stored in a PKCS12 or JKS keystore. Apply the TLS Context to
+        the HTTP Requester global configuration element (not per-request). Store the
+        keystore and its password in Anypoint Secrets Manager — never commit to source
+        control. The certificate CN / serial uniquely identifies the institution;
+        institutionCode in the request body must match the NIST registration.
+
+  # ---- Shared Schemas ------------------------------------------------------
+
+  schemas:
+
+    # -- Enumerations --
+
+    PatentApplicationType:
+      type: string
+      description: |
+        Patent application classification code. Active types accepted by iEdison:
+        CIP, CON, DIV, ORD, PROV, PVP, PCT.
+        Non-active (legacy) types: CPA, FWC, RCE.
+      enum:
+        - CIP
+        - CON
+        - CPA
+        - DIV
+        - FWC
+        - ORD
+        - PROV
+        - PVP
+        - RCE
+        - PCT
+
+    PatentStatus:
+      type: string
+      enum:
+        - Active
+        - Expired
+        - Abandoned
+        - Abandoned/Intent to Abandon
+        - Transferred/Assigned
+        - Institution Retains Rights
+        - Voided
+
+    TitleElectionStatus:
+      type: string
+      enum:
+        - Draft
+        - Under Evaluation
+        - Elect to Retain Title
+        - Does Not Retain Title
+        - Designated as Unpatented Biological Material or Research Tool
+        - Voided
+        - Transferred
+
+    DispositionStatus:
+      type: string
+      description: Agency-controlled field. Not set by institution submissions.
+      enum:
+        - Government Does Not Retain Rights
+        - Government Retains Rights
+        - Not Elect Title – Waive to Government
+        - Not Elect Title – Waive to Third Party
+        - Request for Inventor Waiver
+        - Assignment Approved
+        - Assignment Denied
+        - Barred
+        - Voided
+        - Transferred
+
+    NotElectTitleReason:
+      type: string
+      enum:
+        - Low Commercial Potential
+        - Non-Patentable (Not Novel)
+        - Non-Patentable (Not Useful)
+        - Non-Patentable (Obvious)
+        - Did Not Yield Expected Results
+        - Budget Limitation
+        - Immature Market
+        - Other
+
+    AgreementType:
+      type: string
+      enum:
+        - Cooperative Agreement
+        - Grant
+        - Contract
+        - ACT
+        - Other Funding Agreement
+
+    AwardType:
+      type: string
+      enum:
+        - Prime Award
+        - Sub-Award
+
+    LatestStageDev:
+      type: string
+      enum:
+        - Commercialized
+        - Licensed
+        - Not Licensed or Commercialized
+
+    CommercializationPlan:
+      type: integer
+      description: |
+        1 = Seeking additional funding to further develop this invention
+        2 = Marketing and/or furthering development to attract commercial partners
+        3 = Developing and/or using for internal purposes only
+        4 = Developing and/or preparing with intent to commercialize ourselves
+        5 = Making available for distribution/licensing for research purposes only
+        6 = No current commercialization plan
+      enum: [1, 2, 3, 4, 5, 6]
+
+    USManufacturingYN:
+      type: string
+      enum: ["Y", "N"]
+
+    USManufacturingYNNA:
+      type: string
+      enum: ["Y", "N", "N/A"]
+
+    FdaApprovalType:
+      type: string
+      enum:
+        - Biologic
+        - Medical Device
+        - Drug
+
+    GovtReviewStatus:
+      type: string
+      enum:
+        - Approved
+        - Rejected
+        - Pending
+
+    PublicInd:
+      type: string
+      enum:
+        - Yes
+        - No
+
+    FirstDateType:
+      type: string
+      enum:
+        - Actual
+        - Expected
+
+    # -- Shared sub-objects --
+
+    Inventor:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - primaryAgency
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          description: iEdison-assigned unique identifier (response only).
+        firstName:
+          type: string
+          maxLength: 80
+        lastName:
+          type: string
+          maxLength: 80
+        middleInitial:
+          type: string
+          maxLength: 30
+        fedEmployee:
+          type: boolean
+          default: false
+          description: True if the inventor is a US federal government employee.
+        fedAgency:
+          type: string
+          maxLength: 80
+          description: Federal agency the inventor works for. Required if fedEmployee is true.
+        primaryAgency:
+          type: string
+          maxLength: 50
+          description: Primary federal agency designated for this invention.
+
+    FundingAgreement:
+      type: object
+      required:
+        - agency
+        - grantNumber
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        agency:
+          type: string
+          maxLength: 80
+          description: Federal agency making the award (e.g. NIH, NSF, DOD, DOE).
+        grantNumber:
+          type: string
+          maxLength: 40
+          description: Grant or contract number from the federal award.
+        awardType:
+          $ref: "#/components/schemas/AwardType"
+        agreementType:
+          $ref: "#/components/schemas/AgreementType"
+        subContractInfos:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubContractInfo"
+
+    SubContractInfo:
+      type: object
+      required:
+        - subContractNumber
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        subContractNumber:
+          type: string
+          maxLength: 150
+        contractorName:
+          type: string
+          maxLength: 120
+        contractorUei:
+          type: string
+          maxLength: 12
+          description: Unique Entity Identifier (UEI). Replaces DUNS.
+        contractorDUNS:
+          type: string
+          maxLength: 9
+          description: Deprecated. Use contractorUei instead.
+        contractorCity:
+          type: string
+          maxLength: 35
+        contractorState:
+          type: string
+          maxLength: 2
+          description: Two-character US state code.
+        contractorCountry:
+          type: string
+          maxLength: 15
+          description: Country name. Must match iEdison country list (Section 12.4).
+
+    InventionStatus:
+      type: object
+      required:
+        - titleElectionStatus
+      properties:
+        titleElectionStatus:
+          $ref: "#/components/schemas/TitleElectionStatus"
+        titleElectionDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: MM/DD/YYYY. Auto-generated by iEdison for institution clients on submission.
+        notElectTitleReason:
+          $ref: "#/components/schemas/NotElectTitleReason"
+        notElectTitleOtherReason:
+          type: string
+          maxLength: 255
+          description: Required when notElectTitleReason = "Other".
+        doesNotRetainTitleDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: Date of non-election or retention. Ignored on create; agency-updatable.
+        dispositionStatus:
+          $ref: "#/components/schemas/DispositionStatus"
+        dispositionRightsDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: Agency-controlled. Date of disposition decision.
+
+    ExplanatoryNote:
+      type: object
+      required:
+        - note
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        note:
+          type: string
+          maxLength: 500
+        creatorName:
+          type: string
+          readOnly: true
+        createdDate:
+          type: string
+          readOnly: true
+
+    # -- Invention schemas --
+
+    InventionCreateRequest:
+      type: object
+      required:
+        - institutionCode
+        - inventionTitle
+        - inventionReportDate
+        - inventors
+        - fundingAgreements
+        - inventionStatus
+      properties:
+        institutionCode:
+          type: string
+          maxLength: 10
+          description: NIST-assigned institution code. Must match the mTLS certificate registration.
+        inventionTitle:
+          type: string
+          maxLength: 255
+        inventionReportDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: Disclosure date. Format MM/DD/YYYY.
+        inventors:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/Inventor"
+        fundingAgreements:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/FundingAgreement"
+        inventionStatus:
+          $ref: "#/components/schemas/InventionStatus"
+        inventionDocketNumber:
+          type: string
+          maxLength: 30
+          description: Internal reference number. Used for idempotency checks.
+        parentInventionNumber:
+          type: string
+          maxLength: 25
+          description: iEdison report number of the parent invention (if combining inventions).
+        firstPublicationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        keywords:
+          type: array
+          items:
+            type: string
+            maxLength: 80
+        isExceptionCircumstanceDetermination:
+          type: boolean
+          default: false
+          description: True if the funding agreement falls under Bayh-Dole exceptional circumstances.
+        institutionCodeForOtherInstitutions:
+          type: array
+          maxItems: 3
+          items:
+            type: string
+          description: Up to 3 additional institution codes granted view-only access.
+        budgetIdentifiers:
+          type: array
+          items:
+            type: string
+        explanatoryNotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExplanatoryNote"
+        granteeOrganizationName:
+          type: string
+          maxLength: 100
+          deprecated: true
+          description: Deprecated. System derives from institutionCode.
+
+    InventionUpdateRequest:
+      allOf:
+        - $ref: "#/components/schemas/InventionCreateRequest"
+        - type: object
+          required:
+            - inventionReportNumber
+          properties:
+            inventionReportNumber:
+              type: string
+              maxLength: 25
+              description: Auto-generated iEdison identifier returned by the create endpoint.
+            inventionSubmitDate:
+              type: string
+              pattern: '^\d{2}/\d{2}/\d{4}$'
+              description: Agency submission date.
+            voidDispositionReason:
+              type: string
+              maxLength: 500
+              description: Agency only. Reason for voiding disposition.
+
+    InventionSearchRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          default: 20
+          maximum: 100
+        offset:
+          type: integer
+          default: 0
+        inventionReportNumber:
+          type: string
+          maxLength: 100
+        inventionDocketNumber:
+          type: string
+          maxLength: 30
+        grantContractNumber:
+          type: string
+          maxLength: 80
+        inventorFirstName:
+          type: string
+          maxLength: 50
+        inventorLastName:
+          type: string
+          maxLength: 50
+        primaryAgency:
+          type: string
+          maxLength: 50
+        inventionTitle:
+          type: string
+          maxLength: 255
+        inventionReportDateFrom:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        inventionReportDateTo:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        inventionKeyword:
+          type: string
+          maxLength: 80
+        lastUpdatedFrom:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        lastUpdatedTo:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    InventionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        inventionReportNumber:
+          type: string
+          description: Auto-generated iEdison identifier. Store on TTS Technology.iEdison_Report_Number__c.
+        institutionCode:
+          type: string
+        inventionTitle:
+          type: string
+        inventionDocketNumber:
+          type: string
+        inventionReportDate:
+          type: string
+        inventionSubmitDate:
+          type: string
+        firstPublicationDate:
+          type: string
+        reportingOverdue:
+          type: boolean
+        isExceptionCircumstanceDetermination:
+          type: boolean
+        keywords:
+          type: array
+          items:
+            type: string
+        titleElectDueDate:
+          type: string
+        initPatentDueDate:
+          type: string
+        createdDate:
+          type: string
+        lastUpdatedDate:
+          type: string
+        inventors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Inventor"
+        fundingAgreements:
+          type: array
+          items:
+            $ref: "#/components/schemas/FundingAgreement"
+        inventionStatus:
+          $ref: "#/components/schemas/InventionStatus"
+        explanatoryNotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExplanatoryNote"
+
+    InventionSearchResponse:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        inventions:
+          type: array
+          items:
+            $ref: "#/components/schemas/InventionResponse"
+
+    # -- Patent schemas --
+
+    NonProvisionalPatentApplication:
+      type: object
+      required:
+        - nonProvisionalApplicationNumber
+        - nonProvisionalApplicationDate
+      properties:
+        nonProvisionalApplicationNumber:
+          type: string
+          maxLength: 18
+        nonProvisionalApplicationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        issuedApplicationNumber:
+          type: string
+          maxLength: 50
+          description: USPTO-issued patent number.
+        issuedApplicationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        expirationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    ProvisionalPatentApplication:
+      type: object
+      required:
+        - provisionalApplicationNumber
+        - provisionalApplicationDate
+      properties:
+        provisionalApplicationNumber:
+          type: string
+          maxLength: 10
+        provisionalApplicationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    PctPatentApplication:
+      type: object
+      required:
+        - pctApplicationNumber
+        - pctApplicationDate
+      properties:
+        pctApplicationNumber:
+          type: string
+          maxLength: 10
+        pctApplicationDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    ForeignFiling:
+      type: object
+      required:
+        - countryName
+        - status
+        - filingDate
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        countryName:
+          type: string
+          maxLength: 15
+          description: Country name. Must match iEdison country list (Section 12.4). Not required to be unique.
+        status:
+          $ref: "#/components/schemas/PatentStatus"
+        filingDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    PatentCreateRequest:
+      type: object
+      required:
+        - inventionReportNumber
+        - patentTitle
+        - patentApplicationType
+        - patentStatus
+        - inventors
+      properties:
+        inventionReportNumber:
+          type: string
+          maxLength: 25
+          description: iEdison Invention Report Number from the parent invention.
+        patentTitle:
+          type: string
+          maxLength: 255
+        patentApplicationType:
+          $ref: "#/components/schemas/PatentApplicationType"
+        patentStatus:
+          $ref: "#/components/schemas/PatentStatus"
+        patentDocketNumber:
+          type: string
+          maxLength: 30
+          description: Internal grantee/contractor reference number.
+        confirmatoryLicenseExecutionDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: |
+            Required when the confirmatoryLicense file is included in the multipart form-data.
+            Date the Confirmatory License was executed with the federal agency.
+        nonProvisionalPatentApplication:
+          $ref: "#/components/schemas/NonProvisionalPatentApplication"
+          description: Required when patentApplicationType is ORD, DIV, CON, or CIP.
+        provisionalPatentApplication:
+          $ref: "#/components/schemas/ProvisionalPatentApplication"
+          description: Required when patentApplicationType is PROV.
+        pctPatentApplication:
+          $ref: "#/components/schemas/PctPatentApplication"
+          description: Required when patentApplicationType is PCT.
+        inventors:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/Inventor"
+        foreignFilings:
+          type: array
+          items:
+            $ref: "#/components/schemas/ForeignFiling"
+          description: |
+            On update, this array replaces the full existing list. Provide all foreign
+            filings, not just changes.
+        parentPatents:
+          type: array
+          items:
+            type: object
+            properties:
+              inventionReportNumber:
+                type: string
+                maxLength: 25
+              patentDocketNumber:
+                type: string
+                maxLength: 30
+        explanatoryNotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExplanatoryNote"
+
+    PatentUpdateRequest:
+      allOf:
+        - $ref: "#/components/schemas/PatentCreateRequest"
+
+    PatentSearchRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          default: 20
+          maximum: 100
+        offset:
+          type: integer
+          default: 0
+        inventionReportNumber:
+          type: string
+          maxLength: 100
+        patentDocketNumber:
+          type: string
+          maxLength: 30
+        patentTitle:
+          type: string
+          maxLength: 50
+        patentApplicationType:
+          type: string
+          maxLength: 25
+        patentStatus:
+          type: string
+          maxLength: 50
+        patentFilingDateFrom:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        patentFilingDateTo:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        inventorFirstName:
+          type: string
+          maxLength: 50
+        inventorLastName:
+          type: string
+          maxLength: 50
+        lastUpdatedFrom:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        lastUpdatedTo:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    PatentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        inventionReportNumber:
+          type: string
+        patentDocketNumber:
+          type: string
+        patentApplicationType:
+          $ref: "#/components/schemas/PatentApplicationType"
+        patentTitle:
+          type: string
+        patentStatus:
+          $ref: "#/components/schemas/PatentStatus"
+        pctAppNum:
+          type: string
+        pctAppDate:
+          type: string
+        provisionalAppNum:
+          type: string
+        provisionalAppDate:
+          type: string
+        nonProvisionalAppNum:
+          type: string
+        nonProvisionalAppDate:
+          type: string
+        issuedApplicationNumber:
+          type: string
+        issuedApplicationDate:
+          type: string
+        expireDate:
+          type: string
+        confirmatoryLicenseExecutionDate:
+          type: string
+        confLicenseAcceptDate:
+          type: string
+        confLicenseRejectDate:
+          type: string
+        confLicenseRejectComment:
+          type: string
+        assigned:
+          type: boolean
+        usptoAppStatus:
+          type: string
+        usptoLastSyncDate:
+          type: string
+        createdDate:
+          type: string
+        lastUpdatedDate:
+          type: string
+        inventors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Inventor"
+        foreignFilings:
+          type: array
+          items:
+            $ref: "#/components/schemas/ForeignFiling"
+
+    PatentSearchResponse:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        patents:
+          type: array
+          items:
+            $ref: "#/components/schemas/PatentResponse"
+
+    # -- Utilization schemas --
+
+    Licensee:
+      type: object
+      required:
+        - licenseeName
+      properties:
+        id:
+          type: string
+          readOnly: true
+        licenseeName:
+          type: string
+          maxLength: 255
+          description: Licensee name. Must be unique within the submission.
+        exclusiveCount:
+          type: integer
+        nonExclusiveCount:
+          type: integer
+        smallBusiness:
+          type: boolean
+
+    ProductLocation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        country:
+          type: string
+          maxLength: 30
+        state:
+          type: string
+          maxLength: 14
+        firstDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: Required if DOE-funded invention.
+        firstDateType:
+          $ref: "#/components/schemas/FirstDateType"
+        productQuantity:
+          type: integer
+          description: Required if DOE-funded invention.
+
+    ManufacturingCommProd:
+      type: object
+      required:
+        - productName
+        - manufacturers
+        - productLocation
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        productName:
+          type: string
+          maxLength: 100
+          description: Must be unique within the submission.
+        naicsCode:
+          type: string
+          maxLength: 6
+          description: For DOE inventions only.
+        licensees:
+          type: array
+          items:
+            type: object
+            properties:
+              licenseeName:
+                type: string
+                maxLength: 255
+        manufacturers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              manufacturerName:
+                type: string
+                maxLength: 255
+        productLocation:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/ProductLocation"
+
+    CommercialProd:
+      type: object
+      required:
+        - commercialName
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        commercialName:
+          type: string
+          maxLength: 80
+        fdaApprovalNumber:
+          type: string
+          maxLength: 20
+        fdaApprovalType:
+          $ref: "#/components/schemas/FdaApprovalType"
+        govtReviewStatus:
+          $ref: "#/components/schemas/GovtReviewStatus"
+        publicInd:
+          $ref: "#/components/schemas/PublicInd"
+
+    UtilizationRequest:
+      type: object
+      required:
+        - inventionReportNumber
+        - reportingYear
+        - latestStageDev
+      properties:
+        inventionReportNumber:
+          type: string
+          maxLength: 25
+          description: iEdison Invention Report Number from the parent invention.
+        reportingYear:
+          type: integer
+          description: Fiscal year for which this report is submitted (e.g. 2024).
+        latestStageDev:
+          $ref: "#/components/schemas/LatestStageDev"
+        firstCommercialSaleYear:
+          type: integer
+          description: Required if latestStageDev = "Commercialized".
+        totalIncome:
+          type: number
+          format: float
+          description: |
+            Total royalty/option/licence income for the reporting year.
+            Required if latestStageDev = "Commercialized" or "Licensed".
+        commercializationPlanId:
+          $ref: "#/components/schemas/CommercializationPlan"
+          description: Required if latestStageDev = "Not Licensed or Commercialized".
+        notes:
+          type: string
+          maxLength: 1000
+          description: Required if commercializationPlanId = 3 or 6.
+        licensees:
+          type: array
+          description: |
+            Use for reportingYear >= 2024 (v3 structure). Each licensee name must be unique.
+          items:
+            $ref: "#/components/schemas/Licensee"
+        exclusiveLicensesOptions:
+          type: integer
+          description: |
+            Number of exclusive licences/options. Use for reportingYear <= 2023 (v2 structure).
+            Required if latestStageDev = "Commercialized" or "Licensed".
+        nonExclusiveLicensesOptions:
+          type: integer
+          description: Number of non-exclusive licences/options (v2 / reportingYear <= 2023).
+        smallBusinessLicensesOptions:
+          type: integer
+          description: Number of small business licences/options (v2 / reportingYear <= 2023).
+        exclusiveLicensees:
+          type: array
+          items:
+            type: string
+          description: Required if exclusiveLicensesOptions > 0 (v2 / reportingYear <= 2023).
+        nonExclusiveLicensees:
+          type: array
+          items:
+            type: string
+          description: Required if nonExclusiveLicensesOptions > 0 (v2 / reportingYear <= 2023).
+        isUSManufacturingRequired1:
+          $ref: "#/components/schemas/USManufacturingYN"
+          description: Is US manufacturing required under the licence? Required for reportingYear >= 2023.
+        isUSManufacturingRequired2:
+          $ref: "#/components/schemas/USManufacturingYNNA"
+          description: Does any licence contain a US manufacturing requirement? Required for reportingYear >= 2023.
+        isUSManufacturingRequired3:
+          $ref: "#/components/schemas/USManufacturingYNNA"
+          description: |
+            Is any product being manufactured in the US under this licence?
+            Required only when latestStageDev = "Commercialized" AND reportingYear >= 2023.
+        manufacturingCommProds:
+          type: array
+          items:
+            $ref: "#/components/schemas/ManufacturingCommProd"
+        commercialProds:
+          type: array
+          items:
+            $ref: "#/components/schemas/CommercialProd"
+        newUsJobs:
+          type: integer
+          description: For DOE inventions only.
+        newUsCompanies:
+          type: integer
+          description: For DOE inventions only.
+
+    UtilizationResponse:
+      type: object
+      properties:
+        inventionReportNumber:
+          type: string
+        inventionTitle:
+          type: string
+        primaryAgency:
+          type: string
+        reportingYear:
+          type: integer
+        latestStageDev:
+          $ref: "#/components/schemas/LatestStageDev"
+        firstCommercialSaleYear:
+          type: integer
+        totalIncome:
+          type: number
+        commercializationPlanId:
+          $ref: "#/components/schemas/CommercializationPlan"
+        notes:
+          type: string
+        licensees:
+          type: array
+          items:
+            $ref: "#/components/schemas/Licensee"
+        exclusiveLicensesOptions:
+          type: integer
+        nonExclusiveLicensesOptions:
+          type: integer
+        smallBusinessLicensesOptions:
+          type: integer
+        isUSManufacturingRequired1:
+          type: string
+        isUSManufacturingRequired2:
+          type: string
+        isUSManufacturingRequired3:
+          type: string
+        manufacturingCommProds:
+          type: array
+          items:
+            $ref: "#/components/schemas/ManufacturingCommProd"
+        commercialProds:
+          type: array
+          items:
+            $ref: "#/components/schemas/CommercialProd"
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+
+    UtilizationSearchResponse:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        utilizations:
+          type: array
+          items:
+            $ref: "#/components/schemas/UtilizationResponse"
+
+    # -- Error --
+
+    ApiError:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+          description: Field-level validation error messages from iEdison.
+
+  # ---- Shared Responses ----------------------------------------------------
+
+  responses:
+    BadRequest:
+      description: |
+        Validation failure. The response body contains structured field-level error
+        messages from iEdison. Do not retry — fix the source data and resubmit.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    Unauthorized:
+      description: |
+        mTLS certificate rejected or institutionCode mismatch. Check certificate
+        validity, keystore configuration, and that institutionCode matches the
+        NIST registration. Alert operations immediately — do not retry automatically.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    NotFound:
+      description: |
+        The inventionReportNumber or patent record was not found on update.
+        Indicates a data mismatch — route to manual review queue.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+    ServerError:
+      description: |
+        Transient server-side error. Retry with exponential backoff
+        (2s → 4s → 8s, max 3 attempts). If all retries fail, park in dead-letter
+        queue and alert.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiError"
+
+tags:
+  - name: Invention
+    description: Bayh-Dole invention disclosure reporting (API v2)
+  - name: Patent
+    description: Patent application reporting linked to inventions (API v3)
+  - name: Utilization
+    description: Annual technology utilization reporting (API v3)
