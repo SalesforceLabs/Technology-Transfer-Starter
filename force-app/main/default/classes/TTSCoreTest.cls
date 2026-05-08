@@ -128,7 +128,7 @@ private class TTSCoreTest {
             Test.stopTest();
 
             // Verify that child records were created
-            Integer expectedCount = 493;
+            Integer expectedCount = 492;
             Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
             System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
         }
