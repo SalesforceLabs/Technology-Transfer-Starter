@@ -3,10 +3,10 @@
     {
       "path": "force-app",
       "package": "Technology Transfer Starter",
-      "versionName": "v3.5.0",
-      "versionNumber": "3.5.0.NEXT",
+      "versionName": "v3.5.1",
+      "versionNumber": "3.5.1.NEXT",
       "versionDescription": "",
-      "ancestorId": "04tDm0000011RyhIAE",
+      "ancestorId": "04tDm000000tLy8IAE",
       "default": true
     }
   ],
