@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Royalty Term</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Royalty Terms</value>
+    </caseValues>
+    <layouts>
+        <layout>Royalty Term Layout</layout>
+        <sections>
+            <label></label>
+            <section>Calculation</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

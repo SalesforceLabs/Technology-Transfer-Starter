@@ -24,6 +24,10 @@
         </sections>
         <sections>
             <label></label>
+            <section>Royalty Details</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Tracking</section>
         </sections>
     </layouts>

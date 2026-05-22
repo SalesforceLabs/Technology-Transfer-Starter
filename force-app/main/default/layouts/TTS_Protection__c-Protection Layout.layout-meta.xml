@@ -44,6 +44,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Law_Firm_Matter__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Patent_number__c</field>
             </layoutItems>
             <layoutItems>

@@ -174,9 +174,11 @@
         <customTabListAdditionalFields>Direction__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_Transaction_Date_Time__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Payment_Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_Actual_Amount__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>IP_External_Payment_Reference__c</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Direction__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Payment_Status__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>IP_Actual_Amount__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>IP_Transaction_Date_Time__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
@@ -187,12 +189,16 @@
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Direction__c</searchFilterFields>
         <searchFilterFields>Type__c</searchFilterFields>
+        <searchFilterFields>Payment_Status__c</searchFilterFields>
+        <searchFilterFields>Law_Firm_Matter__c</searchFilterFields>
+        <searchFilterFields>Royalty_Term__c</searchFilterFields>
         <searchFilterFields>IP_Actual_Amount__c</searchFilterFields>
         <searchFilterFields>IP_External_Payment_Reference__c</searchFilterFields>
         <searchFilterFields>IP_Internal_Payment_Reference__c</searchFilterFields>
         <searchFilterFields>IP_Transaction_Date_Time__c</searchFilterFields>
         <searchResultsAdditionalFields>Direction__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payment_Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>IP_Actual_Amount__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>IP_Transaction_Date_Time__c</searchResultsAdditionalFields>
     </searchLayouts>

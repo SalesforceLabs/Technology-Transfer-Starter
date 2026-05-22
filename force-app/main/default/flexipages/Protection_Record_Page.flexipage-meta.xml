@@ -776,6 +776,16 @@
                 <identifier>RecordProtection_Family_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Law_Firm_Matter__c</fieldItem>
+                <identifier>RecordLaw_Firm_Matter_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-cbd68359-02f3-4551-a02b-2a06f25000d5</name>
         <type>Facet</type>
     </flexiPageRegions>

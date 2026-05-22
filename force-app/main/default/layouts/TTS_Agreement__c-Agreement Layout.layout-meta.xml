@@ -202,6 +202,14 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Direction__c</fields>
+        <fields>Royalty_Obligation_Type__c</fields>
+        <fields>Royalty_Basis__c</fields>
+        <fields>Royalty_Rate__c</fields>
+        <relatedList>TTS_Royalty_Term__c.Agreement__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>IP_Internal_Payment_Reference__c</fields>
         <fields>Direction__c</fields>
         <fields>Type__c</fields>

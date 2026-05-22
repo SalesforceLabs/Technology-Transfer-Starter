@@ -202,6 +202,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Incoming</controllingFieldValue>
+            <controllingFieldValue>Outgoing</controllingFieldValue>
             <valueName>Royalties</valueName>
         </valueSettings>
         <valueSettings>

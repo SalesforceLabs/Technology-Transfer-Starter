@@ -220,8 +220,48 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Payment_Status__c</fieldItem>
+                <identifier>RecordPayment_Status_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Agreed_Amount__c</fieldItem>
                 <identifier>Recordtechstarter__Agreed_Amount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Royalty_Term__c</fieldItem>
+                <identifier>RecordRoyalty_Term_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Royalty_Report_Start_Date__c</fieldItem>
+                <identifier>RecordRoyalty_Report_Start_Date_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Reported_Royalty_Revenue__c</fieldItem>
+                <identifier>RecordReported_Royalty_Revenue_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-5734b471-3da3-4549-b2d8-af84e4915ba6</name>
@@ -246,6 +286,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Actual_Amount__c</fieldItem>
                 <identifier>Recordtechstarter__IP_Actual_Amount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Applied_Royalty_Rate__c</fieldItem>
+                <identifier>RecordApplied_Royalty_Rate_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Royalty_Report_End_Date__c</fieldItem>
+                <identifier>RecordRoyalty_Report_End_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e36ca2c0-e36c-4bb3-be07-c0cf3aed7e47</name>
@@ -497,6 +557,16 @@
                 <identifier>RecordAgreement_Deliverable_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Protection_Litigation__c</fieldItem>
+                <identifier>RecordProtection_Litigation_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-a4d6fe46-2fd3-41ff-99cc-051ff6ef4582</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -509,6 +579,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Contract__c</fieldItem>
                 <identifier>Recordtechstarter__IP_Contract__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Law_Firm_Matter__c</fieldItem>
+                <identifier>RecordLaw_Firm_Matter_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -756,6 +836,9 @@
                             <value>Type__c</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>Payment_Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>IP_Transaction_Date_Time__c</value>
                         </valueListItems>
                         <valueListItems>
@@ -841,6 +924,9 @@
                         </valueListItems>
                         <valueListItems>
                             <value>Type__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Payment_Status__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>IP_Transaction_Date_Time__c</value>

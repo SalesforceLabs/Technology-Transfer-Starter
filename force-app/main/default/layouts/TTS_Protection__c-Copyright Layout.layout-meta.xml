@@ -25,6 +25,10 @@
                 <behavior>Edit</behavior>
                 <field>Protection_Family__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Law_Firm_Matter__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

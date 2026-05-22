@@ -6,6 +6,7 @@
     <columns>RECORDTYPE</columns>
     <columns>IP_Transaction_Date_Time__c</columns>
     <columns>Type__c</columns>
+    <columns>Payment_Status__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Direction__c</field>

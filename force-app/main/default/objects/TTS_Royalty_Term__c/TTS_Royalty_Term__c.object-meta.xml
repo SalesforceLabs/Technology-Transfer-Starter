@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>[TTS] Structured royalty terms for agreement payment obligations, including royalty basis and rate details.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Royalty Term</label>
+    <nameField>
+        <displayFormat>ROY{00000}</displayFormat>
+        <label>Royalty Term ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Royalty Terms</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Agreement__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Direction__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Royalty_Obligation_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Royalty_Basis__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Royalty_Rate__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Agreement__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Direction__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Royalty_Obligation_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Royalty_Basis__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Royalty_Rate__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>Agreement__c</searchFilterFields>
+        <searchFilterFields>Direction__c</searchFilterFields>
+        <searchFilterFields>Royalty_Obligation_Type__c</searchFilterFields>
+        <searchFilterFields>Royalty_Basis__c</searchFilterFields>
+        <searchResultsAdditionalFields>Agreement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Direction__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Royalty_Obligation_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Royalty_Basis__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Royalty_Rate__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Consonant</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>
