@@ -3,16 +3,16 @@
     {
       "path": "force-app",
       "package": "Technology Transfer Starter",
-      "versionName": "v3.5.1",
-      "versionNumber": "3.5.1.NEXT",
-      "versionDescription": "",
+      "versionName": "v3.6",
+      "versionNumber": "3.6.0.NEXT",
+      "versionDescription": "Custom report types (24 objects), integration-user permission set, and namespace-safe generic REST CRUD API.",
       "ancestorId": "04tDm000000tLy8IAE",
       "default": true
     }
   ],
   "namespace": "techstarter",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "57.0",
+  "sourceApiVersion": "67.0",
   "packageAliases": {
     "Technology Transfer Starter": "0HoDm000000CaTXKA0",
     "Technology Transfer Starter@3.0.0-1": "04tDm000000DZopIAG",
@@ -23,6 +23,9 @@
     "Technology Transfer Starter@3.2.0-1": "04tDm000000DZvMIAW",
     "Technology Transfer Starter@3.3.0-1-main": "04tDm000000Da7ZIAS",
     "Technology Transfer Starter@3.5.0-1": "04tDm000000tLy8IAE",
-    "Technology Transfer Starter@3.5.1-1": "04tDm000000tLzVIAU"
+    "Technology Transfer Starter@3.5.1-1": "04tDm000000tLzVIAU",
+    "Technology Transfer Starter@3.5.2-1": "04tDm000000tM0OIAU",
+    "Technology Transfer Starter@3.6.0-1": "04tg7000000MhKrAAK",
+    "Technology Transfer Starter@3.6.0-2": "04tg7000000N4ZBAA0"
   }
 }

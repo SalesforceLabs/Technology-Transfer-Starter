@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Milestone_Description__c</fullName>
+    <description>Stores the description used for the Task generated from this milestone template.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the instructions or context that should appear in the generated task's description.</inlineHelpText>
     <label>Description</label>
     <length>131072</length>
     <trackTrending>false</trackTrending>

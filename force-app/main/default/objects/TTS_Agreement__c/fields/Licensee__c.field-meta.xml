@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Licensee__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the agreement to the individual Contact acting as licensee.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The name of the licensee who is granted the license.</inlineHelpText>
+    <inlineHelpText>Select the individual Contact receiving rights under the agreement.</inlineHelpText>
     <label>Licensee (Contact)</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Agreements</relationshipLabel>

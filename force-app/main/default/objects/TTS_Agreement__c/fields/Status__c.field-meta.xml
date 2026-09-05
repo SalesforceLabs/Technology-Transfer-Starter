@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
+    <description>Tracks the current lifecycle status of the agreement.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select Draft or Under Review while preparing the agreement; use Executed, Active, Amended, Pending, On Hold, In Dispute, Completed, Terminated, or Expired as applicable.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

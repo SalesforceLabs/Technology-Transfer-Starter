@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Jurisdiction__c</fullName>
+    <description>Identifies the country or territory where the protection applies, using the IP_Country value set.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The country or region in which the patent is being filed.</inlineHelpText>
+    <inlineHelpText>Select the country or territory in which the protection is filed, registered, or enforced.</inlineHelpText>
     <label>Jurisdiction</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

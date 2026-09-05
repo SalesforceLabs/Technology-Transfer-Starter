@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Protection_Family__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
+    <description>Links the protection to a family of related protection records.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Related Family</inlineHelpText>
+    <inlineHelpText>Select the family grouping for related filings or protections.</inlineHelpText>
     <label>Protection Family</label>
     <referenceTo>TTS_Protection_Family__c</referenceTo>
     <relationshipLabel>Protection Members</relationshipLabel>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
+    <description>Classifies the applicant&apos;s legal or organisational role for the protection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The specific applicant type</inlineHelpText>
+    <inlineHelpText>Select the category that best describes the applicant.</inlineHelpText>
     <label>Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

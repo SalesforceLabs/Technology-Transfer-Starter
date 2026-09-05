@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the transaction to the related Space, such as for rent charges.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Space associated with this transaction, if applicable.</inlineHelpText>
     <label>Space</label>
     <referenceTo>TTS_Space__c</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>

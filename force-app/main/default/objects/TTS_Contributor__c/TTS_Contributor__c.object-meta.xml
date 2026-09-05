@@ -143,7 +143,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Contributors to a single transaction. Typically used where a transaction has multiple parties contributing to a fee.</description>
+    <description>Records a party contributing an amount to a transaction involving multiple contributors.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

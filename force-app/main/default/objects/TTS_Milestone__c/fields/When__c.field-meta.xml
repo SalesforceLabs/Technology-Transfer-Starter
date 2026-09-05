@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>When__c</fullName>
-    <description>When determines the date which the milestone should be completed before, after, or on in conjunction with the Days field.</description>
+    <description>Controls whether the generated task is due before, after, or on the selected source date.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When determines the date which the milestone should be completed before, after, or on in conjunction with the Days field.</inlineHelpText>
+    <inlineHelpText>Select whether the task is due before, after, or on the source date.</inlineHelpText>
     <label>When</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

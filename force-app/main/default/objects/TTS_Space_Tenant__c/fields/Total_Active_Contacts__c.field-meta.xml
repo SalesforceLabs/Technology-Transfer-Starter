@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Active_Contacts__c</fullName>
+    <description>Counts related Space Tenant Contact records marked as current.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Shows the number of contacts currently active for this tenant.</inlineHelpText>
     <label>Total Active Contacts</label>
     <summaryFilterItems>
         <field>TTS_Space_Tenant_Contact__c.Is_Current_Contact__c</field>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Individual_Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the individual Contact serving as an applicant for the related protection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When applicant is an individual entity, a contact should be linked, otherwise link an account which would be an organisation, company etc</inlineHelpText>
+    <inlineHelpText>Select the applicant Contact when the applicant is a person; use Account for an organisation.</inlineHelpText>
     <label>Individual Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Applicants</relationshipLabel>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Expiry_Date__c</fullName>
     <defaultValue>Today()+30</defaultValue>
+    <description>Records the date when the opportunity expires if no mentor has been assigned.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set an expiry date for this opportunity</inlineHelpText>
+    <inlineHelpText>Enter the last date for mentor interest; new records default to 30 days from today.</inlineHelpText>
     <label>Expiry Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

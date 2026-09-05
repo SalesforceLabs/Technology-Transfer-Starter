@@ -3,8 +3,9 @@
     <fullName>Contact__c</fullName>
     <businessStatus>Active</businessStatus>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the Contact who authored the copyrighted work.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Related contact information of the author of the work</inlineHelpText>
+    <inlineHelpText>For copyright records, select the Contact who authored the work.</inlineHelpText>
     <label>Copyright Author</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Protections (Copyright Author)</relationshipLabel>

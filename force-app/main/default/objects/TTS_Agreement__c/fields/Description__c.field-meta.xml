@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
+    <description>Provides the detailed description and business context of the agreement.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Description and/or overview of the agreement</inlineHelpText>
+    <inlineHelpText>Enter an overview of the agreement, including its purpose and scope.</inlineHelpText>
     <label>Description</label>
     <length>130000</length>
     <trackHistory>false</trackHistory>

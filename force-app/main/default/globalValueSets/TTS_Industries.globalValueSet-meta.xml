@@ -6,6 +6,21 @@
         <label>Accounting</label>
     </customValue>
     <customValue>
+        <fullName>Additive Manufacturing/3D Printing</fullName>
+        <default>false</default>
+        <label>Additive Manufacturing/3D Printing</label>
+    </customValue>
+    <customValue>
+        <fullName>Advanced Materials</fullName>
+        <default>false</default>
+        <label>Advanced Materials</label>
+    </customValue>
+    <customValue>
+        <fullName>Agricultural Technology</fullName>
+        <default>false</default>
+        <label>Agricultural Technology</label>
+    </customValue>
+    <customValue>
         <fullName>Airlines/Aviation</fullName>
         <default>false</default>
         <label>Airlines/Aviation</label>
@@ -39,6 +54,11 @@
         <fullName>Arts/Crafts</fullName>
         <default>false</default>
         <label>Arts/Crafts</label>
+    </customValue>
+    <customValue>
+        <fullName>Artificial Intelligence/Machine Learning</fullName>
+        <default>false</default>
+        <label>Artificial Intelligence/Machine Learning</label>
     </customValue>
     <customValue>
         <fullName>Automotive</fullName>
@@ -79,6 +99,11 @@
         <fullName>Capital Markets/Hedge Fund/Private Equity</fullName>
         <default>false</default>
         <label>Capital Markets/Hedge Fund/Private Equity</label>
+    </customValue>
+    <customValue>
+        <fullName>Carbon Management</fullName>
+        <default>false</default>
+        <label>Carbon Management</label>
     </customValue>
     <customValue>
         <fullName>Chemicals</fullName>
@@ -166,6 +191,11 @@
         <label>Design</label>
     </customValue>
     <customValue>
+        <fullName>Digital Health</fullName>
+        <default>false</default>
+        <label>Digital Health</label>
+    </customValue>
+    <customValue>
         <fullName>Education Management</fullName>
         <default>false</default>
         <label>Education Management</label>
@@ -184,6 +214,11 @@
         <fullName>Entertainment/Movie Production</fullName>
         <default>false</default>
         <label>Entertainment/Movie Production</label>
+    </customValue>
+    <customValue>
+        <fullName>Energy Storage/Batteries</fullName>
+        <default>false</default>
+        <label>Energy Storage/Batteries</label>
     </customValue>
     <customValue>
         <fullName>Environmental Services</fullName>
@@ -234,6 +269,11 @@
         <fullName>Food Production</fullName>
         <default>false</default>
         <label>Food Production</label>
+    </customValue>
+    <customValue>
+        <fullName>Food Technology</fullName>
+        <default>false</default>
+        <label>Food Technology</label>
     </customValue>
     <customValue>
         <fullName>Fundraising</fullName>
@@ -291,6 +331,11 @@
         <label>Hospitality</label>
     </customValue>
     <customValue>
+        <fullName>Hydrogen/Fuel Cells</fullName>
+        <default>false</default>
+        <label>Hydrogen/Fuel Cells</label>
+    </customValue>
+    <customValue>
         <fullName>Human Resources/HR</fullName>
         <default>false</default>
         <label>Human Resources/HR</label>
@@ -309,6 +354,11 @@
         <fullName>Industrial Automation</fullName>
         <default>false</default>
         <label>Industrial Automation</label>
+    </customValue>
+    <customValue>
+        <fullName>Industrial Biotechnology</fullName>
+        <default>false</default>
+        <label>Industrial Biotechnology</label>
     </customValue>
     <customValue>
         <fullName>Information Services</fullName>
@@ -364,6 +414,11 @@
         <fullName>Law Practice/Law Firms</fullName>
         <default>false</default>
         <label>Law Practice/Law Firms</label>
+    </customValue>
+    <customValue>
+        <fullName>Laboratory Instruments/Research Tools</fullName>
+        <default>false</default>
+        <label>Laboratory Instruments/Research Tools</label>
     </customValue>
     <customValue>
         <fullName>Legal Services</fullName>
@@ -431,6 +486,11 @@
         <label>Media Production</label>
     </customValue>
     <customValue>
+        <fullName>Medical Diagnostics</fullName>
+        <default>false</default>
+        <label>Medical Diagnostics</label>
+    </customValue>
+    <customValue>
         <fullName>Medical Equipment</fullName>
         <default>false</default>
         <label>Medical Equipment</label>
@@ -474,6 +534,16 @@
         <fullName>Nanotechnology</fullName>
         <default>false</default>
         <label>Nanotechnology</label>
+    </customValue>
+    <customValue>
+        <fullName>Nuclear Energy</fullName>
+        <default>false</default>
+        <label>Nuclear Energy</label>
+    </customValue>
+    <customValue>
+        <fullName>Nutraceuticals/Functional Foods</fullName>
+        <default>false</default>
+        <label>Nutraceuticals/Functional Foods</label>
     </customValue>
     <customValue>
         <fullName>Newspapers/Journalism</fullName>
@@ -536,6 +606,11 @@
         <label>Philanthropy</label>
     </customValue>
     <customValue>
+        <fullName>Photonics/Optoelectronics</fullName>
+        <default>false</default>
+        <label>Photonics/Optoelectronics</label>
+    </customValue>
+    <customValue>
         <fullName>Photography</fullName>
         <default>false</default>
         <label>Photography</label>
@@ -549,6 +624,11 @@
         <fullName>Political Organization</fullName>
         <default>false</default>
         <label>Political Organization</label>
+    </customValue>
+    <customValue>
+        <fullName>Power Grid/Energy Systems</fullName>
+        <default>false</default>
+        <label>Power Grid/Energy Systems</label>
     </customValue>
     <customValue>
         <fullName>Primary/Secondary Education</fullName>
@@ -579,6 +659,11 @@
         <fullName>Public Safety</fullName>
         <default>false</default>
         <label>Public Safety</label>
+    </customValue>
+    <customValue>
+        <fullName>Quantum Technologies</fullName>
+        <default>false</default>
+        <label>Quantum Technologies</label>
     </customValue>
     <customValue>
         <fullName>Publishing Industry</fullName>
@@ -619,6 +704,11 @@
         <fullName>Research Industry</fullName>
         <default>false</default>
         <label>Research Industry</label>
+    </customValue>
+    <customValue>
+        <fullName>Robotics/Autonomous Systems</fullName>
+        <default>false</default>
+        <label>Robotics/Autonomous Systems</label>
     </customValue>
     <customValue>
         <fullName>Restaurants</fullName>
@@ -691,6 +781,11 @@
         <label>Translation/Localization</label>
     </customValue>
     <customValue>
+        <fullName>Uncrewed Aerial Systems/Drones</fullName>
+        <default>false</default>
+        <label>Uncrewed Aerial Systems/Drones</label>
+    </customValue>
+    <customValue>
         <fullName>Transportation</fullName>
         <default>false</default>
         <label>Transportation</label>
@@ -714,6 +809,11 @@
         <fullName>Warehousing</fullName>
         <default>false</default>
         <label>Warehousing</label>
+    </customValue>
+    <customValue>
+        <fullName>Water/Wastewater Technology</fullName>
+        <default>false</default>
+        <label>Water/Wastewater Technology</label>
     </customValue>
     <customValue>
         <fullName>Wholesale</fullName>

@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Protection__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the transaction to the related Protection record.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Protection associated with this transaction.</inlineHelpText>
     <label>Protection</label>
     <referenceTo>TTS_Protection__c</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>

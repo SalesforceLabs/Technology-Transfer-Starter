@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Registered__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether the protection has been formally registered.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select when the relevant authority has formally registered the protection.</inlineHelpText>
     <label>Registered</label>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>

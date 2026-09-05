@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Trademark_Classes__c</fullName>
+    <description>Links the association to its parent NICE Trademark Class record.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the NICE Trademark Class covered by the related trademark protection.</inlineHelpText>
     <label>Trademark Classes</label>
     <referenceTo>TTS_Trademark_Classes__c</referenceTo>
     <relationshipName>TrademarkClassAssociations</relationshipName>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Current_Protections__c</fullName>
+    <description>Identifies existing intellectual property protections or ownership arrangements related to the disclosure.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This field should describe the current status of any intellectual property related to the invention or discovery, such as patents or copyrights.</inlineHelpText>
+    <inlineHelpText>Select all existing protection or ownership categories that apply to the disclosure.</inlineHelpText>
     <label>Current Protections</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

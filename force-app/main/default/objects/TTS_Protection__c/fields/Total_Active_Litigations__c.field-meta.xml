@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Active_Litigations__c</fullName>
+    <description>Roll-up count of related Protection Litigation records whose status is neither Settlement nor Verdict.</description>
     <externalId>false</externalId>
-    <inlineHelpText>System Field to show the number of active litigations against this protection record.</inlineHelpText>
+    <inlineHelpText>Read-only count of related litigation records whose status is neither Settlement nor Verdict.</inlineHelpText>
     <label>Total Active Litigations</label>
     <summaryFilterItems>
         <field>TTS_Protection_Litigation__c.Status__c</field>

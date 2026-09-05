@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Termination__c</fullName>
+    <description>Captures the agreement's termination conditions, events, or provisions.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The conditions under which the agreement can be terminated by any party.</inlineHelpText>
+    <inlineHelpText>Enter the conditions or events under which the agreement may be terminated.</inlineHelpText>
     <label>Termination Details</label>
     <length>130000</length>
     <trackHistory>false</trackHistory>

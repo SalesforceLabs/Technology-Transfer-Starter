@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Related_Transaction__c</fullName>
+    <description>Associates the contribution with its parent Transaction.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Transaction related to this Contributor.</inlineHelpText>
+    <inlineHelpText>Select the Transaction receiving this contribution.</inlineHelpText>
     <label>Transaction</label>
     <referenceTo>TTS_Transaction__c</referenceTo>
     <relationshipLabel>Contributors</relationshipLabel>

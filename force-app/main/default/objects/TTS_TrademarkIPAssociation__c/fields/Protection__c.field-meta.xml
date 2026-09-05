@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Protection__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the association to the related Protection record, with the lookup filtered for trademarks.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the trademark protection to associate with this NICE Trademark Class.</inlineHelpText>
     <label>Protection</label>
     <lookupFilter>
         <active>true</active>

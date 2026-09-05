@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Name__c</fullName>
+    <description>Stores the descriptive name or title of the deliverable.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The name of the deliverable that is expected to be produced or completed as part of the related agreement</inlineHelpText>
+    <inlineHelpText>Enter a concise name for the output required by the agreement.</inlineHelpText>
     <label>Name</label>
     <length>200</length>
     <required>false</required>

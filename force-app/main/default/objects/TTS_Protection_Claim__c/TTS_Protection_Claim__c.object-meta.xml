@@ -143,7 +143,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Claims related to a Protection object, typically used with Patents</description>
+    <description>The Protection Claim object stores individual patent claims under a Protection record, including the claim text and its current status. Commonly used to track pending, amended, issued, rejected, litigated, or invalidated claims.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

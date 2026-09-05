@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Sponsored_Program__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether the technology arose from or is associated with sponsored research.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Was the Intellectual Property conceived within the scope of a sponsored program?</inlineHelpText>
+    <inlineHelpText>Select when the technology was conceived or developed under a sponsored program.</inlineHelpText>
     <label>Sponsored Program</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

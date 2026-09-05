@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Unit__c</fullName>
+    <description>Defines the time unit applied to the milestone offset when calculating the task due date.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the time unit for the milestone offset, such as days, weeks, months, or years.</inlineHelpText>
     <label>Unit</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

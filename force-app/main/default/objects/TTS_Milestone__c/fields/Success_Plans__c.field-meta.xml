@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Success_Plans__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the milestone template to the Success Plan that contains it.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Success Plan that should include this milestone template.</inlineHelpText>
     <label>Success Plans</label>
     <referenceTo>TTS_Success_Plans__c</referenceTo>
     <relationshipName>Milestones</relationshipName>

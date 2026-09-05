@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_ParentIP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the technology to a parent technology from which it was derived.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A related technology which this technology was derived from</inlineHelpText>
+    <inlineHelpText>Select the parent technology from which this record was derived.</inlineHelpText>
     <label>Parent Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Related Technologies</relationshipLabel>

@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Future_Publications__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents planned or proposed publications that may disclose the technology.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Describe planned publications, expected dates, and any known disclosure implications.</inlineHelpText>
     <label>Future Publications</label>
     <length>32768</length>
     <securityClassification>Confidential</securityClassification>

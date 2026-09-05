@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Renewal_Date__c</fullName>
+    <description>Records when the agreement is due for renewal.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date when the license agreement can be renewed.</inlineHelpText>
+    <inlineHelpText>Enter the date and time when the agreement is due for renewal.</inlineHelpText>
     <label>Renewal Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

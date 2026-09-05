@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Disclosure_Title__c</fullName>
+    <description>Stores the descriptive title of the invention disclosure.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This field should provide a brief and descriptive title of the invention or discovery that is being disclosed.</inlineHelpText>
+    <inlineHelpText>Enter a brief, descriptive title for the invention or discovery.</inlineHelpText>
     <label>Title</label>
     <length>256</length>
     <trackHistory>false</trackHistory>

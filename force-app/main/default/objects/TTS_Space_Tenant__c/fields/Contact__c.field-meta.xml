@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the person occupying the space for an individual tenancy.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the tenant contact when the tenancy is for an individual.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipName>Space_Tenants</relationshipName>

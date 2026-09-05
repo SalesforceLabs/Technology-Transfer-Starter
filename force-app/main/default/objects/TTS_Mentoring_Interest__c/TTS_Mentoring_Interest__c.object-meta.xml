@@ -149,7 +149,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Manage interest in mentoring opportunities</description>
+    <description>Records a prospective mentor's interest in a mentoring opportunity, including selection status and mentee preference ranking.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

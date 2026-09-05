@@ -149,7 +149,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] A space occupied, rented or managed by an account. For example incubator space.</description>
+    <description>Represents a physical space, such as an office, laboratory, incubator, meeting room, or workshop, managed by the technology transfer office.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

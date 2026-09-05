@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Non_Confidential_Description__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Stores an externally shareable, non-confidential description of the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Description of IP which can be used in external publications.</inlineHelpText>
+    <inlineHelpText>Enter approved non-confidential text suitable for websites, media, or external publications.</inlineHelpText>
     <label>Non-Confidential Description</label>
     <length>32768</length>
     <securityClassification>Public</securityClassification>

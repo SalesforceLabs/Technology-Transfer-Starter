@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Court__c</fullName>
+    <description>Identifies the court or tribunal where the litigation was filed.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the full name of the court or tribunal handling the case.</inlineHelpText>
     <label>Court</label>
     <length>244</length>
     <required>false</required>

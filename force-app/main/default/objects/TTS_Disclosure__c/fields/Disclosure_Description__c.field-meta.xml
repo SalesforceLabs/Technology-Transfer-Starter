@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Disclosure_Description__c</fullName>
+    <description>Provides the rich-text description of the disclosed invention or discovery.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This field should provide a detailed description of the invention or discovery, including how it works, what it does, and any unique features or benefits.</inlineHelpText>
+    <inlineHelpText>Explain how the invention works, what it does, and its distinctive features and benefits.</inlineHelpText>
     <label>Disclosure Description</label>
     <length>130000</length>
     <trackHistory>false</trackHistory>

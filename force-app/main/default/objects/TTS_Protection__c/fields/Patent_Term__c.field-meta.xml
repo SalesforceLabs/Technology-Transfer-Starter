@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Patent_Term__c</fullName>
     <defaultValue>20</defaultValue>
+    <description>Stores the patent term in years used by the Expiration Date formula.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The length of time (in years) for which the patent is valid from the filing date.</inlineHelpText>
+    <inlineHelpText>For patent records, enter the term in years from the filing date; the default is 20.</inlineHelpText>
     <label>Patent Term</label>
     <precision>4</precision>
     <required>false</required>

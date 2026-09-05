@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Technology__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the protection family to the related Technology record.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the technology covered by the protections in this family.</inlineHelpText>
     <label>Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Protection Families</relationshipLabel>

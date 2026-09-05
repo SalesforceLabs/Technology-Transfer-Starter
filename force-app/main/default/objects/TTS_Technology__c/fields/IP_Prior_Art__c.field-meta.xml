@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Prior_Art__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether related prior inventions, publications, or other prior art have been identified.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Are you aware of any inventions or publications by others that are related to this Intellectual Property? Check the checkbox if yes.</inlineHelpText>
+    <inlineHelpText>Select when relevant prior inventions, publications, or other prior art are known.</inlineHelpText>
     <label>Prior Art</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

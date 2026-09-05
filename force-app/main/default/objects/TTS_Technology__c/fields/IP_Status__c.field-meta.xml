@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Status__c</fullName>
+    <description>Tracks the technology&apos;s current overall evaluation, protection, and commercialisation status.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the current phase: Draft, Initial Disclosure, Disclosure Review, Triage, Pre-Filing, Pending, Registered, Commercialisation, Abandoned, Closed - Lost, or Closed - Won.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackFeedHistory>true</trackFeedHistory>

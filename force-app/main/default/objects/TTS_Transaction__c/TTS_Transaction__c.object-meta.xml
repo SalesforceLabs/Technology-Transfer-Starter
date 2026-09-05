@@ -149,7 +149,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] A incoming or outgoing transaction, with monetary value, related to an IP, Opportunity or Contract record.</description>
+    <description>Records incoming or outgoing monetary transactions related to a Technology, Agreement, Protection, Opportunity, Contract, Space, Campaign, Agreement Party, or Agreement Deliverable.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

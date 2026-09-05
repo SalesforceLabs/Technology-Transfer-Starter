@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Mentor__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the contact assigned as mentor for this opportunity.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the mentor assigned to this opportunity.</inlineHelpText>
     <label>Mentor</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Mentoring Opportunities (Mentor)</relationshipLabel>

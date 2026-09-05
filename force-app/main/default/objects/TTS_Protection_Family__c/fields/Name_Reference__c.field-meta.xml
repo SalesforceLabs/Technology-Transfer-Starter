@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Name_Reference__c</fullName>
+    <description>Stores the human-readable name or reference used for the protection family.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Title, Name or Reference for this protection family.</inlineHelpText>
+    <inlineHelpText>Enter the family name, docket number, or other recognised reference.</inlineHelpText>
     <label>Name/Reference</label>
     <length>200</length>
     <required>false</required>

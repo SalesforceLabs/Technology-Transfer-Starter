@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Technology__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Related technologies that currently exist and are in the transfer process or have been proccesed.</description>
+    <description>Links the disclosure to the Technology record created from or associated with it.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Technology record created from or associated with this disclosure.</inlineHelpText>
     <label>Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Disclosures</relationshipLabel>

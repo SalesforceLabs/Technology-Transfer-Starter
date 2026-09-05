@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Stage__c</fullName>
+    <description>Tracks the protection&apos;s current stage in filing, examination, maintenance, enforcement, or closure.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Key stage for the current protection type</inlineHelpText>
+    <inlineHelpText>Select the lifecycle stage that best reflects current protection activity.</inlineHelpText>
     <label>Stage</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

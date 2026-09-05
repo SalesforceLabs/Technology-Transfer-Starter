@@ -146,7 +146,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>Space_Tenant</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] The current occupant for a particular space (aka Location). This could be an Account or a Contact or both.</description>
+    <description>Represents an organisation or individual occupying a managed space for a defined period.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

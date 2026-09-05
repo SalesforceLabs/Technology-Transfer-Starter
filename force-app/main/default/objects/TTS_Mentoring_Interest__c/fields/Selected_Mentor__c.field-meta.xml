@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Selected_Mentor__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates that this prospective mentor has been selected for the related opportunity.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Check this box for the mentor which has been chosen for the related opportunity.</inlineHelpText>
+    <inlineHelpText>Select this when the mentor has been chosen for the related opportunity.</inlineHelpText>
     <label>Selected Mentor</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

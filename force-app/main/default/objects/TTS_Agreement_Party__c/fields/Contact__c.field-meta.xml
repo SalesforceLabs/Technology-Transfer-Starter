@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the agreement party to the participating individual Contact.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the individual Contact who is a party to the agreement.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Agreement Parties</relationshipLabel>

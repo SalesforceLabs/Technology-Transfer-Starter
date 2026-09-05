@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Commercial_Market__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents findings and proposals concerning the technology&apos;s commercial market potential.</description>
     <externalId>false</externalId>
-    <inlineHelpText>An assessment of the market potential for the technology, including any potential customers or market size.</inlineHelpText>
+    <inlineHelpText>Describe target markets, potential customers, market size, demand, and commercial opportunities.</inlineHelpText>
     <label>Market Potential</label>
     <length>32768</length>
     <securityClassification>Confidential</securityClassification>

@@ -143,7 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Junction Object between Trademark Classes and Trademark Contracts</description>
+    <description>The Trademark Class Association object links a trademark Protection record to a NICE Trademark Class. Each association identifies one class applied to one protection. Commonly used to record the goods and services classifications covered by a trademark.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_AlternativeContact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lookup to Contact object</description>
+    <description>Identifies the Contact who receives this inventor&apos;s percentage share instead of the original inventor.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Has an alternative contact been identified the main contact on this contribution, for the purposed of distribution of funds etc.</inlineHelpText>
+    <inlineHelpText>Select the alternative Contact who should receive distributions for this share.</inlineHelpText>
     <label>Alternative Distribution</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Inventors (Alternative Distribution)</relationshipLabel>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Comments__c</fullName>
+    <description>Captures notes about this contributor's part of the transaction.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Any comments or terms related to this contribution.</inlineHelpText>
+    <inlineHelpText>Enter relevant notes or terms for this individual contribution.</inlineHelpText>
     <label>Comments</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

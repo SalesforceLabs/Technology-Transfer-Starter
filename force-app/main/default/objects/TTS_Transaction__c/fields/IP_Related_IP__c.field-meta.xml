@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Related_IP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the transaction to the related Technology record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The related IP record for this transaction.</inlineHelpText>
+    <inlineHelpText>Select the Technology associated with this transaction.</inlineHelpText>
     <label>Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>

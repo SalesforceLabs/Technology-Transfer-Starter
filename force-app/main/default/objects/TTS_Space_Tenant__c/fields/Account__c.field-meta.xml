@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the organisation occupying the space for a company tenancy.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the tenant organisation when the tenancy is for a company.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipName>Space_Tenants</relationshipName>

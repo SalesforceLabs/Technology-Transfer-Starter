@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Ranking__c</fullName>
+    <description>Records the mentee's preference ranking for this prospective mentor, from first to third choice.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Based on the mentor, what ranking do they have with the mentee. As in 1 would be first choice up to 3 which would be 3rd choice</inlineHelpText>
+    <inlineHelpText>Select 1 for the mentee's first choice, 2 for second choice, or 3 for third choice.</inlineHelpText>
     <label>Ranking</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

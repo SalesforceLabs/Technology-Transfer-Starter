@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Protection_Status__c</fullName>
+    <description>Tracks the current legal or administrative status of the protection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The current status of the protection</inlineHelpText>
+    <inlineHelpText>Select the status that best reflects the protection&apos;s current legal or administrative state.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

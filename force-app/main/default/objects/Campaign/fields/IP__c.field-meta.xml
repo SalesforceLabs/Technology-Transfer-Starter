@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The associated Technology record for which this campaign will be marketing for.</description>
+    <description>Deployed legacy lookup linking a Campaign to the Technology record it markets; retained for existing metadata compatibility although removed from the v3 data model.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Technology record promoted by this campaign when the legacy relationship is still in use.</inlineHelpText>
     <label>Related Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Campaigns</relationshipLabel>

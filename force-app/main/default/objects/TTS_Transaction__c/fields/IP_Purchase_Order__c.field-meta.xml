@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Purchase_Order__c</fullName>
+    <description>Stores the purchase order reference associated with the transaction.</description>
     <externalId>true</externalId>
-    <inlineHelpText>Purchase Order or approval reference for this transaction</inlineHelpText>
+    <inlineHelpText>Enter the purchase order reference for this transaction.</inlineHelpText>
     <label>Purchase Order</label>
     <length>50</length>
     <required>false</required>

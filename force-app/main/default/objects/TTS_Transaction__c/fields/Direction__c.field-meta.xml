@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Direction__c</fullName>
+    <description>Indicates whether funds are incoming to or outgoing from the organisation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Incoming transactions such as grants or funding and outgoing transactions such as expenses</inlineHelpText>
+    <inlineHelpText>Select Incoming for funds received or Outgoing for funds paid.</inlineHelpText>
     <label>Direction</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

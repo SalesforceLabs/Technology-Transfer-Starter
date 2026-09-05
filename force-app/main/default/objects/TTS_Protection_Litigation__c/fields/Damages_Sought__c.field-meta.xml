@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Damages_Sought__c</fullName>
+    <description>Stores the monetary damages requested by the claimant in the litigation.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the total monetary damages being sought in the case.</inlineHelpText>
     <label>Damages Sought</label>
     <precision>18</precision>
     <required>false</required>

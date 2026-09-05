@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Visa_Number__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Stores the identifier assigned to the Contact's visa. Classified as restricted data.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The visa number assigned to the student.</inlineHelpText>
+    <inlineHelpText>Enter the visa identifier exactly as issued to the Contact; handle this information according to data policy.</inlineHelpText>
     <label>Visa Number</label>
     <length>100</length>
     <required>false</required>

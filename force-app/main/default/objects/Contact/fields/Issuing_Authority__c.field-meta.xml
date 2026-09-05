@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Issuing_Authority__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
+    <description>Links the Contact's visa details to the Account representing the issuing authority.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The authority that issued the visa.</inlineHelpText>
+    <inlineHelpText>Select the organization that issued the Contact's visa.</inlineHelpText>
     <label>Issuing Authority</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Contacts</relationshipLabel>

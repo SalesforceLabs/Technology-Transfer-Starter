@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Inventor__c</fullName>
+    <description>Formula displaying the alternative distribution Contact&apos;s name when present; otherwise displays the original inventor&apos;s name.</description>
     <externalId>false</externalId>
     <formula>IF(
 ISBLANK( IP_AlternativeContact__r.FirstName ), 
  IP_Original_Inventor_Name__r.FirstName + &quot; &quot; +  IP_Original_Inventor_Name__r.LastName,
 IP_AlternativeContact__r.FirstName + &quot; &quot; +  IP_AlternativeContact__r.LastName
 )</formula>
-    <inlineHelpText>The current active inventor name. By default this will be the original inventor although should an alternative distribution be defined, then that name will override.</inlineHelpText>
+    <inlineHelpText>Read-only current recipient name; an Alternative Distribution Contact overrides the Original Inventor.</inlineHelpText>
     <label>Inventor</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

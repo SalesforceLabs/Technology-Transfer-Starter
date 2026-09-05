@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space_Description__c</fullName>
+    <description>Stores descriptive details about the space, its purpose, and its facilities.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Describe the space, including its purpose, facilities, or other useful details.</inlineHelpText>
     <label>Space Description</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

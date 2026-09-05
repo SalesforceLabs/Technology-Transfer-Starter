@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Prior_Art_detail__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents prior inventions, publications, or other art relevant to the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Are you aware of any inventions or publications by others that are related to this Intellectual Property?</inlineHelpText>
+    <inlineHelpText>Describe known prior art and explain its relevance to the technology.</inlineHelpText>
     <label>Prior Art Details</label>
     <length>130000</length>
     <securityClassification>Internal</securityClassification>

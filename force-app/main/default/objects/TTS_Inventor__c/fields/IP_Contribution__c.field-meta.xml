@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Contribution__c</fullName>
+    <description>Master-detail relationship linking the inventor contribution to its parent Technology.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the technology to which this inventor or researcher contributed.</inlineHelpText>
     <label>IP</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipName>Contributions</relationshipName>

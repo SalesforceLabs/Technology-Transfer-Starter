@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_External_Payment_Reference__c</fullName>
+    <description>Stores the payment reference assigned by an external system or party.</description>
     <externalId>true</externalId>
-    <inlineHelpText>Reference for the payment</inlineHelpText>
+    <inlineHelpText>Enter the payment reference supplied by the external system or party.</inlineHelpText>
     <label>External Payment Reference</label>
     <length>50</length>
     <required>false</required>

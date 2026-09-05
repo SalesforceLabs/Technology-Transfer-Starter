@@ -143,7 +143,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] A litigation related to a protection record for example a Patent Infringement related to a Patent</description>
+    <description>The Protection Litigation object tracks legal proceedings for a Protection record, including parties, court references, dates, damages, settlement, outcome, and appeal status. Commonly used for patent, trademark, copyright, and trade secret disputes.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

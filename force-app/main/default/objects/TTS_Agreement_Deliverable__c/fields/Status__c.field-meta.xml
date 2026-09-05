@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
+    <description>Tracks the current completion status of the deliverable.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The current status of the deliverable, such as in progress, complete, or delayed.</inlineHelpText>
+    <inlineHelpText>Select In Progress while work continues, Complete when finished, Delayed when behind schedule, or Cancelled when no longer required.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

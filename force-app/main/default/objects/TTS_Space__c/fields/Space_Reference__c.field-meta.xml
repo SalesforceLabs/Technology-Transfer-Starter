@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space_Reference__c</fullName>
+    <description>Stores the human-readable reference used to identify the space and supports matching with external records.</description>
     <externalId>true</externalId>
-    <inlineHelpText>Reference for the space, for example a room number i.e. E1.14</inlineHelpText>
+    <inlineHelpText>Enter the reference used to identify the space, such as room number E1.14.</inlineHelpText>
     <label>Space Reference</label>
     <length>200</length>
     <required>false</required>

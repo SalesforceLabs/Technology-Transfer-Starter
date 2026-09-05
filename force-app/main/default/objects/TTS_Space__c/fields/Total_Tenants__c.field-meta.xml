@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Tenants__c</fullName>
+    <description>Sums the active-contact counts from all Space Tenant records related to this space.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Shows the total active contacts across all tenants associated with this space.</inlineHelpText>
     <label>Total Tenants</label>
     <summarizedField>TTS_Space_Tenant__c.Total_Active_Contacts__c</summarizedField>
     <summaryForeignKey>TTS_Space_Tenant__c.Space__c</summaryForeignKey>

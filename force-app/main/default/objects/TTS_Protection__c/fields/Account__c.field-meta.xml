@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
+    <description>Identifies the organisation that owns the protection.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the owning organisation; use Protection Owner (Individual) when the owner is a person.</inlineHelpText>
     <label>Protection Owner (Account)</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Owned Protections</relationshipLabel>

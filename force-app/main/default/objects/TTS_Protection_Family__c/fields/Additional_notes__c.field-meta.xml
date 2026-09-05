@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Additional_notes__c</fullName>
+    <description>Stores supplementary context about the protection family.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter relevant family notes not captured by the reference, date, or technology fields.</inlineHelpText>
     <label>Additional notes</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Next_Available_Date__c</fullName>
     <defaultValue>Today()</defaultValue>
+    <description>Records the date when the space is next expected to become available.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The next date when this current space will be available</inlineHelpText>
+    <inlineHelpText>Enter the next date when this space is expected to be available.</inlineHelpText>
     <label>Next Available Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

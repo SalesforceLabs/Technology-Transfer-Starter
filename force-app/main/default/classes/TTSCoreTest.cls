@@ -1,9 +1,18 @@
 @isTest
 private class TTSCoreTest {
-    
+
+    // Fixed base instant so the recurring-schedule occurrence count is deterministic. Using
+    // Datetime.now() made the generated count drift by +/-1 depending on the run date (leap
+    // days, month lengths, week boundaries), which failed intermittently in the package build.
+    private static final Datetime BASE = Datetime.newInstance(2025, 1, 1, 0, 0, 0);
+
     @testSetup
     static void setup() {
-        // Insert necessary records for the test
+        // Insert necessary records for the test. See TTS_TestSetup: grant the running user
+        // this package's field access, then create fixtures under runAs (preserves record-type
+        // visibility and avoids a setup/non-setup mixed-DML error in the package build).
+        TTS_TestSetup.grantPackagePermissionSet();
+        System.runAs(new User(Id = UserInfo.getUserId())) {
         Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
         TTS_Transaction__c parentRecord = new TTS_Transaction__c(
             RecordTypeId = spaceFeeRecordTypeId,
@@ -31,8 +40,8 @@ private class TTSCoreTest {
         TTS_Transaction__c childRecord = new TTS_Transaction__c(
             RecordTypeId = spaceFeeRecordTypeId,
             Transaction__c = parentRecord.Id,
-            IP_Transaction_Date_Time__c = Datetime.now().addDays(1),
-            IP_Expected_Payment_Date__c = Datetime.now().addDays(1),
+            IP_Transaction_Date_Time__c = BASE.addDays(1),
+            IP_Expected_Payment_Date__c = BASE.addDays(1),
             Direction__c = parentRecord.Direction__c,
             Type__c = parentRecord.Type__c,
             Start_Date_Time__c = parentRecord.Start_Date_Time__c,
@@ -54,6 +63,7 @@ private class TTSCoreTest {
             Protection__c = parentRecord.Protection__c
         );
         insert childRecord;
+        }
     }
 
     @isTest
@@ -85,41 +95,44 @@ private class TTSCoreTest {
 
         // Run test as the new User
         System.runAs(newUser) {
+            // Target the parent explicitly (Transaction__c == null); a bare LIMIT 1 could
+            // return the child fixture and change the outcome.
+            Id parentId = [SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = null LIMIT 1].Id;
             List<TTSCore.RelatedRecordsInput> inputs = new List<TTSCore.RelatedRecordsInput>();
 
             TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
-            input.startDate = Datetime.now();
-            input.endDate = Datetime.now().addYears(2);
+            input.startDate = BASE;
+            input.endDate = BASE.addYears(2);
             input.frequency = 'Monthly';
-            input.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            input.recordId = parentId;
             inputs.add(input);
 
             TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
-            inputDaily.startDate = Datetime.now();
-            inputDaily.endDate = Datetime.now().addYears(1);
+            inputDaily.startDate = BASE;
+            inputDaily.endDate = BASE.addYears(1);
             inputDaily.frequency = 'Daily';
-            inputDaily.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputDaily.recordId = parentId;
             inputs.add(inputDaily);
 
             TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
-            inputWeekly.startDate = Datetime.now();
-            inputWeekly.endDate = Datetime.now().addYears(2);
+            inputWeekly.startDate = BASE;
+            inputWeekly.endDate = BASE.addYears(2);
             inputWeekly.frequency = 'Weekly';
-            inputWeekly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputWeekly.recordId = parentId;
             inputs.add(inputWeekly);
 
             TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
-            inputQuarterly.startDate = Datetime.now();
-            inputQuarterly.endDate = Datetime.now().addYears(2);
+            inputQuarterly.startDate = BASE;
+            inputQuarterly.endDate = BASE.addYears(2);
             inputQuarterly.frequency = 'Quarterly';
-            inputQuarterly.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputQuarterly.recordId = parentId;
             inputs.add(inputQuarterly);
 
             TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
-            inputAnnually.startDate = Datetime.now();
-            inputAnnually.endDate = Datetime.now().addYears(2);
+            inputAnnually.startDate = BASE;
+            inputAnnually.endDate = BASE.addYears(2);
             inputAnnually.frequency = 'Annually';
-            inputAnnually.recordId = [SELECT Id FROM TTS_Transaction__c LIMIT 1].Id;
+            inputAnnually.recordId = parentId;
             inputs.add(inputAnnually);
 
             // Call the method with the input data
@@ -127,9 +140,9 @@ private class TTSCoreTest {
             TTSCore.generateRecurringTransactionRecords(inputs);
             Test.stopTest();
 
-            // Verify that child records were created
-            Integer expectedCount = 492;
-            Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :input.recordId];
+            // Deterministic golden count for the fixed BASE inputs above.
+            Integer expectedCount = 419;
+            Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :parentId];
             System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
         }
 
@@ -141,6 +154,43 @@ private class TTSCoreTest {
             update testUser;
         }
         
+    }
+
+    @isTest
+    static void shouldNotCreateOccurrenceAfterEndDateWhenEndFallsBetweenWeeklyOccurrences() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id parentId = [
+                SELECT Id
+                FROM TTS_Transaction__c
+                WHERE Transaction__c = null
+                LIMIT 1
+            ].Id;
+            Datetime endDate = BASE.addDays(20);
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = endDate;
+            input.frequency = 'Weekly';
+            input.recordId = parentId;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(
+                new List<TTSCore.RelatedRecordsInput>{ input }
+            );
+            Test.stopTest();
+
+            Integer occurrencesAfterEndDate = [
+                SELECT COUNT()
+                FROM TTS_Transaction__c
+                WHERE Transaction__c = :parentId
+                AND IP_Transaction_Date_Time__c > :endDate
+            ];
+            Assert.areEqual(
+                0,
+                occurrencesAfterEndDate,
+                'A recurring transaction must not be created after the schedule end date'
+            );
+        }
     }
 
 }

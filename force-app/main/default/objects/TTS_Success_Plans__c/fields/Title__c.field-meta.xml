@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Title__c</fullName>
+    <description>Stores the required user-facing title of the Success Plan template.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter a clear title that identifies the purpose of this Success Plan.</inlineHelpText>
     <label>Title</label>
     <length>255</length>
     <required>true</required>

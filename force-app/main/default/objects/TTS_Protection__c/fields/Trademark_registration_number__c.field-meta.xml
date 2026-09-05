@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Trademark_registration_number__c</fullName>
     <caseSensitive>false</caseSensitive>
+    <description>Stores the official registration number assigned to a trademark.</description>
     <externalId>true</externalId>
-    <inlineHelpText>This is a unique identifier assigned to the trademark by the trademark office.</inlineHelpText>
+    <inlineHelpText>For trademark records, enter the registration number assigned by the trademark office.</inlineHelpText>
     <label>Trademark registration number</label>
     <length>100</length>
     <required>false</required>

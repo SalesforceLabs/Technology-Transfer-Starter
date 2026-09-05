@@ -28,12 +28,12 @@ You can also install the latest package version directly using the package insta
 
 **Production:**
 ```
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000Da7ZIAS
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000tM0OIAU
 ```
 
 **Sandbox:**
 ```
-https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000Da7ZIAS
+https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDm000000tM0OIAU
 ```
 
 Replace `04t...` with the latest package version ID. Contact the maintainers for the current version ID.

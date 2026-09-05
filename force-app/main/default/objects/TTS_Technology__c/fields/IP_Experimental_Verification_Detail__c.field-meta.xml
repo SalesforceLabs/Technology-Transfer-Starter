@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Experimental_Verification_Detail__c</fullName>
+    <description>Documents the experimental verification performed for the technology and its results.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Describe the tests performed, evidence obtained, and key verification results.</inlineHelpText>
     <label>Experimental Verification Detail</label>
     <length>130000</length>
     <trackFeedHistory>false</trackFeedHistory>

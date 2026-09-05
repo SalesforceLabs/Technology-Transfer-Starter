@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TRL__c</fullName>
+    <description>Records the technology&apos;s readiness level on the nine-level TRL scale.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The TRL scale ranges from 1 to 9, with each level representing a specific stage of technology development.</inlineHelpText>
+    <inlineHelpText>Select TRL 1 for earliest research through TRL 9 for a proven operational technology.</inlineHelpText>
     <label>Technology Readiness Level (TRL)</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

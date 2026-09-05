@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Title__c</fullName>
+    <description>Stores the title used to identify the protection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The title of the patent, which provides a brief description of the invention.</inlineHelpText>
+    <inlineHelpText>Enter the official or working title of the patent, mark, work, or trade secret.</inlineHelpText>
     <label>Title</label>
     <length>244</length>
     <required>false</required>

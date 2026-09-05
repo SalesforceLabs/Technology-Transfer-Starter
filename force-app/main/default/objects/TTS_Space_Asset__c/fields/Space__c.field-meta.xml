@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space__c</fullName>
+    <description>Associates the asset with the parent space where it is stored or used.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the space where this asset is stored or used.</inlineHelpText>
     <label>Space</label>
     <referenceTo>TTS_Space__c</referenceTo>
     <relationshipLabel>Space Assets</relationshipLabel>

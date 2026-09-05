@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Known_Variations__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents known or anticipated variations of the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Are there any possible variations of this IP?</inlineHelpText>
+    <inlineHelpText>Describe alternative forms, implementations, or variants of the technology.</inlineHelpText>
     <label>Known Variations</label>
     <length>32768</length>
     <securityClassification>Confidential</securityClassification>

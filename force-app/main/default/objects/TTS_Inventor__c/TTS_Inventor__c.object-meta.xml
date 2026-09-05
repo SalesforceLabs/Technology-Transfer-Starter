@@ -146,7 +146,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>Inventor_Compact_Layout</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Holds information about the inventors and also details of percentage share for royalty distribution along with alternative distribution.</description>
+    <description>Represents an inventor or research contributor to a technology, including role, primary status, contribution details, and percentage share for distributions.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

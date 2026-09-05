@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Known_Limitations__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents known technical or practical limitations of the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>What are the disadvantages or limitations of this Intellectual Property? Can these be solved? How?</inlineHelpText>
+    <inlineHelpText>Describe known limitations, disadvantages, and any possible mitigations.</inlineHelpText>
     <label>Known Limitations</label>
     <length>32768</length>
     <securityClassification>Confidential</securityClassification>

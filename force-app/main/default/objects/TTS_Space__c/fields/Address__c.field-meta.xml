@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Address__c</fullName>
+    <description>Stores the physical address or location details for the space.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the physical address or location details needed to find this space.</inlineHelpText>
     <label>Address</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

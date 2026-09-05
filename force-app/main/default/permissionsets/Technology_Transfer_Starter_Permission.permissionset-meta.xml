@@ -8,6 +8,10 @@
         <apexClass>TTSCore</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>TTS_ObjectRestResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>General Permissions for Staff within TTO</description>
     <fieldPermissions>
         <editable>true</editable>
@@ -1278,6 +1282,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>TTS_Transaction__c.Patent_Expense</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>TTS_Transaction__c.Space_Fee</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>

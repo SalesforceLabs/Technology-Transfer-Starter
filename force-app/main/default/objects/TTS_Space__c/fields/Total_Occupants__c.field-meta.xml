@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Occupants__c</fullName>
+    <description>Counts all Space Tenant records related to this space.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Shows the number of tenant records associated with this space.</inlineHelpText>
     <label>Total Occupants</label>
     <summaryForeignKey>TTS_Space_Tenant__c.Space__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>

@@ -146,7 +146,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Success Plans are template definitions of one or more tasks/milestones which need to be completed as part of the IP management process.</description>
+    <description>The Success Plan object defines a reusable series of Milestone task templates for a specified Salesforce object. It provides a required title and target object API name. Commonly used to apply consistent date-based actions to Technology records.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

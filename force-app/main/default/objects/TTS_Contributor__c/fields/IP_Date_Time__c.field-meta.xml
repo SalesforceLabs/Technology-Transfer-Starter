@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Date_Time__c</fullName>
+    <description>Records the date and time of the individual contribution.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date/time of the contribution from the Contributor.</inlineHelpText>
+    <inlineHelpText>Enter the date and time when this contribution was made.</inlineHelpText>
     <label>Date/Time</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

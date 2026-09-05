@@ -3,8 +3,9 @@
     <fullName>Attorney__c</fullName>
     <businessStatus>Active</businessStatus>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the attorney Contact responsible for the protection matter.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The attorney who prepared and filed the patent application</inlineHelpText>
+    <inlineHelpText>Select the attorney or legal representative handling this protection.</inlineHelpText>
     <label>Attorney Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Protections</relationshipLabel>

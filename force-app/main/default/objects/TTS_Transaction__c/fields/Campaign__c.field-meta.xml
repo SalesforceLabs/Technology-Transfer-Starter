@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Campaign__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the transaction to the related Campaign.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the Campaign associated with this transaction.</inlineHelpText>
     <label>Campaign</label>
     <referenceTo>Campaign</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>

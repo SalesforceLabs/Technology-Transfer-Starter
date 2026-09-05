@@ -3,7 +3,9 @@
     <fullName>Protection_Owner_Individual__c</fullName>
     <businessStatus>Active</businessStatus>
     <deleteConstraint>Restrict</deleteConstraint>
+    <description>Identifies the individual Contact who owns the protection.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the individual owner; use Protection Owner (Account) when the owner is an organisation.</inlineHelpText>
     <label>Protection Owner (Individual)</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Owned Protections</relationshipLabel>

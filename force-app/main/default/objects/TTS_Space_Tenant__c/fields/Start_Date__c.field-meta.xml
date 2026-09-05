@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Start_Date__c</fullName>
     <defaultValue>Today()</defaultValue>
+    <description>Records the required date when the tenancy begins.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the first date of the tenancy; new records default to today.</inlineHelpText>
     <label>Start Date</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

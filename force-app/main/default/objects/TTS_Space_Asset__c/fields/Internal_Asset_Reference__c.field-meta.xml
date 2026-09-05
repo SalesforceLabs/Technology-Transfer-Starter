@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Internal_Asset_Reference__c</fullName>
+    <description>Stores the internal tracking reference for the asset and supports matching with external records.</description>
     <externalId>true</externalId>
-    <inlineHelpText>Asset Reference for the Asset which is used internally</inlineHelpText>
+    <inlineHelpText>Enter the reference your organisation uses to track this asset.</inlineHelpText>
     <label>Internal Asset Reference</label>
     <length>200</length>
     <required>false</required>

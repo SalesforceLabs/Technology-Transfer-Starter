@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Identifies the individual associated with the space tenant.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the contact associated with this tenant.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Tenant Contacts</relationshipLabel>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space_Tenant__c</fullName>
+    <description>Associates the contact record with its parent space tenant.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the tenant with which this contact is associated.</inlineHelpText>
     <label>Space Tenant</label>
     <referenceTo>TTS_Space_Tenant__c</referenceTo>
     <relationshipLabel>Tenant Contacts</relationshipLabel>

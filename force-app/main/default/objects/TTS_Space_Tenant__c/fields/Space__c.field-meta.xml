@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space__c</fullName>
+    <description>Associates the tenancy with the parent space being occupied.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the space occupied by this tenant.</inlineHelpText>
     <label>Space</label>
     <referenceTo>TTS_Space__c</referenceTo>
     <relationshipName>Space_Tenants</relationshipName>

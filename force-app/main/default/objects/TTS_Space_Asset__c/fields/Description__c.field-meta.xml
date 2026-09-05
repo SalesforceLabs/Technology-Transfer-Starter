@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
+    <description>Stores descriptive details about the asset, including identifying characteristics or condition.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Describe the asset and include any details useful for identification or management.</inlineHelpText>
     <label>Description</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

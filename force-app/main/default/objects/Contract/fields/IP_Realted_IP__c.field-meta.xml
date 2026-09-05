@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Realted_IP__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
+    <description>Links the Contract to the Technology record covered by the agreement.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Related Technology for this Contract</inlineHelpText>
+    <inlineHelpText>Select the Technology record covered by this contract or agreement.</inlineHelpText>
     <label>Related Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>

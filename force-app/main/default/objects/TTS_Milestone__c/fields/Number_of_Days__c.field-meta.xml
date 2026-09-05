@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Days__c</fullName>
-    <description>Total Number of Task associated to this Milestone.</description>
+    <description>Stores the offset from the selected source date used to calculate the generated task's due date.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total Number of Task associated to this Milestone.</inlineHelpText>
+    <inlineHelpText>Enter the offset from the source date; use When and Unit to set its direction and time unit.</inlineHelpText>
     <label>Number of Days</label>
     <precision>18</precision>
     <required>false</required>

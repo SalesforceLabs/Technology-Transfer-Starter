@@ -2,7 +2,7 @@ project:
   name: Technology-Transfer-Starter
   package:
     name: Technology Transfer Starter
-    api_version: "57.0"
+    api_version: "67.0"
     namespace: techstarter
   git:
     default_branch: "main"
@@ -23,33 +23,33 @@ tasks:
   extract_dataset:
     options:
       inject_namespaces: true
-      drop_missing_schema: True
+      drop_missing_schema: true
 
   load_dataset:
     options:
       inject_namespaces: false
-      drop_missing_schema: True
+      drop_missing_schema: true
 
   delete_data:
     options:
       objects:
-        - Entitlement
-        - IP_Inventor__c
-        - Applicant__c
-        - TrademarkIPAssociation__c
-        - Campaign
-        - Opportunity
-        - IP__c
-        - Contact
-        - Trademark_Classes__c
-        - Contract
-        - Account
+      - Entitlement
+      - IP_Inventor__c
+      - Applicant__c
+      - TrademarkIPAssociation__c
+      - Campaign
+      - Opportunity
+      - IP__c
+      - Contact
+      - Trademark_Classes__c
+      - Contract
+      - Account
 
   # Package Install - Check the version_id is the latest from the sfdx-project.json file
   update_dependencies:
     options:
       dependencies:
-        - version_id: 04tDm000000Da7ZIAS
+      - version_id: 04tDm000000tM0OIAU
 
 flows:
   config_dev:
@@ -68,10 +68,10 @@ flows:
         task: assign_permission_sets
         options:
           api_names:
-            - Technology_Transfer_Starter_Visa_Management
-            - Technology_Transfer_Starter_Permission
-            - Technology_Transfer_Starter_Space_Manager
-            - Technology_Transfer_Starter_Mentoring_Manager
+          - Technology_Transfer_Starter_Visa_Management
+          - Technology_Transfer_Starter_Permission
+          - Technology_Transfer_Starter_Space_Manager
+          - Technology_Transfer_Starter_Mentoring_Manager
 
 orgs:
   scratch:

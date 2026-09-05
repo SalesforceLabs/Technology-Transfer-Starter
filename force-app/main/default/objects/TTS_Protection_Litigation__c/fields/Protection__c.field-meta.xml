@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Protection__c</fullName>
+    <description>Links the litigation event to its parent Protection record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Related Patent, Trademark etc</inlineHelpText>
+    <inlineHelpText>Select the patent, trademark, copyright, or trade secret protection involved in this litigation.</inlineHelpText>
     <label>Protection</label>
     <referenceTo>TTS_Protection__c</referenceTo>
     <relationshipLabel>Protection Litigations</relationshipLabel>

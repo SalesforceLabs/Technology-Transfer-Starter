@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Overview__c</fullName>
+    <description>Stores an overview of the mentee's mentoring need and relevant context.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Describe the mentoring need, desired outcomes, and context a prospective mentor should know.</inlineHelpText>
     <label>Overview</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

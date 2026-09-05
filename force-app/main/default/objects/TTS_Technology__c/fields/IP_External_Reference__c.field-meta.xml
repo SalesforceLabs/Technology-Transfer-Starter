@@ -3,8 +3,9 @@
     <fullName>IP_External_Reference__c</fullName>
     <businessStatus>Active</businessStatus>
     <caseSensitive>false</caseSensitive>
+    <description>Stores the unique reference used for this technology in an external system.</description>
     <externalId>true</externalId>
-    <inlineHelpText>If details of the IP are stored in an external system to Salesforce, then please add the UNIQUE reference here for the related record in the external system.</inlineHelpText>
+    <inlineHelpText>Enter the unique identifier for this technology in the source or external system.</inlineHelpText>
     <label>External Reference</label>
     <length>255</length>
     <required>false</required>

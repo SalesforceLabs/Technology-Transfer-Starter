@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
+    <description>Categorizes the space by its primary function.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the category that best describes how this space is used.</inlineHelpText>
     <label>Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Utility__c</fullName>
     <businessStatus>Active</businessStatus>
+    <description>Documents current and potential practical uses or applications of the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>What are possible uses or applications of this Intellectual Property? In addition to direct applications, are there any other uses that might be realised in the future?</inlineHelpText>
+    <inlineHelpText>Describe direct, secondary, and potential future uses of the technology.</inlineHelpText>
     <label>Utility Details</label>
     <length>130000</length>
     <securityClassification>Confidential</securityClassification>

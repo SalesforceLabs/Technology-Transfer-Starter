@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Current_Contact__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether the contact is currently active for the tenant.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select this when the contact currently represents the tenant; clear it when the contact is no longer current.</inlineHelpText>
     <label>Is Current Contact</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

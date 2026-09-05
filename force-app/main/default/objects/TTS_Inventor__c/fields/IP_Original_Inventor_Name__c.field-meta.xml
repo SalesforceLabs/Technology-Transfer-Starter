@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Original_Inventor_Name__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
-    <description>Lookup to contact object.</description>
+    <description>Identifies the Contact who originally contributed the inventor percentage share.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact record related to the researcher, inventor or other party involved with contributing to the IP</inlineHelpText>
+    <inlineHelpText>Select the original inventor, researcher, or contributor represented by this record.</inlineHelpText>
     <label>Original Inventor</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Inventors (Original Inventor)</relationshipLabel>

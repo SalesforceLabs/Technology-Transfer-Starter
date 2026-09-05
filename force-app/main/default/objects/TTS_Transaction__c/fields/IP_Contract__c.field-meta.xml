@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Contract__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the transaction to the related standard Contract record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The related contract/Agreement for this transaction</inlineHelpText>
+    <inlineHelpText>Select the standard Contract associated with this transaction.</inlineHelpText>
     <label>Related Contract</label>
     <referenceTo>Contract</referenceTo>
     <relationshipLabel>Transactions</relationshipLabel>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Patent_number__c</fullName>
     <caseSensitive>false</caseSensitive>
+    <description>Stores the official number assigned to an issued patent.</description>
     <externalId>true</externalId>
-    <inlineHelpText>The unique number assigned to the patent by the patent office.</inlineHelpText>
+    <inlineHelpText>For issued patent records, enter the number assigned by the patent office.</inlineHelpText>
     <label>Patent Number</label>
     <length>100</length>
     <required>false</required>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Class_Number__c</fullName>
+    <description>Stores the NICE Classification number assigned to the trademark class.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the official NICE Classification class number.</inlineHelpText>
     <label>Class Number</label>
     <length>255</length>
     <required>false</required>

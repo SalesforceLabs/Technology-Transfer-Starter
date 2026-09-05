@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Sponsored_Program_Detail__c</fullName>
+    <description>Documents sponsorship or sponsored research associated with the technology.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Details of Sponsorship</inlineHelpText>
+    <inlineHelpText>Describe the sponsor, program, award or agreement, and relevant obligations.</inlineHelpText>
     <label>Sponsored Program Detail</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

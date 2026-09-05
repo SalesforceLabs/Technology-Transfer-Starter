@@ -149,7 +149,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Intellectual property protection records</description>
+    <description>Records patent, trademark, copyright, and trade secret protections, including ownership, jurisdiction, lifecycle, and type-specific details.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

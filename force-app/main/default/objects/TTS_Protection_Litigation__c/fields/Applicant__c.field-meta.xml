@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Applicant__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the plaintiff to an Applicant record associated with the protection.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select the related applicant when the plaintiff is already represented by an Applicant record.</inlineHelpText>
     <label>Plaintiff</label>
     <referenceTo>TTS_Applicant__c</referenceTo>
     <relationshipLabel>Protection Litigations</relationshipLabel>

@@ -146,7 +146,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>IP_General_Layout</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Main technology detail and information</description>
+    <description>Holds shared technical, disclosure, readiness, ownership, and commercial information about a technology or invention.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>true</enableFeeds>

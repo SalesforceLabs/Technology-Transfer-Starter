@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Agreed_Amount__c</fullName>
     <defaultValue>0</defaultValue>
+    <description>Stores the proposed or agreed monetary amount of the transaction.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The agreed or proposed value.</inlineHelpText>
+    <inlineHelpText>Enter the proposed or agreed transaction amount.</inlineHelpText>
     <label>Proposed Amount</label>
     <precision>18</precision>
     <required>false</required>

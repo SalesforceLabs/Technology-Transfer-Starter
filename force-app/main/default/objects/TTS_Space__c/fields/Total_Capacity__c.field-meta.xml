@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Capacity__c</fullName>
     <defaultValue>1</defaultValue>
+    <description>Stores the maximum number of people or units the space can accommodate.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total capacity in terms of number of occupants.</inlineHelpText>
+    <inlineHelpText>Enter the maximum number of people or units this space can accommodate.</inlineHelpText>
     <label>Total Capacity</label>
     <precision>18</precision>
     <required>false</required>

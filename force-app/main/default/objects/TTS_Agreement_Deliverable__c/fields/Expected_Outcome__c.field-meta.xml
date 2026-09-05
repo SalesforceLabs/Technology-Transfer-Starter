@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Expected_Outcome__c</fullName>
+    <description>Defines the result expected when the deliverable is completed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The specific outcome or result that is expected from the deliverable.</inlineHelpText>
+    <inlineHelpText>Enter the measurable result or outcome expected from completing this deliverable.</inlineHelpText>
     <label>Expected Outcome</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

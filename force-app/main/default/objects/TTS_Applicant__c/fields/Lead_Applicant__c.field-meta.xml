@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Lead_Applicant__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether this applicant is the lead applicant for the related protection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set to checked if this is the lead applicant for this patent application.</inlineHelpText>
+    <inlineHelpText>Select when this is the primary or lead applicant for the protection.</inlineHelpText>
     <label>Lead Applicant</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

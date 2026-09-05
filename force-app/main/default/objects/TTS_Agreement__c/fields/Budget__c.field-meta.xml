@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Budget__c</fullName>
+    <description>Stores the budget allocated to the agreement.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The financial resources allocated for the related project</inlineHelpText>
+    <inlineHelpText>Enter the total budget associated with the agreement.</inlineHelpText>
     <label>Budget</label>
     <precision>18</precision>
     <required>false</required>

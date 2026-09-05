@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Materials__c</fullName>
+    <description>Documents materials used by the technology and their sources.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Details of materials used, particularly those provided from another source outside of research organisation.</inlineHelpText>
+    <inlineHelpText>Describe key materials and identify externally supplied or restricted sources.</inlineHelpText>
     <label>Materials Detail</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

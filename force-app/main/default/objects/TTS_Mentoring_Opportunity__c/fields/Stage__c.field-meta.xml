@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Stage__c</fullName>
+    <description>Identifies the current stage of the mentoring opportunity from draft through closure or cancellation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Current Stage of the Mentoring Opportunity</inlineHelpText>
+    <inlineHelpText>Select Draft while preparing, Open when seeking a mentor, Mentor Assigned after selection, or Closed or Cancelled when finished.</inlineHelpText>
     <label>Stage</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

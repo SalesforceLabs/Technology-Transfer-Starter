@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links the contribution to the individual Contact providing funds.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Primary contact related to this contribution from the Contributor</inlineHelpText>
+    <inlineHelpText>Select the individual Contact contributing to the transaction.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Contributions</relationshipLabel>

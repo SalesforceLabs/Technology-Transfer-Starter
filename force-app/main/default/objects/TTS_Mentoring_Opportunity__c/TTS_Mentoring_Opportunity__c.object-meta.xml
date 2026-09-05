@@ -149,7 +149,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] Manage and track mentoring opportunities</description>
+    <description>Represents a mentoring engagement sought by a mentee, including required expertise, candidate interest, mentor selection, and engagement dates.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

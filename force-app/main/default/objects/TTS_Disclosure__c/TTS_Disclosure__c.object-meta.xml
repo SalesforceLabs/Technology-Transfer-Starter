@@ -149,7 +149,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>[TTS] A record of initial disclosure related to an invention, technology, or intellectual property for Technology Transfer Starter.</description>
+    <description>Records an initial invention disclosure submitted before formal technology evaluation and protection processing.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

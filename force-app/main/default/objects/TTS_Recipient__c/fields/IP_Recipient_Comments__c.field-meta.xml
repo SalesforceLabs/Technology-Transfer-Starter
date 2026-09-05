@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Recipient_Comments__c</fullName>
+    <description>Captures notes about this recipient's part of the transaction.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter relevant notes about this recipient's distribution.</inlineHelpText>
     <label>Comments</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IP_Recipient_Payment_Reference__c</fullName>
+    <description>Stores the payment reference for this recipient's distribution.</description>
     <externalId>true</externalId>
+    <inlineHelpText>Enter the payment reference used to identify this recipient's distribution.</inlineHelpText>
     <label>Payment Reference</label>
     <length>50</length>
     <required>false</required>
