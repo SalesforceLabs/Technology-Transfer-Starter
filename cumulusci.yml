@@ -49,7 +49,7 @@ tasks:
   update_dependencies:
     options:
       dependencies:
-      - version_id: 04tDm000000tM0OIAU
+      - version_id: 04tg7000000N4ZBAA0
 
 flows:
   config_dev:
