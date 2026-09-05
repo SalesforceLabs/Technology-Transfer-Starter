@@ -11,24 +11,31 @@
             <name>Original_Inventor_Mode</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.IP_Original_Inventor_Name__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_Original_Inventor_Name__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.IP_AlternativeContact__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_AlternativeContact__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.IP_Is_Primary__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_Is_Primary__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Related_Technology.IP_Principal_Inventor_PI__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Triggering_Inventor.IP_Original_Inventor_Name__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -40,24 +47,31 @@
             <name>Alternative_Inventor_Mode</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.IP_AlternativeContact__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_AlternativeContact__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.IP_Original_Inventor_Name__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_Original_Inventor_Name__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.IP_Is_Primary__c</leftValueReference>
+                <leftValueReference>Get_Triggering_Inventor.IP_Is_Primary__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Related_Technology.IP_Principal_Inventor_PI__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Triggering_Inventor.IP_AlternativeContact__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -88,6 +102,48 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Related_Technology</name>
+        <label>Get Related Technology</label>
+        <locationX>188</locationX>
+        <locationY>215</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mode</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Triggering_Inventor.IP_Contribution__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>TTS_Technology__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Triggering_Inventor</name>
+        <label>Get Triggering Inventor</label>
+        <locationX>188</locationX>
+        <locationY>107</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Related_Technology</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>TTS_Inventor__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_PI_on_Technology</name>
         <label>Update PI on Technology</label>
@@ -98,13 +154,13 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.IP_Contribution__c</elementReference>
+                <elementReference>Get_Triggering_Inventor.IP_Contribution__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
             <field>IP_Principal_Inventor_PI__c</field>
             <value>
-                <elementReference>$Record.IP_Original_Inventor_Name__c</elementReference>
+                <elementReference>Get_Triggering_Inventor.IP_Original_Inventor_Name__c</elementReference>
             </value>
         </inputAssignments>
         <object>TTS_Technology__c</object>
@@ -119,23 +175,25 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.IP_Contribution__c</elementReference>
+                <elementReference>Get_Triggering_Inventor.IP_Contribution__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
             <field>IP_Principal_Inventor_PI__c</field>
             <value>
-                <elementReference>$Record.IP_AlternativeContact__c</elementReference>
+                <elementReference>Get_Triggering_Inventor.IP_AlternativeContact__c</elementReference>
             </value>
         </inputAssignments>
         <object>TTS_Technology__c</object>
     </recordUpdates>
+    <runInMode>SystemModeWithSharing</runInMode>
     <start>
         <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Mode</targetReference>
+            <targetReference>Get_Triggering_Inventor</targetReference>
         </connector>
+        <filterFormula>AND({!$Record.IP_Is_Primary__c}, NOT(ISBLANK({!$Record.IP_Contribution__c})), NOT(ISBLANK({!$Record.IP_Original_Inventor_Name__c})), OR(ISNEW(), ISCHANGED({!$Record.IP_Is_Primary__c}), ISCHANGED({!$Record.IP_Original_Inventor_Name__c}), ISCHANGED({!$Record.IP_AlternativeContact__c}), ISCHANGED({!$Record.IP_Contribution__c})))</filterFormula>
         <object>TTS_Inventor__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

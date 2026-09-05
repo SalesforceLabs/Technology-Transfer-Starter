@@ -6,39 +6,39 @@
     <masterLabel>Technology</masterLabel>
     <pathAssistantSteps>
         <fieldNames>IP_Title__c</fieldNames>
-        <info>&lt;p&gt;Basic principles observed and reported: This level represents the earliest stage of technology development, where the basic principles of the technology have been identified and reported in scientific literature.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Record the initial research finding or scientific principle that may have practical value. Capture the researchers, supporting publications or data, and the problem the discovery could address.&lt;/p&gt;</info>
         <picklistValueName>TRL 1</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Technology concept formulated: This level represents the development of a conceptual design or plan for the technology, based on scientific principles and preliminary data.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Define the proposed technology and its potential application. Confirm the researcher can explain how the concept would work, who may benefit, and what evidence is needed next.&lt;/p&gt;</info>
         <picklistValueName>TRL 2</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Analytical and experimental critical function and/or characteristic proof of concept: This level represents the testing and validation of critical functions or characteristics of the technology in a laboratory or simulated environment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Document proof-of-concept results showing that the core idea can work. Review the evidence, identify any new intellectual property, and note the main technical and market assumptions still to be tested.&lt;/p&gt;</info>
         <picklistValueName>TRL 3</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Component and/or breadboard validation in laboratory environment: This level represents the testing and validation of a prototype or basic model of the technology in a laboratory or simulated environment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Confirm that the main components work together in a controlled research setting. Record prototype results, limitations, ownership and funding obligations, and any protection or disclosure deadlines.&lt;/p&gt;</info>
         <picklistValueName>TRL 4</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Component and/or breadboard validation in relevant environment: This level represents the testing and validation of a prototype or basic model of the technology in a relevant environment or setting, such as a field test or pilot study.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Validate the technology under conditions that reflect its intended use. Capture feedback from prospective users or industry partners, compare performance with alternatives, and define the work needed for a pilot.&lt;/p&gt;</info>
         <picklistValueName>TRL 5</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;System/subsystem model or prototype demonstration in a relevant environment: This level represents the testing and validation of a more advanced model or prototype of the technology in a relevant environment or setting, demonstrating its performance and capabilities.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Demonstrate an integrated prototype in a relevant setting with credible users or partners. Document performance, reproducibility, regulatory considerations, partner interest, and the development plan for adoption or licensing.&lt;/p&gt;</info>
         <picklistValueName>TRL 6</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;System prototype demonstration in an operational environment: This level represents the testing and validation of a full-scale prototype or model of the technology in an operational environment, demonstrating its performance and readiness for commercialization.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Run a full prototype in the intended operating environment. Confirm that it meets user requirements and agree the remaining technical, regulatory, manufacturing, funding, and commercial steps with the development partner.&lt;/p&gt;</info>
         <picklistValueName>TRL 7</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Actual system completed and qualified through test and demonstration: This level represents the completion of a fully functional and qualified system, ready for commercialization and deployment.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Confirm the technology is complete and has passed the required qualification, compliance, and acceptance testing. Finalize the evidence and agreements needed for launch, deployment, or transfer to the licensee or spinout.&lt;/p&gt;</info>
         <picklistValueName>TRL 8</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;Actual system proven through successful mission operations: This level represents the successful implementation and deployment of the technology in a real-world setting, demonstrating its effectiveness and reliability.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;Record evidence that the technology is performing successfully in routine use. Track adoption, licensee or spinout milestones, income and impact, and any further intellectual property or research opportunities.&lt;/p&gt;</info>
         <picklistValueName>TRL 9</picklistValueName>
     </pathAssistantSteps>
     <recordTypeName>__MASTER__</recordTypeName>

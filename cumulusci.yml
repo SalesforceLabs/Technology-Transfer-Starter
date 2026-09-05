@@ -73,6 +73,13 @@ flows:
           - Technology_Transfer_Starter_Space_Manager
           - Technology_Transfer_Starter_Mentoring_Manager
 
+  seed_demo_data:
+    steps:
+      1:
+        task: execute_anon
+        options:
+          path: datasets/seed-demo-data.apex
+
 orgs:
   scratch:
     dev:

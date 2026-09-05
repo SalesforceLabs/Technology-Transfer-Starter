@@ -3,10 +3,10 @@
     {
       "path": "force-app",
       "package": "Technology Transfer Starter",
-      "versionName": "v3.6",
-      "versionNumber": "3.6.0.NEXT",
-      "versionDescription": "Custom report types (24 objects), integration-user permission set, and namespace-safe generic REST CRUD API.",
-      "ancestorId": "04tDm000000tLy8IAE",
+      "versionName": "v3.6.3",
+      "versionNumber": "3.6.3.NEXT",
+      "versionDescription": "Fixes principal-inventor field access and limits automation to relevant Technology updates.",
+      "ancestorId": "04tg7000000N4ZBAA0",
       "default": true
     }
   ],
@@ -26,6 +26,10 @@
     "Technology Transfer Starter@3.5.1-1": "04tDm000000tLzVIAU",
     "Technology Transfer Starter@3.5.2-1": "04tDm000000tM0OIAU",
     "Technology Transfer Starter@3.6.0-1": "04tg7000000MhKrAAK",
-    "Technology Transfer Starter@3.6.0-2": "04tg7000000N4ZBAA0"
+    "Technology Transfer Starter@3.6.0-2": "04tg7000000N4ZBAA0",
+    "Technology Transfer Starter@3.6.1-1": "04tg7000000N53pAAC",
+    "Technology Transfer Starter@3.6.2-1": "04tg7000000N5JxAAK",
+    "Technology Transfer Starter@3.6.3-1": "04tg7000000N5evAAC",
+    "Technology Transfer Starter@3.6.3-2": "04tg7000000N5lNAAS"
   }
 }
