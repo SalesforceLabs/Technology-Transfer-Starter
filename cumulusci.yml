@@ -76,9 +76,10 @@ flows:
   seed_demo_data:
     steps:
       1:
-        task: execute_anon
+        task: run_apex_and_wait
         options:
-          path: datasets/seed-demo-data.apex
+          filepath: datasets/seed-demo-data.apex
+          waitseconds: 0
 
 orgs:
   scratch:
