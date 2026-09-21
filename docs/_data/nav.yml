@@ -1,0 +1,38 @@
+# Sidebar navigation. `url` values are site-root-relative and passed through
+# the `relative_url` filter in the layout, so they pick up the baseurl.
+- section: Introduction
+  items:
+    - title: Overview
+      url: /
+    - title: What it does
+      url: /overview/
+    - title: Data model
+      url: /data-model/
+    - title: Object reference
+      url: /objects-reference/
+
+- section: Post-setup checklists
+  items:
+    - title: Start here
+      url: /post-setup/
+    - title: Administrator
+      url: /roles/administrator/
+    - title: IP & Legal Protection
+      url: /roles/ip-legal/
+    - title: Royalty & Finance
+      url: /roles/royalty-finance/
+    - title: Space Manager
+      url: /roles/space-manager/
+    - title: Mentoring Manager
+      url: /roles/mentoring-manager/
+    - title: Visa Management
+      url: /roles/visa-management/
+
+- section: Install & configure
+  items:
+    - title: Permission sets & roles
+      url: /permission-sets-and-roles/
+    - title: Visa management setup
+      url: /visa-management-setup/
+    - title: REST API
+      url: /rest-api-getting-started/

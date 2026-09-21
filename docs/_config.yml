@@ -1,0 +1,27 @@
+title: Technology Transfer Starter
+tagline: A connected workspace for technology transfer, IP and commercialisation on Salesforce
+description: >-
+  Documentation for the Technology Transfer Starter managed package — what it is,
+  who it is for, the data model, and post-installation setup checklists for each
+  Technology Transfer Office role.
+
+# Served from the /docs folder of the repo via GitHub Pages.
+# Site URL: https://salesforcelabs.github.io/Technology-Transfer-Starter/
+url: https://salesforcelabs.github.io
+baseurl: /Technology-Transfer-Starter
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  toc_levels: 2..3
+
+# Emit clean URLs (/overview/ instead of /overview.html)
+permalink: pretty
+
+# The existing markdown assets that are folded into the site keep their
+# original filenames so links from the repo README continue to resolve.
+
+exclude:
+  - "*.csv"
+  - README.md
