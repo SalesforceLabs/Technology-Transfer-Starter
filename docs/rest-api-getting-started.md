@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /rest-api-getting-started/
+---
+
 # Get Started with the REST API
 
 Connect an external system to Technology Transfer Starter to read, create, and update package records through its custom Salesforce REST API. This setup guide is for Salesforce administrators and integration developers configuring a server-to-server connection.
@@ -86,7 +91,7 @@ The permission set grants:
 
 - **API Enabled** system permission.
 - Access to the `TTS_ObjectRestResource` Apex class.
-- Read, create, and edit access to the 24 package objects exposed by the API.
+- Read, create, and edit access to the 26 package objects exposed by the API.
 - Read or edit field-level security for the exposed package fields.
 - **View All** record access on exposed objects, without **Modify All** or delete permission.
 
@@ -167,24 +172,30 @@ Confirm that the response contains the expected title, status, and external refe
 
 ## Available Objects
 
-The endpoint accepts these unqualified object API names:
+The API exposes **every custom object this package ships** — the list is derived from the
+package's schema at run time, so any object added in a later release is available
+automatically. As of the current release these are:
 
 | Object API name | Object API name |
 | --- | --- |
 | `TTS_Agreement__c` | `TTS_Agreement_Deliverable__c` |
 | `TTS_Agreement_Party__c` | `TTS_Applicant__c` |
 | `TTS_Contributor__c` | `TTS_Disclosure__c` |
-| `TTS_Inventor__c` | `TTS_Mentoring_Interest__c` |
-| `TTS_Mentoring_Opportunity__c` | `TTS_Milestone__c` |
-| `TTS_Protection__c` | `TTS_Protection_Claim__c` |
-| `TTS_Protection_Family__c` | `TTS_Protection_Litigation__c` |
-| `TTS_Recipient__c` | `TTS_Space__c` |
+| `TTS_Inventor__c` | `TTS_Law_Firm_Matter__c` |
+| `TTS_Mentoring_Interest__c` | `TTS_Mentoring_Opportunity__c` |
+| `TTS_Milestone__c` | `TTS_Protection__c` |
+| `TTS_Protection_Claim__c` | `TTS_Protection_Family__c` |
+| `TTS_Protection_Litigation__c` | `TTS_Recipient__c` |
+| `TTS_Royalty_Term__c` | `TTS_Space__c` |
 | `TTS_Space_Asset__c` | `TTS_Space_Tenant__c` |
 | `TTS_Space_Tenant_Contact__c` | `TTS_Success_Plans__c` |
 | `TTS_Technology__c` | `TTS_TrademarkIPAssociation__c` |
 | `TTS_Trademark_Classes__c` | `TTS_Transaction__c` |
 
-Use bare names in the URL and request body, as shown in the examples. The package resolves its namespace internally.
+Use bare names in the URL and request body, as shown in the examples. The package resolves its
+namespace internally. Standard objects (`Account`, `Contact`, and so on) are not exposed. The
+integration user must also be granted object and field access — the `TTS_Integration_User`
+permission set carries it for every shipped object.
 
 ## Troubleshoot Common Errors
 

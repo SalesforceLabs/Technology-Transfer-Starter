@@ -11,14 +11,15 @@ The solution provides a ready-made data model, guided processes, purpose-built r
 - **Disclosure intake and review** - Collect invention details, funding information, commercial applications and supporting documents through a guided disclosure form. Approved disclosures can be turned into Technology records without re-entering the information.
 - **Technology portfolio management** - Keep technical, market and prior-art information together, assess Technology Readiness Levels and follow each Technology from initial disclosure through protection and commercialization.
 - **Inventor and contributor records** - Link inventors and other contributors to a Technology, record their roles and contribution shares, and identify the principal inventor.
-- **IP protection management** - Manage patents, trademarks, copyrights and trade secrets, including ownership, jurisdictions, key dates, applicants, claims, related filings and litigation details.
+- **IP protection management** - Manage patents, trademarks, copyrights and trade secrets, including ownership, jurisdictions, key dates, applicants, claims, related filings, litigation details and the law-firm matters handling them.
 - **Agreement management** - Record licence, confidentiality, material transfer, sponsored research and other agreements, together with their parties, terms, dates, deliverables and related Technologies.
-- **Commercial and financial tracking** - Connect Technologies to Opportunities, Contracts, Campaigns and Agreements. Record incoming and outgoing payments, create recurring payment schedules and allocate amounts to contributors or other recipients.
+- **Commercial and financial tracking** - Connect Technologies to Opportunities, Contracts, Campaigns and Agreements. Record incoming and outgoing payments, define royalty terms on agreements, create recurring payment schedules and allocate amounts to contributors or other recipients.
 - **Reports and dashboard** - View Technology counts by status and readiness level, disclosure trends and agreement revenue using the included reports and Technology Disclosure Dashboard.
 - **Technology Transfer workspace** - Use a ready-made Salesforce app with dedicated pages, progress paths, tabs and views for the records your office works with most often.
 - **Mentoring management** - Advertise mentoring opportunities, record expressions of interest, rank potential mentors and track the selected mentoring relationship.
-- **Space and tenant management** - Track offices, laboratories, incubators, meeting rooms and workshops, along with tenants, contacts, occupancy and equipment.
-- **Visa information** - Store key visa details against Contact records when your office needs this information.
+- **Space and tenant management** - Track offices, labs, incubators, accelerators, hot desks, co-working and event space, along with the programme each space supports. Manage tenants and their contacts with venture category (student startup, spinout, external and more), venture stage, membership tier, occupancy type and departure reason, categorise equipment as assets, and attribute space fees to the paying tenant. A daily flow raises tenancy-expiry reminder tasks at 90, 30 and 7 days before an end date, and space status follows occupancy automatically.
+- **Visa and immigration management** - Track nationality, immigration status, visa type and dates, work authorization, passports and US / UK-specific references on Contact records, with a formula-driven days-to-expiry field and a daily flow that raises reminder tasks at 90, 30 and 7 days before expiry. See [Set Up Visa Management](docs/visa-management-setup.md).
+- **REST API integration** - Read, create and update the package's custom objects from external systems through a namespaced Apex REST endpoint. The exposed object list is derived from the package schema at run time, so every shipped object is available automatically. See [Get Started with the REST API](docs/rest-api-getting-started.md).
 
 ## Installation
 
@@ -56,14 +57,38 @@ Replace `04t...` with the latest package version ID. Contact the maintainers for
 
 ## Post-Installation Setup
 
-After installation, assign the appropriate permission sets to users:
+Access is controlled through a **layered permission-set model**. Assign the base set to every staff user, then stack the functional add-ons each user needs on top of it.
 
-- **Technology Transfer Starter Permission** - Base permissions for all users
-- **Technology Transfer Starter Visa Management** - For visa and immigration management
-- **Technology Transfer Starter Space Manager** - For space and resource management
-- **Technology Transfer Starter Mentoring Manager** - For mentoring program management
+**Base (assign to all staff):**
 
-### Assigning Permission Sets
+- **Technology Transfer Starter Permission** - The shared foundation: Account/Contact read, read/write on all core TTS objects, tabs, app and Apex. Required for the add-ons below to work — always assign it alongside them.
+
+**Functional add-ons (co-assign with base, per role):**
+
+- **Technology Transfer Starter Visa Management** - Contact edit plus the visa / immigration fields.
+- **Technology Transfer Starter Space Manager** - Space, tenant and asset management, with its own app.
+- **Technology Transfer Starter Mentoring Manager** - Mentoring opportunities and interests, with its own app.
+- **Technology Transfer Starter IP & Legal Protection Manager** - Protection families, claims, litigation, applicants and law-firm matters.
+- **Technology Transfer Starter Royalty & Finance Manager** - Royalty terms and related financial records.
+
+Each add-on is a pure delta — it grants only what base does not, so it must be assigned *with* base, not on its own.
+
+**Standalone sets (assign instead of base):**
+
+- **Technology Transfer Starter Administrator** - Full CRUD plus View All / Modify All on every TTS object, for package admins.
+- **TTS Integration User** - Object and field access for the REST API integration user only; not for standard staff.
+
+You can assign several sets at once from the CLI:
+
+```bash
+sf org assign permset \
+  --name Technology_Transfer_Starter_Permission \
+  --name Technology_Transfer_Starter_Visa_Management \
+  --name Technology_Transfer_Starter_Space_Manager \
+  --target-org <your-org>
+```
+
+### Assigning Permission Sets from Setup
 
 1. Navigate to **Setup** > **Users** > **Permission Sets**
 2. Select the appropriate permission set

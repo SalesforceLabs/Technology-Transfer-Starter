@@ -22,8 +22,20 @@ List<Account> accounts = new List<Account>{
 insert accounts;
 
 List<Contact> contacts = new List<Contact>{
-    new Contact(FirstName = 'Maya', LastName = 'Chen', Title = 'Associate Professor of Environmental Engineering', Email = 'maya.chen.demo@example.invalid', AccountId = accounts[0].Id),
-    new Contact(FirstName = 'Elias', LastName = 'Ward', Title = 'Professor of Embedded Systems', Email = 'elias.ward.demo@example.invalid', AccountId = accounts[0].Id),
+    new Contact(FirstName = 'Maya', LastName = 'Chen', Title = 'Associate Professor of Environmental Engineering', Email = 'maya.chen.demo@example.invalid', AccountId = accounts[0].Id,
+        techstarter__Nationality__c = 'India', techstarter__Immigration_Status__c = 'Valid',
+        techstarter__Visa_Type__c = 'Exchange Visitor Visa', techstarter__Visa_Number__c = 'DEMO-J1-0001',
+        techstarter__Visa_Start_Date__c = Date.today().addMonths(-11), techstarter__Visa_End_Date__c = Date.today().addDays(30),
+        techstarter__Passport_Number__c = 'DEMOPP12345', techstarter__Passport_Expiry_Date__c = Date.today().addYears(3),
+        techstarter__US_Form_Type__c = 'DS-2019 (J-1 Exchange Visitor)', techstarter__US_SEVIS_ID__c = 'N0012345678', techstarter__US_I94_Number__c = '12345678901',
+        techstarter__Work_Authorization__c = true, techstarter__Work_Hours_Limit__c = 20, techstarter__Right_to_Work_Check_Date__c = Date.today().addMonths(-11)),
+    new Contact(FirstName = 'Elias', LastName = 'Ward', Title = 'Professor of Embedded Systems', Email = 'elias.ward.demo@example.invalid', AccountId = accounts[0].Id,
+        techstarter__Nationality__c = 'Nigeria', techstarter__Immigration_Status__c = 'Valid',
+        techstarter__Visa_Type__c = 'Student Visa', techstarter__Visa_Number__c = 'DEMO-UKV-0002',
+        techstarter__Visa_Start_Date__c = Date.today().addMonths(-6), techstarter__Visa_End_Date__c = Date.today().addDays(90),
+        techstarter__Passport_Number__c = 'DEMOPP67890', techstarter__Passport_Expiry_Date__c = Date.today().addYears(4),
+        techstarter__UK_CAS_Number__c = 'E4X8Y2Z1DEMO', techstarter__UK_BRP_Number__c = 'ZR1234567', techstarter__UK_ATAS_Certificate__c = 'ATAS-DEMO-001',
+        techstarter__Work_Authorization__c = true, techstarter__Work_Hours_Limit__c = 20, techstarter__Right_to_Work_Check_Date__c = Date.today().addMonths(-6)),
     new Contact(FirstName = 'Rina', LastName = 'Patel', Title = 'Technology Transfer Manager', Email = 'rina.patel.demo@example.invalid', AccountId = accounts[0].Id),
     new Contact(FirstName = 'Jordan', LastName = 'Bell', Title = 'Chief Executive Officer', Email = 'jordan.bell.demo@example.invalid', AccountId = accounts[1].Id),
     new Contact(FirstName = 'Avery', LastName = 'Morgan', Title = 'Commercialisation Mentor', Email = 'avery.morgan.demo@example.invalid', AccountId = accounts[2].Id)
@@ -367,6 +379,7 @@ insert deliverables;
 techstarter__TTS_Space__c innovationHub = new techstarter__TTS_Space__c(
     techstarter__Space_Reference__c = marker + '-SPACE-001',
     techstarter__Type__c = 'Incubator',
+    techstarter__Programme__c = 'Incubator',
     techstarter__Status__c = 'Occupied',
     techstarter__Total_Capacity__c = 20,
     techstarter__Address__c = 'Innovation Way, Northbridge University, Example City',
@@ -377,7 +390,8 @@ insert innovationHub;
 techstarter__TTS_Space__c aeroSenseLab = new techstarter__TTS_Space__c(
     techstarter__Space_Reference__c = marker + '-SPACE-002',
     techstarter__Parent_Space__c = innovationHub.Id,
-    techstarter__Type__c = 'Workshop',
+    techstarter__Type__c = 'Lab / Makerspace',
+    techstarter__Programme__c = 'Incubator',
     techstarter__Status__c = 'Occupied',
     techstarter__Total_Capacity__c = 5,
     techstarter__Address__c = 'Lab 2B, Innovation Way, Northbridge University, Example City',
@@ -390,6 +404,7 @@ insert new List<techstarter__TTS_Space_Asset__c>{
         techstarter__Space__c = aeroSenseLab.Id,
         techstarter__Name__c = 'Environmental Calibration Chamber',
         techstarter__Description__c = 'Controlled chamber used to validate environmental sensor accuracy.',
+        techstarter__Asset_Category__c = 'Lab / Makerspace',
         techstarter__Internal_Asset_Reference__c = marker + '-ASSET-001',
         techstarter__Purchase_Date__c = today.addYears(-1),
         techstarter__Estimated_Value__c = 28000,
@@ -399,6 +414,7 @@ insert new List<techstarter__TTS_Space_Asset__c>{
         techstarter__Space__c = aeroSenseLab.Id,
         techstarter__Name__c = 'Sensor Prototyping Workstation',
         techstarter__Description__c = 'Electronics workstation for building and testing AeroSense prototypes.',
+        techstarter__Asset_Category__c = 'IT / Equipment',
         techstarter__Internal_Asset_Reference__c = marker + '-ASSET-002',
         techstarter__Purchase_Date__c = today.addMonths(-10),
         techstarter__Estimated_Value__c = 12000,
@@ -410,6 +426,10 @@ techstarter__TTS_Space_Tenant__c tenant = new techstarter__TTS_Space_Tenant__c(
     techstarter__Space__c = aeroSenseLab.Id,
     techstarter__Account__c = accounts[1].Id,
     techstarter__Type__c = 'Company',
+    techstarter__Venture_Category__c = 'Spinout',
+    techstarter__Venture_Stage__c = 'Scaling',
+    techstarter__Membership_Tier__c = 'Subsidised',
+    techstarter__Occupancy_Type__c = 'Private Office',
     techstarter__Start_Date__c = today.addMonths(-6),
     techstarter__End_Date__c = today.addMonths(18)
 );

@@ -19,9 +19,34 @@
                 <label>Accelerator</label>
             </value>
             <value>
+                <fullName>Co-working</fullName>
+                <default>false</default>
+                <label>Co-working</label>
+            </value>
+            <value>
+                <fullName>Dedicated Desk</fullName>
+                <default>false</default>
+                <label>Dedicated Desk</label>
+            </value>
+            <value>
+                <fullName>Event Space</fullName>
+                <default>false</default>
+                <label>Event Space</label>
+            </value>
+            <value>
+                <fullName>Hot Desk</fullName>
+                <default>false</default>
+                <label>Hot Desk</label>
+            </value>
+            <value>
                 <fullName>Incubator</fullName>
                 <default>false</default>
                 <label>Incubator</label>
+            </value>
+            <value>
+                <fullName>Lab / Makerspace</fullName>
+                <default>false</default>
+                <label>Lab / Makerspace</label>
             </value>
             <value>
                 <fullName>Meeting Room</fullName>
@@ -32,6 +57,16 @@
                 <fullName>Office</fullName>
                 <default>false</default>
                 <label>Office</label>
+            </value>
+            <value>
+                <fullName>Storage</fullName>
+                <default>false</default>
+                <label>Storage</label>
+            </value>
+            <value>
+                <fullName>Virtual / Associate</fullName>
+                <default>false</default>
+                <label>Virtual / Associate</label>
             </value>
             <value>
                 <fullName>Workshop</fullName>

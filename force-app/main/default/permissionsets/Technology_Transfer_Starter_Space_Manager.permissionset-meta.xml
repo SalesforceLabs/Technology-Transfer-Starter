@@ -7,6 +7,11 @@
     <description>Permissions for the Space Management app and associated Objects</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>TTS_Space_Asset__c.Asset_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>TTS_Space_Asset__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -81,6 +86,31 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space_Tenant__c.Departure_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space_Tenant__c.Membership_Tier__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space_Tenant__c.Occupancy_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space_Tenant__c.Venture_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space_Tenant__c.Venture_Stage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>TTS_Space_Tenant__c.Tenant_Name__c</field>
         <readable>true</readable>
@@ -113,6 +143,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Space__c.Parent_Space__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Space__c.Programme__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

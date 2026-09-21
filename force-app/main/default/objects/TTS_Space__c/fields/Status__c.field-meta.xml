@@ -34,6 +34,11 @@
                 <label>Occupied</label>
             </value>
             <value>
+                <fullName>Reserved</fullName>
+                <default>false</default>
+                <label>Reserved</label>
+            </value>
+            <value>
                 <fullName>Unoccupied</fullName>
                 <default>false</default>
                 <label>Unoccupied</label>

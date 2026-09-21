@@ -61,6 +61,20 @@ private class TTS_SObjectServiceTest {
     }
 
     @isTest
+    static void testAllowListIsDerivedFromPackageObjects() {
+        // The API must expose every package custom object automatically. Spot-check core and
+        // recently added objects are present, and that standard objects stay excluded.
+        Set<String> allowed = TTS_SObjectSelector.ALLOWED_OBJECTS;
+        for (String obj : new List<String>{
+                'TTS_Transaction__c', 'TTS_Royalty_Term__c', 'TTS_Law_Firm_Matter__c',
+                'TTS_Protection__c', 'TTS_Disclosure__c' }) {
+            System.assert(allowed.contains(obj), 'Package object should be exposed: ' + obj);
+        }
+        System.assert(!allowed.contains('Account'), 'Standard objects must not be exposed');
+        System.assert(!allowed.contains('Contact'), 'Standard objects must not be exposed');
+    }
+
+    @isTest
     static void testDisallowedObjectIsRejected() {
         try {
             TTS_SObjectSelector.assertAllowed('Account');

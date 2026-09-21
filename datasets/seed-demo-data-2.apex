@@ -13,6 +13,7 @@ techstarter__TTS_Agreement_Deliverable__c transferDeliverable = [SELECT Id FROM 
 techstarter__TTS_Royalty_Term__c incomingRoyalty = [SELECT Id FROM techstarter__TTS_Royalty_Term__c WHERE techstarter__Agreement__c = :licenceAgreement.Id AND techstarter__Direction__c = 'Incoming' LIMIT 1];
 techstarter__TTS_Law_Firm_Matter__c patentMatter = [SELECT Id FROM techstarter__TTS_Law_Firm_Matter__c WHERE techstarter__Law_Firm_Matter_Key__c = :marker + '-LFM-001' LIMIT 1];
 techstarter__TTS_Space__c aeroSenseLab = [SELECT Id FROM techstarter__TTS_Space__c WHERE techstarter__Space_Reference__c = :marker + '-SPACE-002' LIMIT 1];
+techstarter__TTS_Space_Tenant__c aeroSenseTenant = [SELECT Id FROM techstarter__TTS_Space_Tenant__c WHERE techstarter__Space__c = :aeroSenseLab.Id LIMIT 1];
 Opportunity opportunity = [SELECT Id FROM Opportunity WHERE Name = 'DEMO | AeroSense Exclusive Licence' LIMIT 1];
 Account aeroSenseAcctForContract = [SELECT Id FROM Account WHERE Name = 'DEMO | AeroSense Labs Ltd' LIMIT 1];
 Contract contractRecord = [SELECT Id FROM Contract WHERE AccountId = :aeroSenseAcctForContract.Id ORDER BY CreatedDate DESC LIMIT 1];
@@ -76,6 +77,7 @@ List<techstarter__TTS_Transaction__c> transactions = new List<techstarter__TTS_T
         techstarter__Direction__c = 'Incoming',
         techstarter__Type__c = 'Rent',
         techstarter__Space__c = aeroSenseLab.Id,
+        techstarter__Space_Tenant__c = aeroSenseTenant.Id,
         techstarter__Agreed_Amount__c = 1800,
         techstarter__IP_Actual_Amount__c = 1800,
         techstarter__Recurring__c = true,

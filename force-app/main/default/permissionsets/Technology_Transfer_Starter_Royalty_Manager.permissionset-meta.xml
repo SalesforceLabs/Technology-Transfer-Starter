@@ -4,7 +4,7 @@
         <application>TTS</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <description>Revenue and finance specialist: manages transactions, royalty terms, and inventor/institution distributions (contributors and recipients). Add-on to the base TTO set (co-assign with base for related agreements, technologies and accounts); retains Agreement read for the required master-detail dependency.</description>
+    <description>Revenue and finance specialist: manages transactions, royalty terms and inventor/institution distributions. Add-on to the base TTO set (co-assign with base); retains Agreement read for the required master-detail dependency.</description>
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Contributor__c.Account__c</field>
@@ -158,6 +158,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Transaction__c.Space__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Transaction__c.Space_Tenant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

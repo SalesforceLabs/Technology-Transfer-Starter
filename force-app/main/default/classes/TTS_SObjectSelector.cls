@@ -11,17 +11,6 @@
  */
 public with sharing class TTS_SObjectSelector {
 
-    public static final Set<String> ALLOWED_OBJECTS = new Set<String>{
-        'TTS_Agreement__c', 'TTS_Agreement_Deliverable__c', 'TTS_Agreement_Party__c',
-        'TTS_Applicant__c', 'TTS_Contributor__c', 'TTS_Disclosure__c', 'TTS_Inventor__c',
-        'TTS_Mentoring_Interest__c', 'TTS_Mentoring_Opportunity__c', 'TTS_Milestone__c',
-        'TTS_Protection__c', 'TTS_Protection_Claim__c', 'TTS_Protection_Family__c',
-        'TTS_Protection_Litigation__c', 'TTS_Recipient__c', 'TTS_Space__c',
-        'TTS_Space_Asset__c', 'TTS_Space_Tenant__c', 'TTS_Space_Tenant_Contact__c',
-        'TTS_Success_Plans__c', 'TTS_Technology__c', 'TTS_TrademarkIPAssociation__c',
-        'TTS_Trademark_Classes__c', 'TTS_Transaction__c'
-    };
-
     // In a namespaced org Schema.getGlobalDescribe() keys this package's objects by their
     // fully-qualified name (e.g. techstarter__TTS_Transaction__c), while callers and the
     // allow-list use the bare name. Derive the prefix from this class's own name rather
@@ -29,9 +18,33 @@ public with sharing class TTS_SObjectSelector {
     // unmanaged/unnamespaced org alike.
     private static final String NAMESPACE_PREFIX = computeNamespacePrefix();
 
+    // Every custom object this package ships is exposed through the API. The allow-list is
+    // derived from the schema at load time rather than hand-maintained, so a newly added
+    // package object is available automatically and the list can never drift out of sync
+    // with the data model. Stored as bare (namespace-stripped) names to match what callers
+    // pass in the URL.
+    public static final Set<String> ALLOWED_OBJECTS = computeAllowedObjects();
+
     private static String computeNamespacePrefix() {
         String className = TTS_SObjectSelector.class.getName();
         return className.contains('.') ? className.substringBefore('.') + '__' : '';
+    }
+
+    private static Set<String> computeAllowedObjects() {
+        Map<String, Schema.SObjectType> globalDescribe = Schema.getGlobalDescribe();
+        Set<String> allowed = new Set<String>();
+        for (String key : globalDescribe.keySet()) {
+            // In the managed/namespaced context the namespace prefix is the package boundary.
+            // In an unmanaged/unnamespaced org (e.g. a scratch org) it can't identify our
+            // objects, so fall back to this package's TTS_ naming convention.
+            Boolean inPackage = String.isNotBlank(NAMESPACE_PREFIX)
+                ? key.startsWithIgnoreCase(NAMESPACE_PREFIX)
+                : key.startsWithIgnoreCase('TTS_');
+            if (inPackage && key.endsWithIgnoreCase('__c')) {
+                allowed.add(stripNamespace(globalDescribe.get(key).getDescribe().getName()));
+            }
+        }
+        return allowed;
     }
 
     private static String stripNamespace(String objectApiName) {

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /permission-sets-and-roles/
+---
+
 # Permission Sets and Technology Transfer Office Roles
 
 This guide explains how Technology Transfer Starter's permission sets are structured and which
@@ -20,7 +25,7 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
 - **`Technology_Transfer_Starter_Administrator`** is a **standalone** full-access set. Assign it
   *instead of* the base to package administrators, not on top.
 - **`TTS_Integration_User`** is a **standalone integration-only** set for server-to-server API
-  users. Never assign it to staff. See [rest-api-getting-started.md](rest-api-getting-started.md).
+  users. Never assign it to staff. See [the REST API guide]({{ '/rest-api-getting-started/' | relative_url }}).
 
 > Permission sets are additive in Salesforce: a user's effective access is the union of every set
 > assigned to them. "Layering" here is a design convention, not an enforced inheritance — the base
