@@ -6,44 +6,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Technology Transfer Starter is a Salesforce managed package (namespace `techstarter`) built as a CumulusCI-driven SFDX project. It provides objects, automation, and permission sets for Technology Transfer / IP Management / Commercialization workflows (disclosures, patents/trademarks ("Protection"), licensing agreements, transactions, space/tenant management, mentoring). It is distributed on the AppExchange as a 2GP managed package.
+Technology Transfer Starter is a Salesforce managed package (namespace `techstarter`) built as an SFDX project (2GP), driven with the `sf` CLI against scratch orgs. A CumulusCI (`cci`) config is retained for legacy flows. It provides objects, automation, and permission sets for Technology Transfer / IP Management / Commercialization workflows (disclosures, patents/trademarks ("Protection"), licensing agreements, transactions, space/tenant management, mentoring). It is distributed on the AppExchange as a 2GP managed package.
 
 ## Commands
 
-This project uses **CumulusCI (`cci`)**, not raw `sf`/`sfdx`, for org lifecycle and deployment. Config lives in `cumulusci.yml`.
+**Default to `sf` (Salesforce CLI) for this project** — org lifecycle, deploy/retrieve, tests, and 2GP packaging against scratch orgs. Never use the deprecated `sfdx` executable. The CumulusCI (`cci`) config in `cumulusci.yml` is retained for legacy flows and Snowfakery data seeding (below), but is no longer the default for day-to-day work.
 
 ### Org setup
 ```bash
-cci org scratch dev tts_dev --days 30       # create a scratch org
-cci flow run dev_org --org tts_dev          # deploy + assign perm sets (dev config)
-cci flow run qa_org --org tts_dev           # deploy + assign perm sets (qa config)
+sf org create scratch --definition-file config/dev-scratch-def.json --alias tts_dev --duration-days 30 --set-default
+sf project deploy start --source-dir force-app --target-org tts_dev
 ```
-`dev_org`/`qa_org` flows run the custom `assign_perms` flow (task `assign_permission_sets`), which assigns all four permission sets listed below.
+After deploy, assign the four end-user permission sets (base + functional areas):
+```bash
+sf org assign permset \
+  --name Technology_Transfer_Starter_Permission \
+  --name Technology_Transfer_Starter_Visa_Management \
+  --name Technology_Transfer_Starter_Space_Manager \
+  --name Technology_Transfer_Starter_Mentoring_Manager \
+  --target-org tts_dev
+```
+(`TTS_Integration_User` is a separate integration-only permission set — assign it only to integration users, not standard staff.)
 
 ### Deploy / retrieve
 ```bash
-cci task run deploy --org tts_dev                  # deploys force-app/ (path set in cumulusci.yml)
-cci task run retrieve_changes --org tts_dev         # pull org changes back to source
+sf project deploy start --source-dir force-app --target-org tts_dev      # deploy source
+sf project retrieve start --source-dir force-app --target-org tts_dev    # pull org changes back to source
 ```
 
 ### Tests
 ```bash
-cci task run run_tests --org tts_dev
+sf apex run test --target-org tts_dev --code-coverage --result-format human --wait 10
 ```
-`run_tests` enforces `required_org_code_coverage_percent: 75` (set in `cumulusci.yml`). There is no separate lint command in this repo.
+Package policy still requires **75% org code coverage** before a version can be cut — `sf` does not enforce this automatically, so check the coverage summary in the test output. There is no separate lint command in this repo.
 
 ### Data
+Demo/test data is seeded by anonymous Apex scripts in `datasets/`, run with `sf`:
 ```bash
-cci task run load_dataset --org tts_dev             # load datasets/ (Snowfakery mapping + sample.sql)
-cci task run delete_data --org tts_dev              # deletes seeded data; object list is in cumulusci.yml (delete_data task)
+sf apex run --file datasets/seed-demo-data.apex --target-org tts_dev     # insert connected demo dataset (DEMO | ... records)
+sf apex run --file datasets/cleanup-demo-data.apex --target-org tts_dev  # remove it
 ```
+`seed-demo-data.apex` inserts records in dependency order and uses the explicit `techstarter__` namespace prefix. When adding a new object or field to the model, update **both** `seed-demo-data.apex` (insert new records / populate new fields, in dependency order) and `cleanup-demo-data.apex` (delete the new objects). The older Snowfakery dataset (`mapping.yml` + `sample.sql`, loaded via `cci task run load_dataset`) is legacy.
 
-### Package versioning (maintainers only)
+### Package versioning (2GP, maintainers only)
 ```bash
 sf package version create --package 0HoDm000000CaTXKA0 --target-dev-hub TTSDevHub --installation-key-bypass --code-coverage --wait 10
 sf package version promote --target-dev-hub TTSDevHub --package 04t...
 ```
-When cutting a new version, update `packageAliases` and `ancestorId`/`versionNumber` in `sfdx-project.json` — the ancestor must point at the latest released version ID, and `update_dependencies` in `cumulusci.yml` must reference the latest `version_id`.
+When cutting a new version, update `packageAliases` and `ancestorId`/`versionNumber` in `sfdx-project.json` — the ancestor must point at the latest released version ID.
 
 ## Architecture
 
@@ -58,7 +68,7 @@ When cutting a new version, update `packageAliases` and `ancestorId`/`versionNum
   - Success Plans, Milestone — engagement tracking
 - **Permission sets** (`force-app/main/default/permissionsets/`) are the access-control unit, one per functional area — Permission (base), Visa Management, Space Manager, Mentoring Manager. Any new object/field intended for end users needs FLS added to the relevant permission set(s), not profiles.
 - **iEdison/**: integration mapping docs and an OpenAPI spec for the U.S. federal iEdison reporting system (invention/patent/utilization reporting). These are reference docs (CSV field mappings + `iEdison OpenAPI Spec.yaml`), not implemented integration code — consult them before building any iEdison-related feature.
-- **datasets/**: Snowfakery-based sample data (`mapping.yml` + `sample.sql`) loaded via `cci task run load_dataset`.
+- **datasets/**: demo/test data. Primary path is the anonymous-Apex scripts `seed-demo-data.apex` / `cleanup-demo-data.apex` (run via `sf apex run --file`, or the `cci task run seed_demo_data` wrapper in `cumulusci.yml`). The Snowfakery dataset (`mapping.yml` + `sample.sql`, `cci task run load_dataset`) is legacy. New objects/fields must be reflected in both seed and cleanup scripts.
 - **`.qbrix/`**: generated deployment-backup snapshot of metadata (mirrors `force-app/`); not hand-edited source, ignore when tracing feature logic.
 
 ## Conventions
