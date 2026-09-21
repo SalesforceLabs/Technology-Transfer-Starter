@@ -87,6 +87,15 @@
         <fields>IP_External_Payment_Reference__c</fields>
         <relatedList>TTS_Transaction__c.Agreement_Party__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Agreement__c</fields>
+        <fields>Direction__c</fields>
+        <fields>Royalty_Obligation_Type__c</fields>
+        <fields>Royalty_Basis__c</fields>
+        <fields>Royalty_Rate__c</fields>
+        <relatedList>TTS_Royalty_Term__c.Agreement_Party__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

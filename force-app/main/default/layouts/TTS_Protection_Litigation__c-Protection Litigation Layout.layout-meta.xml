@@ -17,6 +17,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Law_Firm_Matter__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Type__c</field>
             </layoutItems>
             <layoutItems>
@@ -114,6 +118,15 @@
     </layoutSections>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Direction__c</fields>
+        <fields>Type__c</fields>
+        <fields>Payment_Status__c</fields>
+        <fields>IP_Expected_Payment_Date__c</fields>
+        <fields>IP_Actual_Amount__c</fields>
+        <relatedList>TTS_Transaction__c.Protection_Litigation__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>

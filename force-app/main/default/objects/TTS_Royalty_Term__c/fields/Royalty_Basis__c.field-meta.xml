@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Royalty_Basis__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The revenue or event basis used to calculate the royalty amount.</inlineHelpText>
+    <label>Royalty Basis</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Net sales</fullName>
+                <default>false</default>
+                <label>Net sales</label>
+            </value>
+            <value>
+                <fullName>Gross revenue</fullName>
+                <default>false</default>
+                <label>Gross revenue</label>
+            </value>
+            <value>
+                <fullName>Sublicensing revenue</fullName>
+                <default>false</default>
+                <label>Sublicensing revenue</label>
+            </value>
+            <value>
+                <fullName>Units sold</fullName>
+                <default>false</default>
+                <label>Units sold</label>
+            </value>
+            <value>
+                <fullName>Fixed fee</fullName>
+                <default>false</default>
+                <label>Fixed fee</label>
+            </value>
+            <value>
+                <fullName>Milestone</fullName>
+                <default>false</default>
+                <label>Milestone</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

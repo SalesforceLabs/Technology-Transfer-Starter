@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>[TTS] Law firm matter or docket engagement used to group legal costs and map invoices to TTS records.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Law Firm Matter</label>
+    <nameField>
+        <displayFormat>LFM{00000}</displayFormat>
+        <label>Law Firm Matter ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Law Firm Matters</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Law_Firm__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Matter_Docket_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Law_Firm_Matter_Key__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Law_Firm__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Matter_Docket_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>Law_Firm__c</searchFilterFields>
+        <searchFilterFields>Matter_Docket_Number__c</searchFilterFields>
+        <searchFilterFields>Law_Firm_Matter_Key__c</searchFilterFields>
+        <searchFilterFields>Status__c</searchFilterFields>
+        <searchResultsAdditionalFields>Law_Firm__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Matter_Docket_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Law_Firm_Matter_Key__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Consonant</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>
