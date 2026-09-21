@@ -41,12 +41,13 @@ sf apex run test --target-org tts_dev --code-coverage --result-format human --wa
 Package policy still requires **75% org code coverage** before a version can be cut — `sf` does not enforce this automatically, so check the coverage summary in the test output. There is no separate lint command in this repo.
 
 ### Data
-Demo/test data is seeded by anonymous Apex scripts in `datasets/`, run with `sf`:
+Demo/test data is seeded by anonymous Apex scripts in `datasets/`, run with `sf`. Assign the permission sets (above) to the running user first — the seed runs in user mode and needs FLS on the managed-package fields. Seeding is split across two ordered scripts because a single dataset exceeds the `executeAnonymous` size limit:
 ```bash
-sf apex run --file datasets/seed-demo-data.apex --target-org tts_dev     # insert connected demo dataset (DEMO | ... records)
-sf apex run --file datasets/cleanup-demo-data.apex --target-org tts_dev  # remove it
+sf apex run --file datasets/seed-demo-data.apex   --target-org tts_dev  # part 1: base records (DEMO | ... records)
+sf apex run --file datasets/seed-demo-data-2.apex --target-org tts_dev  # part 2: transactions/contributors/recipients (re-queries part 1 by marker)
+sf apex run --file datasets/cleanup-demo-data.apex --target-org tts_dev # remove everything (any order-independent, deletes by marker)
 ```
-`seed-demo-data.apex` inserts records in dependency order and uses the explicit `techstarter__` namespace prefix. When adding a new object or field to the model, update **both** `seed-demo-data.apex` (insert new records / populate new fields, in dependency order) and `cleanup-demo-data.apex` (delete the new objects). The older Snowfakery dataset (`mapping.yml` + `sample.sql`, loaded via `cci task run load_dataset`) is legacy.
+The scripts insert records in dependency order and use the explicit `techstarter__` namespace prefix. When adding a new object or field to the model, update the seed scripts (insert new records / populate new fields, in dependency order — part 1 for base records, part 2 for transaction-side records) **and** `cleanup-demo-data.apex` (delete the new objects). If part 1 grows past the size limit again, move the next tail section into part 2's re-query pattern. The older Snowfakery dataset (`mapping.yml` + `sample.sql`, loaded via `cci task run load_dataset`) is legacy.
 
 ### Package versioning (2GP, maintainers only)
 ```bash
@@ -68,7 +69,7 @@ When cutting a new version, update `packageAliases` and `ancestorId`/`versionNum
   - Success Plans, Milestone — engagement tracking
 - **Permission sets** (`force-app/main/default/permissionsets/`) are the access-control unit, one per functional area — Permission (base), Visa Management, Space Manager, Mentoring Manager. Any new object/field intended for end users needs FLS added to the relevant permission set(s), not profiles.
 - **iEdison/**: integration mapping docs and an OpenAPI spec for the U.S. federal iEdison reporting system (invention/patent/utilization reporting). These are reference docs (CSV field mappings + `iEdison OpenAPI Spec.yaml`), not implemented integration code — consult them before building any iEdison-related feature.
-- **datasets/**: demo/test data. Primary path is the anonymous-Apex scripts `seed-demo-data.apex` / `cleanup-demo-data.apex` (run via `sf apex run --file`, or the `cci task run seed_demo_data` wrapper in `cumulusci.yml`). The Snowfakery dataset (`mapping.yml` + `sample.sql`, `cci task run load_dataset`) is legacy. New objects/fields must be reflected in both seed and cleanup scripts.
+- **datasets/**: demo/test data. Primary path is the anonymous-Apex scripts `seed-demo-data.apex` + `seed-demo-data-2.apex` (run in order) and `cleanup-demo-data.apex`, via `sf apex run --file` (see Data commands above). Seeding is split into two scripts to stay under the `executeAnonymous` size limit; part 2 re-queries part 1's records by marker. The Snowfakery dataset (`mapping.yml` + `sample.sql`, `cci task run load_dataset`) is legacy. New objects/fields must be reflected in the seed scripts and `cleanup-demo-data.apex`.
 - **`.qbrix/`**: generated deployment-backup snapshot of metadata (mirrors `force-app/`); not hand-edited source, ignore when tracing feature logic.
 
 ## Conventions

@@ -1,4 +1,6 @@
-// Seeds a connected, synthetic dataset for Technology Transfer Starter testing.
+// Seeds the Technology Transfer Starter demo dataset (part 1 of 2: base records).
+// Run datasets/seed-demo-data-2.apex afterwards to add transactions, contributors and recipients.
+// Split across two anonymous-Apex blocks to stay under the executeAnonymous size limit.
 
 String marker = 'DEMO-TTS-AEROSENSE';
 System.assertEquals(
@@ -137,6 +139,27 @@ techstarter__TTS_Protection_Family__c protectionFamily = new techstarter__TTS_Pr
 );
 insert protectionFamily;
 
+List<techstarter__TTS_Law_Firm_Matter__c> lawFirmMatters = new List<techstarter__TTS_Law_Firm_Matter__c>{
+    new techstarter__TTS_Law_Firm_Matter__c(
+        techstarter__Law_Firm__c = accounts[3].Id,
+        techstarter__Law_Firm_Matter_Key__c = marker + '-LFM-001',
+        techstarter__Matter_Docket_Number__c = 'HIP-2025-AERO-001',
+        techstarter__Status__c = 'Active',
+        techstarter__Opened_Date__c = today.addMonths(-18),
+        techstarter__Description__c = 'DEMO | Harbor IP Counsel engagement for the AeroSense patent family filing and prosecution.'
+    ),
+    new techstarter__TTS_Law_Firm_Matter__c(
+        techstarter__Law_Firm__c = accounts[3].Id,
+        techstarter__Law_Firm_Matter_Key__c = marker + '-LFM-002',
+        techstarter__Matter_Docket_Number__c = 'HIP-2025-AERO-LIT-002',
+        techstarter__Status__c = 'Closed',
+        techstarter__Opened_Date__c = today.addMonths(-8),
+        techstarter__Closed_Date__c = today.addMonths(-2),
+        techstarter__Description__c = 'DEMO | Harbor IP Counsel engagement for the AeroSense infringement settlement.'
+    )
+};
+insert lawFirmMatters;
+
 Map<String, Id> protectionRecordTypes = new Map<String, Id>();
 for (RecordType recordType : [
     SELECT Id, DeveloperName FROM RecordType
@@ -158,6 +181,7 @@ List<techstarter__TTS_Protection__c> protections = new List<techstarter__TTS_Pro
         techstarter__Protection_Family__c = protectionFamily.Id,
         techstarter__Account__c = accounts[0].Id,
         techstarter__Attorney__c = contacts[2].Id,
+        techstarter__Law_Firm_Matter__c = lawFirmMatters[0].Id,
         techstarter__Type__c = 'Utility',
         techstarter__Patent_Application_Type__c = 'PCT',
         techstarter__Patent_Application_Number__c = 'DEMO-PCT-2025-001',
@@ -218,6 +242,7 @@ insert new List<techstarter__TTS_Protection_Claim__c>{
 insert new techstarter__TTS_Protection_Litigation__c(
     techstarter__Protection__c = protections[0].Id,
     techstarter__Applicant__c = applicants[0].Id,
+    techstarter__Law_Firm_Matter__c = lawFirmMatters[1].Id,
     techstarter__Type__c = 'Patent infringement',
     techstarter__Status__c = 'Settlement',
     techstarter__Case_Outcome__c = 'Settlement',
@@ -293,6 +318,30 @@ List<techstarter__TTS_Agreement_Party__c> agreementParties = new List<techstarte
     new techstarter__TTS_Agreement_Party__c(techstarter__Agreement__c = agreements[0].Id, techstarter__Contact__c = contacts[0].Id, techstarter__Type__c = 'Principal Investigator (PI)')
 };
 insert agreementParties;
+
+List<techstarter__TTS_Royalty_Term__c> royaltyTerms = new List<techstarter__TTS_Royalty_Term__c>{
+    new techstarter__TTS_Royalty_Term__c(
+        techstarter__Agreement__c = agreements[0].Id,
+        techstarter__Agreement_Party__c = agreementParties[1].Id,
+        techstarter__Direction__c = 'Incoming',
+        techstarter__Royalty_Obligation_Type__c = 'Licensee royalty',
+        techstarter__Royalty_Basis__c = 'Net sales',
+        techstarter__Royalty_Rate__c = 5.0,
+        techstarter__Effective_Start_Date__c = today.addDays(-30),
+        techstarter__Effective_End_Date__c = today.addYears(5),
+        techstarter__Description__c = 'DEMO | 5% net-sales royalty payable by AeroSense Labs on licensed products.'
+    ),
+    new techstarter__TTS_Royalty_Term__c(
+        techstarter__Agreement__c = agreements[0].Id,
+        techstarter__Direction__c = 'Outgoing',
+        techstarter__Royalty_Obligation_Type__c = 'Inventor revenue share',
+        techstarter__Royalty_Basis__c = 'Net sales',
+        techstarter__Royalty_Rate__c = 40.0,
+        techstarter__Effective_Start_Date__c = today.addDays(-30),
+        techstarter__Description__c = 'DEMO | 40% inventor revenue share of net royalty income distributed to the principal inventor.'
+    )
+};
+insert royaltyTerms;
 
 List<techstarter__TTS_Agreement_Deliverable__c> deliverables = new List<techstarter__TTS_Agreement_Deliverable__c>{
     new techstarter__TTS_Agreement_Deliverable__c(
@@ -449,113 +498,13 @@ insert new List<techstarter__TTS_Milestone__c>{
     )
 };
 
-Map<String, Id> transactionRecordTypes = new Map<String, Id>();
-for (RecordType recordType : [
-    SELECT Id, DeveloperName FROM RecordType
-    WHERE SobjectType = 'techstarter__TTS_Transaction__c'
-    AND DeveloperName IN ('Patent_Expense', 'Space_Fee')
-]) {
-    transactionRecordTypes.put(recordType.DeveloperName, recordType.Id);
-}
-System.assertEquals(2, transactionRecordTypes.size(), 'Patent and space transaction record types must be installed.');
-
-List<techstarter__TTS_Transaction__c> transactions = new List<techstarter__TTS_Transaction__c>{
-    new techstarter__TTS_Transaction__c(
-        RecordTypeId = transactionRecordTypes.get('Patent_Expense'),
-        techstarter__Direction__c = 'Outgoing',
-        techstarter__Type__c = 'Patent - Filing',
-        techstarter__IP_Related_IP__c = technology.Id,
-        techstarter__Protection__c = protections[0].Id,
-        techstarter__Agreement__c = agreements[0].Id,
-        techstarter__IP_Opportunity__c = opportunity.Id,
-        techstarter__Agreed_Amount__c = 9000,
-        techstarter__IP_Actual_Amount__c = 8750,
-        techstarter__IP_Transaction_Date_Time__c = now.addMonths(-18),
-        techstarter__IP_Expected_Payment_Date__c = now.addMonths(-18),
-        techstarter__IP_Internal_Payment_Reference__c = marker + '-TXN-001',
-        techstarter__IP_External_Payment_Reference__c = marker + '-LAW-001',
-        techstarter__IP_Purchase_Order__c = marker + '-PO-001'
-    ),
-    new techstarter__TTS_Transaction__c(
-        RecordTypeId = transactionRecordTypes.get('Patent_Expense'),
-        techstarter__Direction__c = 'Incoming',
-        techstarter__Type__c = 'Licence Income',
-        techstarter__IP_Related_IP__c = technology.Id,
-        techstarter__Protection__c = protections[0].Id,
-        techstarter__Agreement__c = agreements[0].Id,
-        techstarter__Agreement_Party__c = agreementParties[1].Id,
-        techstarter__Agreement_Deliverable__c = deliverables[0].Id,
-        techstarter__IP_Opportunity__c = opportunity.Id,
-        techstarter__IP_Contract__c = contractRecord.Id,
-        techstarter__Campaign__c = campaign.Id,
-        techstarter__Agreed_Amount__c = 50000,
-        techstarter__IP_Actual_Amount__c = 50000,
-        techstarter__IP_Transaction_Date_Time__c = now.addDays(-20),
-        techstarter__IP_Expected_Payment_Date__c = now.addDays(-30),
-        techstarter__IP_Internal_Payment_Reference__c = marker + '-TXN-002',
-        techstarter__IP_External_Payment_Reference__c = marker + '-BANK-001'
-    ),
-    new techstarter__TTS_Transaction__c(
-        RecordTypeId = transactionRecordTypes.get('Space_Fee'),
-        techstarter__Direction__c = 'Incoming',
-        techstarter__Type__c = 'Rent',
-        techstarter__Space__c = aeroSenseLab.Id,
-        techstarter__Agreed_Amount__c = 1800,
-        techstarter__IP_Actual_Amount__c = 1800,
-        techstarter__Recurring__c = true,
-        techstarter__Recurrence_Frequency__c = 'Monthly',
-        techstarter__Start_Date_Time__c = now.addMonths(-6),
-        techstarter__End_Date_Time__c = now.addMonths(18),
-        techstarter__IP_Transaction_Date_Time__c = now.addDays(-5),
-        techstarter__IP_Internal_Payment_Reference__c = marker + '-TXN-003'
-    )
-};
-insert transactions;
-
-insert new List<techstarter__TTS_Contributor__c>{
-    new techstarter__TTS_Contributor__c(
-        techstarter__IP_Related_Transaction__c = transactions[1].Id,
-        techstarter__Account__c = accounts[1].Id,
-        techstarter__Amount__c = 40000,
-        techstarter__IP_Date_Time__c = now.addDays(-20),
-        techstarter__IP_Cont_Payment_Reference__c = marker + '-CONT-001',
-        techstarter__Comments__c = 'Initial licence fee from AeroSense Labs.'
-    ),
-    new techstarter__TTS_Contributor__c(
-        techstarter__IP_Related_Transaction__c = transactions[1].Id,
-        techstarter__Account__c = accounts[2].Id,
-        techstarter__Amount__c = 10000,
-        techstarter__IP_Date_Time__c = now.addDays(-20),
-        techstarter__IP_Cont_Payment_Reference__c = marker + '-CONT-002',
-        techstarter__Comments__c = 'Industrial validation contribution from Vector Dynamics.'
-    )
-};
-
-insert new List<techstarter__TTS_Recipient__c>{
-    new techstarter__TTS_Recipient__c(
-        techstarter__IP_Transaction__c = transactions[1].Id,
-        techstarter__IP_Recipient_Contact__c = contacts[0].Id,
-        techstarter__Amount__c = 30000,
-        techstarter__IP_Recipient_Payment_Date_Time__c = now.addDays(-10),
-        techstarter__IP_Recipient_Payment_Reference__c = marker + '-RECIP-001',
-        techstarter__IP_Recipient_Comments__c = 'Synthetic 60 percent inventor distribution.'
-    ),
-    new techstarter__TTS_Recipient__c(
-        techstarter__IP_Transaction__c = transactions[1].Id,
-        techstarter__IP_Recipient_Account__c = accounts[0].Id,
-        techstarter__Amount__c = 20000,
-        techstarter__IP_Recipient_Payment_Date_Time__c = now.addDays(-10),
-        techstarter__IP_Recipient_Payment_Reference__c = marker + '-RECIP-002',
-        techstarter__IP_Recipient_Comments__c = 'Synthetic institutional share retained for research and technology transfer.'
-    )
-};
-
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Technology__c WHERE techstarter__IP_External_Reference__c LIKE :marker + '%']);
 System.assertEquals(1, [SELECT COUNT() FROM techstarter__TTS_Disclosure__c WHERE techstarter__External_ID__c = :marker + '-DISC-001']);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Protection__c WHERE techstarter__Technology__c = :technology.Id]);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Agreement__c WHERE techstarter__Technology__c = :technology.Id]);
-System.assertEquals(3, [SELECT COUNT() FROM techstarter__TTS_Transaction__c WHERE techstarter__IP_Internal_Payment_Reference__c LIKE :marker + '%']);
+System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Law_Firm_Matter__c WHERE techstarter__Law_Firm_Matter_Key__c LIKE :marker + '%']);
+System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Royalty_Term__c WHERE techstarter__Agreement__c = :agreements[0].Id]);
 System.assertEquals(1, [SELECT COUNT() FROM techstarter__TTS_Mentoring_Interest__c WHERE techstarter__Mentoring_Opportunity__c = :mentoringOpportunity.Id AND techstarter__Selected_Mentor__c = true]);
 System.assertEquals(contacts[0].Id, [SELECT techstarter__IP_Principal_Inventor_PI__c FROM techstarter__TTS_Technology__c WHERE Id = :technology.Id].techstarter__IP_Principal_Inventor_PI__c);
 
-System.debug(LoggingLevel.INFO, 'DEMO_DATASET_SEEDED: all records and automation outcomes passed.');
+System.debug(LoggingLevel.INFO, 'DEMO_DATASET_SEEDED_PART_1: base records created. Run datasets/seed-demo-data-2.apex next to add transactions.');

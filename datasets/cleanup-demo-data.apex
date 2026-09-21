@@ -15,6 +15,7 @@ delete [SELECT Id FROM techstarter__TTS_Space_Asset__c WHERE techstarter__Intern
 delete [SELECT Id FROM techstarter__TTS_Space_Tenant_Contact__c WHERE techstarter__Space_Tenant__r.techstarter__Space__r.techstarter__Space_Reference__c LIKE :marker + '%'];
 delete [SELECT Id FROM techstarter__TTS_Space_Tenant__c WHERE techstarter__Space__r.techstarter__Space_Reference__c LIKE :marker + '%'];
 
+delete [SELECT Id FROM techstarter__TTS_Royalty_Term__c WHERE techstarter__Agreement__r.techstarter__Title__c LIKE 'DEMO | %'];
 delete [SELECT Id FROM techstarter__TTS_Agreement__c WHERE techstarter__Title__c LIKE 'DEMO | %'];
 delete [SELECT Id FROM techstarter__TTS_Trademark_Classes__c WHERE Name LIKE 'DEMO | %'];
 delete [SELECT Id FROM techstarter__TTS_Protection_Family__c WHERE techstarter__Name_Reference__c LIKE :marker + '%'];
@@ -41,7 +42,9 @@ delete [
     WHERE techstarter__IP_External_Reference__c LIKE :marker + '%'
 ];
 
-delete [SELECT Id FROM Contract WHERE Description = 'DEMO | AeroSense patent licence contract'];
+delete [SELECT Id FROM techstarter__TTS_Law_Firm_Matter__c WHERE techstarter__Law_Firm_Matter_Key__c LIKE :marker + '%'];
+
+delete [SELECT Id FROM Contract WHERE Account.Name LIKE 'DEMO | %'];
 delete [SELECT Id FROM Opportunity WHERE Name = 'DEMO | AeroSense Exclusive Licence'];
 delete [SELECT Id FROM Campaign WHERE Name = 'DEMO | AeroSense Industry Partner Outreach'];
 delete [SELECT Id FROM Contact WHERE Email LIKE '%.demo@example.invalid'];
