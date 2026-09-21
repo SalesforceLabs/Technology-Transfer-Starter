@@ -1,11 +1,10 @@
 ---
 layout: default
+title: Get started with the REST API
+eyebrow: Install & configure
+summary: Connect an external system to read, create and update package records through the custom Salesforce REST API — OAuth client-credentials setup for administrators and integration developers configuring a server-to-server connection.
 permalink: /rest-api-getting-started/
 ---
-
-# Get Started with the REST API
-
-Connect an external system to Technology Transfer Starter to read, create, and update package records through its custom Salesforce REST API. This setup guide is for Salesforce administrators and integration developers configuring a server-to-server connection.
 
 ## Before You Begin
 

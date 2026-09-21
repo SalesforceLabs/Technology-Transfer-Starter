@@ -1,13 +1,10 @@
 ---
 layout: default
+title: Permission sets & roles
+eyebrow: Install & configure
+summary: How Technology Transfer Starter's permission sets are structured and which Technology Transfer Office roles each one is for — for administrators assigning access after the package is installed.
 permalink: /permission-sets-and-roles/
 ---
-
-# Permission Sets and Technology Transfer Office Roles
-
-This guide explains how Technology Transfer Starter's permission sets are structured and which
-Technology Transfer Office (TTO) roles each one is intended for. It is written for Salesforce
-administrators assigning access after the package is installed.
 
 ## How the Permission Sets Are Layered
 

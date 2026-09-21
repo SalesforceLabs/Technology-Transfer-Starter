@@ -1,0 +1,58 @@
+<svg class="hero-illo" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Innovation to commercialisation illustration">
+  <defs>
+    <linearGradient id="tts-bulb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--brand-green-soft)"/>
+      <stop offset="1" stop-color="var(--brand-green)"/>
+    </linearGradient>
+    <linearGradient id="tts-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f1e9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- backdrop panel -->
+  <rect x="40" y="46" width="440" height="348" rx="26" fill="url(#tts-panel)" stroke="var(--border)"/>
+  <circle cx="86" cy="92" r="6" fill="var(--brand-green)"/>
+  <circle cx="108" cy="92" r="6" fill="var(--brass-soft)"/>
+  <circle cx="130" cy="92" r="6" fill="var(--border-2)"/>
+
+  <!-- central lightbulb badge -->
+  <circle cx="260" cy="196" r="86" fill="var(--ink)"/>
+  <circle cx="260" cy="196" r="86" fill="none" stroke="var(--brand-green)" stroke-width="3" opacity="0.5"/>
+  <path d="M260 138a44 44 0 0 0-27 79c6 5 9 10 10 17h34c1-7 4-12 10-17a44 44 0 0 0-27-79z" fill="url(#tts-bulb)"/>
+  <path d="M243 234h34v9a8 8 0 0 1-8 8h-18a8 8 0 0 1-8-8z" fill="#ffffff"/>
+  <path d="M251 254h18" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M260 168v40M246 186l14 8 14-8" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+
+  <!-- disclosure document card -->
+  <g transform="translate(76 150)">
+    <rect width="96" height="120" rx="12" fill="#ffffff" stroke="var(--border-2)"/>
+    <rect x="16" y="20" width="64" height="8" rx="4" fill="var(--teal)"/>
+    <rect x="16" y="40" width="48" height="6" rx="3" fill="var(--border-2)"/>
+    <rect x="16" y="56" width="60" height="6" rx="3" fill="var(--border-2)"/>
+    <rect x="16" y="72" width="40" height="6" rx="3" fill="var(--border-2)"/>
+    <circle cx="24" cy="98" r="8" fill="var(--brand-green-soft)"/>
+    <rect x="40" y="94" width="40" height="8" rx="4" fill="var(--brand-green)"/>
+  </g>
+
+  <!-- IP shield card -->
+  <g transform="translate(350 132)">
+    <rect width="96" height="96" rx="14" fill="#ffffff" stroke="var(--border-2)"/>
+    <path d="M48 22l24 9v18c0 16-11 27-24 33-13-6-24-17-24-33V31z" fill="var(--brass-soft)" opacity="0.35"/>
+    <path d="M48 22l24 9v18c0 16-11 27-24 33-13-6-24-17-24-33V31z" fill="none" stroke="var(--brass)" stroke-width="3"/>
+    <path d="M38 50l7 8 15-16" fill="none" stroke="var(--brass)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- revenue chart card -->
+  <g transform="translate(338 250)">
+    <rect width="112" height="96" rx="14" fill="#ffffff" stroke="var(--border-2)"/>
+    <rect x="18" y="54" width="14" height="26" rx="3" fill="var(--teal)"/>
+    <rect x="42" y="40" width="14" height="40" rx="3" fill="var(--brand-green)"/>
+    <rect x="66" y="28" width="14" height="52" rx="3" fill="var(--brass)"/>
+    <path d="M18 46l24-10 24-10 22-6" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+  </g>
+
+  <!-- connective dotted lines -->
+  <path d="M172 210q30 20 4 -6" fill="none"/>
+  <path d="M176 200 214 198M348 176 322 190M348 292 322 240M176 236 200 250" stroke="var(--brand-green)" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" opacity="0.7"/>
+</svg>

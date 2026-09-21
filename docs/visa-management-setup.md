@@ -1,13 +1,10 @@
 ---
 layout: default
+title: Set up Visa Management
+eyebrow: Install & configure
+summary: Track immigration status, work authorisation and visa expiry on Contact using the package's visa fields, country picklist, field-level security and daily reminder flow — then add the fields you need to your own Contact layouts.
 permalink: /visa-management-setup/
 ---
-
-# Set Up Visa Management
-
-Technology Transfer Starter ships a set of visa / immigration fields on the standard **Contact** object, plus a daily reminder flow. Use them to track the immigration status, work authorization, and visa expiry of the people you work with (visiting researchers, sponsored students, incubator tenants, staff on work visas).
-
-This guide is for the Salesforce administrator setting the feature up after installing the package.
 
 ## What the Package Provides — and What You Add
 

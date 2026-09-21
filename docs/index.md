@@ -1,69 +1,106 @@
 ---
-layout: default
+layout: home
 title: null
 ---
 
 <section class="hero">
-  <p class="eyebrow">Salesforce Labs · Managed package</p>
-  <h1>Technology Transfer Starter</h1>
-  <p>A connected workspace for the records and activities a Technology Transfer Office manages every day — disclosures, technologies, IP protections, agreements, commercialisation and finance, on Salesforce.</p>
+  <div class="hero-shapes" aria-hidden="true">
+    <span class="blob blob-green"></span>
+    <span class="blob blob-brass"></span>
+    <span class="dots dots-tl"></span>
+    <span class="dots dots-br"></span>
+    <span class="ring"></span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Salesforce Labs · Managed package</p>
+      <h1>Run your Technology Transfer Office on <span class="hl">Salesforce</span></h1>
+      <p class="hero-sub">Disclosures, technologies, IP protection, licensing, finance, space and mentoring — the whole innovation-to-commercialisation lifecycle in one connected workspace.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ '/overview/' | relative_url }}">Explore the docs&nbsp;→</a>
+        <a class="btn btn-ghost" href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB">Get it on AppExchange</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-badge">techstarter</div>
+        <p><strong>Flow-first automation</strong><br>Metadata &amp; automation only — no code to maintain.</p>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      {% include hero-illustration.svg %}
+    </div>
+  </div>
 </section>
 
-Technology Transfer Starter gives university and research-organisation Technology
-Transfer Offices (TTOs) a single place to run the innovation-to-commercialisation
-lifecycle. It brings **disclosures, technologies, inventors, intellectual-property
-protections, agreements, commercial opportunities and financial transactions**
-together in Salesforce — reducing the need to track each stage in separate
-spreadsheets or systems.
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-n">26</span><span class="stat-l">Custom objects</span></div>
+    <div class="stat"><span class="stat-n">13</span><span class="stat-l">Automation flows</span></div>
+    <div class="stat"><span class="stat-n">8</span><span class="stat-l">Permission sets</span></div>
+    <div class="stat"><span class="stat-n">6</span><span class="stat-l">Role runbooks</span></div>
+  </div>
+</section>
 
-The package ships a ready-made data model, guided processes, purpose-built record
-pages, progress paths, reports and a dashboard. Offices use it as a foundation and
-adapt it to their own policies, terminology and operating model.
+<section class="section">
+  <div class="section-inner">
+    <p class="kicker">What you can manage</p>
+    <h2 class="section-title">One workspace for the whole office</h2>
+    <p class="section-lead">Purpose-built objects, pages and automation for every part of technology transfer — adopt what you need and extend the rest.</p>
+    <div class="feature-grid">
+      <div class="feature"><span class="feature-ic ic-teal">◆</span><h3>Disclosures</h3><p>Guided invention intake that promotes straight to a Technology record.</p></div>
+      <div class="feature"><span class="feature-ic ic-green">✦</span><h3>Technology portfolio</h3><p>Technical, market, readiness and ownership detail from disclosure to deal.</p></div>
+      <div class="feature"><span class="feature-ic ic-brass">⚖</span><h3>IP protection</h3><p>Patents, trademarks, copyrights and trade secrets — claims, families, litigation.</p></div>
+      <div class="feature"><span class="feature-ic ic-teal">§</span><h3>Agreements</h3><p>Licences and commercial terms with parties, deliverables and royalty terms.</p></div>
+      <div class="feature"><span class="feature-ic ic-green">$</span><h3>Finance &amp; royalties</h3><p>Transactions, recurring schedules and distributions to contributors.</p></div>
+      <div class="feature"><span class="feature-ic ic-brass">⌂</span><h3>Space &amp; tenants</h3><p>Incubators, labs and desks with occupancy, assets and expiry reminders.</p></div>
+      <div class="feature"><span class="feature-ic ic-teal">◎</span><h3>Mentoring</h3><p>Advertise opportunities, rank interest and track the chosen mentor.</p></div>
+      <div class="feature"><span class="feature-ic ic-green">✈</span><h3>Visa &amp; immigration</h3><p>Visa, right-to-work and passport tracking with expiry reminders.</p></div>
+    </div>
+  </div>
+</section>
 
-## Start here
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="kicker">How it fits together</p>
+    <h2 class="section-title">The commercialisation spine</h2>
+    <p class="section-lead">An idea is disclosed, evaluated as a technology, protected, licensed, and settled through transactions — with parties, IP detail and finance attached along the way.</p>
+    <div class="flow">
+      <div class="flow-step"><span class="n">Intake</span><span class="t">Disclosure</span><span class="d">Invention disclosed and reviewed.</span></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step"><span class="n">Evaluate</span><span class="t">Technology</span><span class="d">Technical, market &amp; readiness detail.</span></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step"><span class="n">Protect</span><span class="t">Protection</span><span class="d">Patent, trademark, copyright, secret.</span></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step"><span class="n">License</span><span class="t">Agreement</span><span class="d">Licence &amp; commercial terms.</span></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step"><span class="n">Settle</span><span class="t">Transaction</span><span class="d">Payments &amp; royalties.</span></div>
+    </div>
+    <p class="section-more"><a href="{{ '/data-model/' | relative_url }}">See the full data model&nbsp;→</a></p>
+  </div>
+</section>
 
-<div class="card-grid">
-  <a class="card" href="{{ '/overview/' | relative_url }}">
-    <h3>What it does</h3>
-    <p>The capability areas, from disclosure intake to royalty distribution.</p>
-  </a>
-  <a class="card" href="{{ '/data-model/' | relative_url }}">
-    <h3>Data model</h3>
-    <p>How disclosures, technologies, protections, agreements and transactions relate.</p>
-  </a>
-  <a class="card" href="{{ '/objects-reference/' | relative_url }}">
-    <h3>Object reference</h3>
-    <p>Every custom object, its purpose and its key relationships.</p>
-  </a>
-  <a class="card" href="{{ '/post-setup/' | relative_url }}">
-    <h3>Post-setup checklists</h3>
-    <p>Role-by-role runbooks for what to configure after installing.</p>
-  </a>
-  <a class="card" href="{{ '/permission-sets-and-roles/' | relative_url }}">
-    <h3>Permission sets &amp; roles</h3>
-    <p>The layered access model and how it maps to TTO roles.</p>
-  </a>
-  <a class="card" href="{{ '/rest-api-getting-started/' | relative_url }}">
-    <h3>REST API</h3>
-    <p>Read, create and update package objects from external systems.</p>
-  </a>
-</div>
+<section class="section">
+  <div class="section-inner">
+    <p class="kicker">Get set up fast</p>
+    <h2 class="section-title">Role-by-role runbooks</h2>
+    <p class="section-lead">Installing puts everything in your org — these checklists tell each role exactly what to assign, which fields to add to layouts, and which automation to switch on.</p>
+    <div class="role-grid">
+      <a class="role-card" href="{{ '/roles/administrator/' | relative_url }}"><h3>Administrator</h3><p>Permissions, automation and org-wide setup.</p><span class="role-go">Open checklist →</span></a>
+      <a class="role-card" href="{{ '/roles/ip-legal/' | relative_url }}"><h3>IP &amp; Legal Protection</h3><p>Patents, claims, litigation, outside counsel.</p><span class="role-go">Open checklist →</span></a>
+      <a class="role-card" href="{{ '/roles/royalty-finance/' | relative_url }}"><h3>Royalty &amp; Finance</h3><p>Transactions, royalty terms, distributions.</p><span class="role-go">Open checklist →</span></a>
+      <a class="role-card" href="{{ '/roles/space-manager/' | relative_url }}"><h3>Space Manager</h3><p>Spaces, tenants, assets and occupancy.</p><span class="role-go">Open checklist →</span></a>
+      <a class="role-card" href="{{ '/roles/mentoring-manager/' | relative_url }}"><h3>Mentoring Manager</h3><p>Opportunities, interests, mentor selection.</p><span class="role-go">Open checklist →</span></a>
+      <a class="role-card" href="{{ '/roles/visa-management/' | relative_url }}"><h3>Visa Management</h3><p>Immigration fields and expiry reminders.</p><span class="role-go">Open checklist →</span></a>
+    </div>
+  </div>
+</section>
 
-## Who it's for
-
-- **Technology Transfer Offices** at universities and research institutions.
-- **Salesforce administrators** installing and configuring the package for those offices.
-- **TTO staff** — licensing associates, IP/patent managers, finance analysts, facilities and mentoring coordinators, and international/immigration officers — each with a tailored role checklist.
-
-## The essentials
-
-| | |
-| --- | --- |
-| **Type** | Second-generation (2GP) managed package |
-| **Namespace** | `techstarter` |
-| **Platform** | Salesforce (metadata & automation only — no custom UI components) |
-| **Automation** | Flow-first, with minimal invocable Apex (`TTSCore`) |
-| **Distribution** | [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB) |
-| **Source** | [SalesforceLabs/Technology-Transfer-Starter](https://github.com/SalesforceLabs/Technology-Transfer-Starter) |
-
-> New to the package? Read **[What it does]({{ '/overview/' | relative_url }})**, then follow the **[post-setup checklists]({{ '/post-setup/' | relative_url }})** for the roles your office needs.
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Ready to set it up?</h2>
+    <p>Install from the AppExchange, assign the base permission set, then follow the post-setup checklist for each role your office runs.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/post-setup/' | relative_url }}">Start post-setup&nbsp;→</a>
+      <a class="btn btn-ghost-light" href="https://github.com/SalesforceLabs/Technology-Transfer-Starter">View on GitHub</a>
+    </div>
+  </div>
+</section>
