@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Government_Interest__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates the US federal government retains a paid-up licence or march-in rights in the technology under Bayh-Dole.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select when the federal government retains rights in this technology.</inlineHelpText>
+    <label>Government Interest</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

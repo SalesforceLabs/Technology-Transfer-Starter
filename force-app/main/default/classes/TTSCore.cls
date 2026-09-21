@@ -45,12 +45,19 @@ public with sharing class TTSCore {
             }
         }
 
-        Map<Id, TTS_Transaction__c> parentsById = new Map<Id, TTS_Transaction__c>([
-            SELECT Id, Type__c, Direction__c, Start_Date_Time__c, Recurring__c, End_Date_Time__c, Recurrence_Frequency__c, Agreed_Amount__c, Agreement__c, Agreement_Deliverable__c, Agreement_Party__c, Campaign__c, IP_Actual_Amount__c, IP_Contract__c, IP_External_Payment_Reference__c, IP_Internal_Payment_Reference__c, IP_Opportunity__c, IP_Purchase_Order__c, IP_Related_IP__c, Protection__c
-            FROM TTS_Transaction__c
-            WHERE Id IN :recordIds
-            WITH USER_MODE
-        ]);
+        // In a multi-currency org the parent's CurrencyIsoCode must be queried so clone()
+        // carries it to each generated child; otherwise children default to the running
+        // user's currency. The field only exists when multi-currency is enabled, so it is
+        // added via dynamic SOQL to keep this class deployable in single-currency orgs.
+        String parentQuery =
+            'SELECT Id, Type__c, Direction__c, Start_Date_Time__c, Recurring__c, End_Date_Time__c, Recurrence_Frequency__c, Agreed_Amount__c, Agreement__c, Agreement_Deliverable__c, Agreement_Party__c, Campaign__c, IP_Actual_Amount__c, IP_Contract__c, IP_External_Payment_Reference__c, IP_Internal_Payment_Reference__c, IP_Opportunity__c, IP_Purchase_Order__c, IP_Related_IP__c, Protection__c';
+        if (UserInfo.isMultiCurrencyOrganization()) {
+            parentQuery += ', CurrencyIsoCode';
+        }
+        parentQuery += ' FROM TTS_Transaction__c WHERE Id IN :recordIds WITH USER_MODE';
+        Map<Id, TTS_Transaction__c> parentsById = new Map<Id, TTS_Transaction__c>(
+            (List<TTS_Transaction__c>) Database.query(parentQuery)
+        );
 
         // Existing children for every parent, keyed by date, so each input can be evaluated
         // in-memory against the current state (including changes made by earlier inputs in

@@ -1,0 +1,25 @@
+{
+  "orgName": "Technology-Transfer-Starter - Multi-Currency Dev Org",
+  "edition": "Developer",
+  "features": ["MultiCurrency"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "userManagementSettings": {
+      "enableNewProfileUI": true
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false
+      }
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    }
+  }
+}

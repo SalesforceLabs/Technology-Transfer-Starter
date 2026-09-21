@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>[TTS] Research funding awards (grants, contracts, sponsored programs) that fund disclosed research. Ties subject inventions to their funding agreement for Bayh-Dole/iEdison and AUTM reporting.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Funding Award</label>
+    <nameField>
+        <label>Award Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Funding Awards</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Sponsor__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Award_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Awarding_Agency__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_Awarded_Amount__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Sponsor__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Award_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Awarding_Agency__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>Sponsor__c</searchFilterFields>
+        <searchFilterFields>Award_Number__c</searchFilterFields>
+        <searchFilterFields>Awarding_Agency__c</searchFilterFields>
+        <searchFilterFields>Status__c</searchFilterFields>
+        <searchResultsAdditionalFields>Sponsor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Award_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Awarding_Agency__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_Awarded_Amount__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Consonant</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

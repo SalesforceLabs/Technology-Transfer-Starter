@@ -30,7 +30,12 @@ parties, IP detail, facilities, mentoring and finance to that spine.
 <div class="rel-grid">
   <div class="rel"><h4>Inventor</h4><p>Inventors and contributors, roles and percentage shares — the basis for distribution.</p></div>
   <div class="rel"><h4>Success Plan → Milestone</h4><p>Reusable task templates that create date-based actions on a Technology.</p></div>
+  <div class="rel"><h4>Funding Award → Budget Period</h4><p>The sponsored-research award that funded the work, with per-period budget and spend. Disclosures and Technologies both link back to it.</p></div>
 </div>
+
+Technologies also carry **Bayh-Dole / iEdison utilisation** fields — government
+interest, title-election and first-commercial-sale dates, US-manufacture and
+utilisation stage — for federal invention reporting.
 
 ### Around Protection
 <div class="rel-grid">

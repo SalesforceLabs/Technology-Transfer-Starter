@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>TTS_Funding_Award__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Funding Awards with their Budget Periods. Supports sponsor financial reporting on budgeted versus actual spend.</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>Budget_Periods__r</relationship>
+    </join>
+    <label>Funding Awards with Budget Periods</label>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>TTS_Funding_Award__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Award_Number__c</field>
+            <table>TTS_Funding_Award__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sponsor__c</field>
+            <table>TTS_Funding_Award__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Total_Awarded_Amount__c</field>
+            <table>TTS_Funding_Award__c</table>
+        </columns>
+        <masterLabel>Funding Award</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Period_Number__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Period_Start__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Period_End__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Budgeted_Amount__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Actual_Spend__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Variance__c</field>
+            <table>TTS_Funding_Award__c.Budget_Periods__r</table>
+        </columns>
+        <masterLabel>Budget Period</masterLabel>
+    </sections>
+</ReportType>

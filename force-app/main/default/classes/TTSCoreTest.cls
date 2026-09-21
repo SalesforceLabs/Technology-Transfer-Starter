@@ -193,4 +193,63 @@ private class TTSCoreTest {
         }
     }
 
+    @isTest
+    static void generatedChildrenInheritParentCurrency() {
+        // CurrencyIsoCode only exists in multi-currency orgs; nothing to assert otherwise.
+        if (!UserInfo.isMultiCurrencyOrganization()) {
+            return;
+        }
+        // Prefer a non-corporate active currency so a broken clone (child defaulting to the
+        // running user's currency) is actually distinguishable. In an org with only the
+        // corporate currency activated this falls back to it and the assert still holds.
+        // CurrencyType is absent at compile time in single-currency orgs, so query it
+        // dynamically — this line only executes in a multi-currency org (guarded above).
+        List<SObject> others = Database.query(
+            'SELECT IsoCode FROM CurrencyType WHERE IsActive = true AND IsCorporate = false LIMIT 1'
+        );
+        String targetCurrency = others.isEmpty()
+            ? (String) Database.query(
+                  'SELECT IsoCode FROM CurrencyType WHERE IsCorporate = true LIMIT 1'
+              )[0].get('IsoCode')
+            : (String) others[0].get('IsoCode');
+
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id parentId = [
+                SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = null LIMIT 1
+            ].Id;
+            // CurrencyIsoCode is absent at compile time in single-currency orgs, so set it
+            // dynamically rather than with a static field reference.
+            SObject parent = Database.query(
+                'SELECT Id FROM TTS_Transaction__c WHERE Id = :parentId'
+            );
+            parent.put('CurrencyIsoCode', targetCurrency);
+            update parent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(3);
+            input.frequency = 'Monthly';
+            input.recordId = parentId;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(
+                new List<TTSCore.RelatedRecordsInput>{ input }
+            );
+            Test.stopTest();
+
+            Datetime firstOccurrence = BASE.addMonths(1);
+            List<SObject> generated = Database.query(
+                'SELECT CurrencyIsoCode FROM TTS_Transaction__c ' +
+                'WHERE Transaction__c = :parentId AND IP_Transaction_Date_Time__c = :firstOccurrence'
+            );
+            Assert.isFalse(generated.isEmpty(), 'Expected a generated recurring occurrence');
+            Assert.areEqual(
+                targetCurrency,
+                (String) generated[0].get('CurrencyIsoCode'),
+                'Generated recurring transaction must inherit the parent currency'
+            );
+        }
+    }
+
 }

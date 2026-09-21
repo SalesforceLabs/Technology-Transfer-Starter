@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Variance__c</fullName>
+    <description>Budgeted amount less actual spend for the period. Same-object currency formula, safe in single- and multi-currency orgs.</description>
+    <externalId>false</externalId>
+    <formula>Budgeted_Amount__c - Actual_Spend__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Variance</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

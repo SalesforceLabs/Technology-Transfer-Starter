@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Products_On_Market__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates one or more products or services embodying the technology are on the market. Feeds iEdison utilisation reporting.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select when a product or service based on this technology is on the market.</inlineHelpText>
+    <label>Products On Market</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

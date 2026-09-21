@@ -22,6 +22,12 @@ Account northbridge = [SELECT Id FROM Account WHERE Name = 'DEMO | Northbridge U
 Account aeroSenseAcct = [SELECT Id FROM Account WHERE Name = 'DEMO | AeroSense Labs Ltd' LIMIT 1];
 Account vector = [SELECT Id FROM Account WHERE Name = 'DEMO | Vector Dynamics Inc' LIMIT 1];
 Contact principalInventor = [SELECT Id FROM Contact WHERE Email = 'maya.chen.demo@example.invalid' LIMIT 1];
+techstarter__TTS_Funding_Award__c fundingAward = [SELECT Id FROM techstarter__TTS_Funding_Award__c WHERE techstarter__Award_Number__c = :marker + '-AWD-001' LIMIT 1];
+
+insert new List<techstarter__TTS_Award_Budget_Period__c>{
+    new techstarter__TTS_Award_Budget_Period__c(techstarter__Funding_Award__c = fundingAward.Id, techstarter__Period_Number__c = 1, techstarter__Period_Start__c = today.addYears(-2), techstarter__Period_End__c = today.addYears(-1), techstarter__Budgeted_Amount__c = 500000, techstarter__Actual_Spend__c = 480000),
+    new techstarter__TTS_Award_Budget_Period__c(techstarter__Funding_Award__c = fundingAward.Id, techstarter__Period_Number__c = 2, techstarter__Period_Start__c = today.addYears(-1), techstarter__Period_End__c = today, techstarter__Budgeted_Amount__c = 500000, techstarter__Actual_Spend__c = 510000)
+};
 
 Map<String, Id> transactionRecordTypes = new Map<String, Id>();
 for (RecordType recordType : [
@@ -150,5 +156,6 @@ insert new List<techstarter__TTS_Recipient__c>{
 
 
 System.assertEquals(4, [SELECT COUNT() FROM techstarter__TTS_Transaction__c WHERE techstarter__IP_Internal_Payment_Reference__c LIKE :marker + '%']);
+System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Award_Budget_Period__c WHERE techstarter__Funding_Award__c = :fundingAward.Id]);
 
 System.debug(LoggingLevel.INFO, 'DEMO_DATASET_SEEDED_PART_2: transactions, contributors and recipients created.');

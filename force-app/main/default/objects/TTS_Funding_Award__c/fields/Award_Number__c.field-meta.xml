@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Award_Number__c</fullName>
+    <description>Sponsor or agency identifier for the award (e.g. federal grant/contract number). Primary key for iEdison and Bayh-Dole reporting.</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Enter the funding body's official award, grant, or contract number.</inlineHelpText>
+    <label>Award Number</label>
+    <length>80</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

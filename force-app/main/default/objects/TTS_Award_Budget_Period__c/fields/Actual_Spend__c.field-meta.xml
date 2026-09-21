@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Spend__c</fullName>
+    <description>Amount actually spent in this period. Held in the record's currency in multi-currency orgs.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the actual spend for this period.</inlineHelpText>
+    <label>Actual Spend</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

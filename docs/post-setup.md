@@ -22,6 +22,7 @@ role your office staffs.
   <li class="task-list-item"><input type="checkbox" disabled> <strong>Confirm the scheduled flows are running</strong> — the tenancy- and visa-expiry reminders are schedule-triggered; verify the schedule and time suit your office.</li>
   <li class="task-list-item"><input type="checkbox" disabled> <strong>Decide on the optional draft flows</strong> — <code>Auto_Link_Contract_to_Opportunity</code> and <code>Success_Plan_Setup</code> ship as <strong>Draft</strong>. Activate them only if you want that automation.</li>
   <li class="task-list-item"><input type="checkbox" disabled> <strong>Add off-layout fields to your page layouts</strong> — several shipped fields are intentionally left off the default layouts (new additions, formula/rollup summaries, cross-area lookups). Each role checklist lists the fields relevant to it.</li>
+  <li class="task-list-item"><input type="checkbox" disabled> <strong>Surface research funding (if you track it)</strong> — add the <strong>Funding Award</strong> tab to your app, and add the off-layout <code>Funding_Award__c</code> lookup on Disclosure and Technology plus the Bayh-Dole / iEdison utilisation fields on Technology (government interest, title-election and first-commercial-sale dates, US-manufacture, utilisation stage). Funding Award and Award Budget Period are base objects available to all staff.</li>
 </ul>
 
 > **Why fields are off-layout.** Managed-package upgrades don't force-add new fields to

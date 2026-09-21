@@ -14,11 +14,18 @@ adding by an administrator — see the relevant **[post-setup checklist]({{ '/po
 
 | Object | Purpose | Fields |
 | --- | --- | ---: |
-| **Disclosure** (`TTS_Disclosure__c`) | Initial invention disclosure submitted before formal technology evaluation and protection processing. | 13 |
-| **Technology** (`TTS_Technology__c`) | Shared technical, disclosure, readiness, ownership and commercial information about a technology or invention. | 30 |
+| **Disclosure** (`TTS_Disclosure__c`) | Initial invention disclosure submitted before formal technology evaluation and protection processing. | 14 |
+| **Technology** (`TTS_Technology__c`) | Shared technical, disclosure, readiness, ownership and commercial information about a technology or invention — including Bayh-Dole / iEdison utilisation reporting. | 39 |
 | **Protection** (`TTS_Protection__c`) | Patents, trademarks, copyrights and trade secrets — ownership, jurisdiction, lifecycle and type-specific detail. | 34 |
 | **Agreement** (`TTS_Agreement__c`) | Licensing and commercial agreements related to a technology. | 17 |
 | **Transaction** (`TTS_Transaction__c`) | Incoming or outgoing monetary transactions related to a technology, agreement, protection, space and more. | 32 |
+
+## Research funding
+
+| Object | Purpose | Fields |
+| --- | --- | ---: |
+| **Funding Award** (`TTS_Funding_Award__c`) | A sponsored-research award or grant that funds the research behind disclosures and technologies — sponsor, awarding agency, funding type, principal investigator, dates, total amount and Bayh-Dole subject flag. | 11 |
+| **Award Budget Period** (`TTS_Award_Budget_Period__c`) | A budget period under a funding award (master-detail), with budgeted amount, actual spend and a variance formula. | 7 |
 
 ## Parties & contributors
 

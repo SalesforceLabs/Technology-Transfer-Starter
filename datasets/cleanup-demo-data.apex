@@ -62,6 +62,12 @@ delete [
 
 delete [SELECT Id FROM techstarter__TTS_Law_Firm_Matter__c WHERE techstarter__Law_Firm_Matter_Key__c LIKE :marker + '%'];
 
+// Budget periods are master-detail children of Funding Award (cascade on award delete),
+// removed explicitly first so cleanup is order-independent if run standalone. The award
+// itself is deleted after Technology and Disclosure, which reference it via lookup.
+delete [SELECT Id FROM techstarter__TTS_Award_Budget_Period__c WHERE techstarter__Funding_Award__r.techstarter__Award_Number__c LIKE :marker + '%'];
+delete [SELECT Id FROM techstarter__TTS_Funding_Award__c WHERE techstarter__Award_Number__c LIKE :marker + '%'];
+
 delete [SELECT Id FROM Contract WHERE Account.Name LIKE 'DEMO | %'];
 delete [SELECT Id FROM Opportunity WHERE Name = 'DEMO | AeroSense Exclusive Licence'];
 delete [SELECT Id FROM Campaign WHERE Name = 'DEMO | AeroSense Industry Partner Outreach'];

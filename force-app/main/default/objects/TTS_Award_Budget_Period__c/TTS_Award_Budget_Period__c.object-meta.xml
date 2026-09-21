@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>[TTS] Budget periods for a Funding Award, tracking budgeted versus actual spend for sponsor financial reporting.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Award Budget Period</label>
+    <nameField>
+        <displayFormat>BP{00000}</displayFormat>
+        <label>Budget Period ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Award Budget Periods</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Funding_Award__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Period_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Budgeted_Amount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Actual_Spend__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Variance__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

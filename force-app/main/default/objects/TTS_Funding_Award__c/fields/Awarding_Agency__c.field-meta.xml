@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Awarding_Agency__c</fullName>
+    <description>Classifies the awarding body, used to route statutory reporting (iEdison for US federal, HE-BCI/KEF for UK).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the agency or programme that made the award.</inlineHelpText>
+    <label>Awarding Agency</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NIH</fullName>
+                <default>false</default>
+                <label>NIH</label>
+            </value>
+            <value>
+                <fullName>NSF</fullName>
+                <default>false</default>
+                <label>NSF</label>
+            </value>
+            <value>
+                <fullName>DOE</fullName>
+                <default>false</default>
+                <label>DOE</label>
+            </value>
+            <value>
+                <fullName>DOD</fullName>
+                <default>false</default>
+                <label>DOD</label>
+            </value>
+            <value>
+                <fullName>NASA</fullName>
+                <default>false</default>
+                <label>NASA</label>
+            </value>
+            <value>
+                <fullName>USDA</fullName>
+                <default>false</default>
+                <label>USDA</label>
+            </value>
+            <value>
+                <fullName>Horizon Europe</fullName>
+                <default>false</default>
+                <label>Horizon Europe</label>
+            </value>
+            <value>
+                <fullName>ERC</fullName>
+                <default>false</default>
+                <label>ERC</label>
+            </value>
+            <value>
+                <fullName>UKRI</fullName>
+                <default>false</default>
+                <label>UKRI</label>
+            </value>
+            <value>
+                <fullName>Innovate UK</fullName>
+                <default>false</default>
+                <label>Innovate UK</label>
+            </value>
+            <value>
+                <fullName>State or Regional</fullName>
+                <default>false</default>
+                <label>State or Regional</label>
+            </value>
+            <value>
+                <fullName>Foundation or Charity</fullName>
+                <default>false</default>
+                <label>Foundation or Charity</label>
+            </value>
+            <value>
+                <fullName>Industry</fullName>
+                <default>false</default>
+                <label>Industry</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

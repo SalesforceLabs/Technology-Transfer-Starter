@@ -71,10 +71,35 @@ Contract contractRecord = new Contract(
 );
 insert contractRecord;
 
+techstarter__TTS_Funding_Award__c fundingAward = new techstarter__TTS_Funding_Award__c(
+    Name = 'DEMO | NIH Sustainable Campus Sensing Award',
+    techstarter__Award_Number__c = marker + '-AWD-001',
+    techstarter__Sponsor__c = accounts[0].Id,
+    techstarter__Awarding_Agency__c = 'NIH',
+    techstarter__Funding_Type__c = 'Federal Grant',
+    techstarter__Bayh_Dole_Subject__c = true,
+    techstarter__Principal_Investigator__c = contacts[0].Id,
+    techstarter__Award_Start_Date__c = today.addYears(-2),
+    techstarter__Award_End_Date__c = today.addYears(3),
+    techstarter__Total_Awarded_Amount__c = 1500000,
+    techstarter__Status__c = 'Active',
+    techstarter__Description__c = 'Synthetic federal award funding the AeroSense sensing research programme.'
+);
+insert fundingAward;
+
 techstarter__TTS_Technology__c technology = new techstarter__TTS_Technology__c(
     techstarter__IP_Title__c = 'AeroSense Low-Power Laboratory Air Quality Platform',
     techstarter__IP_External_Reference__c = marker + '-TECH-001',
     techstarter__IP_Category__c = 'Device',
+    techstarter__Funding_Award__c = fundingAward.Id,
+    techstarter__Utilisation_Stage__c = 'Product on Market',
+    techstarter__Products_On_Market__c = true,
+    techstarter__Product_Names__c = 'AeroSense Monitor One',
+    techstarter__First_Commercial_Sale_Date__c = today.addMonths(-3),
+    techstarter__US_Manufactured__c = true,
+    techstarter__Government_Interest__c = true,
+    techstarter__Title_Election_Date__c = today.addYears(-1),
+    techstarter__Confirmatory_Licence_Granted__c = true,
     techstarter__IP_Status__c = 'Commercialisation',
     techstarter__TRL__c = 'TRL 6',
     techstarter__IP_Disclosure_Date__c = today.addYears(-2),
@@ -116,6 +141,7 @@ techstarter__TTS_Disclosure__c disclosure = new techstarter__TTS_Disclosure__c(
     techstarter__Disclosure_date__c = today.addYears(-2),
     techstarter__Contact__c = contacts[0].Id,
     techstarter__Technology__c = technology.Id,
+    techstarter__Funding_Award__c = fundingAward.Id,
     techstarter__Commercial_Applications__c = 'Laboratory safety, clean rooms, research facilities and university estates.',
     techstarter__Funding_Source__c = 'Grant',
     techstarter__Funding_Details__c = 'Fictional Northbridge Sustainable Campus Research Fund award NB-2024-017.',
@@ -520,6 +546,7 @@ insert new List<techstarter__TTS_Milestone__c>{
 
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Technology__c WHERE techstarter__IP_External_Reference__c LIKE :marker + '%']);
 System.assertEquals(1, [SELECT COUNT() FROM techstarter__TTS_Disclosure__c WHERE techstarter__External_ID__c = :marker + '-DISC-001']);
+System.assertEquals(1, [SELECT COUNT() FROM techstarter__TTS_Funding_Award__c WHERE techstarter__Award_Number__c = :marker + '-AWD-001']);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Protection__c WHERE techstarter__Technology__c = :technology.Id]);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Agreement__c WHERE techstarter__Technology__c = :technology.Id]);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Law_Firm_Matter__c WHERE techstarter__Law_Firm_Matter_Key__c LIKE :marker + '%']);

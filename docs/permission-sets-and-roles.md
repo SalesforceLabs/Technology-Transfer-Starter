@@ -14,7 +14,7 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
   Assign it to *every* staff user. It grants the shared commons the whole office needs: read on
   Account and Contact, full create/read/edit/delete on all core Technology Transfer objects
   (disclosures, technologies, protections, agreements, transactions, parties, milestones, success
-  plans), the TTS app, its tabs, and Apex access.
+  plans, funding awards and award budget periods), the TTS app, its tabs, and Apex access.
 - The **functional-area sets** are **pure add-on deltas**. Each one declares *only* what the base
   does not already provide, so it must be **co-assigned on top of the base** — never on its own.
   Assigning an add-on without the base leaves the user without Account/Contact and other shared

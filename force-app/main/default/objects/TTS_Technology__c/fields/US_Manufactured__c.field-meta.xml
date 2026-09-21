@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>US_Manufactured__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates products embodying the technology are substantially manufactured in the US, per the Bayh-Dole US-manufacturing preference.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select when products are substantially manufactured in the United States.</inlineHelpText>
+    <label>US Manufactured</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

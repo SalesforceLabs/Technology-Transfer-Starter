@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirmatory_Licence_Granted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates a confirmatory licence to the US government has been granted, as required under Bayh-Dole for subject inventions.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select when the confirmatory licence to the government has been granted.</inlineHelpText>
+    <label>Confirmatory Licence Granted</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

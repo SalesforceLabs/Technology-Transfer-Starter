@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Principal_Investigator__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The lead researcher responsible for the award.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the principal investigator for this award.</inlineHelpText>
+    <label>Principal Investigator</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Funding Awards</relationshipLabel>
+    <relationshipName>Funding_Awards</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

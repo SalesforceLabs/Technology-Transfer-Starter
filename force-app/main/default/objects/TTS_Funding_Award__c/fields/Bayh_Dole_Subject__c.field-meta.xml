@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bayh_Dole_Subject__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates the award is US federal funding subject to the Bayh-Dole Act, triggering iEdison disclosure and reporting obligations.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select when the award is US federal funding subject to Bayh-Dole (iEdison reporting required).</inlineHelpText>
+    <label>Bayh-Dole Subject</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
