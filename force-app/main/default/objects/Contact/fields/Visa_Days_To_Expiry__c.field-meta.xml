@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Visa_Days_To_Expiry__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Days remaining until the visa expires; blank when no end date is set. Derived from Visa End Date.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Visa_End_Date__c), null, Visa_End_Date__c - TODAY())</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Visa Days To Expiry</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Restricted</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

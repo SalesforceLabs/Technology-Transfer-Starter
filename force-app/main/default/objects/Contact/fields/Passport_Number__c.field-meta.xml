@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Passport_Number__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Passport identifier for the Contact. Classified as restricted data.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the passport number exactly as issued; handle this information according to data policy.</inlineHelpText>
+    <label>Passport Number</label>
+    <required>false</required>
+    <securityClassification>Restricted</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <length>50</length>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

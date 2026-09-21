@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Departure_Reason__c</fullName>
+    <description>Captures why a tenancy ended, for retention and outcome reporting.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the reason this tenancy ended. Complete when setting an End Date.</inlineHelpText>
+    <label>Departure Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Breach</fullName>
+                <default>false</default>
+                <label>Breach</label>
+            </value>
+            <value>
+                <fullName>Ceased Trading</fullName>
+                <default>false</default>
+                <label>Ceased Trading</label>
+            </value>
+            <value>
+                <fullName>Completed Term</fullName>
+                <default>false</default>
+                <label>Completed Term</label>
+            </value>
+            <value>
+                <fullName>Graduated</fullName>
+                <default>false</default>
+                <label>Graduated</label>
+            </value>
+            <value>
+                <fullName>Non-payment</fullName>
+                <default>false</default>
+                <label>Non-payment</label>
+            </value>
+            <value>
+                <fullName>Relocated to Own Premises</fullName>
+                <default>false</default>
+                <label>Relocated to Own Premises</label>
+            </value>
+            <value>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+                <label>Transferred</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

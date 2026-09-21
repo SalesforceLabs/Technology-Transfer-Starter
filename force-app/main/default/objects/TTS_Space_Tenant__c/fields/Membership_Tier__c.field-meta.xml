@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Membership_Tier__c</fullName>
+    <description>Records the pricing/subsidy tier under which the tenant occupies the space.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the tenant's membership tier. Values run from fully subsidised to full market rate.</inlineHelpText>
+    <label>Membership Tier</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Free (Student)</fullName>
+                <default>false</default>
+                <label>Free (Student)</label>
+            </value>
+            <value>
+                <fullName>Subsidised</fullName>
+                <default>false</default>
+                <label>Subsidised</label>
+            </value>
+            <value>
+                <fullName>Market Rate</fullName>
+                <default>false</default>
+                <label>Market Rate</label>
+            </value>
+            <value>
+                <fullName>Virtual / Associate</fullName>
+                <default>false</default>
+                <label>Virtual / Associate</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

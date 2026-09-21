@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Venture_Category__c</fullName>
+    <description>Classifies the nature of the tenant venture for enterprise reporting (student, spinout, external, etc.). Distinct from Type, which controls name derivation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the category that best describes this venture (e.g. Student Startup, Spinout, External / Commercial).</inlineHelpText>
+    <label>Venture Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Alumni Venture</fullName>
+                <default>false</default>
+                <label>Alumni Venture</label>
+            </value>
+            <value>
+                <fullName>Community</fullName>
+                <default>false</default>
+                <label>Community</label>
+            </value>
+            <value>
+                <fullName>External / Commercial</fullName>
+                <default>false</default>
+                <label>External / Commercial</label>
+            </value>
+            <value>
+                <fullName>Graduate Startup</fullName>
+                <default>false</default>
+                <label>Graduate Startup</label>
+            </value>
+            <value>
+                <fullName>Research Group</fullName>
+                <default>false</default>
+                <label>Research Group</label>
+            </value>
+            <value>
+                <fullName>Social Enterprise</fullName>
+                <default>false</default>
+                <label>Social Enterprise</label>
+            </value>
+            <value>
+                <fullName>Spinout</fullName>
+                <default>false</default>
+                <label>Spinout</label>
+            </value>
+            <value>
+                <fullName>Staff / Academic Startup</fullName>
+                <default>false</default>
+                <label>Staff / Academic Startup</label>
+            </value>
+            <value>
+                <fullName>Student Startup</fullName>
+                <default>false</default>
+                <label>Student Startup</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

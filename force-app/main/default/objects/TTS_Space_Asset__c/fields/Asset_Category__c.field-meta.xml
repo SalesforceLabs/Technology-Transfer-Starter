@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_Category__c</fullName>
+    <description>Groups the asset by type for inventory and reporting.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the category that best describes this asset.</inlineHelpText>
+    <label>Asset Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>AV</fullName>
+                <default>false</default>
+                <label>AV</label>
+            </value>
+            <value>
+                <fullName>Access / Security</fullName>
+                <default>false</default>
+                <label>Access / Security</label>
+            </value>
+            <value>
+                <fullName>Furniture</fullName>
+                <default>false</default>
+                <label>Furniture</label>
+            </value>
+            <value>
+                <fullName>IT / Equipment</fullName>
+                <default>false</default>
+                <label>IT / Equipment</label>
+            </value>
+            <value>
+                <fullName>Lab / Makerspace</fullName>
+                <default>false</default>
+                <label>Lab / Makerspace</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
