@@ -17,16 +17,18 @@ Technology Transfer Starter is a Salesforce managed package (namespace `techstar
 sf org create scratch --definition-file config/dev-scratch-def.json --alias tts_dev --duration-days 30 --set-default
 sf project deploy start --source-dir force-app --target-org tts_dev
 ```
-After deploy, assign the four end-user permission sets (base + functional areas):
+After deploy, assign permission sets. `Technology_Transfer_Starter_Permission` is the **base** — assign it to every staff user; it grants the shared commons (Account/Contact read, all core TTS objects R/W, tabs, app, apex). The functional-area sets are **pure add-on deltas** designed to be co-assigned on top of base — they no longer re-declare base-provided access, so assign them *with* base, not standalone. Assign base + whichever areas a user needs:
 ```bash
 sf org assign permset \
   --name Technology_Transfer_Starter_Permission \
   --name Technology_Transfer_Starter_Visa_Management \
   --name Technology_Transfer_Starter_Space_Manager \
   --name Technology_Transfer_Starter_Mentoring_Manager \
+  --name Technology_Transfer_Starter_IP_Protection_Manager \
+  --name Technology_Transfer_Starter_Royalty_Manager \
   --target-org tts_dev
 ```
-(`TTS_Integration_User` is a separate integration-only permission set — assign it only to integration users, not standard staff.)
+`Technology_Transfer_Starter_Administrator` is a standalone package-scoped admin set (full CRUD + View All/Modify All on every TTS object) — assign it *instead of* base to package admins, not on top. (`TTS_Integration_User` is a separate integration-only permission set — assign it only to integration users, not standard staff.)
 
 ### Deploy / retrieve
 ```bash
@@ -67,7 +69,7 @@ When cutting a new version, update `packageAliases` and `ancestorId`/`versionNum
   - Space / Space Asset / Space Tenant / Tenant Contact — facilities/incubator management
   - Mentoring Opportunity / Mentoring Interest — mentoring program
   - Success Plans, Milestone — engagement tracking
-- **Permission sets** (`force-app/main/default/permissionsets/`) are the access-control unit, one per functional area — Permission (base), Visa Management, Space Manager, Mentoring Manager. Any new object/field intended for end users needs FLS added to the relevant permission set(s), not profiles.
+- **Permission sets** (`force-app/main/default/permissionsets/`) are the access-control unit, layered: `Technology_Transfer_Starter_Permission` is the **broad base** (assigned to all staff — shared Account/Contact reads + all core TTS objects R/W + tabs/app/apex). The functional-area sets — Visa Management, Space Manager, Mentoring Manager, IP & Legal Protection Manager, Royalty & Finance Manager — are **pure deltas** stacked on base: each declares only what base does NOT provide (Space/Mentoring add their own app + their own objects; Visa adds Contact edit + 5 visa fields; IP/Royalty own their specialist objects R/W). Royalty must keep `TTS_Agreement__c` read because `TTS_Royalty_Term__c` is a master-detail child (platform-enforced FLS dependency, not removable). `Technology_Transfer_Starter_Administrator` is a standalone full-access set (not a delta). When adding a new object/field for end users, put FLS in **base** if it's a shared common, otherwise in the relevant functional set — and never re-declare base-provided reads in a delta set. Caveat: because the deltas no longer carry Account/Contact, an add-on assigned *without* base grants less than before — always co-assign base. Any new object/field needs FLS on the relevant permission set(s), not profiles.
 - **iEdison/**: integration mapping docs and an OpenAPI spec for the U.S. federal iEdison reporting system (invention/patent/utilization reporting). These are reference docs (CSV field mappings + `iEdison OpenAPI Spec.yaml`), not implemented integration code — consult them before building any iEdison-related feature.
 - **datasets/**: demo/test data. Primary path is the anonymous-Apex scripts `seed-demo-data.apex` + `seed-demo-data-2.apex` (run in order) and `cleanup-demo-data.apex`, via `sf apex run --file` (see Data commands above). Seeding is split into two scripts to stay under the `executeAnonymous` size limit; part 2 re-queries part 1's records by marker. The Snowfakery dataset (`mapping.yml` + `sample.sql`, `cci task run load_dataset`) is legacy. New objects/fields must be reflected in the seed scripts and `cleanup-demo-data.apex`.
 - **`.qbrix/`**: generated deployment-backup snapshot of metadata (mirrors `force-app/`); not hand-edited source, ignore when tracing feature logic.
