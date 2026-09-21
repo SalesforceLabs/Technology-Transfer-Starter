@@ -349,3 +349,17 @@ li.task-list-item { margin-left: -1.2rem; }
 @media (max-width: 520px) {
   .m-footer-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Inner doc pages rendered on the marketing chrome (body.marketing.docs)
+   ============================================================ */
+.marketing.docs article { max-width: 100%; }
+.doc { max-width: 54rem; margin: 0 auto; padding: 3rem clamp(1.25rem, 4vw, 2rem) 4rem; }
+
+/* ---------- Contrast fixes ---------- */
+/* Top-nav links: darker for legibility on the paper header */
+.m-nav a { color: var(--ink); }
+/* Footer paragraphs would otherwise inherit the dark global `p` colour on the
+   navy footer — force them light. */
+.m-footer p, .m-footer li { color: #d3dbe6; }
+.m-footer-base, .m-footer-base p { color: #9fabbd; }

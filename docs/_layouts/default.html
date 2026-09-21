@@ -5,57 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page.description | default: site.description | strip_newlines }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/img/logo.png' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
-<body>
-  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
-  <header class="site-header">
-    <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation">☰</label>
-    <a class="brand" href="{{ '/' | relative_url }}">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">
-        <span class="brand-title">{{ site.title }}</span>
-        <span class="brand-sub">Documentation</span>
-      </span>
-    </a>
-    <a class="header-link" href="https://github.com/SalesforceLabs/Technology-Transfer-Starter">GitHub&nbsp;↗</a>
-  </header>
-
-  <div class="layout">
-    <aside class="sidebar" aria-label="Documentation navigation">
-      <nav>
-        {% for group in site.data.nav %}
-        <div class="nav-group">
-          <p class="nav-heading">{{ group.section }}</p>
-          <ul>
-            {% for item in group.items %}
-            {% assign target = item.url | relative_url %}
-            <li{% if page.url == item.url %} class="active"{% endif %}>
-              <a href="{{ target }}">{{ item.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}
-      </nav>
-    </aside>
-
-    <main class="content">
-      <article>
-        {% if page.title %}
-        <div class="page-head">
-          {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
-          <h1>{{ page.title }}</h1>
-          {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
-        </div>
-        {% endif %}
-        {{ content }}
-      </article>
-      <footer class="site-footer">
-        <p>Technology Transfer Starter — a Salesforce Labs managed package (namespace <code>techstarter</code>).</p>
-        <p>Built with ❤️ by Salesforce Labs. Documentation served via GitHub Pages.</p>
-      </footer>
-    </main>
-  </div>
+<body class="marketing docs">
+  {% include site-header.html %}
+  <main class="doc">
+    <article>
+      {% if page.title %}
+      <div class="page-head">
+        {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+        <h1>{{ page.title }}</h1>
+        {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+      </div>
+      {% endif %}
+      {{ content }}
+    </article>
+  </main>
+  {% include site-footer.html %}
 </body>
 </html>
