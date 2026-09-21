@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }} — {{ site.tagline }}</title>
+  <meta name="description" content="{{ site.description | strip_newlines }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body class="marketing">
+  <input type="checkbox" id="m-nav-toggle" class="m-nav-toggle" hidden>
+  <header class="m-header">
+    <div class="m-header-inner">
+      <a class="m-brand" href="{{ '/' | relative_url }}">
+        <span class="m-logo" aria-hidden="true">
+          <svg viewBox="0 0 36 36" width="34" height="34" role="img" aria-label="Technology Transfer Starter">
+            <circle cx="18" cy="18" r="18" fill="#0f6e78"/>
+            <path d="M18 8l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L18 26.4 12.9 23.2l1.2-5.6L9.9 13.8l5.6-.6z" fill="#f4f1e9"/>
+            <circle cx="18" cy="17.6" r="2.2" fill="#b6862c"/>
+          </svg>
+        </span>
+        <span class="m-brand-text">Technology&nbsp;Transfer<span>Starter</span></span>
+      </a>
+      <label for="m-nav-toggle" class="m-burger" aria-label="Toggle menu">☰</label>
+      <nav class="m-nav">
+        <a href="{{ '/overview/' | relative_url }}">What it does</a>
+        <a href="{{ '/data-model/' | relative_url }}">Data model</a>
+        <a href="{{ '/objects-reference/' | relative_url }}">Objects</a>
+        <a href="{{ '/post-setup/' | relative_url }}">Setup</a>
+        <a href="{{ '/rest-api-getting-started/' | relative_url }}">REST API</a>
+        <a class="m-cta" href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB">Get it on AppExchange&nbsp;→</a>
+      </nav>
+    </div>
+  </header>
+
+  {{ content }}
+
+  <footer class="m-footer">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <div class="m-brand">
+          <span class="m-logo" aria-hidden="true">
+            <svg viewBox="0 0 36 36" width="30" height="30"><circle cx="18" cy="18" r="18" fill="#0f6e78"/><path d="M18 8l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L18 26.4 12.9 23.2l1.2-5.6L9.9 13.8l5.6-.6z" fill="#f4f1e9"/><circle cx="18" cy="17.6" r="2.2" fill="#b6862c"/></svg>
+          </span>
+          <span class="m-brand-text" style="color:#fff">Technology&nbsp;Transfer<span style="color:var(--brass-soft)">Starter</span></span>
+        </div>
+        <p>A connected workspace for technology transfer, IP and commercialisation on Salesforce. A Salesforce Labs managed package — namespace <code>techstarter</code>.</p>
+      </div>
+      <div>
+        <h4>Documentation</h4>
+        <a href="{{ '/overview/' | relative_url }}">What it does</a>
+        <a href="{{ '/data-model/' | relative_url }}">Data model</a>
+        <a href="{{ '/objects-reference/' | relative_url }}">Object reference</a>
+      </div>
+      <div>
+        <h4>Set up</h4>
+        <a href="{{ '/post-setup/' | relative_url }}">Post-setup checklists</a>
+        <a href="{{ '/permission-sets-and-roles/' | relative_url }}">Permission sets &amp; roles</a>
+        <a href="{{ '/rest-api-getting-started/' | relative_url }}">REST API</a>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <a href="https://github.com/SalesforceLabs/Technology-Transfer-Starter">GitHub repository</a>
+        <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G0x6zUAB">AppExchange listing</a>
+      </div>
+    </div>
+    <div class="m-footer-base">
+      <p>Built with ❤️ by Salesforce Labs.</p>
+      <p>Documentation served via GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
