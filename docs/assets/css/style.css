@@ -250,10 +250,10 @@ li.task-list-item { margin-left: -1.2rem; }
 .marketing .hero { position: relative; overflow: hidden; background: linear-gradient(180deg,#fff, var(--paper)); padding: 0; border: 0; }
 .hero-inner { position: relative; z-index: 2; max-width: 76rem; margin: 0 auto; padding: 4rem 1.5rem 3.5rem; display: grid; grid-template-columns: 1.05fr .95fr; gap: 2.5rem; align-items: center; }
 .hero-copy { max-width: 34rem; }
-.hero-eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 700; color: var(--muted); margin: 0 0 .8rem; }
+.hero .hero-eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 700; color: var(--muted); margin: 0 0 .8rem; }
 .marketing .hero h1 { color: var(--ink); font-family: var(--serif); font-size: 3rem; line-height: 1.08; margin: 0 0 1rem; }
 .marketing .hero h1 .hl { color: var(--brand-green-dark); }
-.hero-sub { color: var(--muted); font-size: 1.18rem; line-height: 1.6; margin: 0 0 1.8rem; }
+.hero .hero-sub { color: var(--muted); font-size: 1.18rem; line-height: 1.6; margin: 0 0 1.8rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
 .btn { display: inline-block; text-decoration: none; font-weight: 600; padding: .72rem 1.3rem; border-radius: 999px; font-size: 1rem; transition: transform .08s ease, background .15s ease; }
 .btn:active { transform: translateY(1px); }
