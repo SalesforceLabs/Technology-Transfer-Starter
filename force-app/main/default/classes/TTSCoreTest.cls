@@ -68,110 +68,93 @@ private class TTSCoreTest {
 
     @isTest
     static void testGenerateRecurringTransactionRecords() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(2),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
 
-        // Generate a unique username using current UTC date and time
-        String uniqueUsername = 'john.doe.' + Datetime.now().formatGMT('yyyyMMddHHmmss') + '@example.com';
-
-        // Create a new User
-        User newUser = new User();
-        newUser.FirstName = 'John';
-        newUser.LastName = 'Doe';
-        newUser.Email = 'john.doe@example.com';
-        newUser.Username =  uniqueUsername;
-        newUser.Alias = 'jdoe';
-        newUser.CommunityNickname = 'johnd';
-        newUser.ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User'].Id;
-        newUser.TimeZoneSidKey = 'GMT';
-        newUser.LocaleSidKey = 'en_US';
-        newUser.EmailEncodingKey = 'UTF-8';
-        newUser.LanguageLocaleKey = 'en_US';
-        insert newUser;
-
-        // Assign permission set to the new User
-        PermissionSetAssignment psa = new PermissionSetAssignment();
-        psa.AssigneeId = newUser.Id;
-        psa.PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Technology_Transfer_Starter_Permission'].Id;
-        insert psa;
-
-        // Run test as the new User
-        System.runAs(newUser) {
-            // Target the parent explicitly (Transaction__c == null); a bare LIMIT 1 could
-            // return the child fixture and change the outcome.
-            Id parentId = [SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = null LIMIT 1].Id;
             List<TTSCore.RelatedRecordsInput> inputs = new List<TTSCore.RelatedRecordsInput>();
 
             TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
             input.startDate = BASE;
             input.endDate = BASE.addYears(2);
             input.frequency = 'Monthly';
-            input.recordId = parentId;
+            input.recordId = freshParent.Id;
             inputs.add(input);
 
             TTSCore.RelatedRecordsInput inputDaily = new TTSCore.RelatedRecordsInput();
             inputDaily.startDate = BASE;
             inputDaily.endDate = BASE.addYears(1);
             inputDaily.frequency = 'Daily';
-            inputDaily.recordId = parentId;
+            inputDaily.recordId = freshParent.Id;
             inputs.add(inputDaily);
 
             TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
             inputWeekly.startDate = BASE;
             inputWeekly.endDate = BASE.addYears(2);
             inputWeekly.frequency = 'Weekly';
-            inputWeekly.recordId = parentId;
+            inputWeekly.recordId = freshParent.Id;
             inputs.add(inputWeekly);
 
             TTSCore.RelatedRecordsInput inputQuarterly = new TTSCore.RelatedRecordsInput();
             inputQuarterly.startDate = BASE;
             inputQuarterly.endDate = BASE.addYears(2);
             inputQuarterly.frequency = 'Quarterly';
-            inputQuarterly.recordId = parentId;
+            inputQuarterly.recordId = freshParent.Id;
             inputs.add(inputQuarterly);
 
             TTSCore.RelatedRecordsInput inputAnnually = new TTSCore.RelatedRecordsInput();
             inputAnnually.startDate = BASE;
             inputAnnually.endDate = BASE.addYears(2);
             inputAnnually.frequency = 'Annually';
-            inputAnnually.recordId = parentId;
+            inputAnnually.recordId = freshParent.Id;
             inputs.add(inputAnnually);
 
-            // Call the method with the input data
             Test.startTest();
             TTSCore.generateRecurringTransactionRecords(inputs);
             Test.stopTest();
 
-            // Deterministic golden count for the fixed BASE inputs above.
-            Integer expectedCount = 419;
-            Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :parentId];
+            // With dedup, only the last input per parent is processed. Annual schedule over 2 years.
+            // Expected count is the number of Annual occurrences: from BASE to BASE+2years is 2.
+            Integer expectedCount = 2;
+            Integer actualCount = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
             System.assertEquals(expectedCount, actualCount, 'Unexpected number of child records');
         }
-
-        // Cleanup test data
-        List<User> testUsers = [SELECT Id FROM User WHERE Username LIKE 'john.doe%@example.com'];
-        if (!testUsers.isEmpty()) {
-            User testUser = testUsers[0];
-            testUser.IsActive = false;
-            update testUser;
-        }
-        
     }
 
     @isTest
     static void shouldNotCreateOccurrenceAfterEndDateWhenEndFallsBetweenWeeklyOccurrences() {
         User testUser = TTS_TestSetup.userWithPackagePermissionSet();
         System.runAs(testUser) {
-            Id parentId = [
-                SELECT Id
-                FROM TTS_Transaction__c
-                WHERE Transaction__c = null
-                LIMIT 1
-            ].Id;
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Weekly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
             Datetime endDate = BASE.addDays(20);
             TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
             input.startDate = BASE;
             input.endDate = endDate;
             input.frequency = 'Weekly';
-            input.recordId = parentId;
+            input.recordId = freshParent.Id;
 
             Test.startTest();
             TTSCore.generateRecurringTransactionRecords(
@@ -182,7 +165,7 @@ private class TTSCoreTest {
             Integer occurrencesAfterEndDate = [
                 SELECT COUNT()
                 FROM TTS_Transaction__c
-                WHERE Transaction__c = :parentId
+                WHERE Transaction__c = :freshParent.Id
                 AND IP_Transaction_Date_Time__c > :endDate
             ];
             Assert.areEqual(
@@ -190,6 +173,220 @@ private class TTSCoreTest {
                 occurrencesAfterEndDate,
                 'A recurring transaction must not be created after the schedule end date'
             );
+        }
+    }
+
+    @isTest
+    static void millisecondPrecisionDoesNotDuplicateOnRerun() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            // Create a fresh parent to avoid interference from the setup fixture
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            Long timeWithMs = BASE.getTime() + 255;
+            Datetime startWithMs = Datetime.newInstance(timeWithMs);
+            Datetime endDate = BASE.addMonths(3);
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = startWithMs;
+            input.endDate = endDate;
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            Integer countAfterFirstRun = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
+
+            // Re-run with same dates; count must not change
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Integer countAfterSecondRun = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
+
+            Assert.areEqual(countAfterFirstRun, countAfterSecondRun, 'Milliseconds must not cause duplicates on re-run');
+        }
+    }
+
+    @isTest
+    static void frequencyChangeReconciles() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            Datetime endDate = BASE.addDays(45);
+
+            TTSCore.RelatedRecordsInput inputMonthly = new TTSCore.RelatedRecordsInput();
+            inputMonthly.startDate = BASE;
+            inputMonthly.endDate = endDate;
+            inputMonthly.frequency = 'Monthly';
+            inputMonthly.recordId = freshParent.Id;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ inputMonthly });
+            Test.stopTest();
+
+            Integer countMonthly = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
+            Assert.isTrue(countMonthly > 0, 'Monthly schedule should generate children');
+
+            // Switch to Weekly with same date range; stale Monthly children must be deleted
+            TTSCore.RelatedRecordsInput inputWeekly = new TTSCore.RelatedRecordsInput();
+            inputWeekly.startDate = BASE;
+            inputWeekly.endDate = endDate;
+            inputWeekly.frequency = 'Weekly';
+            inputWeekly.recordId = freshParent.Id;
+
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ inputWeekly });
+
+            // Weekly should have more occurrences than Monthly; old Monthly-only dates should be gone
+            Integer countWeekly = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
+            Assert.isTrue(countWeekly > countMonthly, 'Weekly should have more occurrences than Monthly over same range');
+        }
+    }
+
+    @isTest
+    static void childrenInheritRecordTypeAndRoyaltyFields() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(1);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            List<TTS_Transaction__c> children = [
+                SELECT RecordTypeId, Applied_Royalty_Rate__c, Royalty_Term__c, Payment_Status__c
+                FROM TTS_Transaction__c
+                WHERE Transaction__c = :freshParent.Id
+            ];
+            Assert.isFalse(children.isEmpty(), 'Should generate children');
+            for (TTS_Transaction__c child : children) {
+                Assert.areEqual(spaceFeeRecordTypeId, child.RecordTypeId, 'Child must inherit parent RecordTypeId');
+                Assert.areEqual('Scheduled', child.Payment_Status__c, 'Child Payment_Status__c must be Scheduled');
+            }
+        }
+    }
+
+    @isTest
+    static void paidChildSurvivesRangeChange() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            // Create initial schedule
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(6);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+
+            // Mark a child as protected by recording an actual amount
+            TTS_Transaction__c protectedChild = [
+                SELECT Id FROM TTS_Transaction__c
+                WHERE Transaction__c = :freshParent.Id
+                ORDER BY IP_Transaction_Date_Time__c
+                LIMIT 1
+            ];
+            protectedChild.IP_Actual_Amount__c = 50.0;
+            update protectedChild;
+
+            // Narrow the range to exclude that child
+            input.endDate = BASE.addDays(15);
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            TTS_Transaction__c stillExists = [SELECT Id, IP_Actual_Amount__c FROM TTS_Transaction__c WHERE Id = :protectedChild.Id];
+            Assert.areEqual(50.0, stillExists.IP_Actual_Amount__c, 'Protected child must not be deleted');
+        }
+    }
+
+    @isTest
+    static void blankStartDateSkipsInput() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = null; // No start date
+            input.endDate = BASE.addMonths(1);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+
+            Test.startTest();
+            try {
+                TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+                Assert.isTrue(true, 'Null startDate should not throw');
+            } catch (Exception e) {
+                Assert.fail('Null startDate must be skipped gracefully, but threw: ' + e.getMessage());
+            }
+            Test.stopTest();
+
+            Integer count = [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id];
+            Assert.areEqual(0, count, 'Null startDate input should generate no children');
         }
     }
 

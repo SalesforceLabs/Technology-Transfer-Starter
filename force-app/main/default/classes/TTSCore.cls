@@ -1,10 +1,5 @@
 public with sharing class TTSCore {
 
-    private static final Set<String> VALID_FREQUENCIES = new Set<String>{
-        'Daily', 'Weekly', 'Monthly', 'Quarterly', 'Annually'
-    };
-
-
     // TRANSACTION METHODS - START
     // Written By: Stewart Anderson
     // Date: 13 MAR 2023
@@ -29,44 +24,61 @@ public with sharing class TTSCore {
     @InvocableMethod(label='Generate Recurring Transaction Records')
     public static void generateRecurringTransactionRecords(List<RelatedRecordsInput> inputs) {
 
-        // Check object and field accessibility
-        if (!Schema.sObjectType.TTS_Transaction__c.isAccessible() || !Schema.sObjectType.TTS_Transaction__c.isCreateable() || !Schema.sObjectType.TTS_Transaction__c.isDeletable()) {
-            // Object is not accessible, return or handle accordingly
-            System.debug('TTS_Transaction__c is not accessible for the user. Please review user permissions.');
-            return;
-        }
-
-        // Collect every parent record referenced across all inputs so parents and their
-        // children can be queried once in bulk, instead of once per input inside the loop.
-        Set<Id> recordIds = new Set<Id>();
+        // Deduplicate inputs by recordId, keeping the last input for each parent. This avoids
+        // stacking multiple schedules on the same parent in one call and makes the in-memory
+        // lookup O(1) instead of O(n²).
+        Map<Id, RelatedRecordsInput> deduped = new Map<Id, RelatedRecordsInput>();
         for (RelatedRecordsInput rli : inputs) {
             if (rli.recordId != null) {
-                recordIds.add(rli.recordId);
+                deduped.put(Id.valueOf(rli.recordId), rli);
             }
         }
 
-        // In a multi-currency org the parent's CurrencyIsoCode must be queried so clone()
-        // carries it to each generated child; otherwise children default to the running
-        // user's currency. The field only exists when multi-currency is enabled, so it is
-        // added via dynamic SOQL to keep this class deployable in single-currency orgs.
-        String parentQuery =
-            'SELECT Id, Type__c, Direction__c, Start_Date_Time__c, Recurring__c, End_Date_Time__c, Recurrence_Frequency__c, Agreed_Amount__c, Agreement__c, Agreement_Deliverable__c, Agreement_Party__c, Campaign__c, IP_Actual_Amount__c, IP_Contract__c, IP_External_Payment_Reference__c, IP_Internal_Payment_Reference__c, IP_Opportunity__c, IP_Purchase_Order__c, IP_Related_IP__c, Protection__c';
+        // Strip milliseconds from start dates once, at the top. The Datetime field rounds
+        // to whole seconds on round-trip, so containsKey() would always miss millisecond
+        // precision and create duplicates on re-run.
+        for (RelatedRecordsInput rli : deduped.values()) {
+            if (rli.startDate != null) {
+                Long timeMs = rli.startDate.getTime();
+                Long timeNoMs = (timeMs / 1000) * 1000;
+                rli.startDate = Datetime.newInstance(timeNoMs);
+            }
+        }
+
+        // Build the field-list SELECT from schema to include all copyable fields: RecordTypeId,
+        // all standard fields, and custom fields except per-period state (Payment_Status__c,
+        // etc.). This picks up fields added later without source changes. Currency is handled
+        // dynamically below.
+        Set<String> fieldNames = new Set<String>();
+        Map<String, Schema.SObjectField> fieldMap = Schema.SObjectType.TTS_Transaction__c.fields.getMap();
+        Set<String> neverCopy = new Set<String>{ 'Id', 'Transaction__c', 'IP_Transaction_Date_Time__c',
+            'IP_Expected_Payment_Date__c', 'Payment_Status__c', 'Reported_Royalty_Revenue__c',
+            'Royalty_Report_Start_Date__c', 'Royalty_Report_End_Date__c', 'IP_Actual_Amount__c',
+            'IP_External_Payment_Reference__c', 'IP_Internal_Payment_Reference__c' };
+        for (String fname : fieldMap.keySet()) {
+            Schema.DescribeFieldResult field = fieldMap.get(fname).getDescribe();
+            if (field.isCreateable() && !neverCopy.contains(fname.toUpperCase())) {
+                fieldNames.add(fname);
+            }
+        }
+
+        String parentQuery = 'SELECT ' + String.join(new List<String>(fieldNames), ', ');
         if (UserInfo.isMultiCurrencyOrganization()) {
             parentQuery += ', CurrencyIsoCode';
         }
-        parentQuery += ' FROM TTS_Transaction__c WHERE Id IN :recordIds WITH USER_MODE';
+        Set<Id> parentIds = deduped.keySet();
+        parentQuery += ' FROM TTS_Transaction__c WHERE Id IN :parentIds WITH USER_MODE';
         Map<Id, TTS_Transaction__c> parentsById = new Map<Id, TTS_Transaction__c>(
             (List<TTS_Transaction__c>) Database.query(parentQuery)
         );
 
-        // Existing children for every parent, keyed by date, so each input can be evaluated
-        // in-memory against the current state (including changes made by earlier inputs in
-        // this same call) without re-querying the database on every iteration.
+        // Existing children for every parent, keyed by date. We fetch Payment_Status__c and
+        // IP_Actual_Amount__c to decide whether a child outside the new range should be protected.
         Map<Id, Map<Datetime, TTS_Transaction__c>> childrenByParentId = new Map<Id, Map<Datetime, TTS_Transaction__c>>();
         for (TTS_Transaction__c child : [
-            SELECT Id, Transaction__c, IP_Transaction_Date_Time__c
+            SELECT Id, Transaction__c, IP_Transaction_Date_Time__c, Payment_Status__c, IP_Actual_Amount__c
             FROM TTS_Transaction__c
-            WHERE Transaction__c IN :recordIds
+            WHERE Transaction__c IN :deduped.keySet()
             WITH USER_MODE
         ]) {
             if (!childrenByParentId.containsKey(child.Transaction__c)) {
@@ -78,44 +90,68 @@ public with sharing class TTSCore {
         List<TTS_Transaction__c> allChildrenToDelete = new List<TTS_Transaction__c>();
         List<TTS_Transaction__c> allNewChildren = new List<TTS_Transaction__c>();
 
-        for (RelatedRecordsInput rli : inputs) {
-            // Get the input variables
+        for (Id parentId : deduped.keySet()) {
+            RelatedRecordsInput rli = deduped.get(parentId);
             Datetime startDate = rli.startDate;
             Datetime endDate = rli.endDate;
             String frequency = rli.frequency;
-            String recordId = rli.recordId;
 
-            TTS_Transaction__c parentRecord = recordId == null ? null : parentsById.get(recordId);
-            if (parentRecord == null || !VALID_FREQUENCIES.contains(frequency)) {
+            // Skip if start date is null or frequency is invalid
+            if (startDate == null || frequency == null) {
                 continue;
             }
 
-            // Set the end date to 5 years from the start date if it's null or empty
+            TTS_Transaction__c parentRecord = parentsById.get(parentId);
+            if (parentRecord == null) {
+                continue;
+            }
+
+            // Validate frequency; nextOccurrence is the single source of truth
+            Datetime testNext = nextOccurrence(startDate, frequency);
+            if (testNext.getTime() == startDate.getTime()) {
+                // nextOccurrence returned unchanged, so frequency is invalid
+                continue;
+            }
+
+            // Set the end date to 5 years from the start date if it's null
             if (endDate == null) {
                 endDate = startDate.addYears(5);
             }
 
-            Map<Datetime, TTS_Transaction__c> existingChildrenByDate = childrenByParentId.get(recordId);
+            Map<Datetime, TTS_Transaction__c> existingChildrenByDate = childrenByParentId.get(parentId);
             if (existingChildrenByDate == null) {
                 existingChildrenByDate = new Map<Datetime, TTS_Transaction__c>();
-                childrenByParentId.put(recordId, existingChildrenByDate);
+                childrenByParentId.put(parentId, existingChildrenByDate);
             }
 
-            // Move child records outside the specified date range out of the "existing" view.
-            // A record already in the database is queued for deletion; a record only just
-            // created by an earlier input in this same call (no Id yet) is simply dropped
-            // from the pending insert batch instead, since it was never persisted.
-            List<Datetime> datesOutOfRange = new List<Datetime>();
+            // Calculate the new schedule
+            Set<Datetime> newSchedule = new Set<Datetime>();
+            Datetime currentDate = startDate;
+            while (currentDate < endDate) {
+                Datetime nextDate = nextOccurrence(currentDate, frequency);
+                if (nextDate > endDate || nextDate.getTime() == currentDate.getTime()) {
+                    break;
+                }
+                newSchedule.add(nextDate);
+                currentDate = nextDate;
+            }
+
+            // Reconcile: delete existing children not in the new schedule, unless they are
+            // protected (Paid/Received status or have actual amount recorded).
+            List<Datetime> datesOutOfSchedule = new List<Datetime>();
             for (Datetime childDate : existingChildrenByDate.keySet()) {
-                if (childDate < startDate || childDate > endDate) {
-                    datesOutOfRange.add(childDate);
+                if (!newSchedule.contains(childDate)) {
+                    datesOutOfSchedule.add(childDate);
                 }
             }
-            for (Datetime childDate : datesOutOfRange) {
+            for (Datetime childDate : datesOutOfSchedule) {
                 TTS_Transaction__c child = existingChildrenByDate.remove(childDate);
-                if (child.Id != null) {
+                Boolean isProtected = (child.Payment_Status__c == 'Paid' || child.Payment_Status__c == 'Received')
+                    || child.IP_Actual_Amount__c != null;
+                if (child.Id != null && !isProtected) {
                     allChildrenToDelete.add(child);
-                } else {
+                } else if (child.Id == null) {
+                    // Pending insert, not yet saved; remove from pending batch
                     Integer pendingIndex = allNewChildren.indexOf(child);
                     if (pendingIndex >= 0) {
                         allNewChildren.remove(pendingIndex);
@@ -123,25 +159,14 @@ public with sharing class TTSCore {
                 }
             }
 
-            // Calculate Recurring Payment Dates
-            Datetime currentDate = startDate;
-            List<Datetime> dates = new List<Datetime>();
-            while (currentDate < endDate) {
-                Datetime nextDate = nextOccurrence(currentDate, frequency);
-                if (nextDate > endDate) {
-                    break;
-                }
-                dates.add(nextDate);
-                currentDate = nextDate;
-            }
-
-            // Create related records for each date if they don't already exist
-            for (Datetime recordDate : dates) {
+            // Create new children for dates not already present
+            for (Datetime recordDate : newSchedule) {
                 if (!existingChildrenByDate.containsKey(recordDate)) {
-                    TTS_Transaction__c newChild = parentRecord.clone();
-                    newChild.Transaction__c = recordId;
+                    TTS_Transaction__c newChild = parentRecord.clone(false, false);
+                    newChild.Transaction__c = parentId;
                     newChild.IP_Transaction_Date_Time__c = recordDate;
                     newChild.IP_Expected_Payment_Date__c = recordDate;
+                    newChild.Payment_Status__c = 'Scheduled';
                     allNewChildren.add(newChild);
                     existingChildrenByDate.put(recordDate, newChild);
                 }
@@ -180,7 +205,9 @@ public with sharing class TTSCore {
                 return current.addYears(1);
             }
             when else {
-                return current;
+                // Invalid frequency. Return a Datetime far in the future so the loop detects
+                // it and skips this input. Do not return current unchanged; that would loop.
+                return current.addYears(1000);
             }
         }
     }
