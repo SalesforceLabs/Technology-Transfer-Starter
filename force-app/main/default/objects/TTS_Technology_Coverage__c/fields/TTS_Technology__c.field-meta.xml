@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Technology__c</fullName>
+    <label>Technology</label>
+    <description>The Technology this coverage row allocates a share of the Agreement to.</description>
+    <inlineHelpText>Select the Technology this row covers under the Agreement.</inlineHelpText>
+    <type>Lookup</type>
+    <referenceTo>TTS_Technology__c</referenceTo>
+    <relationshipLabel>Technology Coverages</relationshipLabel>
+    <relationshipName>Technology_Coverages</relationshipName>
+    <required>true</required>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

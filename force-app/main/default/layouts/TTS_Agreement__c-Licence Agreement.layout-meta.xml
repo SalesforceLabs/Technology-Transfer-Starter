@@ -117,6 +117,18 @@
                 <behavior>Edit</behavior>
                 <field>Opportunity__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Allocation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Technology_Count__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Allocation_Complete__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -201,6 +213,12 @@
         <fields>Royalty_Basis__c</fields>
         <fields>Royalty_Rate__c</fields>
         <relatedList>TTS_Royalty_Term__c.Agreement__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>TTS_Technology__c</fields>
+        <fields>Allocation_Percent__c</fields>
+        <relatedList>TTS_Technology_Coverage__c.TTS_Agreement__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Royalty_Rate_Revenue_Match</fullName>
+    <active>true</active>
+    <description>When rate and revenue are populated, Actual Amount must equal rate x revenue, rounded up to the next cent. Applied Royalty Rate is a Percent field (5% = 0.05 in formulas), so no /100 is needed. Blank rate/revenue (flat-fee) rows are exempt.</description>
+    <errorConditionFormula><![CDATA[
+AND(
+    NOT(ISBLANK(Applied_Royalty_Rate__c)),
+    NOT(ISBLANK(Reported_Royalty_Revenue__c)),
+    IP_Actual_Amount__c <> CEILING( Applied_Royalty_Rate__c * Reported_Royalty_Revenue__c * 100 ) / 100
+)
+]]></errorConditionFormula>
+    <errorMessage>Actual Amount must equal Applied Royalty Rate x Reported Royalty Revenue, rounded up to the next whole cent.</errorMessage>
+</ValidationRule>

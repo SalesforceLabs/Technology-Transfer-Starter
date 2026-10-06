@@ -23,6 +23,78 @@ Account aeroSenseAcct = [SELECT Id FROM Account WHERE Name = 'DEMO | AeroSense L
 Account vector = [SELECT Id FROM Account WHERE Name = 'DEMO | Vector Dynamics Inc' LIMIT 1];
 Contact principalInventor = [SELECT Id FROM Contact WHERE Email = 'maya.chen.demo@example.invalid' LIMIT 1];
 techstarter__TTS_Funding_Award__c fundingAward = [SELECT Id FROM techstarter__TTS_Funding_Award__c WHERE techstarter__Award_Number__c = :marker + '-AWD-001' LIMIT 1];
+techstarter__TTS_Agreement__c validationStudy = [SELECT Id FROM techstarter__TTS_Agreement__c WHERE techstarter__Title__c = 'DEMO | AeroSense Industrial Validation Study' LIMIT 1];
+
+// E6 migration pattern: one Technology Coverage row @100% per existing Agreement.Technology__c
+// single lookup. Technology__c is retained as a display-only "Primary Technology" reference.
+// Seeded here rather than in part 1 to keep part 1 under the executeAnonymous size limit.
+insert new List<techstarter__TTS_Technology_Coverage__c>{
+    new techstarter__TTS_Technology_Coverage__c(
+        techstarter__TTS_Agreement__c = licenceAgreement.Id,
+        techstarter__TTS_Technology__c = technology.Id,
+        techstarter__Allocation_Percent__c = 100
+    ),
+    new techstarter__TTS_Technology_Coverage__c(
+        techstarter__TTS_Agreement__c = validationStudy.Id,
+        techstarter__TTS_Technology__c = technology.Id,
+        techstarter__Allocation_Percent__c = 100
+    )
+};
+
+// Agreement shapes for the Technology Count reporting rule (0-1 rows = Primary Technology wins,
+// 2+ rows = Technology Coverage wins): a two-technology bundle split 60/40, and a legacy
+// Primary-only agreement with no coverage rows, as found in installs that predate coverage.
+techstarter__TTS_Technology__c childTechnology = [SELECT Id FROM techstarter__TTS_Technology__c WHERE techstarter__IP_External_Reference__c = :marker + '-TECH-002' LIMIT 1];
+techstarter__TTS_Technology__c telemetryTechnology = new techstarter__TTS_Technology__c(
+    techstarter__IP_Title__c = 'AeroSense Wireless Mesh Telemetry Module',
+    techstarter__IP_External_Reference__c = marker + '-TECH-003',
+    techstarter__IP_Category__c = 'Device',
+    techstarter__IP_Status__c = 'Commercialisation',
+    techstarter__TRL__c = 'TRL 5',
+    techstarter__IP_Principal_Inventor_PI__c = principalInventor.Id,
+    techstarter__IP_Technical_Description__c = 'A low-power mesh radio module that relays sensor readings across large facilities without wired networking.',
+    techstarter__Non_Confidential_Description__c = 'Wireless telemetry that links distributed environmental sensors across a building or campus.'
+);
+insert telemetryTechnology;
+
+Id licenceRecordTypeId = [SELECT Id FROM RecordType WHERE SobjectType = 'techstarter__TTS_Agreement__c' AND DeveloperName = 'Licence_Agreement' LIMIT 1].Id;
+techstarter__TTS_Agreement__c bundleLicence = new techstarter__TTS_Agreement__c(
+    RecordTypeId = licenceRecordTypeId,
+    techstarter__Title__c = 'DEMO | AeroSense Platform Bundle Licence',
+    techstarter__Description__c = 'Synthetic non-exclusive licence to Vector Dynamics covering the AeroSense platform and its telemetry module.',
+    techstarter__Agreement_Type__c = 'Patent License Agreement',
+    techstarter__Status__c = 'Executed',
+    techstarter__Technology__c = technology.Id,
+    techstarter__Licensee_Account__c = vector.Id,
+    techstarter__Effective_Date__c = now.addDays(-15),
+    techstarter__Expiration_Date__c = now.addYears(3)
+);
+techstarter__TTS_Agreement__c legacyLicence = new techstarter__TTS_Agreement__c(
+    RecordTypeId = licenceRecordTypeId,
+    techstarter__Title__c = 'DEMO | Calibration Algorithm Evaluation Licence',
+    techstarter__Description__c = 'Synthetic evaluation licence recorded with Primary Technology only and no coverage rows, as in installs that predate Technology Coverage.',
+    techstarter__Agreement_Type__c = 'Patent License Agreement',
+    techstarter__Status__c = 'Executed',
+    techstarter__Technology__c = childTechnology.Id,
+    techstarter__Licensee_Account__c = vector.Id,
+    techstarter__Effective_Date__c = now.addDays(-90),
+    techstarter__Expiration_Date__c = now.addYears(1)
+);
+insert new List<techstarter__TTS_Agreement__c>{ bundleLicence, legacyLicence };
+
+// Both rows in one insert so the allocations reconcile to 100% in a single save.
+insert new List<techstarter__TTS_Technology_Coverage__c>{
+    new techstarter__TTS_Technology_Coverage__c(
+        techstarter__TTS_Agreement__c = bundleLicence.Id,
+        techstarter__TTS_Technology__c = technology.Id,
+        techstarter__Allocation_Percent__c = 60
+    ),
+    new techstarter__TTS_Technology_Coverage__c(
+        techstarter__TTS_Agreement__c = bundleLicence.Id,
+        techstarter__TTS_Technology__c = telemetryTechnology.Id,
+        techstarter__Allocation_Percent__c = 40
+    )
+};
 
 insert new List<techstarter__TTS_Award_Budget_Period__c>{
     new techstarter__TTS_Award_Budget_Period__c(techstarter__Funding_Award__c = fundingAward.Id, techstarter__Period_Number__c = 1, techstarter__Period_Start__c = today.addYears(-2), techstarter__Period_End__c = today.addYears(-1), techstarter__Budgeted_Amount__c = 500000, techstarter__Actual_Spend__c = 480000),
@@ -157,5 +229,8 @@ insert new List<techstarter__TTS_Recipient__c>{
 
 System.assertEquals(4, [SELECT COUNT() FROM techstarter__TTS_Transaction__c WHERE techstarter__IP_Internal_Payment_Reference__c LIKE :marker + '%']);
 System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Award_Budget_Period__c WHERE techstarter__Funding_Award__c = :fundingAward.Id]);
+System.assertEquals(2, [SELECT COUNT() FROM techstarter__TTS_Technology_Coverage__c WHERE techstarter__TTS_Technology__c = :technology.Id AND techstarter__Allocation_Percent__c = 100]);
+System.assertEquals(2, [SELECT techstarter__Technology_Count__c FROM techstarter__TTS_Agreement__c WHERE Id = :bundleLicence.Id].techstarter__Technology_Count__c);
+System.assertEquals(0, [SELECT techstarter__Technology_Count__c FROM techstarter__TTS_Agreement__c WHERE Id = :legacyLicence.Id].techstarter__Technology_Count__c);
 
 System.debug(LoggingLevel.INFO, 'DEMO_DATASET_SEEDED_PART_2: transactions, contributors and recipients created.');

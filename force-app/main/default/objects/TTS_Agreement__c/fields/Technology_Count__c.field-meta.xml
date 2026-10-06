@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technology_Count__c</fullName>
+    <description>Number of Technology Coverage rows on this Agreement. Reporting rule: 0-1 = use Primary Technology; 2 or more = use the Technology Coverage rows.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>0-1: Primary Technology is the reporting technology. 2 or more: report on the Technology Coverage rows.</inlineHelpText>
+    <label>Technology Count</label>
+    <summaryForeignKey>TTS_Technology_Coverage__c.TTS_Agreement__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

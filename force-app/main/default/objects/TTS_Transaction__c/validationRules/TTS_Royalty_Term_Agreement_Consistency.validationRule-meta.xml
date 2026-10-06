@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Royalty_Term_Agreement_Consistency</fullName>
+    <active>true</active>
+    <description>When a Royalty Term is referenced, the Transaction's Agreement and Agreement Party must match the Royalty Term's own Agreement and Agreement Party.</description>
+    <errorConditionFormula><![CDATA[
+AND(
+    NOT(ISBLANK(Royalty_Term__c)),
+    OR(
+        AND(NOT(ISBLANK(Agreement__c)), Agreement__c <> Royalty_Term__r.Agreement__c),
+        AND(NOT(ISBLANK(Agreement_Party__c)), Agreement_Party__c <> Royalty_Term__r.Agreement_Party__c)
+    )
+)
+]]></errorConditionFormula>
+    <errorMessage>The Agreement and Agreement Party on this Transaction must match the Agreement and Agreement Party on the selected Royalty Term.</errorMessage>
+</ValidationRule>

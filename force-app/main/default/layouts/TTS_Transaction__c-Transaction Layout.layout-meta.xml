@@ -74,6 +74,10 @@
                 <behavior>Edit</behavior>
                 <field>Agreed_Amount__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Contributor_Amount__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -83,6 +87,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IP_Actual_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Recipient_Amount__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

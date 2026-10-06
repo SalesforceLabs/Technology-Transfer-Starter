@@ -40,7 +40,8 @@ technologies.
 
 ### Commercial and financial tracking
 Connect technologies to Opportunities, Contracts, Campaigns and Agreements. Record
-incoming and outgoing payments, define royalty terms on agreements, create
+incoming and outgoing payments, define royalty terms on agreements, spread an
+agreement's coverage across multiple technologies with an allocation split, create
 recurring payment schedules, and allocate amounts to contributors or other
 recipients.
 

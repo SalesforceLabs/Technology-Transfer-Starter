@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Allocation__c</fullName>
+    <label>Total Allocation</label>
+    <description>Sum of Allocation Percent across all Technology Coverage rows on this Agreement, used to validate that coverage allocations reconcile to 100%.</description>
+    <inlineHelpText>Sum of Allocation Percent across all Technology Coverage rows on this Agreement.</inlineHelpText>
+    <type>Summary</type>
+    <summaryOperation>sum</summaryOperation>
+    <summarizedField>TTS_Technology_Coverage__c.Allocation_Percent__c</summarizedField>
+    <summaryForeignKey>TTS_Technology_Coverage__c.TTS_Agreement__c</summaryForeignKey>
+</CustomField>

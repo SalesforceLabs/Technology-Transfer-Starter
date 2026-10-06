@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Contributor_Amount__c</fullName>
+    <description>Sum of all Contributor amounts recorded against this Transaction, used to validate that contributions reconcile to the Actual Amount.</description>
+    <inlineHelpText>Sum of all Contributor amounts recorded against this Transaction.</inlineHelpText>
+    <label>Total Contributor Amount</label>
+    <summaryForeignKey>TTS_Contributor__c.IP_Related_Transaction__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <summarizedField>TTS_Contributor__c.Amount__c</summarizedField>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

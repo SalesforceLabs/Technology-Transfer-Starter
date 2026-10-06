@@ -52,6 +52,7 @@ utilisation stage — for federal invention reporting.
   <div class="rel"><h4>Agreement Party</h4><p>An organisation or individual participating in the agreement.</p></div>
   <div class="rel"><h4>Agreement Deliverable</h4><p>Specific deliverables committed to under the agreement.</p></div>
   <div class="rel"><h4>Royalty Term</h4><p>Structured royalty basis and rate (master-detail of Agreement).</p></div>
+  <div class="rel"><h4>Technology Coverage</h4><p>Links an agreement to the technologies it covers, with an allocation split across them when more than one applies.</p></div>
 </div>
 
 ### Around Transaction
