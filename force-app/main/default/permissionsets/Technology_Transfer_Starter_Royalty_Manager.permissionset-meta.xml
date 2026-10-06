@@ -265,6 +265,24 @@
         <field>TTS_Transaction__c.Royalty_Term__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <readable>true</readable>
+        <field>TTS_Agreement__c.Total_Allocation__c</field>
+    </fieldPermissions>
+    <fieldPermissions>
+        <readable>true</readable>
+        <field>TTS_Agreement__c.Allocation_Complete__c</field>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>TTS_Technology_Coverage__c.Allocation_Percent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TTS_Agreement__c.Technology_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Technology Transfer Starter - Royalty &amp; Finance Manager</label>
     <license>Salesforce</license>
@@ -313,6 +331,15 @@
         <object>TTS_Transaction__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>TTS_Technology_Coverage__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
     <recordTypeVisibilities>
         <recordType>TTS_Transaction__c.General_Expense_or_Fee</recordType>
         <visible>true</visible>
@@ -339,6 +366,10 @@
     </tabSettings>
     <tabSettings>
         <tab>TTS_Royalty_Term__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>TTS_Technology_Coverage__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

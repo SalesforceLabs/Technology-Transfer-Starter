@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Coverage_Allocation_100_Pct</fullName>
+    <active>true</active>
+    <description>Coverage allocations may not total more than 100%; lower totals are allowed so a split can be built one row at a time (see Allocation_Complete__c). Total_Allocation__c is a Percent (100% = 1.0), hence the x100.</description>
+    <errorConditionFormula><![CDATA[
+ROUND(Total_Allocation__c * 100, 2) > 100
+]]></errorConditionFormula>
+    <errorMessage>Technology Coverage Allocation Percent values on this Agreement cannot total more than 100%. To re-split, lower an existing allocation before raising another.</errorMessage>
+</ValidationRule>

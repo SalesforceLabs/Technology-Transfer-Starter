@@ -21,6 +21,8 @@ delete [SELECT Id FROM techstarter__TTS_Space_Tenant__c WHERE techstarter__Space
 delete [SELECT Id FROM techstarter__TTS_Royalty_Term__c WHERE techstarter__Agreement__r.techstarter__Title__c LIKE 'DEMO | %'];
 delete [SELECT Id FROM techstarter__TTS_Agreement_Party__c WHERE techstarter__Agreement__r.techstarter__Title__c LIKE 'DEMO | %'];
 delete [SELECT Id FROM techstarter__TTS_Agreement_Deliverable__c WHERE techstarter__Agreement__r.techstarter__Title__c LIKE 'DEMO | %'];
+// TTS_Technology_Coverage__c is a master-detail child of Agreement, so it cascade-deletes with
+// the Agreement below — no explicit delete needed.
 delete [SELECT Id FROM techstarter__TTS_Agreement__c WHERE techstarter__Title__c LIKE 'DEMO | %'];
 
 // Protection is a restrict-delete lookup child of Protection Family, so its own children,

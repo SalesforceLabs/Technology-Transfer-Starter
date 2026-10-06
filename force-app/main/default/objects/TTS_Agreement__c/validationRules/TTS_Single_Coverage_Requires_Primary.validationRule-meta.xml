@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Single_Coverage_Requires_Primary</fullName>
+    <active>true</active>
+    <description>Reporting rule: when Technology Count is 0-1, Primary Technology is the reporting technology; at 2 or more, the Technology Coverage rows are. An agreement with exactly one Technology Coverage row must therefore have Primary Technology set.</description>
+    <errorConditionFormula><![CDATA[
+AND(
+    Technology_Count__c = 1,
+    ISBLANK(Technology__c)
+)
+]]></errorConditionFormula>
+    <errorDisplayField>Technology__c</errorDisplayField>
+    <errorMessage>Set Primary Technology when an agreement covers a single technology.</errorMessage>
+</ValidationRule>

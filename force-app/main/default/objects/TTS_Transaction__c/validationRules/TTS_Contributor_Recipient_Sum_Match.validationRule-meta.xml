@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Contributor_Recipient_Sum_Match</fullName>
+    <active>true</active>
+    <description>Contributor and Recipient amounts must each equal the Actual Amount. Each side is checked only when child records exist (zero roll-up treated as no children yet).</description>
+    <errorConditionFormula><![CDATA[
+OR(
+    AND(
+        Total_Contributor_Amount__c <> 0,
+        Total_Contributor_Amount__c <> IP_Actual_Amount__c
+    ),
+    AND(
+        Total_Recipient_Amount__c <> 0,
+        Total_Recipient_Amount__c <> IP_Actual_Amount__c
+    )
+)
+]]></errorConditionFormula>
+    <errorMessage>Contributor and Recipient amounts must sum to the Actual Amount on this Transaction.</errorMessage>
+</ValidationRule>

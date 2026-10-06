@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TTS_Agreement__c</fullName>
+    <label>Agreement</label>
+    <description>Master-detail parent linking this Technology Coverage row to the Agreement it allocates coverage under.</description>
+    <inlineHelpText>The Agreement this coverage and allocation belongs to.</inlineHelpText>
+    <type>MasterDetail</type>
+    <referenceTo>TTS_Agreement__c</referenceTo>
+    <relationshipLabel>Technology Coverages</relationshipLabel>
+    <relationshipName>Technology_Coverages</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

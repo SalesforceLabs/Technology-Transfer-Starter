@@ -2,10 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Technology__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Links the agreement to the related Technology record.</description>
+    <description>The lead ("primary") Technology for this agreement. Retained as a compatibility anchor; the full set of technologies an agreement covers, with allocation %, lives on the Technology Coverages related list.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select the Technology governed or commercialised by this agreement.</inlineHelpText>
-    <label>Technology</label>
+    <inlineHelpText>The lead technology for this agreement. Use the Technology Coverages related list to record all covered technologies and their allocation %.</inlineHelpText>
+    <label>Primary Technology</label>
     <referenceTo>TTS_Technology__c</referenceTo>
     <relationshipLabel>Agreements</relationshipLabel>
     <relationshipName>Agreements1</relationshipName>

@@ -1164,6 +1164,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>TTS_Transaction__c.Total_Contributor_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>TTS_Transaction__c.Total_Recipient_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Disclosure__c.Funding_Award__c</field>
         <readable>true</readable>
@@ -1296,6 +1304,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>TTS_Technology__c.Utilisation_Stage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TTS_Agreement__c.Technology_Count__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>

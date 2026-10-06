@@ -33,7 +33,7 @@ title: null
 
 <section class="stats">
   <div class="stats-inner">
-    <div class="stat"><span class="stat-n">26</span><span class="stat-l">Custom objects</span></div>
+    <div class="stat"><span class="stat-n">29</span><span class="stat-l">Custom objects</span></div>
     <div class="stat"><span class="stat-n">13</span><span class="stat-l">Automation flows</span></div>
     <div class="stat"><span class="stat-n">8</span><span class="stat-l">Permission sets</span></div>
     <div class="stat"><span class="stat-n">6</span><span class="stat-l">Role runbooks</span></div>

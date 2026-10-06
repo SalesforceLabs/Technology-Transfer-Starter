@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocation_Complete__c</fullName>
+    <description>True when the Agreement has no Technology Coverage rows or its coverage allocations total exactly 100%. Use it to find agreements whose allocation split is still in progress.</description>
+    <externalId>false</externalId>
+    <formula>OR(
+    Technology_Count__c = 0,
+    ROUND(Total_Allocation__c * 100, 2) = 100
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Checked when there are no Technology Coverage rows or the allocations total 100%. Unchecked means the split is incomplete.</inlineHelpText>
+    <label>Allocation Complete</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

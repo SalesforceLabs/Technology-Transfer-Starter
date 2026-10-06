@@ -224,6 +224,26 @@
                 <identifier>Recordtechstarter__Agreed_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Royalty_Term__c</fieldItem>
+                <identifier>RecordRoyalty_Term_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Total_Contributor_Amount__c</fieldItem>
+                <identifier>RecordTotal_Contributor_Amount_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-5734b471-3da3-4549-b2d8-af84e4915ba6</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -246,6 +266,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.IP_Actual_Amount__c</fieldItem>
                 <identifier>Recordtechstarter__IP_Actual_Amount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Total_Recipient_Amount__c</fieldItem>
+                <identifier>RecordTotal_Recipient_Amount_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e36ca2c0-e36c-4bb3-be07-c0cf3aed7e47</name>

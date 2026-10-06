@@ -54,6 +54,7 @@ adding by an administrator — see the relevant **[post-setup checklist]({{ '/po
 | --- | --- | ---: |
 | **Agreement Deliverable** (`TTS_Agreement_Deliverable__c`) | Specific deliverables committed to under an agreement. | 8 |
 | **Royalty Term** (`TTS_Royalty_Term__c`) | Structured royalty terms for agreement payment obligations (master-detail of Agreement). | 10 |
+| **Technology Coverage** (`TTS_Technology_Coverage__c`) | Junction linking an Agreement to the Technology record(s) it covers, with an allocation percentage per Technology (master-detail of Agreement). The Agreement's Technology Count shows how many there are: 0–1 means report on the Agreement's Primary Technology, 2 or more means report on the coverage records. | 3 |
 
 ## Engagement tracking
 

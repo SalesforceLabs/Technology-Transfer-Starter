@@ -37,8 +37,8 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
 | Visa Management | Yes | Contact **edit** plus the five visa fields (Visa Type/Number/Start/End, Issuing Authority) |
 | Space Manager | Yes | Space Management app + Space, Space Asset, Space Tenant, Space Tenant Contact objects |
 | Mentoring Manager | Yes | Mentoring Manager app + Mentoring Opportunity, Mentoring Interest objects |
-| IP & Legal Protection Manager | Yes | Protections, protection families, claims, litigation, trademark classes/associations, applicants, outside-counsel matters |
-| Royalty & Finance Manager | Yes | Transactions, royalty terms, contributors, recipients (plus Agreement read, required by a master-detail dependency) |
+| IP & Legal Protection Manager | Yes | Protections, protection families, claims, litigation, trademark classes/associations, applicants, outside-counsel matters, technology coverage on agreements (plus Agreement read, required by a master-detail dependency) |
+| Royalty & Finance Manager | Yes | Transactions, royalty terms, contributors, recipients, technology coverage on agreements (plus Agreement read, required by a master-detail dependency) |
 
 ## Alignment to Standard TTO Roles
 
