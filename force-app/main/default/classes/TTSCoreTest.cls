@@ -306,6 +306,158 @@ private class TTSCoreTest {
     }
 
     @isTest
+    static void neverCopyFieldsAreBlankOnChildren() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            // Parent carries per-period values (rate x revenue = actual, so the royalty match
+            // rule passes). None of them may be copied onto future scheduled children.
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0,
+                Applied_Royalty_Rate__c = 10,
+                Reported_Royalty_Revenue__c = 1000.0,
+                IP_Actual_Amount__c = 100.0,
+                IP_External_Payment_Reference__c = 'EXT-1',
+                IP_Internal_Payment_Reference__c = 'INT-1',
+                Royalty_Report_Start_Date__c = BASE.date(),
+                Royalty_Report_End_Date__c = BASE.date().addMonths(1)
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(3);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            List<TTS_Transaction__c> children = [
+                SELECT Agreed_Amount__c, Applied_Royalty_Rate__c, Reported_Royalty_Revenue__c,
+                    IP_Actual_Amount__c, IP_External_Payment_Reference__c, IP_Internal_Payment_Reference__c,
+                    Royalty_Report_Start_Date__c, Royalty_Report_End_Date__c
+                FROM TTS_Transaction__c
+                WHERE Transaction__c = :freshParent.Id
+            ];
+            Assert.areEqual(3, children.size(), 'Should generate one child per month');
+            for (TTS_Transaction__c child : children) {
+                Assert.areEqual(100.0, child.Agreed_Amount__c, 'Agreed amount must be copied');
+                Assert.areEqual(10.0, child.Applied_Royalty_Rate__c, 'Applied royalty rate must be copied');
+                // Not copied from the parent; the field's own default (0) may apply on insert.
+                Assert.isTrue(child.IP_Actual_Amount__c == null || child.IP_Actual_Amount__c == 0,
+                    'Actual amount must not be copied');
+                Assert.isNull(child.Reported_Royalty_Revenue__c, 'Reported revenue must not be copied');
+                Assert.isNull(child.IP_External_Payment_Reference__c, 'External payment reference must not be copied');
+                Assert.isNull(child.IP_Internal_Payment_Reference__c, 'Internal payment reference must not be copied');
+                Assert.isNull(child.Royalty_Report_Start_Date__c, 'Report start date must not be copied');
+                Assert.isNull(child.Royalty_Report_End_Date__c, 'Report end date must not be copied');
+            }
+        }
+    }
+
+    @isTest
+    static void shorteningScheduleDeletesUnprotectedChildren() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            // Actual amount on the parent must not make every generated child "protected".
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0,
+                IP_Actual_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(12);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Assert.areEqual(12, [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id],
+                'Should generate one child per month for a year');
+
+            input.endDate = BASE.addMonths(3);
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            Assert.areEqual(3, [SELECT COUNT() FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id],
+                'Unpaid children outside the shortened schedule must be deleted');
+        }
+    }
+
+    @isTest
+    static void touchedChildrenSurviveRangeChange() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput input = new TTSCore.RelatedRecordsInput();
+            input.startDate = BASE;
+            input.endDate = BASE.addMonths(6);
+            input.frequency = 'Monthly';
+            input.recordId = freshParent.Id;
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+
+            List<TTS_Transaction__c> children = [
+                SELECT Id FROM TTS_Transaction__c
+                WHERE Transaction__c = :freshParent.Id
+                ORDER BY IP_Transaction_Date_Time__c
+            ];
+            Assert.areEqual(6, children.size(), 'Should generate one child per month');
+
+            // Touch two children: one no longer Scheduled, one with a contributor row.
+            TTS_Transaction__c overdueChild = children[0];
+            overdueChild.Payment_Status__c = 'Overdue';
+            update overdueChild;
+            TTS_Transaction__c splitChild = children[1];
+            insert new TTS_Contributor__c(IP_Related_Transaction__c = splitChild.Id);
+
+            // Narrow the range so no occurrence remains in the schedule
+            input.endDate = BASE.addDays(15);
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ input });
+            Test.stopTest();
+
+            Map<Id, TTS_Transaction__c> remaining = new Map<Id, TTS_Transaction__c>([
+                SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id
+            ]);
+            Assert.areEqual(2, remaining.size(), 'Only the untouched Scheduled children may be deleted');
+            Assert.isTrue(remaining.containsKey(overdueChild.Id), 'A child that is no longer Scheduled must not be deleted');
+            Assert.isTrue(remaining.containsKey(splitChild.Id), 'A child with contributor rows must not be deleted');
+        }
+    }
+
+    @isTest
     static void paidChildSurvivesRangeChange() {
         User testUser = TTS_TestSetup.userWithPackagePermissionSet();
         System.runAs(testUser) {
