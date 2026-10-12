@@ -7,12 +7,12 @@
         <name>TenancyDaysToExpiry</name>
         <dataType>Number</dataType>
         <scale>0</scale>
-        <expression>{!$Record.End_Date__c} - TODAY()</expression>
+        <expression>{!Get_Space_Tenant.End_Date__c} - TODAY()</expression>
     </formulas>
     <formulas>
         <name>TenancyTaskSubject</name>
         <dataType>String</dataType>
-        <expression>"Tenancy ending on " &amp; TEXT({!$Record.End_Date__c}) &amp; " (" &amp; TEXT(TenancyDaysToExpiry) &amp; " days) — review renewal or exit"</expression>
+        <expression>"Tenancy ending on " &amp; TEXT({!Get_Space_Tenant.End_Date__c}) &amp; " (" &amp; TEXT(TenancyDaysToExpiry) &amp; " days) — review renewal or exit"</expression>
     </formulas>
     <interviewLabel>TTS - Tenancy Expiry Reminder {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TTS - Tenancy Expiry Reminder</label>
@@ -39,7 +39,7 @@
         <name>Reminder_Due</name>
         <label>Reminder Due</label>
         <locationX>176</locationX>
-        <locationY>276</locationY>
+        <locationY>396</locationY>
         <defaultConnectorLabel>No Reminder</defaultConnectorLabel>
         <rules>
             <name>Due</name>
@@ -66,7 +66,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Current_Tenant__c</leftValueReference>
+                <leftValueReference>Get_Space_Tenant.Current_Tenant__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -82,11 +82,11 @@
         <name>Create_Reminder_Task</name>
         <label>Create Reminder Task</label>
         <locationX>176</locationX>
-        <locationY>396</locationY>
+        <locationY>516</locationY>
         <inputAssignments>
             <field>ActivityDate</field>
             <value>
-                <elementReference>$Record.End_Date__c</elementReference>
+                <elementReference>Get_Space_Tenant.End_Date__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -115,11 +115,32 @@
         </inputAssignments>
         <object>Task</object>
     </recordCreates>
+    <recordLookups>
+        <name>Get_Space_Tenant</name>
+        <label>Get Space Tenant</label>
+        <locationX>176</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Reminder_Due</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>TTS_Space_Tenant__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Reminder_Due</targetReference>
+            <targetReference>Get_Space_Tenant</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
