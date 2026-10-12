@@ -6,7 +6,7 @@
     <formulas>
         <name>VisaTaskSubject</name>
         <dataType>String</dataType>
-        <expression>"Visa expiring on " &amp; TEXT({!$Record.Visa_End_Date__c}) &amp; " (" &amp; TEXT({!$Record.Visa_Days_To_Expiry__c}) &amp; " days) — review immigration status"</expression>
+        <expression>"Visa expiring on " &amp; TEXT({!Get_Contact.Visa_End_Date__c}) &amp; " (" &amp; TEXT({!Get_Contact.Visa_Days_To_Expiry__c}) &amp; " days) — review immigration status"</expression>
     </formulas>
     <interviewLabel>TTS - Visa Expiry Reminder {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TTS - Visa Expiry Reminder</label>
@@ -33,34 +33,34 @@
         <name>Reminder_Due</name>
         <label>Reminder Due</label>
         <locationX>176</locationX>
-        <locationY>276</locationY>
+        <locationY>396</locationY>
         <defaultConnectorLabel>No Reminder</defaultConnectorLabel>
         <rules>
             <name>Due</name>
             <conditionLogic>(1 OR 2 OR 3) AND 4</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Visa_Days_To_Expiry__c</leftValueReference>
+                <leftValueReference>Get_Contact.Visa_Days_To_Expiry__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>90.0</numberValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Visa_Days_To_Expiry__c</leftValueReference>
+                <leftValueReference>Get_Contact.Visa_Days_To_Expiry__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>30.0</numberValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Visa_Days_To_Expiry__c</leftValueReference>
+                <leftValueReference>Get_Contact.Visa_Days_To_Expiry__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>7.0</numberValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Immigration_Status__c</leftValueReference>
+                <leftValueReference>Get_Contact.Immigration_Status__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>Expired</stringValue>
@@ -76,17 +76,17 @@
         <name>Create_Reminder_Task</name>
         <label>Create Reminder Task</label>
         <locationX>176</locationX>
-        <locationY>396</locationY>
+        <locationY>516</locationY>
         <inputAssignments>
             <field>ActivityDate</field>
             <value>
-                <elementReference>$Record.Visa_End_Date__c</elementReference>
+                <elementReference>Get_Contact.Visa_End_Date__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>$Record.OwnerId</elementReference>
+                <elementReference>Get_Contact.OwnerId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -115,11 +115,32 @@
         </inputAssignments>
         <object>Task</object>
     </recordCreates>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>176</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Reminder_Due</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Reminder_Due</targetReference>
+            <targetReference>Get_Contact</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>

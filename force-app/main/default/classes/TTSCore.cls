@@ -51,13 +51,15 @@ public with sharing class TTSCore {
         // dynamically below.
         Set<String> fieldNames = new Set<String>();
         Map<String, Schema.SObjectField> fieldMap = Schema.SObjectType.TTS_Transaction__c.fields.getMap();
-        Set<String> neverCopy = new Set<String>{ 'Id', 'Transaction__c', 'IP_Transaction_Date_Time__c',
-            'IP_Expected_Payment_Date__c', 'Payment_Status__c', 'Reported_Royalty_Revenue__c',
-            'Royalty_Report_Start_Date__c', 'Royalty_Report_End_Date__c', 'IP_Actual_Amount__c',
-            'IP_External_Payment_Reference__c', 'IP_Internal_Payment_Reference__c' };
+        // Compared as lower-case local names: fieldMap keys are lower-case and, in the packaged
+        // org, carry the namespace prefix, so a raw key never matches a mixed-case API name.
+        Set<String> neverCopy = new Set<String>{ 'id', 'transaction__c', 'ip_transaction_date_time__c',
+            'ip_expected_payment_date__c', 'payment_status__c', 'reported_royalty_revenue__c',
+            'royalty_report_start_date__c', 'royalty_report_end_date__c', 'ip_actual_amount__c',
+            'ip_external_payment_reference__c', 'ip_internal_payment_reference__c' };
         for (String fname : fieldMap.keySet()) {
             Schema.DescribeFieldResult field = fieldMap.get(fname).getDescribe();
-            if (field.isCreateable() && !neverCopy.contains(fname.toUpperCase())) {
+            if (field.isCreateable() && !neverCopy.contains(field.getLocalName().toLowerCase())) {
                 fieldNames.add(fname);
             }
         }
@@ -72,11 +74,13 @@ public with sharing class TTSCore {
             (List<TTS_Transaction__c>) Database.query(parentQuery)
         );
 
-        // Existing children for every parent, keyed by date. We fetch Payment_Status__c and
-        // IP_Actual_Amount__c to decide whether a child outside the new range should be protected.
+        // Existing children for every parent, keyed by date. We fetch Payment_Status__c,
+        // IP_Actual_Amount__c and any contributor/recipient rows to decide whether a child
+        // outside the new range should be protected (see isProtected).
         Map<Id, Map<Datetime, TTS_Transaction__c>> childrenByParentId = new Map<Id, Map<Datetime, TTS_Transaction__c>>();
         for (TTS_Transaction__c child : [
-            SELECT Id, Transaction__c, IP_Transaction_Date_Time__c, Payment_Status__c, IP_Actual_Amount__c
+            SELECT Id, Transaction__c, IP_Transaction_Date_Time__c, Payment_Status__c, IP_Actual_Amount__c,
+                (SELECT Id FROM Contributions__r LIMIT 1), (SELECT Id FROM Recipients__r LIMIT 1)
             FROM TTS_Transaction__c
             WHERE Transaction__c IN :deduped.keySet()
             WITH USER_MODE
@@ -137,7 +141,7 @@ public with sharing class TTSCore {
             }
 
             // Reconcile: delete existing children not in the new schedule, unless they are
-            // protected (Paid/Received status or have actual amount recorded).
+            // protected (see isProtected).
             List<Datetime> datesOutOfSchedule = new List<Datetime>();
             for (Datetime childDate : existingChildrenByDate.keySet()) {
                 if (!newSchedule.contains(childDate)) {
@@ -146,11 +150,11 @@ public with sharing class TTSCore {
             }
             for (Datetime childDate : datesOutOfSchedule) {
                 TTS_Transaction__c child = existingChildrenByDate.remove(childDate);
-                Boolean isProtected = (child.Payment_Status__c == 'Paid' || child.Payment_Status__c == 'Received')
-                    || child.IP_Actual_Amount__c != null;
-                if (child.Id != null && !isProtected) {
-                    allChildrenToDelete.add(child);
-                } else if (child.Id == null) {
+                if (child.Id != null) {
+                    if (!isProtected(child)) {
+                        allChildrenToDelete.add(child);
+                    }
+                } else {
                     // Pending insert, not yet saved; remove from pending batch
                     Integer pendingIndex = allNewChildren.indexOf(child);
                     if (pendingIndex >= 0) {
@@ -185,6 +189,16 @@ public with sharing class TTSCore {
                 throw new TTS_TransactionException('Recurring Transaction Generation failed: ' + e.getMessage(), e);
             }
         }
+    }
+
+    // A saved child may only be deleted while it is untouched: still Scheduled, no actual
+    // amount recorded (IP_Actual_Amount__c defaults to 0, so 0 means "not yet recorded"),
+    // and no contributor or recipient rows. Expects the child queried with both subqueries.
+    private static Boolean isProtected(TTS_Transaction__c child) {
+        return child.Payment_Status__c != 'Scheduled'
+            || (child.IP_Actual_Amount__c != null && child.IP_Actual_Amount__c != 0)
+            || !child.Contributions__r.isEmpty()
+            || !child.Recipients__r.isEmpty();
     }
 
     private static Datetime nextOccurrence(Datetime current, String frequency) {

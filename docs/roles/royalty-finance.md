@@ -29,7 +29,7 @@ permalink: /roles/royalty-finance/
 <ul class="contains-task-list">
   <li class="task-list-item"><input type="checkbox" disabled> Confirm <code>TTS_Generate_Recurring_Schedule</code> (and its subflow) is Active — it generates recurring transaction schedules via invocable Apex.</li>
   <li class="task-list-item"><input type="checkbox" disabled> Review the recurring-schedule frequency options against how your office bills.</li>
-  <li class="task-list-item"><input type="checkbox" disabled> Note that generated recurring transactions carry the agreement's royalty details forward and start as unpaid, scheduled payments — settle each one as it is actually paid.</li>
+  <li class="task-list-item"><input type="checkbox" disabled> Note that generated recurring transactions carry the agreement's royalty details (term and rate) forward and start as unpaid, scheduled payments — amounts, reported revenue, payment references and report dates are left blank. Record those on each one as it is actually paid.</li>
 </ul>
 
 ## Configuration
