@@ -90,7 +90,7 @@ The permission set grants:
 
 - **API Enabled** system permission.
 - Access to the `TTS_ObjectRestResource` Apex class.
-- Read, create, and edit access to the 26 package objects exposed by the API.
+- Read, create, and edit access to the 29 package objects exposed by the API.
 - Read or edit field-level security for the exposed package fields.
 - **View All** record access on exposed objects, without **Modify All** or delete permission.
 
@@ -194,7 +194,7 @@ automatically. As of the current release these are:
 Use bare names in the URL and request body, as shown in the examples. The package resolves its
 namespace internally. Standard objects (`Account`, `Contact`, and so on) are not exposed. The
 integration user must also be granted object and field access — the `TTS_Integration_User`
-permission set carries it for every shipped object.
+permission set carries it for the shipped objects except **Award Budget Period**, which it does not yet grant — add that access separately if you integrate it.
 
 ## Troubleshoot Common Errors
 
@@ -217,6 +217,19 @@ permission set carries it for every shipped object.
 - Rotate service credentials according to your security policy and immediately after suspected exposure.
 - Monitor OAuth login history, API usage, and integration-user record changes.
 - Do not place access tokens or client secrets in URLs, logs, source files, support tickets, or chat messages.
+
+## iEdison Reporting
+
+The package does not include an iEdison integration. Technologies carry Bayh-Dole / iEdison
+utilisation fields, and the repository holds reference material for designing an integration
+with the U.S. federal iEdison system:
+
+- [iEdison Integration Guide](https://github.com/SalesforceLabs/Technology-Transfer-Starter/blob/main/iEdison/iEdison%20Integration%20Guide.md) — a MuleSoft reference design (connectivity, invention/patent/utilization flows, error handling). It uses the standard Salesforce APIs, not the endpoint in this guide.
+- [iEdison OpenAPI Spec](https://github.com/SalesforceLabs/Technology-Transfer-Starter/blob/main/iEdison/iEdison%20OpenAPI%20Spec.yaml) and the [field mapping CSVs](https://github.com/SalesforceLabs/Technology-Transfer-Starter/tree/main/iEdison).
+
+The guide predates some package fields, so check each mapping against your org. Planned data-model
+support is tracked in [issue #15](https://github.com/SalesforceLabs/Technology-Transfer-Starter/issues/15)
+and [issue #7](https://github.com/SalesforceLabs/Technology-Transfer-Starter/issues/7).
 
 ## Related Resources
 
