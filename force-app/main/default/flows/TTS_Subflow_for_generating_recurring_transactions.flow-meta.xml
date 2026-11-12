@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <description>Checks that all transactions have been generated. Note that if the range gets changed, any dates outside of that range are deleted automatically.</description>
+        <description>Checks that all transactions have been generated. If the range gets changed, child transactions outside of the new range are deleted only while untouched: still Scheduled, no actual amount recorded, and no contributor or recipient rows. Any other child transaction is kept.</description>
         <name>Check_and_Update_Recurring_Transactions</name>
         <label>Check and Update Recurring Transactions</label>
         <locationX>50</locationX>

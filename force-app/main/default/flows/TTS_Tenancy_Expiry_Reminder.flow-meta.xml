@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>67.0</apiVersion>
-    <description>Daily scheduled flow. Creates a reminder Task on Space Tenants whose tenancy End Date is 90, 30 or 7 days away and who are still the current tenant. Adjust the day thresholds in the Reminder Due decision, or swap the Task action for an email alert, to suit the org.</description>
+    <description>Daily scheduled flow. Creates a reminder Task, owned by the Space owner, on Space Tenants whose tenancy End Date is 90, 30 or 7 days away and who are still the current tenant. Adjust the day thresholds in the Reminder Due decision, or swap the Task action for an email alert, to suit the org.</description>
     <environments>Default</environments>
     <formulas>
         <name>TenancyDaysToExpiry</name>
@@ -73,7 +73,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_Reminder_Task</targetReference>
+                <targetReference>Get_Space</targetReference>
             </connector>
             <label>Due</label>
         </rules>
@@ -82,11 +82,17 @@
         <name>Create_Reminder_Task</name>
         <label>Create Reminder Task</label>
         <locationX>176</locationX>
-        <locationY>516</locationY>
+        <locationY>636</locationY>
         <inputAssignments>
             <field>ActivityDate</field>
             <value>
                 <elementReference>Get_Space_Tenant.End_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Space.OwnerId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -115,6 +121,27 @@
         </inputAssignments>
         <object>Task</object>
     </recordCreates>
+    <recordLookups>
+        <name>Get_Space</name>
+        <label>Get Space</label>
+        <locationX>176</locationX>
+        <locationY>516</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Reminder_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Space_Tenant.Space__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>TTS_Space__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>Get_Space_Tenant</name>
         <label>Get Space Tenant</label>
