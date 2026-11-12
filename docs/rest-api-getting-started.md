@@ -194,7 +194,7 @@ automatically. As of the current release these are:
 Use bare names in the URL and request body, as shown in the examples. The package resolves its
 namespace internally. Standard objects (`Account`, `Contact`, and so on) are not exposed. The
 integration user must also be granted object and field access — the `TTS_Integration_User`
-permission set carries it for the shipped objects except **Award Budget Period**, which it does not yet grant — add that access separately if you integrate it.
+permission set carries it for every shipped object.
 
 ## Troubleshoot Common Errors
 

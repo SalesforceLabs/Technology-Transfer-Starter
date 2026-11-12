@@ -15,7 +15,6 @@ functional role its own checklist.
   <li class="task-list-item"><input type="checkbox" disabled> Assign <code>Technology_Transfer_Starter_Permission</code> (base) to <strong>all</strong> staff users.</li>
   <li class="task-list-item"><input type="checkbox" disabled> Stack the functional add-ons per role — see the mapping in <a href="{{ '/permission-sets-and-roles/' | relative_url }}">Permission sets &amp; roles</a>.</li>
   <li class="task-list-item"><input type="checkbox" disabled> Assign <code>Technology_Transfer_Starter_Administrator</code> to package admins <strong>instead of</strong> base.</li>
-  <li class="task-list-item"><input type="checkbox" disabled> If a package admin also works Space, Mentoring or visa records, co-assign that add-on too. The Administrator set does not cover the Space and Mentoring objects or the Contact visa fields.</li>
   <li class="task-list-item"><input type="checkbox" disabled> Assign <code>TTS_Integration_User</code> to API service accounts only — never to staff.</li>
 </ul>
 

@@ -36,7 +36,7 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
 | Permission set | Assign with base? | Grants (delta over base) |
 | --- | --- | --- |
 | Technology Transfer Starter - TTO (`Permission`) | This *is* the base | Shared commons: Account/Contact read, all core TTS objects R/W, TTS app, tabs, Apex |
-| Administrator | No — assign *instead of* base | Full CRUD + View All + Modify All on the core TTS objects, tabs, and Apex. **Not included:** the Space and Mentoring objects and the Contact visa fields — co-assign those add-ons if an admin needs them |
+| Administrator | No — assign *instead of* base | Full CRUD + View All + Modify All on every TTS object, including Space and Mentoring, plus the 19 Contact visa fields, all TTS apps and tabs, and Apex. No add-ons needed |
 | Visa Management | Yes | Contact **edit** plus the 19 Contact visa/immigration fields (see [Visa management setup]({{ '/visa-management-setup/' | relative_url }})) |
 | Space Manager | Yes | Space Management app + Space, Space Asset, Space Tenant, Space Tenant Contact objects |
 | Mentoring Manager | Yes | Mentoring Manager app + Mentoring Opportunity, Mentoring Interest objects |
