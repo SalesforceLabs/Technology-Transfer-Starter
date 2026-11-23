@@ -111,9 +111,9 @@ public with sharing class TTSCore {
             }
 
             // Validate frequency; nextOccurrence is the single source of truth
-            Datetime testNext = nextOccurrence(startDate, frequency);
-            if (testNext.getTime() == startDate.getTime()) {
-                // nextOccurrence returned unchanged, so frequency is invalid
+            // A null result means the frequency is unrecognised. Skip before reconcile runs,
+            // otherwise the empty schedule would delete every untouched existing child.
+            if (nextOccurrence(startDate, frequency) == null) {
                 continue;
             }
 
@@ -133,7 +133,7 @@ public with sharing class TTSCore {
             Datetime currentDate = startDate;
             while (currentDate < endDate) {
                 Datetime nextDate = nextOccurrence(currentDate, frequency);
-                if (nextDate > endDate || nextDate.getTime() == currentDate.getTime()) {
+                if (nextDate > endDate) {
                     break;
                 }
                 newSchedule.add(nextDate);
@@ -219,9 +219,8 @@ public with sharing class TTSCore {
                 return current.addYears(1);
             }
             when else {
-                // Invalid frequency. Return a Datetime far in the future so the loop detects
-                // it and skips this input. Do not return current unchanged; that would loop.
-                return current.addYears(1000);
+                // Unrecognised frequency; the caller skips the input on null.
+                return null;
             }
         }
     }
