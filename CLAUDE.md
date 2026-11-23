@@ -56,7 +56,7 @@ The scripts insert records in dependency order and use the explicit `techstarter
 sf package version create --package 0HoDm000000CaTXKA0 --target-dev-hub TTSDevHub --installation-key-bypass --code-coverage --wait 10
 sf package version promote --target-dev-hub TTSDevHub --package 04t...
 ```
-When cutting a new version, update `packageAliases` and `ancestorId`/`versionNumber` in `sfdx-project.json` — the ancestor must point at the latest released version ID.
+When cutting a new version, update `packageAliases` and `ancestorId`/`versionNumber` in `sfdx-project.json`. The ancestor must be the highest released non-patch version (`X.Y.0`): patch versions branch off it, so pointing at a released patch fails with `ErrorAncestorNotHighestError`. A version that adds components must be a minor bump; a patch bump fails with `Managed Package Patch Modification Exception`.
 
 ## Architecture
 

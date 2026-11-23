@@ -266,6 +266,52 @@ private class TTSCoreTest {
     }
 
     @isTest
+    static void invalidFrequencyLeavesExistingChildrenUntouched() {
+        User testUser = TTS_TestSetup.userWithPackagePermissionSet();
+        System.runAs(testUser) {
+            Id spaceFeeRecordTypeId = Schema.SObjectType.TTS_Transaction__c.getRecordTypeInfosByDeveloperName().get('Space_Fee').getRecordTypeId();
+            TTS_Transaction__c freshParent = new TTS_Transaction__c(
+                RecordTypeId = spaceFeeRecordTypeId,
+                Direction__c = 'Incoming',
+                Type__c = 'Rent',
+                Start_Date_Time__c = BASE,
+                Recurring__c = true,
+                End_Date_Time__c = BASE.addYears(1),
+                Recurrence_Frequency__c = 'Monthly',
+                Agreed_Amount__c = 100.0
+            );
+            insert freshParent;
+
+            TTSCore.RelatedRecordsInput valid = new TTSCore.RelatedRecordsInput();
+            valid.startDate = BASE;
+            valid.endDate = BASE.addMonths(3);
+            valid.frequency = 'Monthly';
+            valid.recordId = freshParent.Id;
+
+            Test.startTest();
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ valid });
+            Map<Id, TTS_Transaction__c> before = new Map<Id, TTS_Transaction__c>(
+                [SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id]
+            );
+            Assert.isFalse(before.isEmpty(), 'Valid frequency should generate children');
+
+            // 'Semi-Annually' is not a handled frequency (e.g. a subscriber-added picklist value).
+            TTSCore.RelatedRecordsInput invalid = new TTSCore.RelatedRecordsInput();
+            invalid.startDate = BASE;
+            invalid.endDate = BASE.addMonths(3);
+            invalid.frequency = 'Semi-Annually';
+            invalid.recordId = freshParent.Id;
+            TTSCore.generateRecurringTransactionRecords(new List<TTSCore.RelatedRecordsInput>{ invalid });
+            Test.stopTest();
+
+            Map<Id, TTS_Transaction__c> after = new Map<Id, TTS_Transaction__c>(
+                [SELECT Id FROM TTS_Transaction__c WHERE Transaction__c = :freshParent.Id]
+            );
+            Assert.areEqual(before.keySet(), after.keySet(), 'Invalid frequency must not delete or recreate existing children');
+        }
+    }
+
+    @isTest
     static void childrenInheritRecordTypeAndRoyaltyFields() {
         User testUser = TTS_TestSetup.userWithPackagePermissionSet();
         System.runAs(testUser) {
