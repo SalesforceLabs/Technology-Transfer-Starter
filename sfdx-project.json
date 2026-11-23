@@ -3,9 +3,9 @@
     {
       "path": "force-app",
       "package": "Technology Transfer Starter",
-      "versionName": "v3.6.3",
-      "versionNumber": "3.6.3.NEXT",
-      "versionDescription": "Fixes principal-inventor field access and limits automation to relevant Technology updates.",
+      "versionName": "v3.7.0",
+      "versionNumber": "3.7.0.NEXT",
+      "versionDescription": "Adds law firm matter and royalty management, funding award tracking, and expanded space and tenant fields.",
       "ancestorId": "04tg7000000N4ZBAA0",
       "default": true
     }
@@ -30,6 +30,8 @@
     "Technology Transfer Starter@3.6.1-1": "04tg7000000N53pAAC",
     "Technology Transfer Starter@3.6.2-1": "04tg7000000N5JxAAK",
     "Technology Transfer Starter@3.6.3-1": "04tg7000000N5evAAC",
-    "Technology Transfer Starter@3.6.3-2": "04tg7000000N5lNAAS"
+    "Technology Transfer Starter@3.6.3-2": "04tg7000000N5lNAAS",
+    "Technology Transfer Starter@3.7.0-1": "04tg7000000lmfVAAQ",
+    "Technology Transfer Starter@3.7.0-2": "04tg7000000lmu1AAA"
   }
 }
