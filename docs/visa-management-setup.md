@@ -113,7 +113,8 @@ The package installs a scheduled flow, **TTS - Visa Expiry Reminder**, active on
 - **90 days** to expiry
 - **30 days** to expiry
 - **7 days** to expiry
-- when **Immigration Status = Expired**
+
+Reminders are not sent for Contacts whose **Immigration Status** is already **Expired**.
 
 Milestones fire on the exact day `Visa Days To Expiry` equals the threshold, so keep **Visa End Date** populated and accurate — the reminders derive entirely from it.
 

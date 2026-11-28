@@ -33,7 +33,7 @@ Several space fields ship off the default layouts — add the recommended ones:
 
 <ul class="contains-task-list">
   <li class="task-list-item"><input type="checkbox" disabled> Confirm <code>TTS_Tenancy_Expiry_Reminder</code> (Scheduled, Active) runs — it raises reminder tasks 90, 30 and 7 days before a tenancy end date.</li>
-  <li class="task-list-item"><input type="checkbox" disabled> Confirm <code>TTS_Tenant_Contact_Scheduled_Actions</code> and the tenant-contact currency flows are Active — space status follows occupancy automatically.</li>
+  <li class="task-list-item"><input type="checkbox" disabled> Confirm <code>TTS_Tenant_Contact_Scheduled_Actions</code> and the tenant-contact flows that keep the Current Contact flag up to date are Active — space status follows occupancy automatically.</li>
 </ul>
 
 ## Configuration

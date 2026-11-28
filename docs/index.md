@@ -22,7 +22,7 @@ title: null
       </div>
       <div class="hero-proof">
         <div class="proof-badge">techstarter</div>
-        <p><strong>Flow-first automation</strong><br>Metadata &amp; automation only — no code to maintain.</p>
+        <p><strong>Flow-first automation</strong><br>Metadata &amp; automation — almost no code to maintain.</p>
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
@@ -34,7 +34,7 @@ title: null
 <section class="stats">
   <div class="stats-inner">
     <div class="stat"><span class="stat-n">29</span><span class="stat-l">Custom objects</span></div>
-    <div class="stat"><span class="stat-n">13</span><span class="stat-l">Automation flows</span></div>
+    <div class="stat"><span class="stat-n">14</span><span class="stat-l">Automation flows</span></div>
     <div class="stat"><span class="stat-n">8</span><span class="stat-l">Permission sets</span></div>
     <div class="stat"><span class="stat-n">6</span><span class="stat-l">Role runbooks</span></div>
   </div>

@@ -10,7 +10,7 @@ permalink: /roles/ip-legal/
 
 <ul class="contains-task-list">
   <li class="task-list-item"><input type="checkbox" disabled> <code>Technology_Transfer_Starter_Permission</code> (base).</li>
-  <li class="task-list-item"><input type="checkbox" disabled> <strong>+ <code>Technology_Transfer_Starter_IP_Protection_Manager</code></strong> — protections, families, claims, litigation, trademark classes/associations, applicants and law-firm matters.</li>
+  <li class="task-list-item"><input type="checkbox" disabled> <strong>+ <code>Technology_Transfer_Starter_IP_Protection_Manager</code></strong> — Technology Coverage on agreements and the Agreement allocation fields. Protections, families, claims, litigation, trademark classes/associations, applicants and law-firm matters come from the base.</li>
 </ul>
 
 ## Fields to add to layouts

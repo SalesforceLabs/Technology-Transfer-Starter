@@ -17,8 +17,8 @@ adding by an administrator — see the relevant **[post-setup checklist]({{ '/po
 | **Disclosure** (`TTS_Disclosure__c`) | Initial invention disclosure submitted before formal technology evaluation and protection processing. | 14 |
 | **Technology** (`TTS_Technology__c`) | Shared technical, disclosure, readiness, ownership and commercial information about a technology or invention — including Bayh-Dole / iEdison utilisation reporting. | 39 |
 | **Protection** (`TTS_Protection__c`) | Patents, trademarks, copyrights and trade secrets — ownership, jurisdiction, lifecycle and type-specific detail. | 34 |
-| **Agreement** (`TTS_Agreement__c`) | Licensing and commercial agreements related to a technology. | 17 |
-| **Transaction** (`TTS_Transaction__c`) | Incoming or outgoing monetary transactions related to a technology, agreement, protection, space and more. | 32 |
+| **Agreement** (`TTS_Agreement__c`) | Licensing and commercial agreements related to a technology. | 20 |
+| **Transaction** (`TTS_Transaction__c`) | Incoming or outgoing monetary transactions related to a technology, agreement, protection, space and more. | 34 |
 
 ## Research funding
 

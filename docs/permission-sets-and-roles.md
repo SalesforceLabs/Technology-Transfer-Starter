@@ -15,8 +15,11 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
   Account and Contact, full create/read/edit/delete on all core Technology Transfer objects
   (disclosures, technologies, protections, agreements, transactions, parties, milestones, success
   plans, funding awards and award budget periods), the TTS app, its tabs, and Apex access.
-- The **functional-area sets** are **pure add-on deltas**. Each one declares *only* what the base
-  does not already provide, so it must be **co-assigned on top of the base** — never on its own.
+  It does **not** include Technology Coverage; that comes with IP & Legal or Royalty & Finance.
+- The **functional-area sets** are **add-on deltas**. Each one declares essentially only what the
+  base does not already provide, so it must be **co-assigned on top of the base** — never on its own.
+  (IP & Legal and Royalty & Finance also repeat Agreement read, because the platform requires it for
+  Technology Coverage and Royalty Terms, which are master-detail children of Agreement.)
   Assigning an add-on without the base leaves the user without Account/Contact and other shared
   access.
 - **`Technology_Transfer_Starter_Administrator`** is a **standalone** full-access set. Assign it
@@ -33,12 +36,12 @@ Access is built from a **broad base plus thin add-ons**, not one set per person:
 | Permission set | Assign with base? | Grants (delta over base) |
 | --- | --- | --- |
 | Technology Transfer Starter - TTO (`Permission`) | This *is* the base | Shared commons: Account/Contact read, all core TTS objects R/W, TTS app, tabs, Apex |
-| Administrator | No — assign *instead of* base | Full CRUD + View All + Modify All on every TTS object, all fields, tabs, and Apex |
-| Visa Management | Yes | Contact **edit** plus the five visa fields (Visa Type/Number/Start/End, Issuing Authority) |
+| Administrator | No — assign *instead of* base | Full CRUD + View All + Modify All on every TTS object, including Space and Mentoring, plus the 19 Contact visa fields, all TTS apps and tabs, and Apex. No add-ons needed |
+| Visa Management | Yes | Contact **edit** plus the 19 Contact visa/immigration fields (see [Visa management setup]({{ '/visa-management-setup/' | relative_url }})) |
 | Space Manager | Yes | Space Management app + Space, Space Asset, Space Tenant, Space Tenant Contact objects |
 | Mentoring Manager | Yes | Mentoring Manager app + Mentoring Opportunity, Mentoring Interest objects |
-| IP & Legal Protection Manager | Yes | Protections, protection families, claims, litigation, trademark classes/associations, applicants, outside-counsel matters, technology coverage on agreements (plus Agreement read, required by a master-detail dependency) |
-| Royalty & Finance Manager | Yes | Transactions, royalty terms, contributors, recipients, technology coverage on agreements (plus Agreement read, required by a master-detail dependency) |
+| IP & Legal Protection Manager | Yes | Technology Coverage on agreements, plus the Agreement's Total Allocation and Allocation Complete fields (and Agreement read, required by a master-detail dependency). Protections, families, claims, litigation, trademark classes/associations, applicants and outside-counsel matters already come from the base |
+| Royalty & Finance Manager | Yes | Technology Coverage on agreements, plus the Agreement's Total Allocation and Allocation Complete fields (and Agreement read, required by a master-detail dependency). Transactions, royalty terms, contributors and recipients already come from the base |
 
 ## Alignment to Standard TTO Roles
 
@@ -98,8 +101,8 @@ sf org assign permset --name Technology_Transfer_Starter_Administrator --target-
 - **Always co-assign the base with any functional add-on.** The add-ons no longer carry
   Account/Contact or other shared access; without the base the user cannot see the records those
   add-ons operate against.
-- **Standard-object fields stay read-only** in the base and the functional add-ons (except the five
-  Contact visa fields granted by Visa Management, and Contact edit itself). Broadening standard-object
+- **Standard-object fields stay read-only** in the base and the functional add-ons (except the 19
+  Contact visa/immigration fields granted by Visa Management, and Contact edit itself). Broadening standard-object
   field access is intentionally left to the org's own permission sets.
 - **Adding a new object or field:** put its field-level security on the **base** if it belongs to the
   shared commons, otherwise on the relevant functional set. Do not re-declare base-provided access in
